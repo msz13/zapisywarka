@@ -1,0 +1,12 @@
+@import '../../../shared/theme/src/lib/styles/styles.scss';
+
+$test-color: orchid;
+
+p {
+    background-color: orange;
+}
+
+.test {
+    background-color: $test-color;
+    margin: 1em;
+}

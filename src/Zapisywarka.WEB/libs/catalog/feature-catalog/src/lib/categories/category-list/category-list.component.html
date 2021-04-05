@@ -1,0 +1,23 @@
+<nb-card class="categories-list" >        
+    <nb-list data-cy="category-list">
+        <nb-list-item *ngFor="let category of categories"  class="category" data-cy="list-item">
+            <div  *ngIf="!isEdited(category.id); else editInput"  data-cy="category-value">
+                <span class="mr-auto">
+                    <nb-icon icon="arrow-circle-right-outline" ></nb-icon>
+                    <span >{{category.name}}</span>                    
+                </span>
+                <span>
+                    <app-edit-icon (click)="edit(category)" data-cy="edit"></app-edit-icon>
+                </span>
+            </div>
+            <ng-template #editInput>
+                <div class="category">
+                    <input #inputValue [formControl]="editedCategoryControl" nbInput data-cy="edit-input">
+                    <button nbButton size="tiny" status="primary" (click)="saveEdited()"class="ml-2" data-cy="save-btn">Zapisz</button>
+                </div>
+                
+            </ng-template>               
+                                                   
+        </nb-list-item>
+    </nb-list>    
+</nb-card>

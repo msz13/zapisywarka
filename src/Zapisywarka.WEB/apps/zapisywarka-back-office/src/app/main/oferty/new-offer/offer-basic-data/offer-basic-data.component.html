@@ -1,0 +1,43 @@
+<h6>1. Wypełnij dane oferty</h6>
+<form [formGroup]="offerForm" (ngSubmit)="onSubmit()" >
+  <div class="form-group row">
+    <label for="inputName" class="label col-sm-3 col-form-label">Nazwa oferty</label>
+    <div class="col-sm-9" data-cy="offer-name">
+      <!--  <app-name-input formControlName="name" data-cy="offer-name"></app-name-input>   -->
+      <input nbInput type="text" maxlength="60" formControlName="name" (blur)="validateNameUniqueness()" [status]="showErrors(name)? 'danger': 'basic'">
+      <app-input-errors *ngIf="showErrors(name)" [errors]="name.errors"></app-input-errors>
+      <p>{{offerForm.get('name').value}}</p>
+
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="label col-sm-3 col-form-label">Data zakończenia zapisów</label>
+    <div class="col-sm-9">
+      <app-date-time-input data-cy="end-offer-date" formControlName="endOfferDate"
+        [status]="showErrors(endOfferDate)? 'danger': 'basic'" [cancelEnabled]="false">
+      </app-date-time-input>
+      <app-input-errors *ngIf="showErrors(endOfferDate)" [errors]="endOfferDate.errors"></app-input-errors>
+    </div>
+  </div>
+  <b class="subtitle">Data odbioru</b>
+  <div class="row" class="collection-date">
+    <div class="col-lg-6">
+      <div class="form-group">
+        <label for="sinceDate" class="label ">Od</label>
+        <app-date-time-input formControlName="startCollectionDate" [status]="showErrors(startCollectionDate)? 'danger': 'basic'" [cancelEnabled]="false" data-cy="start-collection">
+        </app-date-time-input>
+        <app-input-errors *ngIf="showErrors(startCollectionDate)" [errors]="startCollectionDate.errors"></app-input-errors>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="form-group">
+        <label for="toDate" class="label">Do</label>        
+          <app-date-time-input formControlName="endCollectionDate" data-cy="end-collection"></app-date-time-input>        
+      </div>
+    </div>
+    <app-input-errors *ngIf="showFormErrors()" [errors]="offerForm.errors"></app-input-errors>
+  </div>
+  <div class="stepper-buttons">                    
+    <button nbButton nbStepperNext data-cy="second-step">Dalej</button> 
+  </div>  
+</form> 

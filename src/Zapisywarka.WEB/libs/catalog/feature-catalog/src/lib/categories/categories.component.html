@@ -1,0 +1,31 @@
+
+
+<h6 data-cy="title" >Kategorie</h6>
+<div >
+    <p><strong>Nowa kategoria</strong></p>   
+    <div class="row ml-auto">
+        <input 
+            nbInput 
+            type="text" 
+            placeholder="Wpisz nową kategorię" 
+            data-cy="name-input"
+            [formControl]="newCategory"
+            (keyup.enter)="save()"
+            >
+        <button nbButton status="primary"  [disabled]="newCategory.invalid" class="ml-4" (click)="save()"  data-cy="save">Dodaj</button>
+    </div>
+   
+    <app-categories-list 
+        *ngIf="$categoriesExists | async" 
+        [categories]="$categories | async"
+        (updated)="onUpdate($event)"
+        >
+    </app-categories-list> 
+    
+    
+    
+    
+    
+</div>
+
+

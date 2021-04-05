@@ -1,0 +1,443 @@
+{
+  "version": 1,
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "zapisywarka-back-office",
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "projects": {
+    "zapisywarka-back-office": {
+      "projectType": "application",
+      "root": "apps/zapisywarka-back-office",
+      "sourceRoot": "apps/zapisywarka-back-office/src",
+      "prefix": "zapisywarka-client-aps",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/zapisywarka-back-office",
+            "index": "apps/zapisywarka-back-office/src/index.html",
+            "main": "apps/zapisywarka-back-office/src/main.ts",
+            "polyfills": "apps/zapisywarka-back-office/src/polyfills.ts",
+            "tsConfig": "apps/zapisywarka-back-office/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/zapisywarka-back-office/src/favicon.ico",
+              "apps/zapisywarka-back-office/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "apps/zapisywarka-back-office/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/zapisywarka-back-office/src/environments/environment.ts",
+                  "with": "apps/zapisywarka-back-office/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "zapisywarka-back-office:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "zapisywarka-back-office:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "zapisywarka-back-office:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/zapisywarka-back-office/src/**/*.ts",
+              "apps/zapisywarka-back-office/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/zapisywarka-back-office"],
+          "options": {
+            "jestConfig": "apps/zapisywarka-back-office/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "apps/zapisywarka-back-office/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/zapisywarka-back-office",
+            "config": {
+              "configFolder": "apps/zapisywarka-back-office/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+    "zapisywarka-back-office-e2e": {
+      "root": "apps/zapisywarka-back-office-e2e",
+      "sourceRoot": "apps/zapisywarka-back-office-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/zapisywarka-back-office-e2e/cypress.json",
+            "tsConfig": "apps/zapisywarka-back-office-e2e/tsconfig.e2e.json",
+            "devServerTarget": "zapisywarka-back-office:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "zapisywarka-back-office:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/zapisywarka-back-office-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "shared-theme": {
+      "projectType": "library",
+      "root": "libs/shared/theme",
+      "sourceRoot": "libs/shared/theme/src",
+      "prefix": "zapisywarka-client-aps",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/theme/src/**/*.ts",
+              "libs/shared/theme/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/theme"],
+          "options": {
+            "jestConfig": "libs/shared/theme/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "offers-feature-offer-creation": {
+      "projectType": "library",
+      "root": "libs/offers/feature-offer-creation",
+      "sourceRoot": "libs/offers/feature-offer-creation/src",
+      "prefix": "zapisywarka-client-aps",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/offers/feature-offer-creation/src/**/*.ts",
+              "libs/offers/feature-offer-creation/src/**/*.html"
+            ]
+          },
+          "styles": ["node_modules/bootstrap/dist/css/bootstrap.css",
+            "apps/zapisywarka-back-office/src/styles.scss"]
+        },        
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/offers/feature-offer-creation"],
+          "options": {
+            "jestConfig": "libs/offers/feature-offer-creation/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/offers/feature-offer-creation/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/offers-feature-offer-creation",
+            "config": {
+              "configFolder": "libs/offers/feature-offer-creation/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+    "offers-feature-offer-creation-e2e": {
+      "root": "apps/offers-feature-offer-creation-e2e",
+      "sourceRoot": "apps/offers-feature-offer-creation-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/offers-feature-offer-creation-e2e/cypress.json",
+            "tsConfig": "apps/offers-feature-offer-creation-e2e/tsconfig.e2e.json",
+            "devServerTarget": "offers-feature-offer-creation:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "offers-feature-offer-creation:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/offers-feature-offer-creation-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "offers-domain": {
+      "projectType": "library",
+      "root": "libs/offers/domain",
+      "sourceRoot": "libs/offers/domain/src",
+      "prefix": "zapisywarka-client-aps",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/offers/domain/src/**/*.ts",
+              "libs/offers/domain/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/offers/domain"],
+          "options": {
+            "jestConfig": "libs/offers/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "catalog-domain-category": {
+      "projectType": "library",
+      "root": "libs/catalog/domain-category",
+      "sourceRoot": "libs/catalog/domain-category/src",
+      "prefix": "zapisywarka-client-aps",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/catalog/domain-category/src/**/*.ts",
+              "libs/catalog/domain-category/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/catalog/domain-category"],
+          "options": {
+            "jestConfig": "libs/catalog/domain-category/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "catalog-api": {
+      "projectType": "library",
+      "root": "libs/catalog/api",
+      "sourceRoot": "libs/catalog/api/src",
+      "prefix": "zapisywarka-client-aps",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/catalog/api/src/**/*.ts",
+              "libs/catalog/api/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/catalog/api"],
+          "options": {
+            "jestConfig": "libs/catalog/api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "catalog-utills-testing": {
+      "projectType": "library",
+      "root": "libs/catalog/utills/testing",
+      "sourceRoot": "libs/catalog/utills/testing/src",
+      "prefix": "zapisywarka-client-aps",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/catalog/utills/testing/src/**/*.ts",
+              "libs/catalog/utills/testing/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/catalog/utills/testing"],
+          "options": {
+            "jestConfig": "libs/catalog/utills/testing/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "catalog-domain-catalog-item": {
+      "projectType": "library",
+      "root": "libs/catalog/domain-catalog-item",
+      "sourceRoot": "libs/catalog/domain-catalog-item/src",
+      "prefix": "zapisywarka-client-aps",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/catalog/domain-catalog-item/src/**/*.ts",
+              "libs/catalog/domain-catalog-item/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/catalog/domain-catalog-item"],
+          "options": {
+            "jestConfig": "libs/catalog/domain-catalog-item/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "catalog-feature-catalog": {
+      "root": "libs/catalog/feature-catalog",
+      "sourceRoot": "libs/catalog/feature-catalog/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/catalog/feature-catalog/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/catalog/feature-catalog"],
+          "options": {
+            "jestConfig": "libs/catalog/feature-catalog/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  }
+}

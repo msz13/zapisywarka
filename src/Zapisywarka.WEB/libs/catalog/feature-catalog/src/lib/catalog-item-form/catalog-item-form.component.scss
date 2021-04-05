@@ -1,0 +1,28 @@
+input[number] {
+    width: 2em;
+}
+
+nb-select {
+    min-width: 30%;
+}
+
+.number-input {
+    width: 6em;
+}
+
+
+:host {
+    min-width: 60vw;
+    min-height: 60vh;
+}
+
+a  {
+    margin-right: 2em;
+}
+
+nb-select {
+    margin-right: 0.5em;
+}
+
+
+

@@ -1,0 +1,35 @@
+<div>
+   Nazwa oferty: <strong>{{offer.name}}</strong>
+</div>
+<div>
+    Koniec zapisów: <strong>{{offer.endOfferDate|date:'yyyy-MM-dd HH:mm'}}</strong>
+</div>
+<p>Data odbioru: </p>
+<!--
+<div class="collectionDate">
+    <span>Od: <strong>{{offer.collectionDate.from | date:'yyyy-MM-dd HH:mm'}}</strong></span>
+    <span>Do: <strong>{{offer.collectionDate.to | date:'yyyy-MM-dd HH:mm'}}</strong></span>
+</div>
+-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nazwa</th>
+            <th>Kategoria</th>
+            <th>Cena(zł)</th>
+            <th>Dostępna ilość</th>            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of offerItems; index as i">
+            <th>{{1}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.avaibleQuantity}}</td>
+       </tr>
+    </tbody>
+</table>
+
+<button (console)="check()">check</button>

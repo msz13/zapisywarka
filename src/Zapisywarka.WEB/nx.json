@@ -1,0 +1,45 @@
+{
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "affected": { "defaultBase": "master" },
+  "npmScope": "zapisywarka-client-aps",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e",
+          "build-storybook"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "zapisywarka-back-office": { "tags": [] },
+    "zapisywarka-back-office-e2e": {
+      "tags": [],
+      "implicitDependencies": ["zapisywarka-back-office"]
+    },
+    "shared-theme": { "tags": [] },
+    "offers-feature-offer-creation": { "tags": [] },
+    "offers-feature-offer-creation-e2e": {
+      "tags": [],
+      "implicitDependencies": ["offers-feature-offer-creation"]
+    },
+    "offers-domain": { "tags": [] },
+    "catalog-domain-category": { "tags": [] },
+    "catalog-api": { "tags": [] },
+    "catalog-utills-testing": { "tags": [] },
+    "catalog-domain-catalog-item": { "tags": [] },
+    "catalog-feature-catalog": { "tags": [] }
+  }
+}

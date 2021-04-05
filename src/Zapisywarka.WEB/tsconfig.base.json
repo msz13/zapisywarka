@@ -1,0 +1,46 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@zapisywarka-client-aps/offer-creation": [
+        "libs/offer-creation/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/shared/theme": [
+        "libs/shared/theme/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/offers/feature-offer-creation": [
+        "libs/offers/feature-offer-creation/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/offers/domain": [
+        "libs/offers/domain/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/catalog/domain-category": [
+        "libs/catalog/domain-category/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/catalog/api": ["libs/catalog/api/src/index.ts"],
+      "@zapisywarka-client-aps/catalog/utills/testing": [
+        "libs/catalog/utills/testing/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/catalog/domain-catalog-item": [
+        "libs/catalog/domain-catalog-item/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/catalog/feature-catalog": [
+        "libs/catalog/feature-catalog/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

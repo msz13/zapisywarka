@@ -1,0 +1,25 @@
+a {
+    margin-bottom: 2em;
+}
+
+.name {
+    width: 35%;
+}
+
+nb-icon:hover {
+    cursor: pointer;  
+}
+
+thead tr th {
+    border: none;
+}
+
+.ngx-datatable.scroll-vertical {
+    height: 610px;
+  }
+
+.filter-panel {
+      display: flex;
+      margin-bottom: 1.5em;
+  }
+

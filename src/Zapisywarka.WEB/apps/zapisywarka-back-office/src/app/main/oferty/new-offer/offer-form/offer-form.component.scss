@@ -1,0 +1,14 @@
+@import "../../../../../../../../libs/shared/theme/src/lib/styles/themes.scss";
+
+.subtitle {
+   
+    margin-bottom: 2.5rem;
+    color: nb-theme(text-hint-color);
+}
+
+.collection-date {
+    label {
+        margin-right: 0.5em;
+    }
+}
+
