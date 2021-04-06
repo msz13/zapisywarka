@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  web-api:
+    container_name: zapisywarka_api
+    image: ${DOCKER_REGISTRY-}zapisywarka_api
+    build:
+      context: ./src/Zapisywarka.API
+      dockerfile: ./Dockerfile
+    ports:
+      - 5000:80
