@@ -51,11 +51,9 @@ jobs:
         run: npm install
       - name: Build angular app
         working-directory: ./src/Zapisywarka.WEB
-        run: npm run nx build zapisywarka-back-office --prod --aot --basehref=/test/
-      
+        run: npm run nx build zapisywarka-back-office --prod --aot --baseHref=/test/      
           
       - name: Build and push Docker images
-        working-directory: .
         # You may pin to the exact commit or the version.
         # uses: docker/build-push-action@9379083e426e2e84abb80c8c091f5cdeb7d3fd7a
         uses: docker/build-push-action@v2.3.0
@@ -72,17 +70,4 @@ jobs:
      
        
           
-      
-  # Push image to GitHub Packages.
-  # See also https://docs.docker.com/docker-hub/builds/
-  push:
-    # Ensure test job passes before pushing image.
- #   needs: test
-
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-
-    steps:
-      - uses: actions/checkout@v2
-
-     
+    
