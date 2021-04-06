@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +38,11 @@ namespace Zapisywarka.API.Host
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -44,7 +50,7 @@ namespace Zapisywarka.API.Host
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapGet("/", context => context.Response.WriteAsync("Zapisywarka.pl - API"));
+                endpoints.MapGet("/api", context => context.Response.WriteAsync("Zapisywarka.pl - API"));
             });
         }
     }
