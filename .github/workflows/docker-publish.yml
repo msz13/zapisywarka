@@ -46,10 +46,8 @@ jobs:
         with:         
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 12.16.2
-          
-      - name: Example
-        run: echo 'Hello worls'
-        
+         
+            
       - name: Install dependencies
         working-directory: ./src/Zapisywarka.WEB
         run: npm install
@@ -57,6 +55,8 @@ jobs:
         working-directory: ./src/Zapisywarka.WEB
         run: npm run nx build zapisywarka-back-office --prod --aot --baseHref=/test/  
       
+      - name: Check 
+        run: echo ${{ secrets.GITHUB_TOKEN }}
               
       - name: Docker Login
           # You may pin to the exact commit or the version.
@@ -97,6 +97,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
+      - name: Check 
+        run: echo ${{ secrets.GITHUB_TOKEN }}
      
       - name: Docker Login
           # You may pin to the exact commit or the version.
@@ -118,9 +121,9 @@ jobs:
         uses: docker/build-push-action@v2.3.0
         with:
           # Build's context is the set of files located in the specified PATH or URL
-          context: .
+          context: ./src/Zapisywarka.API
           # Path to the Dockerfile
-          file: ./src/Zapisywarka.API/Dockerfile
+          file: ./Dockerfile
           # List of tags
           tags: |
             zapisywarka-api
