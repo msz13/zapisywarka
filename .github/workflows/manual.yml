@@ -38,5 +38,5 @@ jobs:
        script: | 
          whoami
          echo "Hello world" > test.txt
-         echo $FOO >> test.txt
+         echo "$FOO" >> test.txt
        
