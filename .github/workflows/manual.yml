@@ -25,21 +25,37 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - uses: actions/checkout@v2
+    
+    - name: copy docker compose
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE }}
+        passphrase: ${{ secrets.PASSPHRASE }}       
+        source: "docker-compose.prod.yml"
+        target: "/var/www/zapisywarka"
+    
+    
     # Runs a single command using the runners shell
-    - name: executing remote ssh commands using ssh key
+    - name: docker-compose up
       uses: appleboy/ssh-action@master
       env: 
-        FOO:  "WORLD"
-        BAR: "BAR"
+        GITHUB_TOKEN:  "WORLD"
+        USERNAME: ${{ secrets.USERNAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}
       with:
        host: ${{ secrets.HOST }}
        username: ${{ secrets.USERNAME }}
        key: ${{ secrets.SSH_PRIVATE }}
        passphrase: ${{ secrets.PASSPHRASE }}
-       envs: FOO,BAR
+       envs: GITHUB_TOKEN, USERNAME, PASSWORD
        script: | 
-         whoami
-         echo "type $BAR"
-         echo "Hello world" > test.txt
-         echo "HELLO $FOO" > test2.txt
+         cd /var/www/zapisywarka
+         echo $GITHUB_TOKEN | docker login ghcr.io -u msz13 --password-stdin
+         echo $PASSWORD | sudo -S docker-compose -f docker-compose.prod.yml up -d
+         
+         
+         
        
