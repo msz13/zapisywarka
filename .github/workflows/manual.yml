@@ -42,7 +42,7 @@ jobs:
     - name: docker-compose up
       uses: appleboy/ssh-action@master
       env: 
-        GITHUB_TOKEN:  "WORLD"
+        GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
         USERNAME: ${{ secrets.USERNAME }}
         PASSWORD: ${{ secrets.PASSWORD }}
       with:
