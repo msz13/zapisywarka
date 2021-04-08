@@ -30,13 +30,16 @@ jobs:
       uses: appleboy/ssh-action@master
       env: 
         FOO:  "WORLD"
+        BAR: "BAR"
       with:
        host: ${{ secrets.HOST }}
        username: ${{ secrets.USERNAME }}
        key: ${{ secrets.SSH_PRIVATE }}
        passphrase: ${{ secrets.PASSPHRASE }}
+       envs: FOO,BAR
        script: | 
          whoami
+         echo "type $BAR"
          echo "Hello world" > test.txt
          echo "HELLO $FOO" > test2.txt
        

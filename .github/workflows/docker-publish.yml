@@ -81,9 +81,9 @@ jobs:
           file: ./Deployment/nginx/Dockerfile
           # List of tags
           tags: |
-            zapisywarka-web
+            ghcr.io/msz13/zapisywarka_web:latest
           # List of metadata for an image
-          labels: previous
+          # labels: previous
           
       - name: Result
         run: echo ${{ steps.docker_build.outputs.digest }}
@@ -128,9 +128,9 @@ jobs:
           file: ./src/Zapisywarka.API/Dockerfile
           # List of tags
           tags: |
-            zapisywarka-api
+            ghcr.io/msz13/zapisywarka_api:latest 
           # List of metadata for an image
-          labels: latest
+          # labels: latest
           
       - name: Result
         run: echo ${{ steps.docker_build.outputs.digest }}
