@@ -44,17 +44,17 @@ jobs:
       env: 
         GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
         USERNAME: ${{ secrets.USERNAME }}
-        PASSWORD: ${{ secrets.PASSWORD }}
+        SUDO_PASSWORD: ${{ secrets.PASSWORD }}
       with:
        host: ${{ secrets.HOST }}
        username: ${{ secrets.USERNAME }}
        key: ${{ secrets.SSH_PRIVATE }}
        passphrase: ${{ secrets.PASSPHRASE }}
-       envs: GITHUB_TOKEN, USERNAME, PASSWORD
+       envs: GITHUB_TOKEN, USERNAME, SUDO_PASSWORD
        script: | 
          cd /var/www/zapisywarka
          echo $GITHUB_TOKEN | docker login ghcr.io -u msz13 --password-stdin
-         echo $PASSWORD | sudo -S docker-compose -f docker-compose.prod.yml up -d
+         echo $SUDO_PASSWORD | sudo -S docker-compose -f docker-compose.prod.yml up -d
          
          
          
