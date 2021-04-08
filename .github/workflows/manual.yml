@@ -28,11 +28,15 @@ jobs:
     # Runs a single command using the runners shell
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
+      env: 
+        FOO: "HELLO"
       with:
        host: ${{ secrets.HOST }}
        username: ${{ secrets.USERNAME }}
-       key: ${{ secrets.SSH_PRIVATE }}       
+       key: ${{ secrets.SSH_PRIVATE }}
+       passphrase: ${{ secrets.PASSPHRASE }}
        script: | 
          whoami
          echo "Hello world" > test.txt
+         echo $FOO >> test.txt
        
