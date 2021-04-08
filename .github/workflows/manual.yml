@@ -29,7 +29,7 @@ jobs:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
       env: 
-        FOO: "HELLO"
+        FOO:  "WORLD"
       with:
        host: ${{ secrets.HOST }}
        username: ${{ secrets.USERNAME }}
@@ -38,5 +38,5 @@ jobs:
        script: | 
          whoami
          echo "Hello world" > test.txt
-         echo "$FOO" >> test.txt
+         echo "HELLO $FOO" > test2.txt
        
