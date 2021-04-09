@@ -79,6 +79,7 @@ jobs:
           context: .
           # Path to the Dockerfile
           file: ./Deployment/nginx/Dockerfile
+          push: true
           # List of tags
           tags: |
             ghcr.io/msz13/zapisywarka_web:latest
@@ -126,6 +127,7 @@ jobs:
           context: .
           # Path to the Dockerfile
           file: ./src/Zapisywarka.API/Dockerfile
+          push: true
           # List of tags
           tags: |
             ghcr.io/msz13/zapisywarka_api:latest 
