@@ -1,4 +1,4 @@
-name: Zapisywarka Deployment
+name: Buld WEB
 
 on:
   push:
@@ -62,7 +62,7 @@ jobs:
           push: true
           # List of tags
           tags: |
-            ghcr.io/msz13/zapisywarka_web:latest
+            ghcr.io/msz13/zapisywarka_web:0.1
           # List of metadata for an image
           # labels: previous
           

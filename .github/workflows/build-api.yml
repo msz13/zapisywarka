@@ -1,4 +1,4 @@
-name: Zapisywarka Deployment
+name: Build API
 
 on:
   push:
