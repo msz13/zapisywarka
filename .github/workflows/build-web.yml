@@ -8,6 +8,7 @@ on:
     paths:
       - "src/Zapisywarka.WEB/**"
       - "Deployment/nginx/**"
+      - ".github/workflows/**"
   
 
 
