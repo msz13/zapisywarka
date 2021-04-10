@@ -31,9 +31,14 @@ jobs:
       - name: Install dependencies
         working-directory: ./src/Zapisywarka.WEB
         run: npm install
+        
       - name: Build angular app
         working-directory: ./src/Zapisywarka.WEB
         run: npm run nx build zapisywarka-back-office --prod --aot --baseHref=/test/ --deployUrl=/test/ 
+        
+      - name: Check dist page
+        working-directory: ./src/Zapisywarka.WEB/dist/apps/zapisywarka-back-office
+        run: cat index.html
          
               
       - name: Docker Login
