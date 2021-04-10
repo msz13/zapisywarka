@@ -5,7 +5,7 @@ services:
 
   web: 
     container_name: zapisywarka_web
-    image: ghcr.io/msz13/zapisywarka_web:0.1 
+    image: ghcr.io/msz13/zapisywarka_web:0.2
     ports:
     - 80:80
  

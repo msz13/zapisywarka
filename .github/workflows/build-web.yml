@@ -67,7 +67,7 @@ jobs:
           push: true
           # List of tags
           tags: |
-            ghcr.io/msz13/zapisywarka_web:0.1
+            ghcr.io/msz13/zapisywarka_web:0.2
           # List of metadata for an image
           # labels: previous
           
