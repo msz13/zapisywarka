@@ -1,0 +1,124 @@
+﻿[
+  {
+    "id": 1,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Bochenek tradycyjny",
+    "categoryId": 1,
+    "price": 9,
+    "avaibleQuantity": 60
+  },
+  {
+    "id": 2,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Bochenek francuski",
+    "categoryId": 1,
+    "price": 9,
+    "avaibleQuantity": 60
+  },
+  {
+    "id": 3,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Bochenek wiejski",
+    "categoryId": 1,
+    "price": 9,
+    "avaibleQuantity": 60
+  },
+  {
+    "id": 4,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Bochenek z szuszonymi pomidorami",
+    "categoryId": 1,
+    "price": 9,
+    "avaibleQuantity": 60
+  },
+  {
+    "id": 5,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Foremkowy",
+    "categoryId": 2,
+    "price": 6,
+    "avaibleQuantity": 40
+  },
+  {
+    "id": 6,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Foremkowy z żurawiną",
+    "categoryId": 2,
+    "price": 6,
+    "avaibleQuantity": 40
+  },
+  {
+    "id": 7,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Foremkowy z ziarnami",
+    "categoryId": 2,
+    "price": 6,
+    "avaibleQuantity": 40
+  },
+  {
+    "id": 8,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Foremkowy z morelami i rozmarynem",
+    "categoryId": 2,
+    "price": 6,
+    "avaibleQuantity": 40
+  },
+  {
+    "id": 9,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Foremkowy z czarnuszką",
+    "categoryId": 2,
+    "price": 6,
+    "avaibleQuantity": 40
+  },
+  {
+    "id": 10,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Orkiszowy",
+    "categoryId": 3,
+    "price": 11,
+    "avaibleQuantity": 40
+  },
+  {
+    "id": 11,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Bułeczki ciabatta",
+    "categoryId": 3,
+    "price": 11,
+    "avaibleQuantity": 40
+  },
+  {
+    "id": 12,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Bochenek \"dysk\"",
+    "categoryId": 1,
+    "price": 9,
+    "avaibleQuantity": 60
+  },
+  {
+    "id": 13,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Foremkowy z dynią",
+    "categoryId": 2,
+    "price": 9,
+    "avaibleQuantity": 60
+  },
+  {
+    "id": 14,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Bezglutenowy",
+    "categoryId": 3,
+    "price": 12,
+    "avaibleQuantity": 30
+  },
+  {
+    "id": 15,
+    "tenantId": "FC7A2C9F-54AE-40F5-81D8-E2FAE8DD8C2C",
+    "name": "Foremkowy z siemieniem lnianym",
+    "categoryId": 2,
+    "price": 6,
+    "avaibleQuantity": 60
+  }
+
+]
+

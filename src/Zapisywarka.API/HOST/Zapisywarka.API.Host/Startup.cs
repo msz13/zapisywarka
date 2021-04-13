@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Zapisywarka.API.Common.Infrastructure;
+using Zapisywarka.API.Modules.Offers.Api;
 
 namespace Zapisywarka.API.Host
 {
@@ -28,6 +30,8 @@ namespace Zapisywarka.API.Host
         {
 
             services.AddControllers();
+            services.AddCommonInfrastructure();
+            services.AddOffersModule();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

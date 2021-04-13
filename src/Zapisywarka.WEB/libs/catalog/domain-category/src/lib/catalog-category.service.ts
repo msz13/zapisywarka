@@ -10,7 +10,7 @@ import { timer, of } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class CatalogCategoryService {
 
-  url = 'api/catalog-categories'
+  url = '/api/catalog-categories'
 
   constructor(private catalogCategoryStore: CatalogCategoryStore, private http: HttpClient) {
   }

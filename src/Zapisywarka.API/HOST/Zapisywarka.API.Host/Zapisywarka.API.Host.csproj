@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Zapisywarka.API.Common.Infrastructure\Zapisywarka.API.Common.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Modules\Offers\Zapisywarka.API.Modules.Offers.Api\Zapisywarka.API.Modules.Offers.Api.csproj" />
+  </ItemGroup>
+
 </Project>
