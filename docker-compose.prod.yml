@@ -12,7 +12,7 @@ services:
 
   web-api:
     container_name: zapisywarka_api
-    image: ghcr.io/msz13/zapisywarka_api:latest
+    image: ghcr.io/msz13/zapisywarka_api:0.3
  
 
   #postgres:
