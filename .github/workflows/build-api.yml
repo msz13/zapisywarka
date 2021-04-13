@@ -50,7 +50,7 @@ jobs:
             push: true
             # List of tags
             tags: |
-              ghcr.io/msz13/zapisywarka_api:latest 
+              ghcr.io/msz13/zapisywarka_api:0.3 
             # List of metadata for an image
             # labels: latest
             
