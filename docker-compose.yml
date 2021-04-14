@@ -21,28 +21,29 @@ services:
     build:
       context: .
       dockerfile: ./src/Zapisywarka.API/Dockerfile
-  #  ports:
-  #    - 5000:80
-
-  #postgres:
-  #  container_name: postgres_container2
-  #  image: postgres:alpine
-  #  environment:
-  #    POSTGRES_USER: postgres
-  #    POSTGRES_PASSWORD: Password_01
-  #    POSTGRES_DB: Offers
-    #volumes:
-    #   - D:\programowanie\kooperatywy\postgresql\data:/var/lib/postgresql/data/
-    #ports:
-    #  - 5432:5432
-  #  restart: unless-stopped
+    environment:
+      ConnectionStrings__Postgresql: "Host=postgres;Database=Offers;Username=postgres;Password=Password_01"
   
-  #pgAdmin:
-  #  restart: always
-  #  image: dpage/pgadmin4
-  #  ports:
-  #     - "8001:80"
-  #  environment:
-  #     PGADMIN_DEFAULT_EMAIL: 1234@admin.com
-  #     PGADMIN_DEFAULT_PASSWORD: 1234
+
+  postgres:
+    container_name: postgres_container2
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Password_01
+      POSTGRES_DB: Offers
+    volumes:
+       - D:\programowanie\kooperatywy\postgresql\data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+  
+  pgAdmin:
+    restart: always
+    image: dpage/pgadmin4
+    ports:
+       - "8001:80"
+    environment:
+       PGADMIN_DEFAULT_EMAIL: 1234@admin.com
+       PGADMIN_DEFAULT_PASSWORD: 1234
       
