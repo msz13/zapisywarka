@@ -24,8 +24,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Password_01
       POSTGRES_DB: Offers
-    volumes:
-       - "var/www/zapisywarka/data:/var/lib/postgresql/data/"
+   # volumes:
+   #    - "var/www/zapisywarka/data:/var/lib/postgresql/data/"
     ports:
       - 5432:5432
     restart: unless-stopped
@@ -38,4 +38,7 @@ services:
     environment:
        PGADMIN_DEFAULT_EMAIL: 1234@admin.com
        PGADMIN_DEFAULT_PASSWORD: 1234
+       
+
+      
       
