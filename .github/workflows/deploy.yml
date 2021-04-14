@@ -45,6 +45,7 @@ jobs:
        script: | 
          cd /var/www/zapisywarka
          echo $GITHUB_TOKEN | docker login ghcr.io -u msz13 --password-stdin
+         echo $SUDO_PASSWORD | sudo -S docker-compose pull
          echo $SUDO_PASSWORD | sudo -S docker-compose -f docker-compose.prod.yml up -d
          
          
