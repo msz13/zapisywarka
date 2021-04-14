@@ -25,7 +25,7 @@ services:
       POSTGRES_PASSWORD: Password_01
       POSTGRES_DB: Offers
     volumes:
-       - var/www/zapisywarka/data:/var/lib/postgresql/data/
+       - "var/www/zapisywarka/data:/var/lib/postgresql/data/"
     ports:
       - 5432:5432
     restart: unless-stopped
