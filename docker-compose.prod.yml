@@ -14,7 +14,7 @@ services:
     container_name: zapisywarka_api
     image: ghcr.io/msz13/zapisywarka_api:0.3
     environment:
-      CONNECTION_STRINGS__POSTGRESQL:  "Host=postgres;Database=Offers;Username=postgres;Password=Password_01"
+      ConnectionStrings__Postgresql:  "Host=postgres;Database=Offers;Username=postgres;Password=Password_01"
  
 
   postgres:
