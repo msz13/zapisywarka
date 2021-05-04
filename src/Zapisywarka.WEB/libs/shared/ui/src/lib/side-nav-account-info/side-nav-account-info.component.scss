@@ -1,0 +1,24 @@
+@import "../../../../material/src/theme-variables";
+
+.accaunt-info {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 40px;
+    width: 290px;
+   
+}
+
+app-initial-avatar {
+    display: block;
+    margin-right: 1em;
+}
+
+.mat-title {
+    line-height: 10px !important;
+}
+
+.title {
+    font-size: mat-font-size($typography-config, title);
+    font-weight: mat-font-weight($typography-config, title);
+}

@@ -16,11 +16,23 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: "Oferty",
         link: "/main/oferty"
     }, {
-        title: "Katalog pozycji",
-        link: "/main/katalog",
+        title: "Katalog pozycji",               
+        pathMatch: 'prefix',
+        link: "/main/katalog/",
         children: [{
+            title: 'Pozycje',
+            link: "/main/katalog/pozycje",
+            pathMatch: 'prefix'
+        },
+        {
+            title: 'Nowa Pozycja',
+            link: "/main/katalog/nowa pozycja",
+            pathMatch: 'prefix'
+        },
+        {
             title: 'Kategorie',
-            link: "main/katalog/kategorie"
+            link: "/main/katalog/kategorie",
+            pathMatch: 'prefix'
         }]
     }/*{
         title: "Raporty",

@@ -1,0 +1,21 @@
+@startuml
+title Zapisywarka - Containers
+
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4.puml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+LAYOUT_WITH_LEGEND()
+
+System_Boundary("2_boundary", "Zapisywarka") {
+  Container(3, "zapisywarka.pl", "Aplikacja przeznaczona do organizacji zapisów", "SPA/Angular")
+  Container(4, "admin.zapisywarka.pl", "Aplikacja przeznaczona dla administratora do zarządzania kontami", "SPA/Angular")
+  Container(5, "zapisywarka.pl/oferty", "Aplikacja przeznaczona dla klientów do skłądania zapisów on-line", "SPA/Angular")
+  Container(6, "ZAPISYWARKA.API", "ASP Core")
+  Container(7, "Database", "Postgresql")
+}
+
+Rel_D(5, 6, "Makes API calls", "HTTPS/JSON")
+Rel_D(6, 7, "Reads and writes to")
+Rel_D(3, 6, "Makes API calls", "HTTPS/JSON")
+Rel_D(4, 6, "Makes API calls", "HTTPS/JSON")
+@enduml

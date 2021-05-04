@@ -16,16 +16,6 @@ module.exports = async ({ config, mode }) => {
   config.resolve.plugins
     ? config.resolve.plugins.push(tsPaths)
     : (config.resolve.plugins = [tsPaths]);
-
-   // Make whatever fine-grained changes you need
-   /*
-   config.module.rules.push({
-    test: /\.scss$/,
-    use: ['style-loader', 'css-loader', 'sass-loader'],
-    include: path.resolve(__dirname, './styles.scss'),
-  });
-
-  console.log('path', path.resolve(__dirname,'./styles.scss'))
-*/
+   
   return config;
 };

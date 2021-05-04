@@ -24,9 +24,8 @@ const getCategory = name=> cy.get('[data-cy="category"]').contains(name)
         })
         it('adds cateogry to list', ()=> {
             
-            const categoryName = 'Bochenki' 
-            
-           
+            const categoryName = 'Bochenki'             
+                       
                    
             addCategory(categoryName)
 

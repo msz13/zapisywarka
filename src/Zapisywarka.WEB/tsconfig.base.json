@@ -39,6 +39,11 @@
       ],
       "@zapisywarka-client-aps/catalog/feature-catalog": [
         "libs/catalog/feature-catalog/src/index.ts"
+      ],
+      "@zapisywarka.web/material": ["libs/shared/material/src/index.ts"],
+      "@zapisywarka-client-aps/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@zapisywarka-client-aps/authentication/domain": [
+        "libs/authentication/domain/src/index.ts"
       ]
     }
   },

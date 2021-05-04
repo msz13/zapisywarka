@@ -12,8 +12,13 @@ const routes: Routes = [ {
   component: CatalogComponent,
   children: [
     {path: '',
+     redirectTo: 'pozycje',
+     pathMatch: 'full'
+    },
+    {path: 'pozycje',
      component: CatalogListComponent
-    },{
+    },
+    {
       path: 'kategorie',
       component: CatalogCategoriesComponent
     }, {

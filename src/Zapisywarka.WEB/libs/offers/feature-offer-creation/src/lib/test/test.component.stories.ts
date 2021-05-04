@@ -12,13 +12,13 @@ export default {
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [NbThemeModule.forRoot({name: 'corporate'}), NbLayoutModule, NbCardModule, NbButtonModule, RouterTestingModule.withRoutes([]), CommonModule, FormsModule],
+    imports: [NbThemeModule.forRoot({name: 'default'}), NbLayoutModule, NbCardModule, NbButtonModule, RouterTestingModule.withRoutes([]), CommonModule, FormsModule],
     declarations: [TestComponent]
   },
   component: TestComponent,
   template: `
   <nb-layout>
-  <nb-layout-column style="max-width: 66%">
+  <nb-layout-column style="max-width: 100%">
     <nb-card>
       <nb-card-body>
         <zapisywarka-client-aps-test></zapisywarka-client-aps-test>

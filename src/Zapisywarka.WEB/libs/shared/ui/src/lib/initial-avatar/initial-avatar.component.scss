@@ -1,0 +1,25 @@
+@import "../../../../material/src/theme-variables";
+
+
+// Extract the palettes you need from the theme definition.
+
+$size: 40px;
+
+
+.avatar {
+  width: $size;
+  height: $size;
+  display: inline-block;
+  background-color: mat-color($dark-blue-green-accent);
+  text-align: center;
+  border-radius: 50%;
+}
+
+.letters {
+    position: relative;
+    top: 0.25*$size; /* 25% of parent */
+    font-size: 0.5 * $size; /* 50% of parent */
+    line-height: 0.5 * $size; /* 50% of parent */
+    color: #fff;   
+    font-weight: bold;
+}

@@ -10,5 +10,9 @@ module.exports = {
     '<rootDir>/libs/catalog/api',
     '<rootDir>/libs/catalog/utills/testing',
     '<rootDir>/libs/catalog/feature-catalog',
+    '<rootDir>/apps/zapisywarka-rejestracja',
+    '<rootDir>/libs/shared/material',
+    '<rootDir>/libs/shared/ui',
+    '<rootDir>/libs/authentication/domain',
   ],
 };

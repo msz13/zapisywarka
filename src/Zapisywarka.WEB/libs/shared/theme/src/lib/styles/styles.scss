@@ -34,7 +34,11 @@
   @include nb-overrides();
 };
 
-.root-test {
+.root-test{
+  background-color: powderblue;
+}
+
+.test2{
   background-color: powderblue;
 }
 

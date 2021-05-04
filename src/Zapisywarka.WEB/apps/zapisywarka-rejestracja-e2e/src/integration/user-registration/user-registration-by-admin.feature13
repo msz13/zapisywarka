@@ -1,0 +1,47 @@
+Feature: Tworzenie kont użytkowników przez administratora systemu
+# 
+#  
+# Scenario: Administrator utworzył konto indwywidualne
+# Given Administrator systemu wypełnił wymagane dane
+# | Nazwa konta | Login właściciela| Hasło konta |
+# | Bochenek    | Bochenek1            | test3       |
+# When Zatwierdza utworzenie konta
+# Given Konto o nazwie "Bochenek" jest dodane do listy 
+# And Użutkownik o loginie "Bochenek1" został stworzony
+# 
+# Scenario: Użytkownik nie będący administratorem chce wejść na stronę rejestracji uzytkowników
+# 
+# 
+#  
+# Scenario: Konto o podanej nazwie istnieje
+# Given Administrator utworzył użytkownika
+# | Nazwa konta | Login Administratora | Hasło konta |
+# | Bochenek    | Bochenek1            | test3       |
+# | CzadoweImprezy | mateusz | test3|
+# And Administrator systemu wypełnił wymagane dane
+# | Nazwa konta | Login właściciela| Hasło konta |
+# | Bochenek    | Bochenek1            | test3       |
+# When Zatwierdza utworzenie konta
+# Then Konto nie jest utworzone i widzi komunikat "Konto o podanej nazwie istnieje"
+# 
+# Scenario: Użytkownik o podanej nazwie istnieje
+# Given Administrator utworzył użytkowników
+# | Nazwa konta | Login Administratora | Hasło konta |
+# | Bochenek    | Bochenek1            | test3       |
+# | CzadoweImprezy | mateusz | test3|
+# And Administrator systemu wypełnił wymagane dane
+# | Nazwa konta | Login właściciela| Hasło konta |
+# | Bochenek    | Bochenek1            | test3       |
+# When Zatwierdza utworzenie konta
+# Then Konto nie jest utworzone i widzi komunikat "Konto o podanej nazwie istnieje"
+# 
+# Scenario: Administrator przegląda konta użytkowników
+# Given Administrator utworzył użytkowników
+# | Nazwa konta | Login Administratora | Hasło konta |
+# | Bochenek    | Bochenek1            | test3       |
+# | CzadoweImprezy   | mateusz            | test3       |
+# Then Widzi listę kont
+# | Nazwa konta | Login Administratora | Hasło konta | data utworzenia |
+# | Bochenek    | Bochenek1            | test3       |22.04.21 godz.15:00|
+# | Bochenek    | Bochenek1            | test3       |
+# | CzadoweImprezy   | mateusz            | test3       |

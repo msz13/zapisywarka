@@ -1,0 +1,31 @@
+@import '../../../../material/src/theme-variables';
+
+.sidenav-container {
+  height: 100%;
+}
+
+//TODO change to variable
+mat-sidenav-content {
+  background-color: mat-color(mat-palette($mat-grey), 50); 
+  
+}
+
+.sidenav {
+  width: 300px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+app-header{
+  position: sticky;  
+  z-index: 1;
+}
+
+app-side-nav-account-info {
+  display: block;
+  margin: 1em;  
+ 
+}
+

@@ -40,6 +40,18 @@
     "catalog-api": { "tags": [] },
     "catalog-utills-testing": { "tags": [] },
     "catalog-domain-catalog-item": { "tags": [] },
-    "catalog-feature-catalog": { "tags": [] }
+    "catalog-feature-catalog": { "tags": [] },
+    "catalog-feature-catalog-e2e": {
+      "tags": [],
+      "implicitDependencies": ["catalog-feature-catalog"]
+    },
+    "zapisywarka-rejestracja": { "tags": [] },
+    "zapisywarka-rejestracja-e2e": {
+      "tags": [],
+      "implicitDependencies": ["zapisywarka-rejestracja"]
+    },
+    "shared-material": { "tags": [] },
+    "shared-ui": { "tags": [] },
+    "authentication-domain": { "tags": [] }
   }
 }

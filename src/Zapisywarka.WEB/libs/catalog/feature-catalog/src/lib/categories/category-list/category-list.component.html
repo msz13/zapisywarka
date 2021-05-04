@@ -3,7 +3,7 @@
         <nb-list-item *ngFor="let category of categories"  class="category" data-cy="list-item">
             <div  *ngIf="!isEdited(category.id); else editInput"  data-cy="category-value">
                 <span class="mr-auto">
-                    <nb-icon icon="arrow-circle-right-outline" ></nb-icon>
+                    <nb-icon icon="arrow-circle-right-outline" class="mr-2"></nb-icon>
                     <span >{{category.name}}</span>                    
                 </span>
                 <span>

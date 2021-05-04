@@ -1,0 +1,12 @@
+@startuml
+title Zapisywarka - System Context
+
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4.puml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+LAYOUT_WITH_LEGEND()
+
+Person(1, "Administrator", "Właściciel systemu")
+System(2, "Zapisywarka", "System do organizacji zapisów")
+
+Rel_D(1, 2, "Manges users accaunts, define user accaunts types, permissions and prices")
+@enduml
