@@ -13,8 +13,10 @@ services:
   web-api:
     container_name: zapisywarka_api
     image: ghcr.io/msz13/zapisywarka_api:0.3
+    depends_on: 
+      - postgres    
     environment:
-      CONNECTION_STRINGS__POSTGRESQL:  "Host=postgres;Database=Offers;Username=postgres;Password=Password_01"
+      ConnectionStrings__Postgresql:  "Host=postgres;Database=Offers;Username=postgres;Password=Password_01"
  
 
   postgres:
@@ -24,8 +26,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Password_01
       POSTGRES_DB: Offers
-    volumes:
-       - var/www/zapisywarka/data:/var/lib/postgresql/data/
+   # volumes:
+   #    - "var/www/zapisywarka/data:/var/lib/postgresql/data/"
     ports:
       - 5432:5432
     restart: unless-stopped
@@ -38,4 +40,7 @@ services:
     environment:
        PGADMIN_DEFAULT_EMAIL: 1234@admin.com
        PGADMIN_DEFAULT_PASSWORD: 1234
+       
+
+      
       
