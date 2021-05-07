@@ -18,7 +18,11 @@ workspace "Getting Started" "This is a model of my software system." {
                 url "https://zapisywarka.pl/oferty"
             }
             api =  container "ZAPISYWARKA.API" "ASP Core" {
-                url "https://zapisywarka.pl/api"
+                group "UserAccess" { 
+                    authentication = container "Authentication" "Razor Pages + Identity Server" Obsługa procesu autentykacji i auto-rejestracji użytkowników
+                    userMenagementCore = container "User.Menagement.Core" "ASP Identity" "Obsługa operacji CRUD wobec użytkowników systemu"
+                    userMenagementApi = container "User.Menagement.API" "ASP REST API" "Obsługa operacji CRUD wobec użytkowników systemu"
+                }
             }
             db =  container "Database" "Postgresql" {
                 url "https://zapisywarka.pl/api"
