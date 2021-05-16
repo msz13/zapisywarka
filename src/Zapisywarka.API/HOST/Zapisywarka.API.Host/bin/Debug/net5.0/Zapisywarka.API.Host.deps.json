@@ -35,8 +35,8 @@
         "dependencies": {
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.13",
           "Zapisywarka.API.Common.Infrastructure": "1.0.0",
+          "Zapisywarka.API.Modules.Identity": "1.0.0",
           "Zapisywarka.API.Modules.Offers.Api": "1.0.0",
-          "Zapisywarka.API.Modules.UsersAccess.Pages": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -808,6 +808,17 @@
           "Zapisywarka.API.Common.Infrastructure.dll": {}
         }
       },
+      "Zapisywarka.API.Modules.Identity/1.0.0": {
+        "dependencies": {
+          "IdentityServer4": "4.1.2"
+        },
+        "runtime": {
+          "Zapisywarka.API.Modules.Identity.dll": {}
+        },
+        "compile": {
+          "Zapisywarka.API.Modules.Identity.dll": {}
+        }
+      },
       "Zapisywarka.API.Modules.Offers.Api/1.0.0": {
         "dependencies": {
           "MediatR": "9.0.0",
@@ -839,17 +850,6 @@
         },
         "compile": {
           "Zapisywarka.API.Modules.Offers.Core.dll": {}
-        }
-      },
-      "Zapisywarka.API.Modules.UsersAccess.Pages/1.0.0": {
-        "dependencies": {
-          "IdentityServer4": "4.1.2"
-        },
-        "runtime": {
-          "Zapisywarka.API.Modules.UsersAccess.Pages.dll": {}
-        },
-        "compile": {
-          "Zapisywarka.API.Modules.UsersAccess.Pages.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -2873,17 +2873,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Zapisywarka.API.Modules.Identity/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Zapisywarka.API.Modules.Offers.Api/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "Zapisywarka.API.Modules.Offers.Core/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Zapisywarka.API.Modules.UsersAccess.Pages/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,0 +1,26 @@
+@startuml
+    class ClaimsPrincipal {
+        String OrganisationId/AccauntID
+        String SubscriptionLevel
+        RolesEnum Roles 
+        String UserId
+        ScopesEnum[] Scopes
+        String[] CustomerGroupes 
+    }
+
+    enum ScopesEnum {
+        rejestracja
+        catalog:write
+        offers:write
+        registration:write
+        
+    }
+
+    enum Roles {
+        SystemAdmin
+        Organiser/AccauntOwner
+        Customer
+        OrganiserTeamMember
+    }
+
+@enduml

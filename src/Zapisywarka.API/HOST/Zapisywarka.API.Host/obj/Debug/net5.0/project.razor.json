@@ -15617,6 +15617,12 @@
     "CSharpLanguageVersion": 900
   },
   "RootNamespace": "Zapisywarka.API.Host",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Host\\Zapisywarka.API.Host\\Pages\\Index.cshtml",
+      "TargetPath": "Pages\\Index.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.2"
 }

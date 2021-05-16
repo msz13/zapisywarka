@@ -9,20 +9,21 @@ import { HomePageComponent } from './main-component/home-page/home-page.componen
 import { MainComponent } from './main-component/main.component'
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationDomainModule } from '@zapisywarka-client-aps/authentication/domain';
+import { LoadingComponent } from './loading/loading.component';
 
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, MainComponent],
+  declarations: [AppComponent, HomePageComponent, MainComponent, LoadingComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,    
     SharedUiModule,
     SharedMaterialModule,
-    AuthenticationDomainModule    
+    AuthenticationDomainModule.forRoot()    
   ],
   providers: [],
   bootstrap: [AppComponent],

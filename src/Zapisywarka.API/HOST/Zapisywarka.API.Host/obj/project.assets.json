@@ -575,6 +575,22 @@
           "bin/placeholder/Zapisywarka.API.Common.Infrastructure.dll": {}
         }
       },
+      "Zapisywarka.API.Modules.Identity/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "IdentityServer4": "4.1.2"
+        },
+        "compile": {
+          "bin/placeholder/Zapisywarka.API.Modules.Identity.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Zapisywarka.API.Modules.Identity.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Zapisywarka.API.Modules.Offers.Api/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -611,22 +627,6 @@
         "runtime": {
           "bin/placeholder/Zapisywarka.API.Modules.Offers.Core.dll": {}
         }
-      },
-      "Zapisywarka.API.Modules.UserAccess.Pages/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "IdentityServer4": "4.1.2"
-        },
-        "compile": {
-          "bin/placeholder/Zapisywarka.API.Modules.UserAccess.Pages.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Zapisywarka.API.Modules.UserAccess.Pages.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
       }
     }
   },
@@ -1777,6 +1777,11 @@
       "path": "../../Common/Zapisywarka.API.Common.Infrastructure/Zapisywarka.API.Common.Infrastructure.csproj",
       "msbuildProject": "../../Common/Zapisywarka.API.Common.Infrastructure/Zapisywarka.API.Common.Infrastructure.csproj"
     },
+    "Zapisywarka.API.Modules.Identity/1.0.0": {
+      "type": "project",
+      "path": "../../Modules/Identity/Zapisywarka.API.Modules.Identity/Zapisywarka.API.Modules.Identity.csproj",
+      "msbuildProject": "../../Modules/Identity/Zapisywarka.API.Modules.Identity/Zapisywarka.API.Modules.Identity.csproj"
+    },
     "Zapisywarka.API.Modules.Offers.Api/1.0.0": {
       "type": "project",
       "path": "../../Modules/Offers/Zapisywarka.API.Modules.Offers.Api/Zapisywarka.API.Modules.Offers.Api.csproj",
@@ -1786,19 +1791,14 @@
       "type": "project",
       "path": "../../Modules/Offers/Zapisywarka.API.Modules.Offers.Core/Zapisywarka.API.Modules.Offers.Core.csproj",
       "msbuildProject": "../../Modules/Offers/Zapisywarka.API.Modules.Offers.Core/Zapisywarka.API.Modules.Offers.Core.csproj"
-    },
-    "Zapisywarka.API.Modules.UserAccess.Pages/1.0.0": {
-      "type": "project",
-      "path": "../../Modules/UsersAccess/Zapisywarka.API.Modules.UserAccess.Pages/Zapisywarka.API.Modules.UserAccess.Pages.csproj",
-      "msbuildProject": "../../Modules/UsersAccess/Zapisywarka.API.Modules.UserAccess.Pages/Zapisywarka.API.Modules.UserAccess.Pages.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.13",
       "Zapisywarka.API.Common.Infrastructure >= 1.0.0",
-      "Zapisywarka.API.Modules.Offers.Api >= 1.0.0",
-      "Zapisywarka.API.Modules.UserAccess.Pages >= 1.0.0"
+      "Zapisywarka.API.Modules.Identity >= 1.0.0",
+      "Zapisywarka.API.Modules.Offers.Api >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1835,11 +1835,11 @@
             "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Common\\Zapisywarka.API.Common.Infrastructure\\Zapisywarka.API.Common.Infrastructure.csproj": {
               "projectPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Common\\Zapisywarka.API.Common.Infrastructure\\Zapisywarka.API.Common.Infrastructure.csproj"
             },
+            "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Identity\\Zapisywarka.API.Modules.Identity\\Zapisywarka.API.Modules.Identity.csproj": {
+              "projectPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Identity\\Zapisywarka.API.Modules.Identity\\Zapisywarka.API.Modules.Identity.csproj"
+            },
             "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Offers\\Zapisywarka.API.Modules.Offers.Api\\Zapisywarka.API.Modules.Offers.Api.csproj": {
               "projectPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Offers\\Zapisywarka.API.Modules.Offers.Api\\Zapisywarka.API.Modules.Offers.Api.csproj"
-            },
-            "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\UsersAccess\\Zapisywarka.API.Modules.UserAccess.Pages\\Zapisywarka.API.Modules.UserAccess.Pages.csproj": {
-              "projectPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\UsersAccess\\Zapisywarka.API.Modules.UserAccess.Pages\\Zapisywarka.API.Modules.UserAccess.Pages.csproj"
             }
           }
         }
@@ -1877,7 +1877,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

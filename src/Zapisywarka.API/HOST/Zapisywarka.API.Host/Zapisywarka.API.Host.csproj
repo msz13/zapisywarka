@@ -12,8 +12,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Zapisywarka.API.Common.Infrastructure\Zapisywarka.API.Common.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Modules\Identity\Zapisywarka.API.Modules.Identity\Zapisywarka.API.Modules.Identity.csproj" />
     <ProjectReference Include="..\..\Modules\Offers\Zapisywarka.API.Modules.Offers.Api\Zapisywarka.API.Modules.Offers.Api.csproj" />
-    <ProjectReference Include="..\..\Modules\UsersAccess\Zapisywarka.API.Modules.UserAccess.Pages\Zapisywarka.API.Modules.UserAccess.Pages.csproj" />
+    
   </ItemGroup>
 
 </Project>

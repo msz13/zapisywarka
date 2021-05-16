@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.auth.login()
+   
   }
 
 }

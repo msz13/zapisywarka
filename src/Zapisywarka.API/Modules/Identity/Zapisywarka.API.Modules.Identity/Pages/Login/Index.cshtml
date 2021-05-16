@@ -1,0 +1,32 @@
+﻿@page
+@using Zapisywarka.API.Modules.Identity.Pages.Login
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model LoginModel
+<div class="container">
+    <div class="mdl-card mdl-shadow--4dp login-card">
+        <div class="mdl-card__title">
+            <h6 class="mdl-card__title-text mdl-color-text--primary">Zapisywarka</h6>
+        </div>
+        <div class="login-form" data-test="login-form">
+            <h6 class="mdl-typography--title">Logowanie</h6>
+            <form method="post">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-field">
+                    <input asp-for="Command.Login" class="mdl-textfield__input" data-test="login" >
+                    <label asp-for="Command.Login"  class="mdl-textfield__label">Login</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-field">
+                    <input asp-for="Command.Password" class="mdl-textfield__input" data-test="password">
+                    <label asp-for="Command.Password" class="mdl-textfield__label" >Hasło</label>
+                </div>
+                <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect form-field">
+                    <input type="checkbox" id="chkbox1" class="mdl-checkbox__input">
+                    <span class="mdl-checkbox__label">Nie wylogowuwuj mnie</span>
+                </label>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored login-button" data-test="login-button" >
+                    Zaloguj
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>

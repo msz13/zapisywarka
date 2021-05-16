@@ -11,7 +11,16 @@ export class AuthService {
   
   login() {
     this.oauthService.configure(authCodeFlowConfig);
-    this.oauthService.loadDiscoveryDocumentAndLogin();
+    return this.oauthService.loadDiscoveryDocumentAndTryLogin({
+      onTokenReceived: context =>{
+        console.log('token: '+JSON.stringify(context.accessToken));
+      }
+    });
+
+  }
+
+  isLoggedIn() {
+    return this.oauthService.hasValidAccessToken && this.oauthService.hasValidIdToken
   }
  
 }

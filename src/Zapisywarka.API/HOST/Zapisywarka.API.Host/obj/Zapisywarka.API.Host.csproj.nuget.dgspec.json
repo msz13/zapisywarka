@@ -99,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -133,11 +133,11 @@
               "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Common\\Zapisywarka.API.Common.Infrastructure\\Zapisywarka.API.Common.Infrastructure.csproj": {
                 "projectPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Common\\Zapisywarka.API.Common.Infrastructure\\Zapisywarka.API.Common.Infrastructure.csproj"
               },
+              "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Identity\\Zapisywarka.API.Modules.Identity\\Zapisywarka.API.Modules.Identity.csproj": {
+                "projectPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Identity\\Zapisywarka.API.Modules.Identity\\Zapisywarka.API.Modules.Identity.csproj"
+              },
               "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Offers\\Zapisywarka.API.Modules.Offers.Api\\Zapisywarka.API.Modules.Offers.Api.csproj": {
                 "projectPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Offers\\Zapisywarka.API.Modules.Offers.Api\\Zapisywarka.API.Modules.Offers.Api.csproj"
-              },
-              "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\UsersAccess\\Zapisywarka.API.Modules.UserAccess.Pages\\Zapisywarka.API.Modules.UserAccess.Pages.csproj": {
-                "projectPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\UsersAccess\\Zapisywarka.API.Modules.UserAccess.Pages\\Zapisywarka.API.Modules.UserAccess.Pages.csproj"
               }
             }
           }
@@ -175,7 +175,73 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Identity\\Zapisywarka.API.Modules.Identity\\Zapisywarka.API.Modules.Identity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Identity\\Zapisywarka.API.Modules.Identity\\Zapisywarka.API.Modules.Identity.csproj",
+        "projectName": "Zapisywarka.API.Modules.Identity",
+        "projectPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Identity\\Zapisywarka.API.Modules.Identity\\Zapisywarka.API.Modules.Identity.csproj",
+        "packagesPath": "C:\\Users\\matsz\\.nuget\\packages\\",
+        "outputPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Identity\\Zapisywarka.API.Modules.Identity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\matsz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "IdentityServer4": {
+              "target": "Package",
+              "version": "[4.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -246,7 +312,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -345,73 +411,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\UsersAccess\\Zapisywarka.API.Modules.UserAccess.Pages\\Zapisywarka.API.Modules.UserAccess.Pages.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\UsersAccess\\Zapisywarka.API.Modules.UserAccess.Pages\\Zapisywarka.API.Modules.UserAccess.Pages.csproj",
-        "projectName": "Zapisywarka.API.Modules.UserAccess.Pages",
-        "projectPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\UsersAccess\\Zapisywarka.API.Modules.UserAccess.Pages\\Zapisywarka.API.Modules.UserAccess.Pages.csproj",
-        "packagesPath": "C:\\Users\\matsz\\.nuget\\packages\\",
-        "outputPath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\UsersAccess\\Zapisywarka.API.Modules.UserAccess.Pages\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\matsz\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net5.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "dependencies": {
-            "IdentityServer4": {
-              "target": "Package",
-              "version": "[4.1.2, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -3,7 +3,6 @@ D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\D
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.AssemblyInfoInputs.cache
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.AssemblyInfo.cs
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.csproj.CoreCompileInputs.cache
-D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.MvcApplicationPartsAssemblyInfo.cs
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.MvcApplicationPartsAssemblyInfo.cache
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\appsettings.Development.json
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\appsettings.json
@@ -47,6 +46,22 @@ D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\D
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\ref\Zapisywarka.API.Host.dll
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Host.pdb
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.genruntimeconfig.cache
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Host.Views.dll
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Host.Views.pdb
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.MvcApplicationPartsAssemblyInfo.cs
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.RazorAssemblyInfo.cache
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.RazorAssemblyInfo.cs
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.TagHelpers.input.cache
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.TagHelpers.output.cache
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.RazorCoreGenerate.cache
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Razor\Pages\Index.cshtml.g.cs
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.RazorTargetAssemblyInfo.cs
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\obj\Debug\net5.0\Zapisywarka.API.Host.Views.pdb
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Host.StaticWebAssets.xml
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Modules.Identity.Views.dll
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Modules.Identity.Views.pdb
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Modules.Identity.dll
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Modules.Identity.pdb
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\IdentityModel.dll
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\IdentityServer4.dll
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\IdentityServer4.Storage.dll
@@ -58,5 +73,3 @@ D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\D
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Modules.UsersAccess.Pages.dll
-D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Modules.UsersAccess.Pages.pdb

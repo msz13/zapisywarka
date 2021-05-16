@@ -6,8 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Zapisywarka.API.Common.Infrastructure;
+using Zapisywarka.API.Modules.Identity;
 using Zapisywarka.API.Modules.Offers.Api;
-using Zapisywarka.API.UsersAccess.Pages;
+
 
 namespace Zapisywarka.API.Host
 {
@@ -29,7 +30,7 @@ namespace Zapisywarka.API.Host
             services.AddControllersWithViews();
             services.AddCommonInfrastructure();
             services.AddOffersModule();
-            services.AddUserAccessModule();
+            services.AddIdentityModule();
             services.AddCors(options =>
             {
                 options.AddPolicy("default", policy =>
@@ -60,7 +61,7 @@ namespace Zapisywarka.API.Host
 
             app.UseCors("default");
 
-            app.UseUserAccessModule();
+            app.UseIdenityModule();
 
             app.UseAuthorization();
 
