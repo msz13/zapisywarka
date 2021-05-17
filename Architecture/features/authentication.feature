@@ -20,8 +20,11 @@ Feature: Authentication
         When Próbuje się zalogować
         Then Powinien zobaczyć komunikat o błędzie
 
+Scenario: Użytkownik nie podał danych dostępowych
 
-# Scenario: Użytkownik podał błędne hasło
+Scenario: Użytkownik podał błędne hasło
+
+
 
 #
 #Scenario: On server error should show error
