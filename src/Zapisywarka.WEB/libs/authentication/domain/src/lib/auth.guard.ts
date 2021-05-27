@@ -18,8 +18,8 @@ export class AuthGuard implements CanActivate {
     ) {
       return true;
     } else {
-      this.authService.login()
-      return false;
+      this.oauthService.loadDiscoveryDocumentAndLogin()
+      return false
     }
   }
   

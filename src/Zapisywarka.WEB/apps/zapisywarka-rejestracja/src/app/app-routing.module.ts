@@ -12,6 +12,7 @@ const routes: Routes = [
   {
     path: 'start',
     component: MainComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -24,11 +25,7 @@ const routes: Routes = [
   }, */
     ],
   },
-  {
-    path: '',
-    component: LoadingComponent,
-  },
-  { path: '**', redirectTo: '' },
+   { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

@@ -2,8 +2,10 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MemoryStorage, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 
+
+
 export function storageFactory() : OAuthStorage {
-  return new MemoryStorage()
+  return sessionStorage
 }
 
 @NgModule({

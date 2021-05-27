@@ -1,7 +1,7 @@
 Feature: Tworzenie kont użytkowników przez administratora systemu
-# 
-#  
-# Scenario: Administrator utworzył konto indwywidualne
+
+ 
+Scenario: Administrator utworzył konto indwywidualne
 # Given Administrator systemu wypełnił wymagane dane
 # | Nazwa konta | Login właściciela| Hasło konta |
 # | Bochenek    | Bochenek1            | test3       |

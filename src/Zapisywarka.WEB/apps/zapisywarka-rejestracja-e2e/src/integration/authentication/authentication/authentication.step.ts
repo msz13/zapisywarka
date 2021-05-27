@@ -42,3 +42,7 @@ Then('Przekierowany jest na stronę logowania', () => {
 Then('Przekierowany jest na stronę główną aplikacji', ()=> {
     navigationDriver.ShoudVisitMainPage();
 })
+
+Then('I widzi swój login {string}', (login: string)=>{
+  cy.contains(login)
+})
