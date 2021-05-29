@@ -1,7 +1,5 @@
 Feature: Tworzenie kont użytkowników przez administratora systemu
 
-
-
     Scenario: Administrator tworzy konto organizatora zapisów
         Given Aktualna data i godzina, to "2020-05-14 13:00"
         And Administrator systemu wypełnił wymagane dane

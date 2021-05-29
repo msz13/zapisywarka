@@ -1,5 +1,6 @@
 
 export class NavigationDriver {
+ 
   navigate(url: string) {
     cy.visit(url);
   }
@@ -11,4 +12,8 @@ export class NavigationDriver {
   ShoudVisitMainPage() {
     cy.get('[data-test=main-page]').should('exist');
   }
+
+  ShouldVisitLoginPage() {
+    throw new Error("Method not implemented.");
+}
 }
