@@ -1,6 +1,6 @@
-import { NavigationDriver } from "apps/zapisywarka-rejestracja-e2e/src/support/drivers/navigation";
-import { OrganiserRegistrationDriver } from "apps/zapisywarka-rejestracja-e2e/src/support/drivers/organizer-regstration";
-import { And, Before, Given, Then, When } from "cypress-cucumber-preprocessor/steps/index";
+import { NavigationDriver } from "../../../support/drivers/navigation";
+import { OrganiserRegistrationDriver } from "../../../support/drivers/organizer-regstration";
+import { And, Before, Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 
 let driver: OrganiserRegistrationDriver
 let navigationDriver: NavigationDriver
@@ -16,16 +16,15 @@ Given('Stworzono następujące kody dostępu:', ()=>{
    //Utworzono przy inicjacji bazy 
 })
 
-Given('Organizator zapisów wpisał kod {string}', (accesCode)=>{
+Given('Organizator zapisów podał kod dostępu {string}', (accesCode)=>{
     driver.enterAccessCode(accesCode)
 })
 
 And('Organizator zapisów wypełnił dane rejestracji konta', (registrationDataTable)=>{
     
-    const {Nazwa_użytkownika: UserName, Hasło: Password, Potwierdzenie_hasła: PasswordConfirmation } = registrationDataTable.hashes()
-
+    const {Nazwa_użytkownika: userName, Hasło: password, Potwierdzenie_hasła: passwordConfirmation } = registrationDataTable.hashes()[0]
     
-    driver.enterRegistrationData(UserName, Password, PasswordConfirmation)
+    driver.enterRegistrationData(userName, password, passwordConfirmation)
 })
 
 When('Próbuję się zarejestrować', ()=>{

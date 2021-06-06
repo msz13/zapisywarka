@@ -1,21 +1,21 @@
-Feature: Tworzenie kont użytkowników przez administratora systemu
+# Feature: Tworzenie kont użytkowników przez administratora systemu
 
-    Scenario: Administrator tworzy konto organizatora zapisów
-        Given Aktualna data i godzina, to "2020-05-14 13:00"
-        And Administrator systemu wypełnił wymagane dane
-            | Nazwa konta organizatora zapisów | Nazwa właściciela konta | Hasło właściciela |
-            | Bochenek                         | Jan                     | Hasło1            |
-        When Zatwierdza utworzenie konta
-        Then Konto o nazwie "Bochenek" jest dodane do listy
+#     Scenario: Administrator tworzy konto organizatora zapisów
+#         Given Aktualna data i godzina, to "2020-05-14 13:00"
+#         And Administrator systemu wypełnił wymagane dane
+#             | Nazwa konta organizatora zapisów | Nazwa właściciela konta | Hasło właściciela |
+#             | Bochenek                         | Jan                     | Hasło1            |
+#         When Zatwierdza utworzenie konta
+#         Then Konto o nazwie "Bochenek" jest dodane do listy
 
-    Scenario: Administrator przegląda listę użytkowników
-        Given Utworzono następujące konta
-            | Nazwa konta organizatora zapisów | Nazwa właściciela konta | Hasło właściciela | Data utworzenia |
-            | Bochenek                         | Jan                     | Hasło1            | 2020-05-14      |
-        When Administrator otwiedza listę kont użytkowników
-        Then Widzi listę kont:
-         | Nazwa konta organizatora zapisów | Nazwa właściciela konta | Hasło właściciela | Data utworzenia |
-            | Bochenek                         | Jan                     | Hasło1            | 2020-05-14      |
+#     Scenario: Administrator przegląda listę użytkowników
+#         Given Utworzono następujące konta
+#             | Nazwa konta organizatora zapisów | Nazwa właściciela konta | Hasło właściciela | Data utworzenia |
+#             | Bochenek                         | Jan                     | Hasło1            | 2020-05-14      |
+#         When Administrator otwiedza listę kont użytkowników
+#         Then Widzi listę kont:
+#          | Nazwa konta organizatora zapisów | Nazwa właściciela konta | Hasło właściciela | Data utworzenia |
+#             | Bochenek                         | Jan                     | Hasło1            | 2020-05-14      |
 #
 # Given Konto o nazwie "Bochenek" jest dodane do listy
 # And Użutkownik o loginie "Bochenek1" został stworzony

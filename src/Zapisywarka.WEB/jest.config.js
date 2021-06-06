@@ -14,5 +14,9 @@ module.exports = {
     '<rootDir>/libs/shared/material',
     '<rootDir>/libs/shared/ui',
     '<rootDir>/libs/authentication/domain',
+    '<rootDir>/libs/sign-up/utils',
+    '<rootDir>/libs/sign-up/sign-up-element',
+    '<rootDir>/apps/zapisywarka-sign-up',
+    '<rootDir>/apps/test-element',
   ],
 };

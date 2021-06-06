@@ -26,25 +26,23 @@ Feature: Rejestracja użytkowników
         When Próbuję się zarejestrować
         Then Przekierowany jest na stronę logowania
 
-    Rule: Użytkownicy powinni być unikalni
+     # Rule: Użytkownicy powinni być unikalni
+    
+    
+    # Rule: Należy wymóc potwierdzenie hasła
 
-    Rule: Należy wymóc potwierdzenie hasła
+    # Rule: W pierwszym etapie rozwoju aplikacji, właściciel systemu decyduje kto może w niej utworzyć konto
 
-    Rule: W pierwszym etapie rozwoju aplikacji, właściciel systemu decyduje kto może w niej utworzyć konto
-
-        Scenario: Organizator zapisów poprawnie uzupełnia kod dostępu do aplikacji
-            Given Organizator zapisów podał kod dostępu "TbkdNPHf"
-            When Próbuje się zarejestrować
-            Then Może się zalogować
-
+   
         Scenario: Organizator zapisów podaje nieistniejący kod dostępu do aplikacji
             Given Organizator zapisów podał kod dostępu "BADcode1"
             When Próbuje się zarejestrować
-            Then Logowanie się nie udaje i widzi komunikat "Podany kod jest nieprawidłowy. Jeśli chcesz używać aplikacji zapisywarka, skontaktuj się z administratorem, aby otrzymać prawidłowy kod dostępu"
+        #   Próbuje wypełnić kolejne dane 
+            Then Rejestracja się nie udaje i widzi komunikat "Podany kod jest nieprawidłowy. Jeśli chcesz używać aplikacji zapisywarka, skontaktuj się z administratorem, aby otrzymać prawidłowy kod dostępu"
 
 
         Scenario: Organizator zapisów podaje kod dostępu do aplikacji, który już został użyty
             Given Zarejestrowano użytkownika, który wykorzystał kod dostępu "7VY77kOH"
             Given Organizator zapisów wpisał kod "7VY77kOH"
             When Próbuje się zarejestrować
-            Then Logowanie się nie udaje i widzi komunikat "Podany został już wykorzystany"
+            Then Rejestracja się nie udaje i widzi komunikat  "Podany został już wykorzystany"

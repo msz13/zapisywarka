@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zapisywarka.API.Common.Infr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{40012EB8-6257-4670-A90D-15B3B8B343E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zapisywarka.API.Modules.Identity", "Modules\Identity\Zapisywarka.API.Modules.Identity\Zapisywarka.API.Modules.Identity.csproj", "{EA394CEC-214D-4764-AF72-8741FBAFE8CE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

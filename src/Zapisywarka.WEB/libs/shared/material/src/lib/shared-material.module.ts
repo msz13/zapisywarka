@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card'
 import {MatRippleModule} from '@angular/material/core'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule} from '@angular/material/input'
  
 const MODULES = [
   LayoutModule,
@@ -18,7 +20,9 @@ const MODULES = [
   MatListModule,
   MatIconModule,
   MatCardModule,
-  MatRippleModule
+  MatRippleModule,
+  MatFormFieldModule,
+  MatInputModule
 ]
 
 @NgModule({

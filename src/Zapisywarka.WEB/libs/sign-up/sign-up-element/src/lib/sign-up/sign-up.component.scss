@@ -1,0 +1,42 @@
+@import "../../../../../shared/material/src/theme-variables";
+
+:host {
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: mat-color($dark-blue-green-primary, 600);
+  
+}
+
+mat-card {
+    min-width: 400px;
+}
+
+mat-card-title {
+    margin-bottom: 2em;
+}
+
+mat-card-content {
+    padding: 1em;
+    overflow: hidden;
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-end;
+  }
+  
+  mat-card {
+    width: 400px;
+    height: 500px;
+  }
+  
+  .full-width-field {
+      width: 100%;      
+  }

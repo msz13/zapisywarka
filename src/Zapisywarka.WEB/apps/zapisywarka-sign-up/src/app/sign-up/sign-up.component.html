@@ -1,0 +1,34 @@
+<mat-card data-test="sign-up">
+  <mat-card-title class="title">Zapisywarka</mat-card-title>
+  <mat-card-content>
+      <h2 class="mat-title">Załóż konto</h2>
+      <form [formGroup]="userForm" (submit)="onSubmit()">
+      <div *ngIf="!showSignUpForm" class="form-container">
+        <mat-form-field  appearance="outline" class="full-width-field" data-test=access-code>
+          <mat-label>Kod dostępu</mat-label>
+          <input type="password" matInput formControlName="accessCode"/>
+        </mat-form-field>
+        <button (click)="validateAccessCode()" mat-raised-button color="primary" data-test=next-button>
+        Dalej
+      </button>
+      </div>
+      <div *ngIf="showSignUpForm" @myInsertTrigger class="form-container">
+        <mat-form-field  appearance="outline" class="full-width-field" data-test=user-name>
+          <mat-label>Nazwa użytkownika</mat-label>
+          <input matInput formControlName="userName"/>
+        </mat-form-field>
+        <mat-form-field  appearance="outline" class="full-width-field" data-test=password>
+          <mat-label>Hasło</mat-label>
+          <input type="password" matInput formControlName="password"/>
+        </mat-form-field>
+        <mat-form-field  appearance="outline" class="full-width-field" data-test=password-confirmation>
+          <mat-label>Potwierdź hasło</mat-label>
+          <input type="password" matInput />
+        </mat-form-field>
+        <button mat-raised-button type="submit" color="primary" data-test=sign-up-button>
+        Dalej
+      </button>
+      </div>
+    </form>
+  </mat-card-content>  
+</mat-card>

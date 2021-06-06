@@ -13,19 +13,19 @@ Feature: Authentication
         And I widzi swój login "Admin"
 
 
-    Scenario: Organizator zapisów poprawnie loguje się do systemu
-        Given Użytkownik o nazwie "Jan", posiadający konto "Bochenek" i haśle "Password_01" został zarejestrowany w systemie
-        And Kiedy wypełnia login "Jan" oraz hasło "Password_01"
-        When Próbuje się zalogować
-        Then Przekierowany jest na stronę główną aplikacji
-        And Widzi swoją nazwę użytkownika "Jan"
-        And Widzi nazwę konta  
+   # Scenario: Organizator zapisów poprawnie loguje się do systemu
+   #     Given Użytkownik o nazwie "Jan", posiadający konto "Bochenek" i haśle "Password_01" został zarejestrowany w systemie
+    #    And Kiedy wypełnia login "Jan" oraz hasło "Password_01"
+    #    When Próbuje się zalogować
+    #    Then Przekierowany jest na stronę główną aplikacji
+    #    And Widzi swoją nazwę użytkownika "Jan"
+    #    And Widzi nazwę konta  
 
-    Scenario: Użytkownik nie istnieje
-    Given Użytkownik o loginie "Admin" i haśle "Password_01" został zarejestrowany w systemie
-    And Kiedy wypełnia login "Admin2" oraz hasło "Password_01"
-        When Próbuje się zalogować
-        Then Widzi komunikat "Użytkownik o podanym loginie nie istnieje"
+   # Scenario: Użytkownik nie istnieje
+   # Given Użytkownik o loginie "Admin" i haśle "Password_01" został zarejestrowany w systemie
+   # And Kiedy wypełnia login "Admin2" oraz hasło "Password_01"
+   #     When Próbuje się zalogować
+   #     Then Widzi komunikat "Użytkownik o podanym loginie nie istnieje"
 # 
 
 # Scenario: Użytkownik podał błędne hasło
