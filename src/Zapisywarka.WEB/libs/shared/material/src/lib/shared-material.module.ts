@@ -10,6 +10,7 @@ import {MatCardModule} from '@angular/material/card'
 import {MatRippleModule} from '@angular/material/core'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule} from '@angular/material/input'
+import {MatProgressBarModule} from '@angular/material/progress-bar'
  
 const MODULES = [
   LayoutModule,
@@ -22,7 +23,8 @@ const MODULES = [
   MatCardModule,
   MatRippleModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatProgressBarModule
 ]
 
 @NgModule({

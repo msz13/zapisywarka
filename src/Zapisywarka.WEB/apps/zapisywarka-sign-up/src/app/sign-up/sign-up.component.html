@@ -1,5 +1,8 @@
 <mat-card data-test="sign-up">
-  <mat-card-title class="title">Zapisywarka</mat-card-title>
+  <mat-card-title class="title">
+    Zapisywarka
+    <mat-progress-bar *ngIf="loading" mode="indeterminate" data-test=loading></mat-progress-bar>
+  </mat-card-title>
   <mat-card-content>
       <h2 class="mat-title">Załóż konto</h2>
       <form [formGroup]="userForm" (submit)="onSubmit()">

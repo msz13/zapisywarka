@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class SignUpComponent implements OnInit {
   @Input() userForm!: FormGroup; 
 
   @Output() userSubmited = new EventEmitter()
+
+  @Input() loading!: boolean
 
   constructor() { }
 

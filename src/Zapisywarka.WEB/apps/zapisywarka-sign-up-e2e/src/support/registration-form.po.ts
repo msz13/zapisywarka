@@ -23,3 +23,7 @@ export function getAccessCode() {
 export function getNextButton() {
     return cy.get('[data-test=next-button]')
 }
+
+export function getLoadingProgress() {
+    return cy.get('[data-test=loading]')
+}

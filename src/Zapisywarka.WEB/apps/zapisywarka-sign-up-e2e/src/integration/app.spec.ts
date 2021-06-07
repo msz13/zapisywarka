@@ -1,5 +1,6 @@
 import {
   getAccessCode,
+  getLoadingProgress,
   getNextButton,
   getPassword,
   getSignUpButton,
@@ -16,12 +17,16 @@ describe('zapisywarka-sign-up', () => {
 
     cy.intercept('POST', 'users/sign-up').as('new-user')
 
+    getLoadingProgress().should('not.exist')
+    
     getAccessCode().type(accessCode);
     getNextButton().click();
     getUserName().type(userName);
     getPassword().type(password);
     getSignUpButton().click();
     
+    getLoadingProgress().should('exist')
+
     cy.wait('@new-user').its('request.body').should('deep.equal', {
       accessCode: accessCode,
       userName: userName,
@@ -30,3 +35,5 @@ describe('zapisywarka-sign-up', () => {
 
   });
 });
+
+

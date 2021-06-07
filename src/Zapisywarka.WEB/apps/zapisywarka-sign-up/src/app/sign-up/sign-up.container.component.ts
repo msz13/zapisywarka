@@ -5,7 +5,12 @@ import {UserService} from '../user-service.service'
 @Component({
   selector: 'app-sign-up',
   template: `
-    <app-sign-up-form [userForm]="userForm" (userSubmited)="onSubmit()"></app-sign-up-form>
+    <app-sign-up-form 
+      [userForm]="userForm" 
+      (userSubmited)="onSubmit()"
+      [loading]="loading"
+      >
+    </app-sign-up-form>
   `,
   styleUrls: ['./sign-up.container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -13,6 +18,7 @@ import {UserService} from '../user-service.service'
 export class SignUpContainerComponent implements OnInit {
 
   userForm: FormGroup
+  loading: boolean = false
 
   constructor(private userService: UserService, fb: FormBuilder) { 
     this.userForm = fb.group({
@@ -26,6 +32,7 @@ export class SignUpContainerComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true
     this.userService.createUser(this.userForm.value).subscribe()
   }
 
