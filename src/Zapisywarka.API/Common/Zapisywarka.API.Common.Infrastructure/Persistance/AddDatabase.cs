@@ -16,8 +16,8 @@ namespace Zapisywarka.API.Common.Infrastructure.Persistance
             services.AddDbContext<TDbContext>(options =>
             {
                 var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
-
-                options.UseNpgsql(configuration.GetConnectionString("Postgresql"), o => o.UseNodaTime());
+                var connectionString = configuration.GetConnectionString("Postgresql");
+                options.UseNpgsql(connectionString, o => o.UseNodaTime());
                 options.EnableSensitiveDataLogging();
 
             });

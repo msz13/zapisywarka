@@ -1,1 +1,1 @@
-export * from './lib/page-objects/registration-form.po'
+export * from './lib/page-objects/sign-up-form.po'

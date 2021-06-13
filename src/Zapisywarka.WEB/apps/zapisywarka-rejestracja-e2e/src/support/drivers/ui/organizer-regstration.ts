@@ -1,6 +1,6 @@
-import {getPassword, getPasswordConfirmation, getSignUpButton, getUserName, getAccessCode} from "@zapisywarka-client-aps/sign-up/utils"
+import {getPassword, getPasswordConfirmation, getSignUpButton, getUserName, getAccessCode, getNextButton} from "../../sign-up-form.po"
 
-export class OrganiserRegistrationDriver {
+export class OrganiserSignUpDriver {
 
     signUp() {
         getSignUpButton().click()
@@ -17,6 +17,7 @@ export class OrganiserRegistrationDriver {
     }
     enterAccessCode(accesCode: any) {
         getAccessCode().type(accesCode)
+        getNextButton().click()
         
     }
 

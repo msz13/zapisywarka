@@ -73,3 +73,10 @@ D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\D
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Modules.Identity.Core.dll
+D:\programowanie\zapisywarka\src\Zapisywarka.API\Host\Zapisywarka.API.Host\bin\Debug\net5.0\Zapisywarka.API.Modules.Identity.Core.pdb

@@ -5,7 +5,7 @@ import {
   getPassword,
   getSignUpButton,
   getUserName,
-} from '../support/registration-form.po';
+} from '../support/sign-up-form.po';
 
 describe('zapisywarka-sign-up', () => {
   beforeEach(() => cy.visit('/'));

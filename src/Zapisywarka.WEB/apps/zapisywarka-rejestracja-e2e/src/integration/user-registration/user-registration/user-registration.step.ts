@@ -1,14 +1,14 @@
-import { NavigationDriver } from "../../../support/drivers/navigation";
-import { OrganiserRegistrationDriver } from "../../../support/drivers/organizer-regstration";
+import { NavigationDriver } from "../../../support/drivers/ui/navigation";
+import { OrganiserSignUpDriver} from "../../../support/drivers/ui/organizer-regstration";
 import { And, Before, Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 
-let driver: OrganiserRegistrationDriver
+let driver: OrganiserSignUpDriver
 let navigationDriver: NavigationDriver
 
 Before(()=>{
-    driver = new OrganiserRegistrationDriver()
+    driver = new OrganiserSignUpDriver()
     navigationDriver = new NavigationDriver()
-    navigationDriver.navigate('/rejestracja-konta')    
+    navigationDriver.navigate('/sign-up')    
 })
 
 

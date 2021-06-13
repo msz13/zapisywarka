@@ -1,11 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Reflection;
 using Zapisywarka.API.Common.Infrastructure.Persistance;
 using Zapisywarka.API.Modules.Identity.Core.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
 

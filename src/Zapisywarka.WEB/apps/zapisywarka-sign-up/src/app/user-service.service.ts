@@ -15,6 +15,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createUser(user: User) {
-    return this.http.post('users/sign-up', user)
+    return this.http.post('api/identity/users', user)
   }
 }

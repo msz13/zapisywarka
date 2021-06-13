@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Reflection;
 using Zapisywarka.API.Modules.Identity.IdentityServer;
+using Zapisywarka.API.Modules.Identity.Core;
 
 namespace Zapisywarka.API.Modules.Identity
 {
@@ -13,9 +14,11 @@ namespace Zapisywarka.API.Modules.Identity
             
             services.AddControllers().AddApplicationPart(Assembly.GetExecutingAssembly());
             services.AddIdentityServerConfiguration();
-            
+            services.AddIdentityCoreModule();
+                      
 
         }
+
 
         public static void UseIdenityModule(this IApplicationBuilder app)
         {
