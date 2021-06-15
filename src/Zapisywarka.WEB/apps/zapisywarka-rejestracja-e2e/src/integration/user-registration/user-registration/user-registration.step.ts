@@ -12,7 +12,7 @@ Before(()=>{
     driver = new OrganiserSignUpDriver()
     restDriver = new RestOrganiserSignUpDriver()
     navigationDriver = new NavigationDriver()
-    navigationDriver.navigate('/sign-up')
+    navigationDriver.navigate('http://localhost:5000/sign-up')
    // resetDatabse()    
 })
 

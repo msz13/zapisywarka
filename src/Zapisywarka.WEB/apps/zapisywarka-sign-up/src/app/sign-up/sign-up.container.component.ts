@@ -33,7 +33,15 @@ export class SignUpContainerComponent implements OnInit {
 
   onSubmit() {
     this.loading = true
-    this.userService.createUser(this.userForm.value).subscribe()
+    this.userService.createUser(this.userForm.value).subscribe(()=>{
+      this.redirectToApp()
+    })
   }
+  
+  redirectToApp() {
+    window.location.href = "/"
+  }
+  
 
 }
+
