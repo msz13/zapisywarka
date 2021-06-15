@@ -1,14 +1,19 @@
 import { NavigationDriver } from "../../../support/drivers/ui/navigation";
 import { OrganiserSignUpDriver} from "../../../support/drivers/ui/organizer-regstration";
 import { And, Before, Given, Then, When } from "cypress-cucumber-preprocessor/steps";
+import { RestOrganiserSignUpDriver } from "apps/zapisywarka-rejestracja-e2e/src/support/drivers/rest/RestOrganiserSignUpDriver";
+import { resetDatabse } from "apps/zapisywarka-rejestracja-e2e/src/support/drivers/test-state-fixture";
 
 let driver: OrganiserSignUpDriver
 let navigationDriver: NavigationDriver
+let restDriver: RestOrganiserSignUpDriver 
 
 Before(()=>{
     driver = new OrganiserSignUpDriver()
+    restDriver = new RestOrganiserSignUpDriver()
     navigationDriver = new NavigationDriver()
-    navigationDriver.navigate('/sign-up')    
+    navigationDriver.navigate('/sign-up')
+   // resetDatabse()    
 })
 
 
@@ -31,6 +36,12 @@ When('Próbuję się zarejestrować', ()=>{
     driver.signUp()
 })
 
-Then('Przekierowany jest na stronę logowania', ()=>{
+Then('Baza użytkowników zawiera organizatora zapisów o imieniu {string}', (userName)=>{
+    
+    restDriver.getOrganisers().should('deep.include', {username: userName}) 
+    
+})
+
+And('Przekierowany jest na stronę logowania', ()=>{
     navigationDriver.ShouldVisitLoginPage()
 })

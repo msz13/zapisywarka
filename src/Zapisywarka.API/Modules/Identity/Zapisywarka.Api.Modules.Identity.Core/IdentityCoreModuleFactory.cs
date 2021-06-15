@@ -15,8 +15,10 @@ namespace Zapisywarka.API.Modules.Identity.Core
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddDatabase<ZapisywarkaIdentityDbContext>();
+
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ZapisywarkaIdentityDbContext>();
+
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;

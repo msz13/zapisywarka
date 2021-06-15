@@ -14,8 +14,9 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         
 
         [SetUp]
-        public void Setup()
+        public async Task Setup()
         {
+            await ResetState();
             
         }
 

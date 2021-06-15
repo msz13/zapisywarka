@@ -30,5 +30,13 @@ namespace Zapisywarka.API.Modules.Identity.Controllers
             return Ok(new {Text = "Users"});
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var users = await _mediator.Send(new GetAllUsers.Query());
+            return NoContent();
+        }
+
     }
 }

@@ -55,7 +55,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
                 TablesToIgnore = new[] { "__EFMigrationsHistory" },
                 SchemasToInclude = new[]
                     {
-                        "offers"
+                        "identity"
                     },
                 DbAdapter = DbAdapter.Postgres
             };
@@ -93,9 +93,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
         public static async Task ResetState()
         {
-            //  await _checkpoint.Reset(_configuration.GetConnectionString("Host=localhost;Database=Offers;Username=postgres;Password=Password_01"));
-
-
+            
             using (var conn = new NpgsqlConnection("Host=localhost;Database=Offers;Username=postgres;Password=Password_01"))
             {
                 await conn.OpenAsync();

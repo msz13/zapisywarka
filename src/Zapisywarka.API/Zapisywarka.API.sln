@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zapisywarka.API.Modules.Ide
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zapisywarka.Api.Modules.Identity.IntegrationTests", "Modules\Identity\Zapisywarka.Api.Modules.Identity.IntegrationTests\Zapisywarka.Api.Modules.Identity.IntegrationTests.csproj", "{AAEAD811-5520-4CC2-9522-C8BC0DCDD85B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zapisywarka.API.Common.TestState", "Common\Zapisywarka.API.Common.TestState\Zapisywarka.API.Common.TestState.csproj", "{ED26C299-5A55-45FD-80D1-6F941A3514F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{AAEAD811-5520-4CC2-9522-C8BC0DCDD85B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAEAD811-5520-4CC2-9522-C8BC0DCDD85B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAEAD811-5520-4CC2-9522-C8BC0DCDD85B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED26C299-5A55-45FD-80D1-6F941A3514F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED26C299-5A55-45FD-80D1-6F941A3514F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED26C299-5A55-45FD-80D1-6F941A3514F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED26C299-5A55-45FD-80D1-6F941A3514F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{ED2CD7F3-0330-4B34-AC41-85E67B0DA084} = {40012EB8-6257-4670-A90D-15B3B8B343E5}
 		{29F2E2F0-DBBF-4A79-82A3-7B1C459E8C8F} = {40012EB8-6257-4670-A90D-15B3B8B343E5}
 		{AAEAD811-5520-4CC2-9522-C8BC0DCDD85B} = {40012EB8-6257-4670-A90D-15B3B8B343E5}
+		{ED26C299-5A55-45FD-80D1-6F941A3514F4} = {5165A065-D793-4658-9C90-D049A0241A86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {55E6C312-678F-499D-A2DC-2BF5E23F80A6}

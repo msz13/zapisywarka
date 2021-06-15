@@ -14,6 +14,6 @@ export class NavigationDriver {
   }
 
   ShouldVisitLoginPage() {
-    throw new Error("Method not implemented.");
+   cy.url().should('include', '/login')
 }
 }

@@ -22,9 +22,10 @@ Feature: Rejestracja użytkowników
         Given Organizator zapisów podał kod dostępu "TbkdNPHf"
         And Organizator zapisów wypełnił dane rejestracji konta
             | Nazwa_użytkownika | Hasło      | Potwierdzenie_hasła |
-            | Jan23             | Pasword_01 | Pasword_01          |
+            | Jan13             | Pasword_01 | Pasword_01          |
         When Próbuję się zarejestrować
-        Then Przekierowany jest na stronę logowania
+        Then Baza użytkowników zawiera organizatora zapisów o imieniu "Jan13"
+        And Przekierowany jest na stronę logowania
 
      # Rule: Użytkownicy powinni być unikalni
     
@@ -46,3 +47,5 @@ Feature: Rejestracja użytkowników
             Given Organizator zapisów wpisał kod "7VY77kOH"
             When Próbuje się zarejestrować
             Then Rejestracja się nie udaje i widzi komunikat  "Podany został już wykorzystany"
+
+            

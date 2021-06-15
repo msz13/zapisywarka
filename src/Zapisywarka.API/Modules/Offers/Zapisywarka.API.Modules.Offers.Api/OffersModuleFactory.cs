@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Reflection;
 using Zapisywarka.API.Modules.Offers.Core;
 

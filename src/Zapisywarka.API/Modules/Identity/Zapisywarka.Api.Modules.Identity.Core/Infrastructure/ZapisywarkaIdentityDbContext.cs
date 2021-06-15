@@ -19,6 +19,11 @@ namespace Zapisywarka.API.Modules.Identity.Core.Infrastructure
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.HasDefaultSchema("identity");
+        }
       
     }
 
