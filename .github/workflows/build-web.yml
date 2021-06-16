@@ -37,7 +37,7 @@ jobs:
         run: npm run nx build zapisywarka-back-office --prod --aot --baseHref=/test/ --deployUrl=/test/ 
         
       - name: Check dist page
-        run: pwd && cd src/Zapisywarka.WEB/dist/apps/zapisywarka-rejestracja && cat index.html
+        run: pwd && dir && cd src/Zapisywarka.WEB/dist/apps/zapisywarka-rejestracja && cat index.html
          
               
       - name: Docker Login
