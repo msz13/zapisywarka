@@ -53,7 +53,6 @@
     "shared-material": { "tags": [] },
     "shared-ui": { "tags": [] },
     "authentication-domain": { "tags": [] },
-    "sign-up-utils": { "tags": [] },
     "sign-up-sign-up-element": { "tags": [] },
     "sign-up-sign-up-element-e2e": {
       "tags": [],
@@ -63,7 +62,6 @@
     "zapisywarka-sign-up-e2e": {
       "tags": [],
       "implicitDependencies": ["zapisywarka-sign-up"]
-    },
-    "test-element": { "tags": [] }
+    }
   }
 }

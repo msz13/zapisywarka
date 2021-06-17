@@ -46,9 +46,6 @@
         "libs/authentication/domain/src/index.ts"
       ],
       "feature-sign-up": ["libs/sign-up/feature-sign-up/src/index.ts"],
-      "@zapisywarka-client-aps/sign-up/utils": [
-        "libs/sign-up/utils/src/index.ts"
-      ],
       "@zapisywarka/sign-up-form": ["libs/sign-up/sign-up-element/src/index.ts"]
     }
   },

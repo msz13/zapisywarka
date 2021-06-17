@@ -740,31 +740,6 @@
         }
       }
     },
-    "sign-up-utils": {
-      "projectType": "library",
-      "root": "libs/sign-up/utils",
-      "sourceRoot": "libs/sign-up/utils/src",
-      "prefix": "zapisywarka-client-aps",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/sign-up/utils/src/**/*.ts",
-              "libs/sign-up/utils/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/sign-up/utils"],
-          "options": {
-            "jestConfig": "libs/sign-up/utils/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "sign-up-sign-up-element": {
       "projectType": "library",
       "root": "libs/sign-up/sign-up-element",
@@ -971,94 +946,6 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/zapisywarka-sign-up-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "test-element": {
-      "projectType": "application",
-      "root": "apps/test-element",
-      "sourceRoot": "apps/test-element/src",
-      "prefix": "zapisywarka-client-aps",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/test-element",
-            "index": "apps/test-element/src/index.html",
-            "main": "apps/test-element/src/main.ts",
-            "polyfills": "apps/test-element/src/polyfills.ts",
-            "tsConfig": "apps/test-element/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "apps/test-element/src/favicon.ico",
-              "apps/test-element/src/assets"
-            ],
-            "styles": ["apps/test-element/src/styles.scss"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/test-element/src/environments/environment.ts",
-                  "with": "apps/test-element/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "test-element:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "test-element:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "test-element:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/test-element/src/**/*.ts",
-              "apps/test-element/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/test-element"],
-          "options": {
-            "jestConfig": "apps/test-element/jest.config.js",
-            "passWithNoTests": true
           }
         }
       }

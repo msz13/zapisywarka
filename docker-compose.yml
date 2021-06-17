@@ -20,7 +20,7 @@ services:
     image: ghcr.io/msz13/zapisywarka_api:latest
     build:
       context: .
-      dockerfile: ./src/Zapisywarka.API/Dockerfile
+      dockerfile: ./src/Zapisywarka.API/DockerFile
     environment:
       ConnectionStrings__Postgresql: "Host=postgres;Database=Offers;Username=postgres;Password=Password_01"
   
