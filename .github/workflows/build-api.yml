@@ -18,6 +18,9 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         
+        - name: Debug
+          run: dir && cd src && dir
+          #/Zapisywarka.API && dir cd /Host $$ dir && cd /Zapisywarka.API.Host && dir
               
         - name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v1
