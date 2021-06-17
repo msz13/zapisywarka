@@ -6,6 +6,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
 WORKDIR /src
+RUN pwd && dir
 COPY ["Zapisywarka.API/Host/Zapisywarka.API.Host/Zapisywarka.API.Host.csproj", "Host/Zapisywarka.API.Host/"]
 RUN dotnet restore "Host/Zapisywarka.API.Host/Zapisywarka.API.Host.csproj"
 COPY "Zapisywarka.API" .
