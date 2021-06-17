@@ -19,7 +19,7 @@ jobs:
         - uses: actions/checkout@v2
         
         - name: Debug
-          run: cd /src && dir
+          run: dir && cd src && dir
           #/Zapisywarka.API && dir cd /Host $$ dir && cd /Zapisywarka.API.Host && dir
               
         - name: Set up Docker Buildx
