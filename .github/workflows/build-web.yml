@@ -34,7 +34,7 @@ jobs:
         
       - name: Build angular app
         working-directory: ./src/Zapisywarka.WEB
-        run: npm run nx build zapisywarka-back-office --prod --aot --baseHref=/test/ --deployUrl=/test/ 
+        run: npm run nx build zapisywarka-rejestracja --prod --aot --baseHref=/test/ --deployUrl=/test/ 
         
       - name: Check dist page
         run: pwd && dir && cd src/Zapisywarka.WEB/dist/apps/zapisywarka-rejestracja && cat index.html
