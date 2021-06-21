@@ -17,6 +17,9 @@
     <ProjectReference Include="..\Zapisywarka.Api.Modules.Identity.Core\Zapisywarka.API.Modules.Identity.Core.csproj" />
   </ItemGroup>
   
+   <ItemGroup>
+    <EmbeddedResource Include="wwwroot\**\*" />
+   </ItemGroup>
 
 
 </Project>

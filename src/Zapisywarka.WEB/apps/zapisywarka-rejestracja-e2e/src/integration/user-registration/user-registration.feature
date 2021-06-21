@@ -27,25 +27,4 @@ Feature: Rejestracja użytkowników
         Then Baza użytkowników zawiera organizatora zapisów o imieniu "Jan13"
         And Przekierowany jest na stronę logowania
 
-     # Rule: Użytkownicy powinni być unikalni
-    
-    
-    # Rule: Należy wymóc potwierdzenie hasła
-
-    # Rule: W pierwszym etapie rozwoju aplikacji, właściciel systemu decyduje kto może w niej utworzyć konto
-
-   
-        Scenario: Organizator zapisów podaje nieistniejący kod dostępu do aplikacji
-            Given Organizator zapisów podał kod dostępu "BADcode1"
-            When Próbuje się zarejestrować
-        #   Próbuje wypełnić kolejne dane 
-            Then Rejestracja się nie udaje i widzi komunikat "Podany kod jest nieprawidłowy. Jeśli chcesz używać aplikacji zapisywarka, skontaktuj się z administratorem, aby otrzymać prawidłowy kod dostępu"
-
-
-        Scenario: Organizator zapisów podaje kod dostępu do aplikacji, który już został użyty
-            Given Zarejestrowano użytkownika, który wykorzystał kod dostępu "7VY77kOH"
-            Given Organizator zapisów wpisał kod "7VY77kOH"
-            When Próbuje się zarejestrować
-            Then Rejestracja się nie udaje i widzi komunikat  "Podany został już wykorzystany"
-
-            
+     

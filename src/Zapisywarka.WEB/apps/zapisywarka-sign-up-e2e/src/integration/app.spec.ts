@@ -34,6 +34,11 @@ describe('zapisywarka-sign-up', () => {
     })
 
   });
+
+  it('should show validation errors', ()=> {
+    
+  })
+
 });
 
 
