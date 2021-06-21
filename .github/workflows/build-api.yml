@@ -35,7 +35,7 @@ jobs:
 
         - name: Install dependencies
           working-directory: src/Zapisywarka.API
-          run: ls && dotnet restore
+          run: ls && dotnet restore host/zapisywarka.api.host.csproj
           
 
         - name: Build
