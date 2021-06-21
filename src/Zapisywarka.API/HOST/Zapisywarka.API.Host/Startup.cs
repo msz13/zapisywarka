@@ -41,9 +41,10 @@ namespace Zapisywarka.API.Host
             {
                 services.AddTestStateModule();
                 services.AddControllers().AddApplicationPart(Assembly.GetAssembly(typeof(TestStateModuleFactory)));
+                
             }
 
-
+            //comment
             services.AddCors(options =>
             {
                 options.AddPolicy("default", policy =>
