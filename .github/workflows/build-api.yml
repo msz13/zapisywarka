@@ -28,6 +28,9 @@ jobs:
              key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
              restore-keys: |
                ${{ runner.os }}-nuget
+
+        - name: Debug
+          run: ls 
           
 
         - name: Install dependencies
