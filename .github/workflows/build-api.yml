@@ -31,8 +31,9 @@ jobs:
           
 
         - name: Install dependencies
-          run: ls -R && dotnet restore
           working-directory: src/Zapisywarka.API
+          run: ls && dotnet restore
+          
 
         - name: Build
           run: dotnet build --configuration Release --no-restore -o ./build
