@@ -39,7 +39,7 @@ jobs:
           
 
         - name: Build
-          run: dotnet build Host/Zapisywarka.API.Host/Zapisywarka.API.Host.csproj --configuration Release --no-restore -o ./build
+          run: dotnet build HOST/Zapisywarka.API.Host/Zapisywarka.API.Host.csproj --configuration Release --no-restore -o ./build
           working-directory: src/Zapisywarka.API
 
         - name: Save build artifacts
