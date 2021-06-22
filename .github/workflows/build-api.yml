@@ -29,10 +29,6 @@ jobs:
              restore-keys: |
                ${{ runner.os }}-nuget
 
-        - name: Debug
-          run: ls 
-          
-
         - name: Install dependencies
           working-directory: src/Zapisywarka.API
           run: ls -R && dotnet restore HOST/Zapisywarka.API.Host/Zapisywarka.API.Host.csproj

@@ -16,7 +16,7 @@ services:
     depends_on: 
       - postgres    
     environment:
-      ConnectionStrings__Postgresql:  "Host=postgres;Database=Offers;Username=postgres;Password=Password_01"
+      ConnectionStrings__Postgresql:  "Host=postgres;Database=Zapisywarka;Username=postgres;Password=Password_01"
  
 
   postgres:
