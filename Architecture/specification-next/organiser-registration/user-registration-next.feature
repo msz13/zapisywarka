@@ -29,6 +29,25 @@ Feature: Walidacja rejestracji konta
     #Rule Nazwa użytwkonika powinna zawierać znaki dozwolone dla url
     #Rule Nazwa użytkownika powinna zawierać mieć długoś 3 - 32 
 
+      
+
+Scenario Outline: User name validation
+     Given Organizator zapisał imię zawierające znak <znak>
+     When Próbuje się zarejestrować
+     Then Może się zarejestrować
+
+Example: Znak
+| a| b | c | d | e | f | g | h | i | j | k | l | m | n| o | p | r | s | q | t | u | w | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | R | S | Q | T | U | W | Y | Z | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | - | . | _ | ~ |
+
+
+Scenario Outline: User name validation
+     Given Organizator zapisał imię zawierające znak <znak>
+     When Próbuje się zarejestrować
+     Then Nie może procesować rejestracji konta i widzi komunikat błędu
+
+Example: Znak
+| / | ? | # | [ | ] | @ | ! | $ | & | ' | ( | ) | * | + | , | ; | = | ą | ę | ć | ń | ź | ż |
+
 
 Scenario Outline: Organizator zapisów podane nieprawidłową nazwę użytkownika
          When Organizator zapisów próbuje utworzyć konto użytkownika <nazwa_użytkownika>
