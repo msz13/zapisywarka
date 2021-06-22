@@ -39,7 +39,7 @@ jobs:
           
 
         - name: Build
-          run: dotnet build --configuration Release --no-restore -o ./build
+          run: dotnet build --configuration Release -o ./build
           working-directory: src/Zapisywarka.API
 
         - name: Save build artifacts
