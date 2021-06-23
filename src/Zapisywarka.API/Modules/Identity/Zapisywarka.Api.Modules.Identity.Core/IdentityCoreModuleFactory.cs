@@ -5,7 +5,7 @@ using System.Reflection;
 using Zapisywarka.API.Common.Infrastructure.Persistance;
 using Zapisywarka.API.Modules.Identity.Core.Infrastructure;
 using Microsoft.AspNetCore.Identity;
-
+using FluentValidation;
 
 namespace Zapisywarka.API.Modules.Identity.Core
 {
@@ -25,6 +25,8 @@ namespace Zapisywarka.API.Modules.Identity.Core
                 options.Password.RequireNonAlphanumeric = false;
                 
             });
+
+           services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
 

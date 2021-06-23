@@ -118,7 +118,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
             var context = scope.ServiceProvider.GetService<ZapisywarkaIdentityDbContext>();
 
-            return await context.Users.FirstAsync(user => user.UserName == userName);
+            return await context.Users.FirstOrDefaultAsync(user => user.UserName == userName);
         }
 
         /*
