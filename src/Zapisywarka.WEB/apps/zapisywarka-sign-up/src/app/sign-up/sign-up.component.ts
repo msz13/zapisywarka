@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
 
     this.userForm = this.fb.group({
       accessCode: ['', Validators.required],
-      userName: [''],
+      userName: ['', Validators.required],
       password: ['']
     })
 
@@ -40,11 +40,10 @@ export class SignUpComponent implements OnInit {
   showSignUpForm: boolean = false;
 
   validateAccessCode() {
-
    
     this.userForm.get('accessCode')?.markAsTouched()
 
-   if(this.userForm.valid) {
+   if(this.userForm.get('accessCode')?.valid) {
     this.showSignUpForm = !this.showSignUpForm;
    }
    

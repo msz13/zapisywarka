@@ -2,6 +2,7 @@
     <mat-form-field  appearance="outline" class="full-width-field" data-test=user-name>
         <mat-label>Nazwa użytkownika</mat-label>
         <input matInput formControlName="userName"/>
+        <mat-error data-test=validation-error>{{getErrorMessage()}}</mat-error>
       </mat-form-field>
       <mat-form-field  appearance="outline" class="full-width-field" data-test=password>
         <mat-label>Hasło</mat-label>
