@@ -29,7 +29,7 @@ export class SignUpComponent implements OnInit {
     this.userForm = this.fb.group({
       accessCode: ['', Validators.required],
       userName: ['', Validators.required],
-      password: ['']
+      password: ['', Validators.required]
     })
 
   }
@@ -51,7 +51,11 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userSubmited.emit(this.userForm.value)
+
+    
+    if(this.userForm.valid) {
+      this.userSubmited.emit(this.userForm.value)
+    }    
   }
 
   getErrorMessage() {

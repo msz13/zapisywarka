@@ -74,8 +74,26 @@ describe('zapisywarka-sign-up', () => {
       getNextButton().click();
 
       getUserName().find('input').type('name').clear().blur();
-      getValidationError().should('have.text', 'Nazwa użytkownika jest wymagana')   
+      getValidationError().should('have.text', 'Nazwa użytkownika jest wymagana') 
 
+      getSignUpButton().click();
+      getLoadingProgress().should('not.exist') 
+      getValidationError().should('have.text', 'Nazwa użytkownika jest wymagana')  
+      
+
+      //TODO poprawić implementację, aby po naciśnięciu przycisku next pojawił się błąd waidacji, albo przycisk ma być nieaktywny
+
+    })
+
+  })
+
+  describe('password', ()=> {
+    it('should validate password', ()=>{
+      getAccessCode().type('token')
+      getNextButton().click();
+
+      getPassword().find('input').type('pasword').clear().blur();
+      getValidationError().should('exist').and('have.text', 'Hasło jest wymagane') 
 
     })
   })

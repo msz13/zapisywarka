@@ -16,8 +16,15 @@ export class SignUpFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getErrorMessage() {
-    return "Nazwa użytkownika jest wymagana"
+  getErrorMessage(field: string) {
+
+    if(field == "name") {
+      return "Nazwa użytkownika jest wymagana"
+    } else {
+      return "Hasło jest wymagane"
+    }
+
+    
   }
 
 }
