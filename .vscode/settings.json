@@ -1,5 +1,8 @@
 {
     "terminal.integrated.automationShell.windows": "",
+    "todo-tree.tree.scanMode": "current file",
+    "todo-tree.tree.showBadges": true,
+    "todo-tree.tree.showCountsInTree": true,
 
 
 }

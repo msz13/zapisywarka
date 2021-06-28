@@ -304,6 +304,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[10.2.3, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[10.2.3, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -552,11 +560,11 @@
             },
             "FluentValidation": {
               "target": "Package",
-              "version": "[10.0.2, )"
+              "version": "[10.2.3, )"
             },
             "FluentValidation.AspNetCore": {
               "target": "Package",
-              "version": "[10.0.2, )"
+              "version": "[10.2.3, )"
             },
             "MediatR": {
               "target": "Package",

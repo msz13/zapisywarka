@@ -27,3 +27,11 @@ export function getNextButton() {
 export function getLoadingProgress() {
     return cy.get('[data-test=loading]')
 }
+
+export function getValidationError() {
+    return cy.get('[data-test=validation-error]')
+  }
+  
+export function getSignUpForm() {
+    return cy.get('[data-test=sign-up-form]')
+  }

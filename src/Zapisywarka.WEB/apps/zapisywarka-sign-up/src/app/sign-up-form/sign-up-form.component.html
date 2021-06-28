@@ -1,0 +1,17 @@
+<section class="form-container" [formGroup]="userForm">
+    <mat-form-field  appearance="outline" class="full-width-field" data-test=user-name>
+        <mat-label>Nazwa użytkownika</mat-label>
+        <input matInput formControlName="userName"/>
+      </mat-form-field>
+      <mat-form-field  appearance="outline" class="full-width-field" data-test=password>
+        <mat-label>Hasło</mat-label>
+        <input type="password" matInput formControlName="password"/>
+      </mat-form-field>
+      <mat-form-field  appearance="outline" class="full-width-field" data-test=password-confirmation>
+        <mat-label>Potwierdź hasło</mat-label>
+        <input type="password" matInput />
+      </mat-form-field>
+      <button mat-raised-button type="submit" color="primary" data-test=sign-up-button>
+      Dalej
+    </button>
+</section>

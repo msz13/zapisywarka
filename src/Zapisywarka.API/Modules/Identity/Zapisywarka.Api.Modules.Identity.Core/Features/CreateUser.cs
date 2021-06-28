@@ -3,6 +3,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,19 +35,20 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features {
             }
 
             public async Task<IdentityResult> Handle(Command request, CancellationToken cancellationToken)
-            {
-              //  var validator = new CommandValidator();
-             //   var validationResult = validator.Validate(request);
-
-            //        throw new ArgumentException(validationResult.Errors.ToString());
-           //     }
+          {
                 var user = new IdentityUser
                 {
                     UserName = request.UserName,
                                         
                 };
-                
-                return await _userMenager.CreateAsync(user, request.Password); ;
+                //kjkj
+                var result = await _userMenager.CreateAsync(user, request.Password); 
+                if(!result.Succeeded) {
+                    
+                var message = result.Errors.Select(e => e.Code.ToString()).ToString();
+                    throw new ArgumentNullException(message);
+                }
+                return result;
             }
         }
     }

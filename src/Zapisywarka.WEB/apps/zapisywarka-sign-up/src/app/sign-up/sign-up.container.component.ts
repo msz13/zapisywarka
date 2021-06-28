@@ -1,41 +1,39 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms'
-import {UserService} from '../user-service.service'
+import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import {User, UserService} from '../user-service.service'
+import { SignUpFormValidator } from './sign-up-form-validator';
 
 @Component({
-  selector: 'app-sign-up',
+ 
   template: `
-    <app-sign-up-form 
-      [userForm]="userForm" 
-      (userSubmited)="onSubmit()"
+    <app-sign-up
+      (userSubmited)="onSubmit($event)"
       [loading]="loading"
       >
-    </app-sign-up-form>
+    </app-sign-up>
   `,
   styleUrls: ['./sign-up.container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignUpContainerComponent implements OnInit {
 
-  userForm: FormGroup
+  
   loading: boolean = false
 
-  constructor(private userService: UserService, fb: FormBuilder) { 
-    this.userForm = fb.group({
-      accessCode: [''],
-      userName: [''],
-      password: ['']
-    })
-  }
+  constructor(private userService: UserService) {  }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    this.loading = true
-    this.userService.createUser(this.userForm.value).subscribe(()=>{
+  onSubmit(event: User) {
+    
+      this.loading = true
+      this.userService.createUser(event).subscribe(()=>{
       this.redirectToApp()
     })
+    
+
+    
   }
   
   redirectToApp() {

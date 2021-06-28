@@ -4,7 +4,9 @@ import {
   getNextButton,
   getPassword,
   getSignUpButton,
+  getSignUpForm,
   getUserName,
+  getValidationError,
 } from '../support/sign-up-form.po';
 
 describe('zapisywarka-sign-up', () => {
@@ -15,7 +17,7 @@ describe('zapisywarka-sign-up', () => {
     const userName = 'John';
     const password = 'Pasword_01';
 
-    cy.intercept('POST', 'users/sign-up').as('new-user')
+    cy.intercept('POST', 'api/identity/users').as('new-user')
 
     getLoadingProgress().should('not.exist')
     
@@ -35,10 +37,52 @@ describe('zapisywarka-sign-up', () => {
 
   });
 
-  it('should show validation errors', ()=> {
-    
+  describe("akccess token input", ()=>{
+
+    it('should show sing-up form when akcess code is valid', ()=>{
+
+      getSignUpForm().should('not.exist')
+
+      getAccessCode().type('token')
+      getNextButton().click();
+
+      getSignUpForm().should('exist')
+
+    })
+
+
+    it('should validate access token', ()=> {
+      getValidationError().should('not.exist') 
+
+      getNextButton().click();
+      getLoadingProgress().should('not.exist') 
+      getValidationError().should('have.text', 'Kod dostępu jest wymagany')  
+      getSignUpForm().should('not.exist')
+
+      getAccessCode().find('input').type('token').clear().blur();
+      getValidationError().should('have.text', 'Kod dostępu jest wymagany')                 
+     
+      
+    })
   })
 
+
+  describe('user name', ()=> {
+
+    it('should validate user name', ()=>{
+      getAccessCode().type('token')
+      getNextButton().click();
+
+      getUserName().find('input').type('name').clear().blur();
+      getValidationError().should('have.text', 'Nazwa użytkownika jest wymagana')   
+
+
+    })
+  })
+ 
+
 });
+
+
 
 

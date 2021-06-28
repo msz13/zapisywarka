@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-interface User {
+export interface User {
   accessCode: string,
   userName: string,
   password: string

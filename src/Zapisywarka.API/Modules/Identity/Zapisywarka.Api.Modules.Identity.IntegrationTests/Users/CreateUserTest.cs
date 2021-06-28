@@ -72,10 +72,15 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
          var user = await FindUser(command.UserName);
          user.Should().BeNull();     
-
               
 
         }
+
+        //TODO check result method DONE
+
+        //TODO spawdzić
+
+        //TODO cdoś
         
     }
 }
