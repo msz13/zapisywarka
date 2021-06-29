@@ -1,6 +1,7 @@
 import { animate, query, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../user-service.service';
 
 
 @Component({
@@ -18,21 +19,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
 
-  userForm: FormGroup 
+  userForm: FormGroup = this.fb.group({
+    accessCode: ['', Validators.required],
+    userData: this.fb.group({
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
+    })
+  })
 
   @Output() userSubmited = new EventEmitter()
 
   @Input() loading!: boolean
 
-  constructor(private fb: FormBuilder) { 
-
-    this.userForm = this.fb.group({
-      accessCode: ['', Validators.required],
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
-    })
-
-  }
+  constructor(private fb: FormBuilder) { }
+  
 
   ngOnInit(): void {
   }
@@ -51,14 +51,30 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-
     
     if(this.userForm.valid) {
-      this.userSubmited.emit(this.userForm.value)
+
+      const accessCode = this.userForm.get('accessCode')?.value
+      const { userName, password } = this.userForm.get('userData')?.value
+       
+      const user: User = {
+        accessCode,
+        userName,
+        password
+
+      }
+      
+      this.userSubmited.emit(user)
     }    
   }
 
   getErrorMessage() {
       return "Kod dostępu jest wymagany"
   }
+
+  get userData() {
+
+    return this.userForm.get('userData') as FormGroup
+  }
+
 }

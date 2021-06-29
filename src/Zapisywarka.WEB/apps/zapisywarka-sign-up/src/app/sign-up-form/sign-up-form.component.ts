@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class SignUpFormComponent implements OnInit {
 
-  @Input() userForm!: FormGroup
+  @Input() userData!: FormGroup 
 
   constructor() { }
 
