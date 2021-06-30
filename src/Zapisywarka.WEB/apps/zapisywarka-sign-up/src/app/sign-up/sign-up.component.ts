@@ -1,6 +1,7 @@
 import { animate, query, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserData } from '../sign-up-form/sign-up-form.component';
 import { User } from '../user-service.service';
 
 
@@ -19,13 +20,13 @@ import { User } from '../user-service.service';
 })
 export class SignUpComponent implements OnInit {
 
-  userForm: FormGroup = this.fb.group({
-    accessCode: ['', Validators.required],
-    userData: this.fb.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
+  accessCodeControl = new FormControl('', Validators.required)
+
+  userData: FormGroup = this.fb.group({
+     userName: ['', Validators.required],
+     password: ['', Validators.required]
     })
-  })
+  
 
   @Output() userSubmited = new EventEmitter()
 
@@ -41,17 +42,29 @@ export class SignUpComponent implements OnInit {
 
   validateAccessCode() {
    
-    this.userForm.get('accessCode')?.markAsTouched()
+    this.accessCodeControl.markAsTouched()
 
-   if(this.userForm.get('accessCode')?.valid) {
+   if(this.accessCodeControl.valid) {
     this.showSignUpForm = !this.showSignUpForm;
-   }
-   
+   }   
     
   }
 
-  onSubmit() {
+  onSubmit(userData: UserData) {
+
+    const accessCode = this.accessCodeControl.value
+    const { userName, password } = userData
+
+    const user: User = {
+      accessCode,
+      userName,
+      password
+    }
     
+    this.userSubmited.emit(user)
+  }   
+
+    /*    
     if(this.userForm.valid) {
 
       const accessCode = this.userForm.get('accessCode')?.value
@@ -63,18 +76,16 @@ export class SignUpComponent implements OnInit {
         password
 
       }
-      
+
       this.userSubmited.emit(user)
-    }    
-  }
+    }   
+    
+    */
+  
 
   getErrorMessage() {
       return "Kod dostępu jest wymagany"
   }
-
-  get userData() {
-
-    return this.userForm.get('userData') as FormGroup
-  }
+ 
 
 }

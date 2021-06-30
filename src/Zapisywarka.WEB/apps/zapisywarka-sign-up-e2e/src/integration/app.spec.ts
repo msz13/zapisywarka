@@ -53,14 +53,12 @@ describe('zapisywarka-sign-up', () => {
 
     it('should validate access token', ()=> {
       getValidationError().should('not.exist') 
-
-      getNextButton().click();
-      getLoadingProgress().should('not.exist') 
-      getValidationError().should('have.text', 'Kod dostępu jest wymagany')  
-      getSignUpForm().should('not.exist')
-
+      getNextButton().should('be.disabled')    
+         
       getAccessCode().find('input').type('token').clear().blur();
-      getValidationError().should('have.text', 'Kod dostępu jest wymagany')                 
+      getValidationError().should('have.text', 'Kod dostępu jest wymagany') 
+      
+      getNextButton().should('be.disabled') 
      
       
     })
@@ -73,12 +71,12 @@ describe('zapisywarka-sign-up', () => {
       getAccessCode().type('token')
       getNextButton().click();
 
-      getUserName().find('input').type('name').clear().blur();
-      getValidationError().should('have.text', 'Nazwa użytkownika jest wymagana') 
-
       getSignUpButton().click();
       getLoadingProgress().should('not.exist') 
-      getValidationError().should('have.text', 'Nazwa użytkownika jest wymagana')  
+      getValidationError().eq(0).should('have.text', 'Nazwa użytkownika jest wymagana') 
+
+      getUserName().find('input').type('name').clear().blur();
+      getValidationError().eq(0).should('have.text', 'Nazwa użytkownika jest wymagana')        
       
 
       //TODO poprawić implementację, aby po naciśnięciu przycisku next pojawił się błąd waidacji, albo przycisk ma być nieaktywny

@@ -1,5 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+
+export interface UserData {
+  userName: string,
+  password: string
+}
 
 @Component({
   selector: 'app-sign-up-form',
@@ -9,7 +14,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class SignUpFormComponent implements OnInit {
 
-  @Input() userData!: FormGroup 
+  @Input() userDataControl!: FormGroup 
+  @Output() userData = new EventEmitter<UserData>()
 
   constructor() { }
 
@@ -23,7 +29,13 @@ export class SignUpFormComponent implements OnInit {
     } else {
       return "Hasło jest wymagane"
     }
+    
+  }
 
+  onSubmit() {
+    if(this.userDataControl.valid) {
+      this.userData.emit(this.userDataControl.value)  
+    }
     
   }
 
