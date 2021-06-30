@@ -11,7 +11,8 @@
       </mat-form-field>
       <mat-form-field  appearance="outline" class="full-width-field" data-test=password-confirmation>
         <mat-label>Potwierdź hasło</mat-label>
-        <input type="password" matInput />
+        <input type="password" matInput formControlName="passwordConfirmation" />
+        <mat-error data-test=validation-error>{{getErrorMessage('passwordConfirmation')}}</mat-error>
       </mat-form-field>
       <button mat-raised-button type="submit" color="primary" class="full-width-field" data-test=sign-up-button>
       Dalej

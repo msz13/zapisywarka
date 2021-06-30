@@ -24,7 +24,8 @@ export class SignUpComponent implements OnInit {
 
   userData: FormGroup = this.fb.group({
      userName: ['', Validators.required],
-     password: ['', Validators.required]
+     password: ['', Validators.required],
+     passwordConfirmation: ['', Validators.required]
     })
   
 
@@ -60,7 +61,7 @@ export class SignUpComponent implements OnInit {
       userName,
       password
     }
-    
+
     this.userSubmited.emit(user)
   }   
 

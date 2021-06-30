@@ -3,6 +3,7 @@ import {
   getLoadingProgress,
   getNextButton,
   getPassword,
+  getPasswordConfirmation,
   getSignUpButton,
   getSignUpForm,
   getUserName,
@@ -25,6 +26,7 @@ describe('zapisywarka-sign-up', () => {
     getNextButton().click();
     getUserName().type(userName);
     getPassword().type(password);
+    getPasswordConfirmation().type(password)
     getSignUpButton().click();
     
     getLoadingProgress().should('exist')
@@ -94,6 +96,18 @@ describe('zapisywarka-sign-up', () => {
       getValidationError().should('exist').and('have.text', 'Hasło jest wymagane') 
 
     })
+
+    it('should validate password confirmation', ()=>{
+      getAccessCode().type('token')
+      getNextButton().click();
+
+      getPasswordConfirmation().find('input').type('pasword').clear().blur();
+      getValidationError().should('exist').and('have.text', 'Potwierdzenie hasła jest wymagane') 
+
+    })
+
+    //TODO wyodrębnić nowy test - should show errors when next button is clicked
+
   })
  
 

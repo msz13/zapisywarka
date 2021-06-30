@@ -26,8 +26,11 @@ export class SignUpFormComponent implements OnInit {
 
     if(field == "name") {
       return "Nazwa użytkownika jest wymagana"
-    } else {
+    } else if(field == "password") {
       return "Hasło jest wymagane"
+    } else
+    {
+      return "Potwierdzenie hasła jest wymagane"
     }
     
   }
