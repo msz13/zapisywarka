@@ -11,9 +11,9 @@ import { User } from '../user-service.service';
   styleUrls: ['./sign-up.component.scss'],
   animations: [
     trigger('myInsertTrigger', [
-      transition(':enter', [        
-        query('.form-container', [ style({ transform: 'translateX(100%)' }), animate('500ms', style({ transform: 'translateX(0%)' })) ])
-        
+      transition(':enter', [
+        query('.form-container', [style({ transform: 'translateX(100%)' }), animate('500ms', style({ transform: 'translateX(0%)' }))])
+
       ])
     ])
   ]
@@ -23,18 +23,18 @@ export class SignUpComponent implements OnInit {
   accessCodeControl = new FormControl('', Validators.required)
 
   userData: FormGroup = this.fb.group({
-     userName: ['', Validators.required],
-     password: ['', Validators.required],
-     passwordConfirmation: ['', Validators.required]
-    })
-  
+    userName: ['', Validators.required],
+    password: ['', Validators.required],
+    passwordConfirmation: ['', Validators.required]
+  })
+
 
   @Output() userSubmited = new EventEmitter()
 
   @Input() loading!: boolean
 
   constructor(private fb: FormBuilder) { }
-  
+
 
   ngOnInit(): void {
   }
@@ -42,13 +42,13 @@ export class SignUpComponent implements OnInit {
   showSignUpForm: boolean = false;
 
   validateAccessCode() {
-   
+
     this.accessCodeControl.markAsTouched()
 
-   if(this.accessCodeControl.valid) {
-    this.showSignUpForm = !this.showSignUpForm;
-   }   
-    
+    if (this.accessCodeControl.valid) {
+      this.showSignUpForm = !this.showSignUpForm;
+    }
+
   }
 
   onSubmit(userData: UserData) {
@@ -56,37 +56,40 @@ export class SignUpComponent implements OnInit {
     const accessCode = this.accessCodeControl.value
     const { userName, password } = userData
 
+    const trimedUserName = userName.trim()
+
     const user: User = {
       accessCode,
-      userName,
+      userName: trimedUserName,
       password
     }
 
     this.userSubmited.emit(user)
+  }
+
+  /*    
+  if(this.userForm.valid) {
+
+    const accessCode = this.userForm.get('accessCode')?.value
+    const { userName, password } = this.userForm.get('userData')?.value
+     
+    const user: User = {
+      accessCode,
+      userName,
+      password
+
+    }
+
+    this.userSubmited.emit(user)
   }   
-
-    /*    
-    if(this.userForm.valid) {
-
-      const accessCode = this.userForm.get('accessCode')?.value
-      const { userName, password } = this.userForm.get('userData')?.value
-       
-      const user: User = {
-        accessCode,
-        userName,
-        password
-
-      }
-
-      this.userSubmited.emit(user)
-    }   
-    
-    */
   
+  */
+
 
   getErrorMessage() {
-      return "Kod dostępu jest wymagany"
+    return "Kod dostępu jest wymagany"
   }
- 
+
 
 }
+

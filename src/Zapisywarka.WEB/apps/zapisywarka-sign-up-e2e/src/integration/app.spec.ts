@@ -39,6 +39,25 @@ describe('zapisywarka-sign-up', () => {
 
   });
 
+  it('should trim user name', ()=> {
+    const accessCode = 'TbkdNPHf';
+    const userName = '   John   ';
+    const password = 'Pasword_01';
+
+    cy.intercept('POST', 'api/identity/users').as('new-user')
+
+        
+    getAccessCode().type(accessCode);
+    getNextButton().click();
+    getUserName().type(userName);
+    getPassword().type(password);
+    getPasswordConfirmation().type(password)
+    getSignUpButton().click();
+    
+    cy.wait('@new-user').its('request.body').should('to.have.property', 'userName', 'John')
+
+  })
+
   describe("akccess token input", ()=>{
 
     it('should show sing-up form when akcess code is valid', ()=>{
@@ -67,48 +86,49 @@ describe('zapisywarka-sign-up', () => {
   })
 
 
-  describe('user name', ()=> {
-
-    it('should validate user name', ()=>{
+  describe('user form', ()=> {
+    beforeEach(()=>{
       getAccessCode().type('token')
       getNextButton().click();
+    })
+
+    it('should show validation error when next button is clicked', () =>{
 
       getSignUpButton().click();
       getLoadingProgress().should('not.exist') 
-      getValidationError().eq(0).should('have.text', 'Nazwa użytkownika jest wymagana') 
+      getValidationError().eq(0).should('have.text', 'Nazwa użytkownika jest wymagana')
+      getValidationError().eq(1).should('have.text', 'Hasło jest wymagane')
+      getValidationError().eq(2).should('have.text', 'Potwierdzenie hasła jest wymagane') 
+
+    })
+
+    it('should validate user name', ()=>{     
+     
 
       getUserName().find('input').type('name').clear().blur();
       getValidationError().eq(0).should('have.text', 'Nazwa użytkownika jest wymagana')        
       
 
-      //TODO poprawić implementację, aby po naciśnięciu przycisku next pojawił się błąd waidacji, albo przycisk ma być nieaktywny
+      
 
     })
 
-  })
-
-  describe('password', ()=> {
     it('should validate password', ()=>{
-      getAccessCode().type('token')
-      getNextButton().click();
-
+   
       getPassword().find('input').type('pasword').clear().blur();
       getValidationError().should('exist').and('have.text', 'Hasło jest wymagane') 
 
     })
 
     it('should validate password confirmation', ()=>{
-      getAccessCode().type('token')
-      getNextButton().click();
-
+     
       getPasswordConfirmation().find('input').type('pasword').clear().blur();
       getValidationError().should('exist').and('have.text', 'Potwierdzenie hasła jest wymagane') 
 
     })
 
-    //TODO wyodrębnić nowy test - should show errors when next button is clicked
-
   })
+
  
 
 });
