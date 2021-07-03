@@ -35,3 +35,7 @@ export function getValidationError() {
 export function getSignUpForm() {
     return cy.get('[data-test=sign-up-form]')
   }
+
+export function getServerError() {
+    return cy.get('[data-test=server-error]')
+  }

@@ -5,6 +5,7 @@
   </mat-card-title>
   <mat-card-content>
     <h2 class="mat-title">Załóż konto</h2>
+    <div *ngIf="error" class="server-error" data-test="server-error">{{error.message}}</div>
     <section>
       <div *ngIf="!showSignUpForm" class="form-container">
         <mat-form-field appearance="outline" class="full-width-field" data-test=access-code>

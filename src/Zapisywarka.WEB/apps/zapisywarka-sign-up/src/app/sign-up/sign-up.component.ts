@@ -1,5 +1,5 @@
 import { animate, query, style, transition, trigger } from '@angular/animations';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserData } from '../sign-up-form/sign-up-form.component';
 import { User } from '../user-service.service';
@@ -16,7 +16,8 @@ import { User } from '../user-service.service';
 
       ])
     ])
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignUpComponent implements OnInit {
 
@@ -32,6 +33,7 @@ export class SignUpComponent implements OnInit {
   @Output() userSubmited = new EventEmitter()
 
   @Input() loading!: boolean
+  @Input() error!: Error | null
 
   constructor(private fb: FormBuilder) { }
 
@@ -67,23 +69,7 @@ export class SignUpComponent implements OnInit {
     this.userSubmited.emit(user)
   }
 
-  /*    
-  if(this.userForm.valid) {
-
-    const accessCode = this.userForm.get('accessCode')?.value
-    const { userName, password } = this.userForm.get('userData')?.value
-     
-    const user: User = {
-      accessCode,
-      userName,
-      password
-
-    }
-
-    this.userSubmited.emit(user)
-  }   
   
-  */
 
 
   getErrorMessage() {

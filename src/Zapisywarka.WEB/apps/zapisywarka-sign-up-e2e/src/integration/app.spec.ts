@@ -4,6 +4,7 @@ import {
   getNextButton,
   getPassword,
   getPasswordConfirmation,
+  getServerError,
   getSignUpButton,
   getSignUpForm,
   getUserName,
@@ -58,6 +59,35 @@ describe('zapisywarka-sign-up', () => {
 
   })
 
+  it('should show server error', ()=>{
+    const accessCode = 'TbkdNPHf';
+    const userName = 'John';
+    const password = 'Pasword_01';
+
+    cy.intercept('POST', 'api/identity/users', (req) =>  {
+      req.reply({
+        statusCode: 500,
+        body: "Internal server error",
+        
+      })          
+    }).as('new-user')
+
+    getServerError().should('not.exist')
+    getAccessCode().type(accessCode);
+    getNextButton().click();
+    getUserName().type(userName);
+    getPassword().type(password);
+    getPasswordConfirmation().type(password)
+    getSignUpButton().click();
+    
+    getServerError().should('have.text', "Wystąpił nieoczekiwany błąd serwera. Spróbuj ponownie")    
+  
+      
+  })
+
+  //TODO poprawić funkcję cy.intercepte, aby nie wysyłała akcji do serwera
+  //TODO zrobić testy user service, jeśli odpowiedź z serwera nie będzie 200, to wyrzuca błąd
+
   describe("akccess token input", ()=>{
 
     it('should show sing-up form when akcess code is valid', ()=>{
@@ -83,6 +113,7 @@ describe('zapisywarka-sign-up', () => {
      
       
     })
+   
   })
 
 
@@ -132,6 +163,8 @@ describe('zapisywarka-sign-up', () => {
  
 
 });
+
+
 
 
 

@@ -1,5 +1,6 @@
 @import "../../../../../libs/shared/material/src/theme-variables";
 
+
 :host {
     display: flex;    
     justify-content: center;
@@ -36,4 +37,10 @@ mat-card-content {
 
   button {
       margin-top: 2em;
+  }
+
+  .server-error {
+      margin-top: 1em;
+      margin-bottom: 1em;
+      color: mat-color($dark-blue-green-warn)
   }
