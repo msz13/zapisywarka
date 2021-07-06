@@ -1,8 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {User, UserService} from '../user-service.service'
-import { SignUpFormValidator } from './sign-up-form-validator';
-import {catchError} from "rxjs/operators"
 
 
 @Component({

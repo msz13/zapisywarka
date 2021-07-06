@@ -10,9 +10,10 @@ import { SignUpContainerComponent } from './sign-up/sign-up.container.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain'
 
 @NgModule({
-  imports: [BrowserModule, BrowserAnimationsModule, CommonModule, SharedMaterialModule, ReactiveFormsModule, HttpClientModule],
+  imports: [BrowserModule, BrowserAnimationsModule, CommonModule, SharedMaterialModule, ReactiveFormsModule, HttpClientModule, SharedDomainModule],
   declarations: [SignUpComponent, SignUpContainerComponent, SignUpFormComponent],
   entryComponents: [SignUpComponent],
   //bootstrap: [AppComponent],

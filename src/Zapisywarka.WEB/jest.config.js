@@ -16,5 +16,6 @@ module.exports = {
     '<rootDir>/libs/authentication/domain',
     '<rootDir>/libs/sign-up/sign-up-element',
     '<rootDir>/apps/zapisywarka-sign-up',
+    '<rootDir>/libs/shared/domain',
   ],
 };

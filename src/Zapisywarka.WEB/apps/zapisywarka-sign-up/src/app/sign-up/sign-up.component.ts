@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserData } from '../sign-up-form/sign-up-form.component';
 import { User } from '../user-service.service';
+import { SignUpFormValidators } from './sign-up-form-validator';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class SignUpComponent implements OnInit {
   accessCodeControl = new FormControl('', Validators.required)
 
   userData: FormGroup = this.fb.group({
-    userName: ['', Validators.required],
+    userName: ['', SignUpFormValidators.userNameValidators()],
     password: ['', Validators.required],
     passwordConfirmation: ['', Validators.required]
   })

@@ -20,7 +20,7 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features {
         public class CommandValidator: AbstractValidator<Command> 
         {
             public CommandValidator() {
-                RuleFor(command => command.UserName).NotNull().NotEmpty();
+              //  RuleFor(command => command.UserName).NotNull().NotEmpty();
             }
         }
 
@@ -41,12 +41,12 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features {
                     UserName = request.UserName,
                                         
                 };
-                //kjkj
+               
                 var result = await _userMenager.CreateAsync(user, request.Password); 
                 if(!result.Succeeded) {
                     
-                var message = result.Errors.Select(e => e.Code.ToString()).ToString();
-                    throw new ArgumentNullException(message);
+              //  var message = result.Errors.Select(e => e.Code.ToString()).ToString();
+                    throw new ArgumentException(result.Errors.FirstOrDefault().Code + " desc: " + result.Errors.FirstOrDefault().Description);
                 }
                 return result;
             }

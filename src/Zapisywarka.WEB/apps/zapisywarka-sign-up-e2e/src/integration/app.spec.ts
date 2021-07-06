@@ -40,24 +40,6 @@ describe('zapisywarka-sign-up', () => {
 
   });
 
-  it('should trim user name', ()=> {
-    const accessCode = 'TbkdNPHf';
-    const userName = '   John   ';
-    const password = 'Pasword_01';
-
-    cy.intercept('POST', 'api/identity/users').as('new-user')
-
-        
-    getAccessCode().type(accessCode);
-    getNextButton().click();
-    getUserName().type(userName);
-    getPassword().type(password);
-    getPasswordConfirmation().type(password)
-    getSignUpButton().click();
-    
-    cy.wait('@new-user').its('request.body').should('to.have.property', 'userName', 'John')
-
-  })
 
   it('should show server error', ()=>{
     const accessCode = 'TbkdNPHf';
@@ -85,12 +67,12 @@ describe('zapisywarka-sign-up', () => {
       
   })
 
-  //TODO poprawić funkcję cy.intercepte, aby nie wysyłała akcji do serwera
+  //TODO poprawić funkcję cy.intercept, aby nie wysyłała akcji do serwera
   //TODO zrobić testy user service, jeśli odpowiedź z serwera nie będzie 200, to wyrzuca błąd
 
   describe("akccess token input", ()=>{
 
-    it('should show sing-up form when akcess code is valid', ()=>{
+    it('should show sign-up form when akcess code is valid', ()=>{
 
       getSignUpForm().should('not.exist')
 
@@ -139,8 +121,9 @@ describe('zapisywarka-sign-up', () => {
       getUserName().find('input').type('name').clear().blur();
       getValidationError().eq(0).should('have.text', 'Nazwa użytkownika jest wymagana')        
       
-
-      
+      getUserName().find('input').type('n#').blur();
+      getValidationError().eq(0).should('have.text', 'Nazwa użytkownika musi mieć minimum 3 znaki') 
+      getValidationError().eq(1).should('have.text', 'Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._') 
 
     })
 

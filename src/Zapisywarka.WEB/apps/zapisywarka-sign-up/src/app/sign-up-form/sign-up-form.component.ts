@@ -1,5 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { SignUpFormValidators } from '../sign-up/sign-up-form-validator';
 
 export interface UserData {
   userName: string,
@@ -10,27 +13,28 @@ export interface UserData {
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
   styleUrls: ['./sign-up-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class SignUpFormComponent implements OnInit {
 
   @Input() userDataControl!: FormGroup 
   @Output() userData = new EventEmitter<UserData>()
 
+  $errorMessages!: Observable<string[]> | undefined
+
   constructor() { }
 
   ngOnInit(): void {
+    this.$errorMessages = this.userDataControl.get('userName')?.valueChanges.pipe(tap(()=> console.log('value changes')), map(()=> SignUpFormValidators.getErrorMessagesFor('userName', this.userDataControl)))
   }
 
-  getErrorMessage(field: string) {
-
-    if(field == "name") {
-      return "Nazwa użytkownika jest wymagana"
-    } else if(field == "password") {
-      return "Hasło jest wymagane"
+  getErrorMessages(field: string): string[] {
+  
+    if(field == "password") {
+      return ["Hasło jest wymagane"]
     } else
     {
-      return "Potwierdzenie hasła jest wymagane"
+      return ["Potwierdzenie hasła jest wymagane"]
     }
     
   }
@@ -40,6 +44,10 @@ export class SignUpFormComponent implements OnInit {
       this.userData.emit(this.userDataControl.value)  
     }
     
+  }
+
+  get userName() {
+    return this.userDataControl.get('userName')
   }
 
 }

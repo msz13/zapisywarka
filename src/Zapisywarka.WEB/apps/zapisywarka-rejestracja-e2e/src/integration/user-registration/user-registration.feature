@@ -1,22 +1,12 @@
-# Czy rejestracja użytkowników powinna być w razor pages, czy angular
-# Czy rejestrując konto użytwkonik powinien podać nazwę organizacji
-# czy rejestrując użytkownika tworzy się niezależne id konta
-
 Feature: Rejestracja użytkowników
 
     Aby organizatorzy zapisów mogli korzystać z systemu muszą stworzyć konto użytkownika
 
     Background:
 
-        Given: Stworzono następujące kody dostępu:
+        Given: Stworzono następujący kod dostępu:
             | TbkdNPHf |
-            | 7VY77kOH |
-            | Zx0YuCwh |
-            | 6KTOTkWI |
-            | xp6829gG |
-            | xIn73teb |
-            | c8hmhtB6 |
-            | OrA8N1y9 |
+
 
     Scenario: Użytkownik rejestruje się w systemie
         Given Organizator zapisów podał kod dostępu "TbkdNPHf"
@@ -27,4 +17,37 @@ Feature: Rejestracja użytkowników
         Then Baza użytkowników zawiera organizatora zapisów o imieniu "Jan13"
         And Przekierowany jest na stronę logowania
 
-     
+
+    # Rule Nazwa użytkownika musi być poprawna
+
+    Scenario: Użytkownik podaje niepoprawną nazwę użytkownika
+        Given Organizator zapisów podał kod dostępu "TbkdNPHf"
+        And Organizator zapisów podał nazwę użytkownika <nazwa_uzytkownika>
+        When Próbuję się zarejestrować
+        Then Nie może procesować rejestracji i widzimi komunikat<komunikat>
+
+        Examples: Nieporpawne nazwy użytkownika
+            | opis                       | nazwa_uzytkownika                 | komunikat                                                      |
+            | krótsza niż 3 znaki        | ja                                | Nazwa użytkownika musi mieć minimum 3 znaki                    |
+            | dłuższa niż 32 znaki       | Abcdefghaijklmnoprstuwyzabcdefghi | Nazwa użytkownika musi mieć maksimum 32 znaki                  |
+            | zawiera niedozwolone znaki | jan/?#[]@!| zawiera niedozwolone znaki | jan/?#[]@!$&'()*+,.`|;=~          | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |                                                                  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.               | ;=                                                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.`              | ;=~                                                            | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |
+            | zawiera spację             | jan 1                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |
+            | zawiera polskie litery     | Bożena                            | Nazwa użytkownika nie może zawierać polskich znaków            |
+            | zawiera emoji              | jan😀                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |
+
+
+
+
+
+    # Rule: Użytkownicy powinni być unikalni
+    Scenario Outline: Użytkownik, który próbuje się zarejestrować podaje istniejącą nazwę użytkownika
+        Given Baza użytkowników zawiera następujących organizatorów
+            | Nazwa_użytkownika |
+            | wojtek            |
+        When Organizator zapisów próbuje utworzyć konto użytkownika <nazwa_użytkownika>
+        Then Nie może procesować rejestracji i widzimi komunikat "Nazwa użytkownika już istnieje"
+
+        Examples:
+            | przypadek     | nazwa_użytkownika |
+            | ta sama nazwa | wojtek            |
+            | duza litera   | Wojtek            |

@@ -62,6 +62,7 @@
     "zapisywarka-sign-up-e2e": {
       "tags": [],
       "implicitDependencies": ["zapisywarka-sign-up"]
-    }
+    },
+    "shared-domain": { "tags": [] }
   }
 }
