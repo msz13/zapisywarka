@@ -13,7 +13,7 @@ describe('sign-up form validators', () =>{
         
         it('should return null when is valid', ()=>{
 
-            control.setValue('jan-adam.sz_3')            
+            control.setValue('Jan-Adam.sz_3')            
             const error = control.errors
             expect(error).toBeNull()
                         
@@ -28,92 +28,117 @@ describe('sign-up form validators', () =>{
             expect(error?.required.message).toBe("Nazwa użytkownika jest wymagana") 
         })
 
-        it('should have min 3 characters', ()=>{
+        it('should return error when have less than 3 characters', ()=>{
             control.setValue('ja')
             const error = control.errors
             expect(error?.userNameMinLength).toBeDefined()
             expect(error?.userNameMinLength.message).toBe("Nazwa użytkownika musi mieć minimum 3 znaki")
             
-        })       
+        })  
 
-        it('should should return error when user name contains not allowed characters', ()=>{
-            control.setValue('jan#')
+        it('should return null when have 3 characters', ()=>{
+            control.setValue('jan')
+            const error = control.errors
+            expect(error).toBeNull()
+                        
+        })   
+
+        it('should return null when have 32 characters', ()=>{
+            control.setValue('ja012345678901234567890123456789')
+            const error = control.errors
+            expect(error).toBeNull()
+            
+        })     
+        
+        it('should return error when have more than 33 characters', ()=>{
+            control.setValue('ja0123456789012345678901234567890')
+            const error = control.errors
+            expect(error?.userNameMinLength).toBeDefined()
+            expect(error?.userNameMinLength.message).toBe("Nazwa użytkownika musi mieć maksimum 32 znaki")            
+        })   
+
+        it('should return error when user name contains not allowed characters', ()=>{
+            control.setValue('ja~n')
             const error = control.errors
             expect(error).toBeDefined()
-            expect(error?.allowedCharacters.message).toBe("Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._")
+            expect(error?.allowedCharacters.message).toBe("Nazwa użytkownika może zawierać tylko litery, bez polskich i obcych znaków, cyfry, znaki: -._")
         })
 
-        it('should should return error when user name contains space', ()=>{
+        it('should return error when user name contains space', ()=>{
             control.setValue('jan b')
             const error = control.errors
             expect(error?.allowedCharacters).toBeDefined()
-            expect(error?.allowedCharacters.message).toBe("Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._")
+            expect(error?.allowedCharacters.message).toBe("Nazwa użytkownika może zawierać tylko litery, bez polskich i obcych znaków, cyfry, znaki: -._")
         })
 
 
-        it('should should return error when user name contains polish characters', ()=>{
+        it('should return error when user name contains polish characters', ()=>{
             
             control.setValue('bożena')
             const error = control.errors
             expect(error?.allowedCharacters).toBeDefined()
-            expect(error?.allowedCharacters.message).toBe("Nazwa użytkownika nie może zaweirać polskich znaków.")
+            expect(error?.allowedCharacters.message).toBe("Nazwa użytkownika może zawierać tylko litery, bez polskich i obcych znaków, cyfry, znaki: -._")
         })
 
-        it('should should return error when user name contains emoji', ()=>{
+        it('should return error when user name contains emoji', ()=>{
             
-            control.setValue('bozena😀')
+            control.setValue('bozena😀s')
+          // control.setValue('bozena字')
             const error = control.errors
             expect(error?.allowedCharacters).toBeDefined()
-            expect(error?.allowedCharacters.message).toBe("Nazwa użytkownika nie może zaweirać polskich znaków.")
-        })
+            expect(error?.allowedCharacters.message).toBe("Nazwa użytkownika może zawierać tylko litery, bez polskich i obcych znaków, cyfry, znaki: -._")
+        })      
 
-      
-
-        describe('getErrorMessages', ()=>{
-
-            let group: FormGroup
-
-            beforeEach(()=> {
-                const control = new FormControl('')
-                group = new FormGroup({userName: control})
-            })
-
-            it('should return empty array when there is no error', ()=> {
-                group.get('usernName')?.setValue("i")
-                
-                const messages = SignUpFormValidators.getErrorMessagesFor('userName', group)
-
-                expect(messages).toHaveLength(0)
-            })
-
-            it('should return message error when one error', ()=> {
-                
-                group.get('userName')?.setErrors({reguired: {
-                    message: "Nazwa użytkownika jest wymagana"
-                }})
-
-                expect(group.invalid).toBe(true)
-                
-                const messages = SignUpFormValidators.getErrorMessagesFor('userName', group)
-
-                expect(messages).toHaveLength(1)
-                expect(messages[0]).toBe("Nazwa użytkownika jest wymagana")
-            })
-
-            it('should return messages when many errors', ()=> {
-                group.get('userName')?.setErrors({
-                    reguired: {
-                    message: "Nazwa użytkownika jest wymagana"
-                }, invalid: {
-                    message: "Nazwa użytkownika nie jest poprawna"
-                }
+        it('should return error when user name contains special character at the beginning', ()=>{
             
-            })                                               
-                const messages = SignUpFormValidators.getErrorMessagesFor('userName', group)
+            control.setValue('.bozena')
+            const error = control.errors
+            expect(error?.specialCharactersAtTheBegginning).toBeDefined()
+            expect(error?.specialCharactersAtTheBegginning.message).toBe("Nazwa użytkownika musi zaczynać się od tylko litery lub cyfry")
+        })      
 
-                expect(messages).toHaveLength(2)
-                expect(messages).toStrictEqual(["Nazwa użytkownika jest wymagana", "Nazwa użytkownika nie jest poprawna"])
-            })
+
+        it('should return null when user name contains digit at the beginning', ()=>{
+            
+            control.setValue('1bozena')
+            const error = control.errors
+            expect(error).toBeNull()
+        }) 
+
+        it('should return error when user name contains special character at the end', ()=>{
+            
+            control.setValue('bozena-')
+            const error = control.errors
+            expect(error?.specialCharactersAtTheEnd).toBeDefined()
+            expect(error?.specialCharactersAtTheEnd.message).toBe("Nazwa użytkownika musi kończyć się literą lub cyfrą")
+        }) 
+
+        it('should return error when user name contains sequeunce of two special character', ()=>{
+            
+            control.setValue('boz.-ena')
+            const error = control.errors
+            expect(error?.seqTwoOrMorespecialCharacters).toBeDefined()
+            expect(error?.seqTwoOrMorespecialCharacters.message).toBe("Nazwa użytkownika nie może zawierać dwóch lub więcej występujących po sobie znaków")
+        }) 
+        
+        it('should return one error when user name contains invalid characer at the end', ()=>{
+            
+            control.setValue('ja%')
+            const error = control.errors
+            expect(error?.specialCharactersAtTheEnd).toBeDefined()
+            expect(error?.specialCharactersAtTheEnd.message).toBe("Nazwa użytkownika musi kończyć się literą lub cyfrą")
+            expect(error?.allowedCharacters).toBeUndefined()
+            expect(error?.specialCharactersAtTheBegginning).toBeUndefined()
+            
+        }) 
+
+        it('should one error when two invalid characters', ()=> {
+            control.setValue('ja%$l')
+            const error = control.errors
+            expect(error?.allowedCharacters).toBeDefined()
+            expect(error?.allowedCharacters.message).toBe("Nazwa użytkownika może zawierać tylko litery, bez polskich i obcych znaków, cyfry, znaki: -._")
+            expect(error?.seqTwoOrMorespecialCharacters).toBeUndefined()
+
         })
     })
 } )

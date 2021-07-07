@@ -12,7 +12,7 @@ Feature: Rejestracja użytkowników
         Given Organizator zapisów podał kod dostępu "TbkdNPHf"
         And Organizator zapisów wypełnił dane rejestracji konta
             | Nazwa_użytkownika | Hasło      | Potwierdzenie_hasła |
-            | Jan13             | Pasword_01 | Pasword_01          |
+            | Jan_sz.cz-13      | Pasword_01 | Pasword_01          |
         When Próbuję się zarejestrować
         Then Baza użytkowników zawiera organizatora zapisów o imieniu "Jan13"
         And Przekierowany jest na stronę logowania
@@ -26,15 +26,17 @@ Feature: Rejestracja użytkowników
         When Próbuję się zarejestrować
         Then Nie może procesować rejestracji i widzimi komunikat<komunikat>
 
-        Examples: Nieporpawne nazwy użytkownika
-            | opis                       | nazwa_uzytkownika                 | komunikat                                                      |
-            | krótsza niż 3 znaki        | ja                                | Nazwa użytkownika musi mieć minimum 3 znaki                    |
-            | dłuższa niż 32 znaki       | Abcdefghaijklmnoprstuwyzabcdefghi | Nazwa użytkownika musi mieć maksimum 32 znaki                  |
-            | zawiera niedozwolone znaki | jan/?#[]@!| zawiera niedozwolone znaki | jan/?#[]@!$&'()*+,.`|;=~          | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |                                                                  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.               | ;=                                                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.`              | ;=~                                                            | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |
-            | zawiera spację             | jan 1                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |
-            | zawiera polskie litery     | Bożena                            | Nazwa użytkownika nie może zawierać polskich znaków            |
-            | zawiera emoji              | jan😀                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |
-
+        Examples: Niepoprawne nazwy użytkownika
+            | opis                       | nazwa_uzytkownika                 | komunikat                                                                          |
+            | krótsza niż 3 znaki        | ja                                | Nazwa użytkownika musi mieć minimum 3 znaki                                        |
+            | dłuższa niż 32 znaki       | Abcdefghaijklmnoprstuwyzabcdefghi | Nazwa użytkownika musi mieć maksimum 32 znaki                                      |
+            | zawiera niedozwolone znaki | jan/?#[]@!                        | zawiera niedozwolone znaki                                                         | jan/?#[]@! | zawiera niedozwolone znaki | jan/?#[]@! | zawiera niedozwolone znaki | jan/?#[]@!| zawiera niedozwolone znaki | jan/?#[]@!                        | zawiera niedozwolone znaki                                     | jan/?#[]@!| zawiera niedozwolone znaki | jan/?#[]@!| zawiera niedozwolone znaki | jan/?#[]@!$&'()*+,.`|;=~          | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |                                                                  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.               | ;=                                                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.`              | ;=~                                                            | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |
+            | zawiera spację             | jan 1                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._                     |
+            | zawiera polskie litery     | Bożena                            | Nazwa użytkownika nie może zawierać polskich znaków                                |
+            | zawiera emoji              | jan😀                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._                     |
+            | zawiera znaki na początku  | _jan                              | Nazwa użytkownika musi zaczynać się od tylko litery lub cyfry                      |
+            | zawiera znaki na końcu     | jan.                              | Nazwa użytkownika musi kończyć się literą lub cyfrą                                |
+            | zawiera dwa kolejne znaki  | jan.-sz                           | Nazwa użytkownika nie może zawierać dwóch lub więcej występujących po sobie znaków |
 
 
 

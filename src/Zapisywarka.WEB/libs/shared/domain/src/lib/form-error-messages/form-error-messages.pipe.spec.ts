@@ -64,13 +64,24 @@ describe('FormErrorMessagesPipe', () => {
 
   })
 
-  it('should throw when error message is undefined or null', () => {
+  it('should throw when error message is undefined', () => {
     control.setErrors({
       reguired: true
     })
 
-    expect(() => pipe.transform(control)).toThrow(new Error("Form control error has undefined message property"))
-    
+    expect(() => pipe.transform(control)).toThrow(new Error("Form control error has undefined message property"))    
+   
+
+  })
+
+  it('should throw when error message is empty', () => {
+    control.setErrors({
+      reguired: {
+        message: ""
+      }
+    })
+
+    expect(() => pipe.transform(control)).toThrow(new Error("Form control error has undefined message property"))    
    
 
   })

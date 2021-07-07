@@ -121,10 +121,9 @@ describe('zapisywarka-sign-up', () => {
       getUserName().find('input').type('name').clear().blur();
       getValidationError().eq(0).should('have.text', 'Nazwa użytkownika jest wymagana')        
       
-      getUserName().find('input').type('n#').blur();
-      getValidationError().eq(0).should('have.text', 'Nazwa użytkownika musi mieć minimum 3 znaki') 
-      getValidationError().eq(1).should('have.text', 'Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._') 
-
+      getUserName().find('input').type('n.').blur();
+      getValidationError().should('have.length', 2)
+      
     })
 
     it('should validate password', ()=>{

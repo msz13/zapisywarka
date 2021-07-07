@@ -20,12 +20,12 @@ export class SignUpFormComponent implements OnInit {
   @Input() userDataControl!: FormGroup 
   @Output() userData = new EventEmitter<UserData>()
 
-  $errorMessages!: Observable<string[]> | undefined
+ 
 
   constructor() { }
 
   ngOnInit(): void {
-    this.$errorMessages = this.userDataControl.get('userName')?.valueChanges.pipe(tap(()=> console.log('value changes')), map(()=> SignUpFormValidators.getErrorMessagesFor('userName', this.userDataControl)))
+   
   }
 
   getErrorMessages(field: string): string[] {
