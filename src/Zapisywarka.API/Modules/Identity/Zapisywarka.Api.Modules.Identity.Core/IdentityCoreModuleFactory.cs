@@ -17,6 +17,7 @@ namespace Zapisywarka.API.Modules.Identity.Core
             services.AddDatabase<ZapisywarkaIdentityDbContext>();
 
             services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddUserValidator<AppUserValidator>()
                 .AddEntityFrameworkStores<ZapisywarkaIdentityDbContext>();
 
             services.Configure<IdentityOptions>(options =>

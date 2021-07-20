@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "iVQSb/Oj9hmFYYYCkSP3umK9Rmvk7fMUXVHITBaQ9HodwaVqvbW7Edn+XOA4CiLFtWfn6E3zu5Mdf7E9nzRbuA==",
+  "dgSpecHash": "TDoJMYqWL6g5ZBrR7M+UpJUyZU+GPmYMclF+kCrwWm8t9XOFzvrVkv1SMH8bWTVWy6KFr8HRV8syq04guxWTCw==",
   "success": true,
-  "projectFilePath": "D:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Host\\Zapisywarka.API.Host\\Zapisywarka.API.Host.csproj",
+  "projectFilePath": "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Host\\Zapisywarka.API.Host\\Zapisywarka.API.Host.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\matsz\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\matsz\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
-    "C:\\Users\\matsz\\.nuget\\packages\\csharpfunctionalextensions\\2.15.1\\csharpfunctionalextensions.2.15.1.nupkg.sha512",
+    "C:\\Users\\matsz\\.nuget\\packages\\csharpfunctionalextensions\\2.17.0\\csharpfunctionalextensions.2.17.0.nupkg.sha512",
     "C:\\Users\\matsz\\.nuget\\packages\\fluentvalidation\\10.2.3\\fluentvalidation.10.2.3.nupkg.sha512",
     "C:\\Users\\matsz\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.2.3\\fluentvalidation.aspnetcore.10.2.3.nupkg.sha512",
     "C:\\Users\\matsz\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.2.3\\fluentvalidation.dependencyinjectionextensions.10.2.3.nupkg.sha512",

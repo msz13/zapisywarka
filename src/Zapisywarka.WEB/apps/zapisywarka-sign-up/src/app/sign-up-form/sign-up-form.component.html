@@ -7,13 +7,15 @@
       <mat-form-field  appearance="outline" class="full-width-field" data-test=password>
         <mat-label>Hasło</mat-label>
         <input type="password" matInput formControlName="password"/>
-        <mat-error data-test=validation-error>{{getErrorMessages('password')[0]}}</mat-error>
+        <mat-error data-test=validation-error>{{userDataControl.get('password') | formErrorMessages : 'first'}}</mat-error>
       </mat-form-field>
       <mat-form-field  appearance="outline" class="full-width-field" data-test=password-confirmation>
         <mat-label>Potwierdź hasło</mat-label>
-        <input type="password" matInput formControlName="passwordConfirmation" />
-        <mat-error data-test=validation-error>{{getErrorMessages('passwordConfirmation')[0]}}</mat-error>
+        <input type="password" matInput formControlName="passwordConfirmation" [errorStateMatcher]="passwordConfirmationMatcher"/>
+        <mat-error data-test=validation-error>{{userDataControl.get('passwordConfirmation') | formErrorMessages : 'first'}}</mat-error> 
+        <mat-error data-test=validation-error>{{userDataControl | formErrorMessages : 'first'}}</mat-error>  
       </mat-form-field>
+    
       <button mat-raised-button type="submit" color="primary" class="full-width-field" data-test=sign-up-button>
       Dalej
     </button>

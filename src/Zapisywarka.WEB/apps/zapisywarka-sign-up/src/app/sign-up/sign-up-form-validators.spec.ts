@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from "@angular/forms"
+import { FormControl, FormGroup, FormGroupDirective } from "@angular/forms"
 import { SignUpFormValidators } from "./sign-up-form-validator"
 
 describe('sign-up form validators', () =>{
@@ -82,8 +82,7 @@ describe('sign-up form validators', () =>{
 
         it('should return error when user name contains emoji', ()=>{
             
-            control.setValue('bozena😀s')
-          // control.setValue('bozena字')
+            control.setValue('bozena字😀s')         
             const error = control.errors
             expect(error?.allowedCharacters).toBeDefined()
             expect(error?.allowedCharacters.message).toBe("Nazwa użytkownika może zawierać tylko litery, bez polskich i obcych znaków, cyfry, znaki: -._")
@@ -140,5 +139,89 @@ describe('sign-up form validators', () =>{
             expect(error?.seqTwoOrMorespecialCharacters).toBeUndefined()
 
         })
+
     })
+
+    describe('Same password and password confirmation validator', () => {
+
+        let group: FormGroup
+        
+        beforeEach(() => group = new FormGroup({
+            password: new FormControl(''),
+            passwordConfirmation: new FormControl('')
+            }, 
+            SignUpFormValidators.correctPasswordConfirmationValidator
+            )
+
+        )
+
+        it('shoud return null when there is no input', ()=> {
+            
+            expect(group.errors).toBeNull()
+
+        })
+
+        it('shoud return null when password is missing', ()=> {
+
+            group.get('passwordConfirmation')?.setValue('pass')
+            
+            expect(group.errors).toBeNull()
+
+        })
+
+        it('should return null when passwordConfirmation is missing', ()=> {
+            
+            group.get('password')?.setValue('pass')  
+
+            expect(group.errors).toBeNull() 
+            
+
+        })
+
+        it('should return null when passwordConfirmation is equal to password', ()=> {
+            
+            group.get('password')?.setValue('pass')
+            group.get('passwordConfirmation')?.setValue('pass')
+
+            expect(group.errors).toBeNull()            
+
+        })
+
+        it('should return error when passwordConfirmation is not equal to password', ()=> {
+            
+            group.get('password')?.setValue('pass1')
+            group.get('passwordConfirmation')?.setValue('pass')
+            const error = group.errors
+            expect(error?.passwordNotMatchedConfirmation).toBeDefined()
+            expect(error?.passwordNotMatchedConfirmation.message).toBe("Hasła nie są takie same")
+                       
+
+        })
+
+        it('should return error when password is less than eight characters', ()=> {
+            
+            const password = group.get('password')
+            password?.setValue('pass1')
+            const error = password?.errors
+            expect(error?.passwordNotMatchedConfirmation).toBeDefined()
+            expect(error?.passwordNotMatchedConfirmation.message).toBe("Hasło musi mieć minimum 8 znaków")
+                       
+
+        })
+
+        it('should return error when password is 65 or more characters', ()=> {
+            
+            const password = group.get('password')
+            password?.setValue('passw012345678901234567890123456789012345678901234567890123456789')
+            const error = password?.errors
+            expect(error?.passwordNotMatchedConfirmation).toBeDefined()
+            expect(error?.passwordNotMatchedConfirmation.message).toBe("Hasło musi mieć minimum 8 znaków")                       
+
+        })
+
+     
+               
+    });
+
+    
 } )

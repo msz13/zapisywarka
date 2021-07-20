@@ -4,7 +4,11 @@ import {
   ValidationErrors,
   Validators,
   FormGroup,
+  FormControl,
+  FormGroupDirective,
+  NgForm,
 } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 export interface FormErrors extends ValidationErrors {
   [key: string]: {
@@ -12,16 +16,12 @@ export interface FormErrors extends ValidationErrors {
   };
 }
 
-
-
 export class SignUpFormValidators {
   static userNameValidators(): ValidatorFn[] {
     return [
       this.userNameRequired,
       this.userNameMinLength,
       this.userNameMaxLength,
-      //   this.userNameSpecialCharactersAtTheBegginning,
-      //    this.userNameSpecialCharactersAtTheEnd,
       this.userNameSeqTwoOrMorespecialCharacters,
       this.userNameAllowedCharacters,
     ];
@@ -30,6 +30,19 @@ export class SignUpFormValidators {
   private static userNameAllowedCharacters(
     control: AbstractControl
   ): FormErrors | null {
+    
+    const forbiddenCharactersAtBegginning = RegExp('^[^a-zA-Z0-9]').test(
+      control.value
+    );
+
+    if (forbiddenCharactersAtBegginning) {
+      return {
+        specialCharactersAtTheBegginning: {
+          message:
+            'Nazwa użytkownika musi zaczynać się od tylko litery lub cyfry',
+        },
+      };
+    }
 
     const forbiddenCharactersAtEnd = RegExp('[^a-zA-Z0-9]$').test(
       control.value
@@ -42,63 +55,19 @@ export class SignUpFormValidators {
       };
     }
 
-    const forbiddenCharactersAtBegginning = RegExp('^[^a-zA-Z0-9]').test(
-      control.value
-    );
-
-    if (forbiddenCharactersAtBegginning) {
-      return {
-        specialCharactersAtTheBegginning: {
-          message:
-            'Nazwa użytkownika musi zaczynać się od tylko litery lub cyfry',
-        },
-      };
-    } 
-
-  
-    const forbiddenCharacters  = RegExp('[^a-zA-Z0-9-_.]').test(control.value)
-     if(forbiddenCharacters) {
-        return {allowedCharacters: {
-            message: "Nazwa użytkownika może zawierać tylko litery, bez polskich i obcych znaków, cyfry, znaki: -._"
-        }}
-    }
-      
-    return null;
-  }
-
- 
-   
-  
-/* 
-  private static userNameSpecialCharactersAtTheBegginning(
-    control: AbstractControl
-  ) {
-    const forbiddenCharacters = RegExp('^[^a-zA-Z0-9]').test(control.value);
-
+    const forbiddenCharacters = RegExp('[^a-zA-Z0-9-_.]').test(control.value);
     if (forbiddenCharacters) {
       return {
-        specialCharactersAtTheBegginning: {
+        allowedCharacters: {
           message:
-            'Nazwa użytkownika musi zaczynać się od tylko litery lub cyfry',
+            'Nazwa użytkownika może zawierać tylko litery, bez polskich i obcych znaków, cyfry, znaki: -._',
         },
       };
     }
+
     return null;
   }
 
-  private static userNameSpecialCharactersAtTheEnd(control: AbstractControl) {
-    const forbiddenCharacters = RegExp('[^a-zA-Z0-9]$').test(control.value);
-
-    if (forbiddenCharacters) {
-      return {
-        specialCharactersAtTheEnd: {
-          message: 'Nazwa użytkownika musi kończyć się literą lub cyfrą',
-        },
-      };
-    }
-    return null;
-  }
- */
   private static userNameSeqTwoOrMorespecialCharacters(
     control: AbstractControl
   ) {
@@ -159,5 +128,91 @@ export class SignUpFormValidators {
       }
       return null;
     };
+  }
+
+  static passwordValidators() {
+    return [this.passwordRequired, this.passwordMinLenght, this.passwordMaxLenght]
+  }
+  
+  private static passwordRequired(control: AbstractControl)
+  {  
+      if (Validators.required(control)) {
+        return {
+          required: {
+            message: 'Hasło jest wymagane',
+          },
+        };
+      }
+      return null;    
+  }
+
+  private static passwordMinLenght(control: AbstractControl)
+  {  
+      if (Validators.minLength(8)(control)) {
+        return {
+          minLenght: {
+            message: 'Hasło musi mieć minimum 8 znaków długości',
+          },
+        };
+      }
+      return null;    
+  }
+
+  private static passwordMaxLenght(control: AbstractControl)
+  {  
+      if (Validators.maxLength(64)(control)) {
+        return {
+          required: {
+            message: 'Hasło musi mieć maksimum 64 znaki długości',
+          },
+        };
+      }
+      return null;    
+  }
+
+
+  static passwordConfirmationRequired(control: AbstractControl)
+  {  
+      if (Validators.required(control)) {
+        return {
+          required: {
+            message: 'Potwierdzenie hasła jest wymagane',
+          },
+        };
+      }
+      return null;
+    
+  }
+  
+
+  static correctPasswordConfirmationValidator(
+    group: AbstractControl
+  ): FormErrors | null {
+    const password = group.get('password');
+    const passwordConfirmation = group.get('passwordConfirmation');
+
+    return password?.value &&
+      passwordConfirmation?.value &&
+      password?.value !== passwordConfirmation?.value
+      ? {
+          passwordNotMatchedConfirmation: {
+            message: 'Hasła nie są takie same',
+          },
+        }
+      : null;
+  }
+}
+
+export class PasswordConfirmationMatcher implements ErrorStateMatcher {
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(
+      control &&
+      (control.invalid || form?.invalid ) &&
+      (control.dirty || control.touched || isSubmitted)
+    );
   }
 }

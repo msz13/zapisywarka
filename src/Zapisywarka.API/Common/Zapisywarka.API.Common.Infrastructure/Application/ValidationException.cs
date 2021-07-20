@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Common.Application
+namespace Zapisywarka.API.Common.Application
 {
     public class ValidationException : Exception
     {

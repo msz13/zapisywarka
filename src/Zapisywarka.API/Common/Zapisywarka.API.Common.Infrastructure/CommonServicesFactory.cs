@@ -1,4 +1,4 @@
-﻿using Common.Application;
+﻿using Zapisywarka.API.Common.Application;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using NodaTime;

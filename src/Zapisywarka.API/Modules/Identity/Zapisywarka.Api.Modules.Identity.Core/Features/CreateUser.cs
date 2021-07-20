@@ -1,4 +1,3 @@
-
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -7,8 +6,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Zapisywarka.API.Modules.Identity.Core.Features {
-    public class CreateUser {
+namespace Zapisywarka.API.Modules.Identity.Core.Features
+{
+    public class CreateUser
+    {
 
         public class Command : IRequest<IdentityResult>
         {
@@ -17,36 +18,49 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features {
             public string Password { get; set; }
         }
 
-        public class CommandValidator: AbstractValidator<Command> 
+        public class CommandValidator : FluentValidation.AbstractValidator<Command>
         {
-            public CommandValidator() {
-              //  RuleFor(command => command.UserName).NotNull().NotEmpty();
+            public CommandValidator()
+            {
+                  RuleFor(command => command.UserName).NotNull().NotEmpty();
+                  RuleFor(command => command.Password).NotNull().NotEmpty();
+                  RuleFor(command => command.AccessToken).NotNull().NotEmpty();
             }
         }
 
-      
-        internal class CreatrUserHandler : IRequestHandler<Command, IdentityResult>
+        public class UserValidator : IUserValidator<IdentityUser>
+        {
+            public Task<IdentityResult> ValidateAsync(UserManager<IdentityUser> manager, IdentityUser user)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+        internal class CreateUserHandler : IRequestHandler<Command, IdentityResult>
         {
             private readonly UserManager<IdentityUser> _userMenager;
 
-            public CreatrUserHandler(UserManager<IdentityUser> userMenager)
+            public CreateUserHandler(UserManager<IdentityUser> userMenager)
             {
                 _userMenager = userMenager;
             }
 
             public async Task<IdentityResult> Handle(Command request, CancellationToken cancellationToken)
-          {
+            {
                 var user = new IdentityUser
                 {
                     UserName = request.UserName,
-                                        
+
                 };
-               
-                var result = await _userMenager.CreateAsync(user, request.Password); 
-                if(!result.Succeeded) {
+
+                var result = await _userMenager.CreateAsync(user, request.Password);
+                if (!result.Succeeded)
+                {
+
+                    var message = result.Errors.Select(e => e.Code).ToList();
                     
-              //  var message = result.Errors.Select(e => e.Code.ToString()).ToString();
-                    throw new ArgumentException(result.Errors.FirstOrDefault().Code + " desc: " + result.Errors.FirstOrDefault().Description);
+                    throw new Zapisywarka.API.Common.Application.ValidationException(message);
                 }
                 return result;
             }

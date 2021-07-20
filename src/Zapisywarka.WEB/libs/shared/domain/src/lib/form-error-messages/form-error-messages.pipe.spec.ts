@@ -54,6 +54,20 @@ describe('FormErrorMessagesPipe', () => {
     expect(messages).toStrictEqual(["Nazwa użytkownika jest wymagana", "Nazwa użytkownika nie jest poprawna"])
   })
 
+  it('should return single message with "first" parameter', () => {
+    control.setErrors({
+      reguired: {
+        message: "Nazwa użytkownika jest wymagana"
+      }, invalid: {
+        message: "Nazwa użytkownika nie jest poprawna"
+      }
+    })
+
+    const message = pipe.transform(control, 'first')
+
+    expect(message).toBe('Nazwa użytkownika jest wymagana')
+  })
+
   it('should return null when control is null', () => {
     const nullControl: FormControl | null = null
 

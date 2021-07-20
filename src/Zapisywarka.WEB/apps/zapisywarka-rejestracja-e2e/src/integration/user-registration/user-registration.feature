@@ -6,11 +6,11 @@ Feature: Rejestracja użytkowników
 
         Given: Stworzono następujący kod dostępu:
             | TbkdNPHf |
+        And: Organizator zapisów podał kod dostępu "TbkdNPHf"
 
 
     Scenario: Użytkownik rejestruje się w systemie
-        Given Organizator zapisów podał kod dostępu "TbkdNPHf"
-        And Organizator zapisów wypełnił dane rejestracji konta
+       And Organizator zapisów wypełnił dane rejestracji konta
             | Nazwa_użytkownika | Hasło      | Potwierdzenie_hasła |
             | Jan_sz.cz-13      | Pasword_01 | Pasword_01          |
         When Próbuję się zarejestrować
@@ -21,10 +21,9 @@ Feature: Rejestracja użytkowników
     # Rule Nazwa użytkownika musi być poprawna
 
     Scenario: Użytkownik podaje niepoprawną nazwę użytkownika
-        Given Organizator zapisów podał kod dostępu "TbkdNPHf"
-        And Organizator zapisów podał nazwę użytkownika <nazwa_uzytkownika>
+        Given Organizator zapisów podał nazwę użytkownika <nazwa_uzytkownika>
         When Próbuję się zarejestrować
-        Then Nie może procesować rejestracji i widzimi komunikat<komunikat>
+        Then Nie może procesować rejestracji i widzimi komunikat <komunikat>
 
         Examples: Niepoprawne nazwy użytkownika
             | opis                       | nazwa_uzytkownika                 | komunikat                                                                          |
@@ -46,10 +45,28 @@ Feature: Rejestracja użytkowników
         Given Baza użytkowników zawiera następujących organizatorów
             | Nazwa_użytkownika |
             | wojtek            |
-        When Organizator zapisów próbuje utworzyć konto użytkownika <nazwa_użytkownika>
+        AND Organizator zapisów próbuje podaje nazwię użytkownika: <nazwa_użytkownika>
+        When Próbuję się zarejestrować
         Then Nie może procesować rejestracji i widzimi komunikat "Nazwa użytkownika już istnieje"
 
         Examples:
             | przypadek     | nazwa_użytkownika |
             | ta sama nazwa | wojtek            |
             | duza litera   | Wojtek            |
+
+
+       # Rule: Wymagana jest odpowiednia siła hasła   
+    Scenario Outline: Użytkownik, który próbuje się zarejestrować podaje zbyt słabe hasło
+        When Organizator zapisów podaje hasło <haslo>
+        Then Nie może procesować rejestracji i widzimi komunikat <komunikat>
+
+       Examples: Niepoprawne hasła
+            | opis                       | haslo                 | komunikat         |                                                                 |
+            | krótsza niż 8 znaków       | passwor                               | Hasło musi mieć minimum 8 znaków |
+            | dłuższe niż 64 znaki       | 'passw_123456789_123456789_123456789_123456789_123456789_123456789' | Hasło musi mieć maksimum 64 znaki  |
+
+  # Rule: Należy wymóc potwierdzenie hasła
+    Scenario: Uzytkownik potwierdził nieprawidłoweg hasło
+       Given Organizator zapisów podał hasło "Pasword_01"
+        When Podaje potwierdzenie hasła "Pasword_02"
+        Then Nie może procedować rejestracji i widzi komunikat "Podano błędne hasło"

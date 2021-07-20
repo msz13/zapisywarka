@@ -8,7 +8,7 @@ import {AbstractControl} from '@angular/forms'
 })
 export class FormErrorMessagesPipe implements PipeTransform {
 
-  transform(control: AbstractControl | null): string[] {
+  transform(control: AbstractControl | null, first: 'first' | 'many' = 'many'): string[] {
    
     let errors = control?.errors
                     
@@ -16,7 +16,7 @@ export class FormErrorMessagesPipe implements PipeTransform {
         return []
     }
    
-    return Object.values(errors).map(error => {
+    return first == 'first' ? Object.values(errors)[0].message : Object.values(errors).map(error => {
     
      if(!error.message) {
        throw new Error("Form control error has undefined message property")

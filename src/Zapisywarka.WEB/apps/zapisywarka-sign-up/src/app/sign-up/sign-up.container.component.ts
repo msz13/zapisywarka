@@ -30,8 +30,11 @@ export class SignUpContainerComponent implements OnInit {
     
       this.loading = true
       this.userService.createUser(event).subscribe({
-        next: ()=>{
-          this.redirectToApp()
+        next: (result)=>{
+          if (result) {
+            this.redirectToApp()
+          }
+        
         },
         error: (err: Error)=> this.error = err
       },)

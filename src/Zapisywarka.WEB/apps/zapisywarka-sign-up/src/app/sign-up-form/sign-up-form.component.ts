@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { SignUpFormValidators } from '../sign-up/sign-up-form-validator';
+import { PasswordConfirmationMatcher, SignUpFormValidators } from '../sign-up/sign-up-form-validator';
 
 export interface UserData {
   userName: string,
@@ -20,26 +20,33 @@ export class SignUpFormComponent implements OnInit {
   @Input() userDataControl!: FormGroup 
   @Output() userData = new EventEmitter<UserData>()
 
+  passwordConfirmationMatcher = new PasswordConfirmationMatcher()
  
 
   constructor() { }
 
   ngOnInit(): void {
-   
+  
   }
 
   getErrorMessages(field: string): string[] {
   
     if(field == "password") {
       return ["Hasło jest wymagane"]
-    } else
+    } else if (field == 'samePasswords') {
+      const errors = this.userDataControl.errors
+      console.log(JSON.stringify(errors))
+      return [errors?.passwordNotMatchedConfirmation.message]
+    }
+    
+    else
     {
       return ["Potwierdzenie hasła jest wymagane"]
     }
     
   }
 
-  onSubmit() {
+  onSubmit() {    
     if(this.userDataControl.valid) {
       this.userData.emit(this.userDataControl.value)  
     }

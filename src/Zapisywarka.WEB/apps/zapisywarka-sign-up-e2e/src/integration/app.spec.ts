@@ -19,7 +19,7 @@ describe('zapisywarka-sign-up', () => {
     const userName = 'John';
     const password = 'Pasword_01';
 
-    cy.intercept('POST', 'api/identity/users').as('new-user')
+    cy.intercept('POST', 'api/identity/users', {statusCode: 500, delay: 300}) .as('new-user')
 
     getLoadingProgress().should('not.exist')
     
@@ -29,8 +29,8 @@ describe('zapisywarka-sign-up', () => {
     getPassword().type(password);
     getPasswordConfirmation().type(password)
     getSignUpButton().click();
-    
     getLoadingProgress().should('exist')
+    
 
     cy.wait('@new-user').its('request.body').should('deep.equal', {
       accessCode: accessCode,
@@ -38,7 +38,9 @@ describe('zapisywarka-sign-up', () => {
       password: password
     })
 
-  });
+  })
+
+   
 
 
   it('should show server error', ()=>{
@@ -46,13 +48,15 @@ describe('zapisywarka-sign-up', () => {
     const userName = 'John';
     const password = 'Pasword_01';
 
-    cy.intercept('POST', 'api/identity/users', (req) =>  {
+   /*  cy.intercept('POST', 'api/identity/users', (req) =>  {
       req.reply({
         statusCode: 500,
-        body: "Internal server error",
-        
+        body: "Internal server error",        
       })          
-    }).as('new-user')
+    }).as('new-user') */
+
+    cy.intercept('POST', 'api/identity/users', {forceNetworkError: true})          
+    .as('new-user')
 
     getServerError().should('not.exist')
     getAccessCode().type(accessCode);
@@ -128,15 +132,30 @@ describe('zapisywarka-sign-up', () => {
 
     it('should validate password', ()=>{
    
-      getPassword().find('input').type('pasword').clear().blur();
+      getPassword().find('input').type('pasword1').clear().blur();
       getValidationError().should('exist').and('have.text', 'Hasło jest wymagane') 
+
+      getPassword().find('input').type('pasword').blur();
+      getValidationError().should('exist').and('have.text', 'Hasło musi mieć minimum 8 znaków długości') 
+
+      getPassword().find('input').type('pasword_pasword_pasword_pasword_pasword_pasword_pasword_pasword_1').blur();
+      getValidationError().should('exist').and('have.text', 'Hasło musi mieć maksimum 64 znaki długości') 
+
+
+    })
+
+    it('should validate require password confirmation', ()=>{
+     
+      getPasswordConfirmation().find('input').type('pasword1').clear().blur();
+      getValidationError().should('exist').and('have.text', 'Potwierdzenie hasła jest wymagane') 
 
     })
 
     it('should validate password confirmation', ()=>{
      
-      getPasswordConfirmation().find('input').type('pasword').clear().blur();
-      getValidationError().should('exist').and('have.text', 'Potwierdzenie hasła jest wymagane') 
+      getPassword().find('input').type('pasword1');
+      getPasswordConfirmation().find('input').type('pas').blur();
+      getValidationError().should('exist').and('have.text', 'Hasła nie są takie same') 
 
     })
 

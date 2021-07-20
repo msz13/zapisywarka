@@ -26,9 +26,9 @@ export class SignUpComponent implements OnInit {
 
   userData: FormGroup = this.fb.group({
     userName: ['', SignUpFormValidators.userNameValidators()],
-    password: ['', Validators.required],
-    passwordConfirmation: ['', Validators.required]
-  })
+    password: ['', SignUpFormValidators.passwordValidators()],
+    passwordConfirmation: ['', SignUpFormValidators.passwordConfirmationRequired]
+  }, {validators: SignUpFormValidators.correctPasswordConfirmationValidator})
 
 
   @Output() userSubmited = new EventEmitter()
@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
   }
 
   showSignUpForm: boolean = false;
@@ -47,6 +47,7 @@ export class SignUpComponent implements OnInit {
   validateAccessCode() {
 
     this.accessCodeControl.markAsTouched()
+    
 
     if (this.accessCodeControl.valid) {
       this.showSignUpForm = !this.showSignUpForm;
@@ -59,11 +60,11 @@ export class SignUpComponent implements OnInit {
     const accessCode = this.accessCodeControl.value
     const { userName, password } = userData
 
-    const trimedUserName = userName.trim()
+    
 
     const user: User = {
       accessCode,
-      userName: trimedUserName,
+      userName,
       password
     }
 

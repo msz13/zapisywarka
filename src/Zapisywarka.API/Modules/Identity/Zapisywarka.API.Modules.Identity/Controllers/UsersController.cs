@@ -28,7 +28,7 @@ namespace Zapisywarka.API.Modules.Identity.Controllers
 
         public IActionResult Get() {
             return Ok(new {Text = "Users"});
-        }
+        } 
 
 
         [HttpGet]
