@@ -3,11 +3,13 @@ using System.Threading.Tasks;
 using Zapisywarka.API.Modules.Identity.Core.Features;
 using FluentAssertions;
 using System;
-using Common.Application;
+using Zapisywarka.API.Common.Application;
+using System.Collections.Generic;
 
 namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 {
     using static Testing;
+    using static Zapisywarka.API.Modules.Identity.Core.Features.GetAllUsers;
 
     [TestFixture]
     public class Tests
@@ -17,7 +19,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         [SetUp]
         public async Task Setup()
         {
-           // await ResetState();
+           await ResetState();
             
         }
 
@@ -27,7 +29,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
             var command = new CreateUser.Command
             {
                 AccessToken = "abcdefgh",
-                UserName = Guid.NewGuid().ToString(),
+                UserName = "Jan_01",
                 Password = "Password"
             };
 
@@ -43,44 +45,59 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         }
 
         [Test]
-        public async Task ShouldFailWhenPasswordIsNull()
+        public async Task ShouldFailWhenCommandIsInvalid()
         {
              var command = new CreateUser.Command
             {  
-                UserName = Guid.NewGuid().ToString()           
+                      
             };
 
-            await FluentActions.Awaiting(() => SendAsync(command)).Should().ThrowAsync<ArgumentNullException>();
-            
+            await FluentActions.Awaiting(() => SendAsync(command)).Should().ThrowAsync<ValidationException>();
+                        
             var user = await FindUser(command.UserName);
-            user.Should().BeNull();        
+            user.Should().BeNull();       
 
         }
 
-        [Test]
-         public async Task ShouldFailWhenUserNameIsNull()
+
+           [Test]
+        public async Task ShouldFailWhenUserNameIsInvalid()
         {
-             var command = new CreateUser.Command
-            {           
-                Password = "Password"  
+            var command = new CreateUser.Command
+            {
+                AccessToken = "abcdefgh",
+                UserName = "jan$",
+                Password = "Password"
             };
 
-         FluentActions.Awaiting(() => SendAsync(command))
-                .Should()
-                .ThrowAsync<ValidationException>().Result
-                .Where(e => e.Message.Contains("Pole 'User Name' nie może być puste"));  
-
-         var user = await FindUser(command.UserName);
-         user.Should().BeNull();     
-              
+            await FluentActions.Awaiting(() => SendAsync(command)).Should().ThrowAsync<ValidationException>().WithMessage("*InvalidUserName");
+                        
+            var user = await FindUser(command.UserName);
+            user.Should().BeNull();       
 
         }
 
-        //TODO check result method DONE
+         [Test]
+        public async Task ShouldFailWhenUserWithSameNameAlreadyExists()
+        {
+            var command = new CreateUser.Command
+            {
+                AccessToken = "abcdefgh",
+                UserName = "jan13",
+                Password = "Password"
+            };
 
-        //TODO spawdzić
+            
+            await SendAsync(command);
 
-        //TODO cdoś
-        
+            
+            await FluentActions.Awaiting(() => SendAsync(command)).Should().ThrowAsync<ValidationException>().WithMessage("*DuplicateUserName");
+                        
+            var users = await SendAsync<List<UserDTO>>(new GetAllUsers.Query());
+            users.Count.Should().Be(1);       
+
+        }
+
+      
     }
 }

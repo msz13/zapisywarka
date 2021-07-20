@@ -1,5 +1,4 @@
-﻿using Common.Application;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,9 +7,8 @@ using Npgsql;
 using NUnit.Framework;
 using Respawn;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
+using Zapisywarka.API.Common.Application;
 using Zapisywarka.API.Modules.Identity.Core;
 using Zapisywarka.API.Modules.Identity.Core.Infrastructure;
 
@@ -94,7 +92,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         public static async Task ResetState()
         {
             
-            using (var conn = new NpgsqlConnection("Host=localhost;Database=Offers;Username=postgres;Password=Password_01"))
+            using (var conn = new NpgsqlConnection(_configuration.GetConnectionString("Postgresql")))
             {
                 await conn.OpenAsync();
 
