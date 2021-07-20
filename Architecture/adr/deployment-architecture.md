@@ -19,6 +19,7 @@ Wymagnia:
 Warianty:
 
 |nazwa|opis|cena|
+|---|---|---|
 |cloud | baza danych as a service, heroku albo azure app services |
 |jeden vps| instalacja wsyzstkich usług ręcznie |
 |dwa vps | jeden dla bazy danych druga dla aplikacji (nginx, kestrel)|
