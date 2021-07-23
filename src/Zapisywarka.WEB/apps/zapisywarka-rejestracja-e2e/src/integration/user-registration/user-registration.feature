@@ -4,13 +4,12 @@ Feature: Rejestracja użytkowników
 
     Background:
 
-        Given: Stworzono następujący kod dostępu:
-            | TbkdNPHf |
+        Given: Stworzono następujący kod dostępu: "TbkdNPHf"            
         And: Organizator zapisów podał kod dostępu "TbkdNPHf"
 
 
     Scenario: Użytkownik rejestruje się w systemie
-       And Organizator zapisów wypełnił dane rejestracji konta
+        And Organizator zapisów wypełnił dane rejestracji konta
             | Nazwa_użytkownika | Hasło      | Potwierdzenie_hasła |
             | Jan_sz.cz-13      | Pasword_01 | Pasword_01          |
         When Próbuję się zarejestrować
@@ -20,16 +19,16 @@ Feature: Rejestracja użytkowników
 
     # Rule Nazwa użytkownika musi być poprawna
 
-    Scenario: Użytkownik podaje niepoprawną nazwę użytkownika
-        Given Organizator zapisów podał nazwę użytkownika <nazwa_uzytkownika>
+    Scenario Outline: Użytkownik podaje niepoprawną nazwę użytkownika
+        Given Organizator zapisów podał nazwę użytkownika "<nazwa_uzytkownika>"
         When Próbuję się zarejestrować
-        Then Nie może procesować rejestracji i widzimi komunikat <komunikat>
+        Then Nie może procedować rejestracji i widzimi komunikat "<komunikat>"
 
-        Examples: Niepoprawne nazwy użytkownika
+        Examples: Niepoprawna nazwy użytkownika
             | opis                       | nazwa_uzytkownika                 | komunikat                                                                          |
             | krótsza niż 3 znaki        | ja                                | Nazwa użytkownika musi mieć minimum 3 znaki                                        |
             | dłuższa niż 32 znaki       | Abcdefghaijklmnoprstuwyzabcdefghi | Nazwa użytkownika musi mieć maksimum 32 znaki                                      |
-            | zawiera niedozwolone znaki | jan/?#[]@!                        | zawiera niedozwolone znaki                                                         | jan/?#[]@! | zawiera niedozwolone znaki | jan/?#[]@! | zawiera niedozwolone znaki | jan/?#[]@!| zawiera niedozwolone znaki | jan/?#[]@!                        | zawiera niedozwolone znaki                                     | jan/?#[]@!| zawiera niedozwolone znaki | jan/?#[]@!| zawiera niedozwolone znaki | jan/?#[]@!$&'()*+,.`|;=~          | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |                                                                  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.               | ;=                                                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.`              | ;=~                                                            | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |'()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,.` | ;=~ | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ | '()*+,. | ;= | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |  | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._ |
+            | zawiera niedozwolone znaki | jan/?#[]@!                        | zawiera niedozwolone znaki                                                         |
             | zawiera spację             | jan 1                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._                     |
             | zawiera polskie litery     | Bożena                            | Nazwa użytkownika nie może zawierać polskich znaków                                |
             | zawiera emoji              | jan😀                             | Nazwa użytkownika może zwierać tylko litery, cyfry, znaki: -._                     |
@@ -43,11 +42,11 @@ Feature: Rejestracja użytkowników
     # Rule: Użytkownicy powinni być unikalni
     Scenario Outline: Użytkownik, który próbuje się zarejestrować podaje istniejącą nazwę użytkownika
         Given Baza użytkowników zawiera następujących organizatorów
-            | Nazwa_użytkownika |
+            | Nazwa_uzytkownika |
             | wojtek            |
-        AND Organizator zapisów próbuje podaje nazwię użytkownika: <nazwa_użytkownika>
+        And Organizator zapisów próbuje podaje nazwię użytkownika "<nazwa_użytkownika>"
         When Próbuję się zarejestrować
-        Then Nie może procesować rejestracji i widzimi komunikat "Nazwa użytkownika już istnieje"
+        Then Nie może procedować rejestracji i widzimi komunikat "Nazwa użytkownika już istnieje"
 
         Examples:
             | przypadek     | nazwa_użytkownika |
@@ -55,18 +54,18 @@ Feature: Rejestracja użytkowników
             | duza litera   | Wojtek            |
 
 
-       # Rule: Wymagana jest odpowiednia siła hasła   
+    # Rule: Wymagana jest odpowiednia siła hasła
     Scenario Outline: Użytkownik, który próbuje się zarejestrować podaje zbyt słabe hasło
-        When Organizator zapisów podaje hasło <haslo>
-        Then Nie może procesować rejestracji i widzimi komunikat <komunikat>
+        Given Organizator zapisów podał hasło "<haslo>"
+        Then Nie może procedować rejestracji i widzimi komunikat "<komunikat>"
 
-       Examples: Niepoprawne hasła
-            | opis                       | haslo                 | komunikat         |                                                                 |
-            | krótsza niż 8 znaków       | passwor                               | Hasło musi mieć minimum 8 znaków |
-            | dłuższe niż 64 znaki       | 'passw_123456789_123456789_123456789_123456789_123456789_123456789' | Hasło musi mieć maksimum 64 znaki  |
+        Examples: Niepoprawne hasła
+            | opis                 | haslo                                                               | komunikat                         |
+            | krótsza niż 8 znaków | passwor                                                             | Hasło musi mieć minimum 8 znaków  |
+            | dłuższe niż 64 znaki | 'passw_123456789_123456789_123456789_123456789_123456789_123456789' | Hasło musi mieć maksimum 64 znaki |
 
-  # Rule: Należy wymóc potwierdzenie hasła
+    # Rule: Należy wymóc potwierdzenie hasła
     Scenario: Uzytkownik potwierdził nieprawidłoweg hasło
-       Given Organizator zapisów podał hasło "Pasword_01"
+        Given Organizator zapisów podał hasło "Pasword_01"
         When Podaje potwierdzenie hasła "Pasword_02"
-        Then Nie może procedować rejestracji i widzi komunikat "Podano błędne hasło"
+        Then Nie może procedować rejestracji i widzimi komunikat "Podano błędne hasło"

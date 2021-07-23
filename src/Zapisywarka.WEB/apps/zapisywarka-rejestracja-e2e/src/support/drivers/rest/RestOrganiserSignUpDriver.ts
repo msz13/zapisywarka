@@ -1,5 +1,6 @@
 
 export class RestOrganiserSignUpDriver {
+    
    
     accessCode: string = ""
     userName: string = ""
@@ -24,6 +25,10 @@ export class RestOrganiserSignUpDriver {
 
     getOrganisers() {
       return cy.request('GET','/api/identity/users').its('body')
+  }
+
+  createUser(token: string, Nazwa_uzytkownika: any, arg2: string) {
+    cy.request('POST', '/api/identity/users').its('status').should('be', 204)
   }
   
   
