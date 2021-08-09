@@ -1,0 +1,10 @@
+namePrefix: zapisywarka-
+
+commonLabels: 
+  app: zapisywarkaApi
+
+resources:
+  - deployment.yml
+  - service.yml
+  - ingress.yml
+  

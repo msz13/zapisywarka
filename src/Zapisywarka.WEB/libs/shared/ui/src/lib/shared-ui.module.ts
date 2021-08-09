@@ -7,7 +7,8 @@ import { InitialAvatarComponent } from './initial-avatar/initial-avatar.componen
 import { SideNavAccountInfoComponent } from './side-nav-account-info/side-nav-account-info.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { MenuCardComponent } from './menu-card/menu-card.component';
-import { FlexLayoutModule } from '@angular/flex-layout'
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component'
 
 const COMPONENTS = [
   HeaderComponent,
@@ -20,7 +21,7 @@ const COMPONENTS = [
 
 @NgModule({
   imports: [CommonModule, SharedMaterialModule, FlexLayoutModule],
-  declarations: [...COMPONENTS],
-  exports: [...COMPONENTS, FlexLayoutModule],
+  declarations: [...COMPONENTS, DateTimePickerComponent],
+  exports: [...COMPONENTS, FlexLayoutModule, DateTimePickerComponent],
 })
 export class SharedUiModule {}

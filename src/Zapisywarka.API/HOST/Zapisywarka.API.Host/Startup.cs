@@ -10,6 +10,8 @@ using Zapisywarka.API.Common.Infrastructure;
 using Zapisywarka.API.Common.TestState;
 using Zapisywarka.API.Modules.Identity;
 using Zapisywarka.API.Modules.Offers.Api;
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace Zapisywarka.API.Host
@@ -40,8 +42,12 @@ namespace Zapisywarka.API.Host
             if(!_env.IsProduction())
             {
                 services.AddTestStateModule();
-                services.AddControllers().AddApplicationPart(Assembly.GetAssembly(typeof(TestStateModuleFactory)));
+                services.AddControllers().AddJsonOptions(options =>{
+                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 
+            }).AddApplicationPart(Assembly.GetAssembly(typeof(TestStateModuleFactory)));
+                  
             }
 
             //comment

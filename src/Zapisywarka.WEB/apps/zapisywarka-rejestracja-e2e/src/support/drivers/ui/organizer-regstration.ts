@@ -12,6 +12,7 @@ export class OrganiserSignUpDriver {
         
         this.enterUserName(userName)
         this.enterPassword(password)
+        this.enterPasswordConfirmation(passwordConfirmation)
         
 
 

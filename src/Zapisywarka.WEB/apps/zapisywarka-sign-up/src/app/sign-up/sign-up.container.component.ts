@@ -44,7 +44,7 @@ export class SignUpContainerComponent implements OnInit {
   }
   
   redirectToApp() {
-    window.location.href = "/"
+    window.location.href = "/login"
   }
   
 

@@ -7577,47 +7577,41 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\matsz\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/home/msz13/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Host\\Zapisywarka.API.Host\\Zapisywarka.API.Host.csproj",
+      "projectUniqueName": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/Zapisywarka.API.Host.csproj",
       "projectName": "Zapisywarka.API.Host",
-      "projectPath": "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Host\\Zapisywarka.API.Host\\Zapisywarka.API.Host.csproj",
-      "packagesPath": "C:\\Users\\matsz\\.nuget\\packages\\",
-      "outputPath": "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Host\\Zapisywarka.API.Host\\obj\\",
+      "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/Zapisywarka.API.Host.csproj",
+      "packagesPath": "/home/msz13/.nuget/packages/",
+      "outputPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\matsz\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/msz13/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Common\\Zapisywarka.API.Common.Infrastructure\\Zapisywarka.API.Common.Infrastructure.csproj": {
-              "projectPath": "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Common\\Zapisywarka.API.Common.Infrastructure\\Zapisywarka.API.Common.Infrastructure.csproj"
+            "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Common/Zapisywarka.API.Common.Infrastructure/Zapisywarka.API.Common.Infrastructure.csproj": {
+              "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Common/Zapisywarka.API.Common.Infrastructure/Zapisywarka.API.Common.Infrastructure.csproj"
             },
-            "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Common\\Zapisywarka.API.Common.TestState\\Zapisywarka.API.Common.TestState.csproj": {
-              "projectPath": "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Common\\Zapisywarka.API.Common.TestState\\Zapisywarka.API.Common.TestState.csproj"
+            "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Common/Zapisywarka.API.Common.TestState/Zapisywarka.API.Common.TestState.csproj": {
+              "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Common/Zapisywarka.API.Common.TestState/Zapisywarka.API.Common.TestState.csproj"
             },
-            "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Identity\\Zapisywarka.API.Modules.Identity\\Zapisywarka.API.Modules.Identity.csproj": {
-              "projectPath": "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Identity\\Zapisywarka.API.Modules.Identity\\Zapisywarka.API.Modules.Identity.csproj"
+            "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Modules/Identity/Zapisywarka.API.Modules.Identity/Zapisywarka.API.Modules.Identity.csproj": {
+              "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Modules/Identity/Zapisywarka.API.Modules.Identity/Zapisywarka.API.Modules.Identity.csproj"
             },
-            "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Offers\\Zapisywarka.API.Modules.Offers.Api\\Zapisywarka.API.Modules.Offers.Api.csproj": {
-              "projectPath": "d:\\programowanie\\zapisywarka\\src\\Zapisywarka.API\\Modules\\Offers\\Zapisywarka.API.Modules.Offers.Api\\Zapisywarka.API.Modules.Offers.Api.csproj"
+            "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Modules/Offers/Zapisywarka.API.Modules.Offers.Api/Zapisywarka.API.Modules.Offers.Api.csproj": {
+              "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Modules/Offers/Zapisywarka.API.Modules.Offers.Api/Zapisywarka.API.Modules.Offers.Api.csproj"
             }
           }
         }
@@ -7655,7 +7649,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.205\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.302/RuntimeIdentifierGraph.json"
       }
     }
   }

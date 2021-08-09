@@ -3,9 +3,8 @@ Feature: Rejestracja użytkowników
     Aby organizatorzy zapisów mogli korzystać z systemu muszą stworzyć konto użytkownika
 
     Background:
-
-        Given: Stworzono następujący kod dostępu: "TbkdNPHf"            
-        And: Organizator zapisów podał kod dostępu "TbkdNPHf"
+        Given Stworzono następujący kod dostępu: "TbkdNPHf"            
+        And Organizator zapisów podał kod dostępu "TbkdNPHf"
 
 
     Scenario: Użytkownik rejestruje się w systemie
@@ -13,7 +12,7 @@ Feature: Rejestracja użytkowników
             | Nazwa_użytkownika | Hasło      | Potwierdzenie_hasła |
             | Jan_sz.cz-13      | Pasword_01 | Pasword_01          |
         When Próbuję się zarejestrować
-        Then Baza użytkowników zawiera organizatora zapisów o imieniu "Jan13"
+        Then Baza użytkowników zawiera organizatora zapisów o imieniu "Jan_sz.cz-13"
         And Przekierowany jest na stronę logowania
 
 
@@ -44,7 +43,7 @@ Feature: Rejestracja użytkowników
         Given Baza użytkowników zawiera następujących organizatorów
             | Nazwa_uzytkownika |
             | wojtek            |
-        And Organizator zapisów próbuje podaje nazwię użytkownika "<nazwa_użytkownika>"
+        And Organizator zapisów podaje nazwię użytkownika "<nazwa_użytkownika>"
         When Próbuję się zarejestrować
         Then Nie może procedować rejestracji i widzimi komunikat "Nazwa użytkownika już istnieje"
 

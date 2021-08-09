@@ -10,19 +10,14 @@ import { MainComponent } from './main-component/main.component';
 
 const routes: Routes = [
   {
-    path: 'start',
+    path: '',
     component: MainComponent,
-    canActivate: [AuthGuard],
     children: [
       {
         path: '',
         component: HomePageComponent,
       },
-
-      /* { 
-    path: 'katalog',
-    loadChildren: () => import('@zapisywarka-client-aps/catalog/feature-catalog').then(m => m.CatalogModule)
-  }, */
+    
     ],
   },
    { path: '**', redirectTo: '' },

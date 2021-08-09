@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  selector:
+    matchLabels:
+      app: API
+  template:
+    metadata:
+      labels:
+        app: API
+    spec:
+      containers:
+      - name: api
+        image: zapisywarka-api
+        imagePullPolicy: Never
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+        env:          
+          - name: POSTGRESQL__DB
+            value: foo
+          - name: POSTGRESQL__HOST
+            value: test-zapisywarka
+          - name: POSTGRESQL__USER
+            valueFrom:
+              secretKeyRef:
+                name: foo-owner-user.test-zapisywarka.credentials
+                key: username                
+          - name: POSTGRESQL__PASSWORD
+            valueFrom:  
+              secretKeyRef:
+                name: foo-owner-user.test-zapisywarka.credentials
+                key: password
+

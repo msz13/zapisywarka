@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/material.min.css" />
+    <script src="js/material.min.js"></script>
+</head>
+<body>
+    <div>
+        <div class="container">
+            <div class="mdl-card mdl-shadow--4dp login-card">
+                <div class="mdl-card__title">
+                    <h6 class="mdl-card__title-text mdl-color-text--primary">Zapisywarka</h6>                    
+                </div>
+                <div class="login-form">
+                    <h6 class="mdl-typography--title">Logowanie</h6>
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-field">
+                            <input class="mdl-textfield__input" type="text" id="login">
+                            <label class="mdl-textfield__label" for="sample1">Login</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-field">
+                            <input class="mdl-textfield__input" type="password" id="password">
+                            <label class="mdl-textfield__label" for="sample1">Hasło</label>
+                        </div>
+                        <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect form-field">
+                            <input type="checkbox" id="chkbox1" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Nie wylogowuwuj mnie</span>
+                        </label>                       
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored login-button">
+                            Zaloguj
+                        </button>
+                    </form>
+                </div>         
+                             
+            </div>
+        </div>
+    </div>
+</body>
+</html>

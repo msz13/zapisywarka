@@ -24,11 +24,16 @@ export class RestOrganiserSignUpDriver {
     }
 
     getOrganisers() {
+      cy.wait('@createUser')
       return cy.request('GET','/api/identity/users').its('body')
   }
 
-  createUser(token: string, Nazwa_uzytkownika: any, arg2: string) {
-    cy.request('POST', '/api/identity/users').its('status').should('be', 204)
+  createUser(token: string, Nazwa_uzytkownika: any, password: string) {
+    cy.request('POST', '/api/identity/users', {
+      accessCode: token,
+      userName: Nazwa_uzytkownika,
+      password: password
+    }).its('status').should('to.equal', 204)
   }
   
   

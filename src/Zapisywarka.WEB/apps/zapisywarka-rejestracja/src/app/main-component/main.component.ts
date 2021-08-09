@@ -11,7 +11,7 @@ export class MainComponent implements OnInit {
 
   accauntName: string = "Bochenek"
 
-  constructor(private auth: OAuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

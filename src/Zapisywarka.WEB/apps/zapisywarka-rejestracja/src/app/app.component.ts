@@ -14,15 +14,6 @@ export class AppComponent implements OnInit {
   accauntName = 'Bochenek'
 
   constructor(private auth: AuthService, private router: Router){ }
-    ngOnInit(): void {
-      if(this.auth.isLoggedIn()) {
-        
-      }
-      this.auth.login().then(result => {
-        if(result) {
-          this.router.navigateByUrl('start')
-        }
-      })
-  }
+    ngOnInit(): void { }
 
 }

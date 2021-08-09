@@ -11,6 +11,8 @@ import {MatRippleModule} from '@angular/material/core'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule} from '@angular/material/input'
 import {MatProgressBarModule} from '@angular/material/progress-bar'
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import {MatSelectModule} from '@angular/material/select'
  
 const MODULES = [
   LayoutModule,
@@ -24,7 +26,9 @@ const MODULES = [
   MatRippleModule,
   MatFormFieldModule,
   MatInputModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatDatepickerModule,
+  MatSelectModule
 ]
 
 @NgModule({

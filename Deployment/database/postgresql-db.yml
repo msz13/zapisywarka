@@ -1,0 +1,27 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: test-zapisywarka
+  namespace: default
+spec:
+  teamId: "test"
+  volume:
+    size: 1Gi
+  numberOfInstances: 1
+  users:
+    msz13:  # database owner
+    - superuser
+    - createdb
+    foo_owner_user: 
+    - login  # role for application foo
+    foo_reader_user: 
+    - login
+    foo_writer_user: 
+    - login 
+  databases:
+    zapisywarka_db: msz13  # dbname: owner
+  preparedDatabases:
+    foo: 
+      defaultUsers: true
+  postgresql:
+    version: "13"

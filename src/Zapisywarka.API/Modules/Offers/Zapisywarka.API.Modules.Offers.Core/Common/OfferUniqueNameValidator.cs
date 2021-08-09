@@ -1,4 +1,4 @@
-﻿using Common.Application;
+﻿using Zapisywarka.API.Common.Application;
 using Microsoft.EntityFrameworkCore;
 using OffersInfrastructure.Persistance;
 using System;

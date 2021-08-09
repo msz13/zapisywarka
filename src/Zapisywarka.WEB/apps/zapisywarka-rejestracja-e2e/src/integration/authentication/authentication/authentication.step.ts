@@ -1,6 +1,6 @@
 import { And, Before, Then, When } from 'cypress-cucumber-preprocessor/steps';
-import { NavigationDriver } from '../../../support/drivers/navigation';
-import { AuthenticationDriver } from '../../../support/drivers/authentication';
+import { NavigationDriver } from '../../../support/drivers/ui/navigation';
+import { AuthenticationDriver } from '../../../support/drivers/ui/authentication';
 
 let navigationDriver: NavigationDriver;
 let authenticationDriver: AuthenticationDriver;

@@ -16,7 +16,10 @@ namespace Zapisywarka.API.Common.Infrastructure.Persistance
             services.AddDbContext<TDbContext>(options =>
             {
                 var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
-                var connectionString = configuration.GetConnectionString("Postgresql");
+                var postgresConfig = configuration.GetSection("Postgresql");
+                
+                var connectionString = $"HOST={postgresConfig["HOST"]};DATABASE={postgresConfig["Db"]};USERNAME={postgresConfig["User"]};PASSWORD={postgresConfig["Password"]};SSLMode=Require;Trust Server Certificate=true";
+                                
                 options.UseNpgsql(connectionString, o => o.UseNodaTime());
                 options.EnableSensitiveDataLogging();
 

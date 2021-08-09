@@ -4,10 +4,10 @@
   display: block;  
 }
 
-$size: 200px;
+$size: 250px;
 
 mat-card {
-  width: 100%;
+  width: $size;
   height: $size;
   display: flex;
   flex-direction: column;

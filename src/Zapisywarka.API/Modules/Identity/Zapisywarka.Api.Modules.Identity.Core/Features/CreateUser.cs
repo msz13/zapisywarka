@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace Zapisywarka.API.Modules.Identity.Core.Features
 {
@@ -13,8 +14,12 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
 
         public class Command : IRequest<IdentityResult>
         {
-            public string AccessToken { get; set; }
+            public string AccessCode { get; set; }
+            
+
             public string UserName { get; set; }
+
+            
             public string Password { get; set; }
         }
 
@@ -24,18 +29,11 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
             {
                   RuleFor(command => command.UserName).NotNull().NotEmpty();
                   RuleFor(command => command.Password).NotNull().NotEmpty();
-                  RuleFor(command => command.AccessToken).NotNull().NotEmpty();
+                  RuleFor(command => command.AccessCode).NotNull().NotEmpty();
             }
         }
 
-        public class UserValidator : IUserValidator<IdentityUser>
-        {
-            public Task<IdentityResult> ValidateAsync(UserManager<IdentityUser> manager, IdentityUser user)
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        
 
         internal class CreateUserHandler : IRequestHandler<Command, IdentityResult>
         {
