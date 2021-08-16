@@ -16,7 +16,7 @@ Before(()=> {
 )
 
 When(
-  'Użytkownik o loginie "Admin" i haśle "Password_01" został zarejestrowany w systemie',
+  'Konto organizatora zapisów o nazwie {string} i haśle {string} zostało zarejestrowane',
   () => {
     //uzytkownik dodany do bazy danych
     //TODO dodać programowo
