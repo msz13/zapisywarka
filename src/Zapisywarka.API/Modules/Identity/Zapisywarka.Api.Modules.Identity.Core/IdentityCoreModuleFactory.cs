@@ -24,6 +24,7 @@ namespace Zapisywarka.API.Modules.Identity.Core
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
                 
             });
 
