@@ -15,9 +15,11 @@ export class NavigationDriver {
 
   ShouldVisitLoginPage() {
    cy.url().should('include', '/login')
+   
   }
 
-  ShouldSeelSignUpPage() {
+  ShouldSeeSignUpPage() {
     cy.url().should('include', '/sign-up')
+    
 }
 }

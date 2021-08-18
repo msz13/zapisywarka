@@ -9,10 +9,10 @@ Background:
 
 #Rule: Nowy użytkownik po wejściu na stronę główną powinien mieć możliwość stworzenia nowego konta. 
 Scenario: Przejście do strony tworzenia konta
-When Użytkownik kliknie link Załóż konto
+When Użytkownik kliknie link 'Załóż konto'
 Then Powinien zobaczyć stronę tworzenia konta
 
 #Rule: Wylogowany użytkownik po wejściu na stronę główną powinien mieć możliwość przejścia do strony logowania.
 Scenario: Przejście do strony tworzenia konta
-When Użytkownik kliknie link Zaloguj
+When Użytkownik kliknie link 'Zaloguj'
 Then Powinien zobaczyć stronę logowania
