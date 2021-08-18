@@ -11,7 +11,7 @@ Before(() => {
 });
 
 Before(()=> {
-    navigationDriver.navigate('/')
+    navigationDriver.navigate('/sign-up')
 }
 )
 

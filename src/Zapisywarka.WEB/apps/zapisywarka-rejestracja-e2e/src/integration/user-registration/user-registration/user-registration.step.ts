@@ -19,7 +19,7 @@ Before(()=>{
     restDriver = new RestOrganiserSignUpDriver()
     navigationDriver = new NavigationDriver()
     uniqueId =  Date.now().toString()
-    navigationDriver.navigate('sign-up/')
+    navigationDriver.navigate('/sign-up')
     cy.intercept('POST', 'api/identity/users').as('createUser')
    
   
