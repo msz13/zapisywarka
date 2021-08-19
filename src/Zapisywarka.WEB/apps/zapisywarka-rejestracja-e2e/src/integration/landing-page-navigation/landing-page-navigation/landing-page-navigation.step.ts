@@ -1,5 +1,5 @@
 import { NavigationDriver } from "apps/zapisywarka-rejestracja-e2e/src/support/drivers/ui/navigation";
-import { Given, Then, When } from "cypress-cucumber-preprocessor/steps/index";
+import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 
 let navigationDriver: NavigationDriver
 let landingPageDriver: LandingPageDriver
@@ -9,7 +9,7 @@ beforeEach(()=>{
 })
 
 Given('Użytkownik odwiedził stronę główną', ()=>{
-    navigationDriver.navigate("/")
+   navigationDriver.navigate("/")
 })
 
 When("Użytkownik kliknie link 'Załóż konto'", ()=>{
