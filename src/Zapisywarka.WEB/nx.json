@@ -63,6 +63,7 @@
       "tags": [],
       "implicitDependencies": ["zapisywarka-sign-up"]
     },
-    "shared-domain": { "tags": [] }
+    "shared-domain": { "tags": [] },
+    "landing-page": { "tags": [] }
   }
 }
