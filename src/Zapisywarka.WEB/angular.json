@@ -981,6 +981,13 @@
       "sourceRoot": "libs/landing-page/src",
       "prefix": "zapisywarka-client-aps",
       "architect": {
+
+        "build": {
+          "options": {
+          "stylePreprocessorOptions": {
+            "includePaths": ["libs/shared/theme/src/lib/styles"]
+          }}      
+        },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {

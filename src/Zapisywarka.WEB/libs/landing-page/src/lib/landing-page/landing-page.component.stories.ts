@@ -1,4 +1,5 @@
 
+import { SharedMaterialModule } from '@zapisywarka.web/material';
 import { LandingPageComponent } from './landing-page.component';
 
 export default {
@@ -7,7 +8,7 @@ export default {
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: []
+    imports: [SharedMaterialModule]
   },
   component: LandingPageComponent,
   props: {
