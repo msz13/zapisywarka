@@ -9,3 +9,5 @@ export const authCodeFlowConfig: AuthConfig = {
   showDebugInformation: true,
   timeoutFactor: 0.01
 };
+
+export const signUpPageUrl: string = "signUp"
