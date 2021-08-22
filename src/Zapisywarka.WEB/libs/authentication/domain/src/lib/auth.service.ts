@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {OAuthService} from 'angular-oauth2-oidc'
-import { authCodeFlowConfig } from './auth.config';
+import { authCodeFlowConfig, signUpPageUrl } from './auth.config';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,10 @@ export class AuthService {
       }
     });
 
+  }
+
+  signUp() {
+    window.location.href = signUpPageUrl 
   }
 
   isLoggedIn() {
