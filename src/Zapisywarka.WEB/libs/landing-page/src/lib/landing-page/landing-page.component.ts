@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@zapisywarka-client-aps/authentication/domain'
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  login() {
+    this.auth.login()
+  }
+
+  signUp() {
+   // this.auth.signUp()
   }
 
 }
