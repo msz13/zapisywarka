@@ -1,0 +1,15 @@
+name: create preview environement
+
+on: workflow_dispatch
+
+jobs:
+  create_preview_env:
+
+    runs_on: ubuntu-latest
+
+    steps:
+      - name: terraform init
+      - name: terraform plan
+      - name: terraform apply
+
+

@@ -51,7 +51,8 @@
       ],
       "@zapisywarka-client-aps/shared/domain": [
         "libs/shared/domain/src/index.ts"
-      ]
+      ],
+      "@zapisywarka-client-aps/landing-page": ["libs/landing-page/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
