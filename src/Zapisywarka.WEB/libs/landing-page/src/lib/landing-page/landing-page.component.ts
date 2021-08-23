@@ -18,7 +18,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   signUp() {
-   // this.auth.signUp()
+   this.auth.signUp()
   }
 
 }
