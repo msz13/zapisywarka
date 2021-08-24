@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@zapisywarka-client-aps/authentication/domain';
-import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-main-component',
