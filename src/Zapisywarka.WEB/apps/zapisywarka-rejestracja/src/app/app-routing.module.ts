@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {
-  AuthenticationDomainModule,
-  AuthGuard,
-} from '@zapisywarka-client-aps/authentication/domain';
-import { LoadingComponent } from './loading/loading.component';
 import { HomePageComponent } from './main-component/home-page/home-page.component';
 import { MainComponent } from './main-component/main.component';
+import { LandingPageComponent } from '@zapisywarka-client-aps/landing-page'
 
 const routes: Routes = [
   {
     path: '',
+    component: LandingPageComponent    
+  },
+  {
+    path: 'main',
     component: MainComponent,
     children: [
       {
