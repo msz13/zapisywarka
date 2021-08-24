@@ -6,5 +6,6 @@ import {SharedMaterialModule} from '@zapisywarka.web/material'
 @NgModule({
   imports: [CommonModule, SharedMaterialModule],
   declarations: [LandingPageComponent],
+  exports: [LandingPageComponent]
 })
 export class LandingPageModule {}
