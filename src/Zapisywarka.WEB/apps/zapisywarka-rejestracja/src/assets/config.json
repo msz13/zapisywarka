@@ -1,0 +1,8 @@
+{
+    "auth":  
+    {
+      "issuer": "",
+      "clientId": "spa"                
+    },
+    "signUpURL": "/signUp"
+  }
