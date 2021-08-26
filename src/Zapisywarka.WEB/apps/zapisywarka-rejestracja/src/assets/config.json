@@ -1,7 +1,7 @@
 {
     "auth":  
     {
-      "issuer": "",
+      "issuer": "http://localhost:80",
       "clientId": "spa"                
     },
     "signUpURL": "/signUp"

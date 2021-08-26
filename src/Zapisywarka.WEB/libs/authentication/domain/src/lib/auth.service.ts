@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import {OAuthService} from 'angular-oauth2-oidc'
-import { authCodeFlowConfig, signUpPageUrl } from './auth.config';
+import {AuthConfig, OAuthService} from 'angular-oauth2-oidc'
+import {ConfigurationService} from '@zapisywarka-client-aps/shared/domain'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private oauthService: OAuthService, private router: Router) {}
+  constructor(private oauthService: OAuthService, private conf: ConfigurationService) {}
   
   login() {
+
+    const authCodeFlowConfig: AuthConfig = {      
+        issuer: this.conf.getConfig().auth.issuer,
+        redirectUri: window.location.origin + '/index.html',
+        clientId: this.conf.getConfig().auth.clientId,
+        responseType: 'code',
+        scope: 'openid profile Zapisywarka.API',
+        showDebugInformation: true,
+        timeoutFactor: 0.01      
+    }
+
     this.oauthService.configure(authCodeFlowConfig);
+
     return this.oauthService.loadDiscoveryDocumentAndLogin({
       
       onTokenReceived: context =>{
@@ -23,7 +34,7 @@ export class AuthService {
   }
 
   signUp() {
-    window.location.href = signUpPageUrl 
+    window.location.href = this.conf.getConfig().signUpURL 
   }
 
   isLoggedIn() {
