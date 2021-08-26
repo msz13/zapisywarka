@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 
+
+
+
 interface Config {
   auth: {
     issuer: string,
@@ -18,7 +21,7 @@ export class ConfigurationService {
 
   }
 
-  private config: Config
+  private config!: Config
 
   loadConfig() {
     return this.http.get('./assets/config.json')
@@ -35,5 +38,5 @@ export class ConfigurationService {
   getConfig(): Config {
     return this.config
   }
-  
 }
+ 
