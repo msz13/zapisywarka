@@ -18,7 +18,8 @@ export class SharedDomainModule {
       providers: [{
         provide: APP_INITIALIZER,
         useFactory: (confService: ConfigurationService) => () => confService.loadConfig(),
-        deps: [ConfigurationService]
+        deps: [ConfigurationService],
+        multi: true
       }]
     }
 

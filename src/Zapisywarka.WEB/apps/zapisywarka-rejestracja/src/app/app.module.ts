@@ -10,6 +10,7 @@ import { MainComponent } from './main-component/main.component'
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationDomainModule } from '@zapisywarka-client-aps/authentication/domain';
 import { LoadingComponent } from './loading/loading.component';
+import {SharedDomainModule} from '@zapisywarka-client-aps/shared/domain'
 
 
 
@@ -23,7 +24,8 @@ import { LoadingComponent } from './loading/loading.component';
     AppRoutingModule,    
     SharedUiModule,
     SharedMaterialModule,
-    AuthenticationDomainModule.forRoot()    
+    AuthenticationDomainModule.forRoot(),
+    SharedDomainModule.forRoot()    
   ],
   providers: [],
   bootstrap: [AppComponent],
