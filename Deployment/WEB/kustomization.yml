@@ -1,0 +1,16 @@
+namePrefix: dev-zapisywarka-
+
+commonLabels: 
+  app: zapisywarka-web
+
+configMapGenerator:
+  - name: web-configuration
+    literals:
+      - identityUrl=zapisywarka.local
+      - clientId=spa
+
+resources:
+  - deployment.yml
+  - service.yml
+  - ingress.yml
+  
