@@ -6,5 +6,6 @@ commonLabels:
 resources:
   - deployment.yml
   - service.yml
-  - ingress.yml
+  - api-ingress.yml
+  - identity-ingress.yml
   
