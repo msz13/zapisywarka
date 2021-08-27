@@ -2,14 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 
 
-
-
 interface Config {
-  auth: {
-    issuer: string,
-    clientId: string,
-  },
-  signUpURL: string
+
+  identityServerUrl: string,
+  clientId: string
+  
 }
 
 @Injectable({

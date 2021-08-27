@@ -29,15 +29,13 @@ describe('ConfigurationService', () => {
 
     
     const config = {
-      auth:  
-      {
-        issuer: '/',
-        clientId: 'spa',                
-      },
-      signUpURL: '/signUp'
-    }
-   
 
+      idenitityServer: "zapisywarka.local",
+      clientId: 'spa'
+      
+    }
+     
+   
      service.loadConfig().then(()=>{
       expect(service.getConfig()).toStrictEqual(config);
     })    
