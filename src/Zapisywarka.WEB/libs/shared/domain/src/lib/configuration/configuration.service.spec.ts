@@ -36,6 +36,7 @@ describe('ConfigurationService', () => {
     }
      
    
+
      service.loadConfig().then(()=>{
       expect(service.getConfig()).toStrictEqual(config);
     })    
