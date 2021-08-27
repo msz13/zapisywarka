@@ -12,9 +12,9 @@ export class AuthService {
   login() {
 
     const authCodeFlowConfig: AuthConfig = {      
-        issuer: this.conf.getConfig().auth.issuer,
+        issuer: this.conf.getConfig().identityServerUrl,
         redirectUri: window.location.origin + '/index.html',
-        clientId: this.conf.getConfig().auth.clientId,
+        clientId: this.conf.getConfig().clientId,
         responseType: 'code',
         scope: 'openid profile Zapisywarka.API',
         showDebugInformation: true,
@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   signUp() {
-    window.location.href = this.conf.getConfig().signUpURL 
+    window.location.href = this.conf.getConfig().identityServerUrl+'sign-up'
   }
 
   isLoggedIn() {
