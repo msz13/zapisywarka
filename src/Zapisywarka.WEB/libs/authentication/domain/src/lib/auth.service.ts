@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   signUp() {
-    window.location.href = this.conf.getConfig().identityServerUrl+'sign-up'
+    window.location.href = this.conf.getConfig().identityServerUrl+'/sign-up'
   }
 
   isLoggedIn() {

@@ -5,9 +5,8 @@ commonLabels:
 
 configMapGenerator:
   - name: web-configuration
-    literals:
-      - identityUrl=zapisywarka.local
-      - clientId=spa
+    files:
+      - config.json
 
 resources:
   - deployment.yml
