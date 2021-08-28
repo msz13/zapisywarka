@@ -2,11 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 9fc7cd1... feat(zapisywarka-rejestracja) add shared module to app module with provided configuration service
 interface Config {
 
   identityServerUrl: string,

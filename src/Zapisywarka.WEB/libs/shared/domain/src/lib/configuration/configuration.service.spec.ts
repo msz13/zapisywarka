@@ -32,11 +32,9 @@ describe('ConfigurationService', () => {
 
       idenitityServer: "zapisywarka.local",
       clientId: 'spa'
-      
-    }
-     
-   
 
+    }     
+   
      service.loadConfig().then(()=>{
       expect(service.getConfig()).toStrictEqual(config);
     })    
