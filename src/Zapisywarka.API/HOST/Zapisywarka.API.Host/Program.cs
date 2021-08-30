@@ -1,8 +1,10 @@
 namespace Zapisywarka.API.Host
 {
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Hosting;
-    public class Program
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
+
+     public class Program
     {
         public static void Main(string[] args)
         {
@@ -11,7 +13,12 @@ namespace Zapisywarka.API.Host
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.AddJsonFile("IdentityServer.json", 
+                    optional: false, 
+                    reloadOnChange: false);
+            }).ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });
