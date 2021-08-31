@@ -16,6 +16,7 @@ namespace Zapisywarka.API.Modules.Identity.IdentityServer
     {
         public static void AddIdentityServerConfiguration(this IServiceCollection services)
         {
+             var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
 
             var builder = services.AddIdentityServer(options =>
             {
@@ -28,7 +29,7 @@ namespace Zapisywarka.API.Modules.Identity.IdentityServer
             // in-memory, code config
             builder.AddInMemoryIdentityResources(Config.IdentityResources);
             builder.AddInMemoryApiScopes(Config.ApiScopes);
-            builder.AddInMemoryClients(Config.Clients);
+            builder.AddInMemoryClients(configuration.GetSection("IdenitityServer:Clients"));
             builder.AddTestUsers(TestUsers.Users);
             
             

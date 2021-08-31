@@ -7,7 +7,8 @@ spec:
     spec:
       containers:
       - name: web
-        image: zapisywarka-web:latest            
+        image: zapisywarka-web:latest
+        imagePullPolicy: IfNotPresent            
         ports:
         - containerPort: 80
         volumeMounts:

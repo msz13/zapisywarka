@@ -13,8 +13,8 @@ spec:
     spec:
       containers:
       - name: api
-        image: zapisywarka-api
-        imagePullPolicy: Never
+        image: zapisywarka-api:latest
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             memory: "256Mi"

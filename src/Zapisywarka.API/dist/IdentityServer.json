@@ -1,0 +1,16 @@
+{
+    "IdentityServer": {
+    "IssuerUri": "urn:sso.company.com",
+    "Clients": [
+      {
+        "Enabled": true,
+        "ClientId": "zapisywarka-rejestracja",
+        "ClientName": "Zapisywarka Local Development",
+        "ClientSecrets": [ { "Value": "<Insert Sha256 hash of the secret encoded as Base64 string>" } ],        
+        "AllowedGrantTypes": [ "code" ],
+        "AllowedScopes": [ "Zapisywarka.API", "OpenId", "Profile" ],
+        "RedirectUris": ["zapisywarka.local/index.html"]
+      }
+    ]
+  }
+}
