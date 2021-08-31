@@ -220,3 +220,4 @@ D:/programowanie/zapisywarka/src/Zapisywarka.API/build/Zapisywarka.API.Host.View
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/obj/Debug/net5.0/ref/Zapisywarka.API.Host.dll
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/obj/Debug/net5.0/Zapisywarka.API.Host.pdb
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/obj/Debug/net5.0/Zapisywarka.API.Host.genruntimeconfig.cache
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/bin/Debug/net5.0/IdentityServer.json
