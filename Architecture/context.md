@@ -12,3 +12,5 @@ Konto grupowe/organizacji - konto w ramach którego operacje mogą wykonaywac r�
 Konto klienta - uzytkowjik ktory moze zapisywać sie na oferty roznych dosawcow
 Konto członka grupy - uzytkownik przypisany do danego dostawcy, dostawca moze tworzyc oferty zamknietych zapisow, tylko dla grupy czlonkow
 Członek organizacji dostawcy moze tworzyc grupy czlonkow, zapraszac uzytkownikow do grupy, usuwac i dodowac istniejacych uzytkownikow
+
+Zmniana
