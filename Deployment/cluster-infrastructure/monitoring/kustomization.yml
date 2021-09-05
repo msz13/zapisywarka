@@ -1,0 +1,12 @@
+resources:
+  - namespace.yml
+
+namespace: monitoring
+
+helmChartInflationGenerator:
+- chartName: loki-stack
+  chartRepoUrl: https://grafana.github.io/helm-charts
+  chartVersion: 2.4.1
+  releaseName: loki
+  releaseNamespace: monitoring
+  values: ./values.yml
