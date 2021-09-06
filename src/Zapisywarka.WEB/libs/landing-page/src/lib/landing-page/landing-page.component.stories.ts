@@ -1,18 +1,20 @@
-
-import { AuthenticationDomainModule } from '@zapisywarka-client-aps/authentication/domain';
+import { IdentityDomainModule } from '@zapisywarka-client-aps/identity/domain';
 import { SharedMaterialModule } from '@zapisywarka.web/material';
 import { LandingPageComponent } from './landing-page.component';
-import {RouterTestingModule} from '@angular/router/testing'
+import { RouterTestingModule } from '@angular/router/testing';
 
 export default {
-  title: 'LandingPageComponent'
-}
+  title: 'LandingPageComponent',
+};
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [SharedMaterialModule, AuthenticationDomainModule, RouterTestingModule]
+    imports: [
+      SharedMaterialModule,
+      IdentityDomainModule,
+      RouterTestingModule,
+    ],
   },
   component: LandingPageComponent,
-  props: {
-  }
-})
+  props: {},
+});

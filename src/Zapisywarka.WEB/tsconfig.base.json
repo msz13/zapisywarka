@@ -42,9 +42,6 @@
       ],
       "@zapisywarka.web/material": ["libs/shared/material/src/index.ts"],
       "@zapisywarka-client-aps/shared/ui": ["libs/shared/ui/src/index.ts"],
-      "@zapisywarka-client-aps/authentication/domain": [
-        "libs/authentication/domain/src/index.ts"
-      ],
       "feature-sign-up": ["libs/sign-up/feature-sign-up/src/index.ts"],
       "@zapisywarka/sign-up-form": [
         "libs/sign-up/sign-up-element/src/index.ts"
@@ -52,7 +49,15 @@
       "@zapisywarka-client-aps/shared/domain": [
         "libs/shared/domain/src/index.ts"
       ],
-      "@zapisywarka-client-aps/landing-page": ["libs/landing-page/src/index.ts"]
+      "@zapisywarka-client-aps/landing-page": [
+        "libs/landing-page/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/identity/domain": [
+        "libs/identity/domain/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/identity/sign-up-feature": [
+        "libs/identity/sign-up-feature/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
