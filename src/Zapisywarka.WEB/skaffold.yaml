@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2beta22
+kind: Config
+metadata:
+  name: zapisywarka
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+  - image: zapisywarka-web   
+    docker:
+      dockerfile: apps/zapisywarka-rejestracja/Dockerfile 
+    hooks:
+      before:
+        - command: ["nx", "build", "--prod"]
+                     
+  local: {}
+     
+ 
+deploy:
+  kustomize:
+    paths:
+    - deployment

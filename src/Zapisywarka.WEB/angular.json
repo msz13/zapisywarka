@@ -603,7 +603,7 @@
           "options": {
             "commands": [
               "nx build zapisywarka-rejestracja --prod",
-              "docker build -f ./apps/zapisywarka-rejestracja/Dockerfile . -t html"
+              "docker build -f ./apps/zapisywarka-rejestracja/Dockerfile . -t zapisywarka-web:latest"             
             ],
             "parallel": false
           }

@@ -1,0 +1,15 @@
+namePrefix: dev-zapisywarka-
+
+commonLabels: 
+  app: zapisywarka-web
+
+configMapGenerator:
+  - name: web-configuration
+    files:
+      - config.json
+
+resources:
+  - deployment.yml
+  - service.yml
+  - ingress.yml
+  
