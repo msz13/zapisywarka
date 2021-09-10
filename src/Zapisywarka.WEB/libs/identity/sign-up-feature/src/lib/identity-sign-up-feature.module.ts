@@ -16,5 +16,6 @@ import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
     SignUpContainerComponent,
     SignUpFormComponent,
   ],
+  exports: []
 })
 export class IdentitySignUpFeatureModule {}

@@ -7,6 +7,10 @@ configMapGenerator:
   - name: web-configuration
     files:
       - config.json
+  - name: ngnix-configuration
+    files:
+      - nginx.conf
+
 
 resources:
   - deployment.yml
