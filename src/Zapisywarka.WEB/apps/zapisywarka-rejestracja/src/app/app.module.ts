@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { IdentityDomainModule } from '@zapisywarka-client-aps/identity/domain';
 import { LoadingComponent } from './loading/loading.component';
 import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
+import { IdentitySignUpFeatureModule } from '@zapisywarka-client-aps/identity/sign-up-feature';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
     SharedUiModule,
     SharedMaterialModule,
     IdentityDomainModule.forRoot(),
+    IdentitySignUpFeatureModule,
     SharedDomainModule.forRoot(),
   ],
   providers: [],
