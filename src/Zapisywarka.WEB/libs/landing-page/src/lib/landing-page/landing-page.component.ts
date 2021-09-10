@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@zapisywarka-client-aps/authentication/domain'
+import { AuthService } from '@zapisywarka-client-aps/identity/domain'
 
 @Component({
   selector: 'app-landing-page',

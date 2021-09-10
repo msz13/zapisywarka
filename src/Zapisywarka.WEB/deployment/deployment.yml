@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: k3d-zapisywarka-reg.localhost:9009/zapisywarka-web:latest            
+        image: zapisywarka-web:latest            
         ports:
         - containerPort: 80
         volumeMounts:

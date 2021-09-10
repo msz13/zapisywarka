@@ -1,4 +1,5 @@
 resources:
 - ./API 
-- ./cluster-infrastructure
+#- ./cluster-infrastructure
 - ./database
+- ./WEB

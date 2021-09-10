@@ -13,12 +13,8 @@ spec:
     spec:
       containers:
       - name: api
-        image: zapisywarka-api
-        imagePullPolicy: Never
-        resources:
-          limits:
-            memory: "256Mi"
-            cpu: "500m"
+        image: zapisywarka-api:latest
+        imagePullPolicy: Never        
         ports:
         - containerPort: 5000
         env:          
