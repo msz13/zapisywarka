@@ -4,21 +4,12 @@ metadata:
   name: zapisywarka
 build:
   tagPolicy:
-    dateTime: 
-      format: 2006-01-02_15-04-05.999_MST
+    gitCommit: {}      
   artifacts:
-  - image: zapisywarka-web   
-    docker:
-      dockerfile: apps/zapisywarka-rejestracja/Dockerfile 
-      noCache: true
-    sync:
-      manual:
-        - src: 'dist/apps/zapisywarka-rejestracja/*'
-          dest: "/usr/share/nginx/html"
-    hooks:
-      before:
-        - command: ["nx", "build", "--prod"]
-                     
+  - image: zapisywarka-web 
+    custom:
+      buildCommand: ./build-image.sh  
+    
   local: {}
      
  
