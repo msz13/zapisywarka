@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2beta22
+kind: Config
+metadata:
+  name: zapisywarka.api
+build:
+  tagPolicy:
+    gitCommit: {}
+  artifacts:
+  - image: zapisywarka-api
+    custom:
+      buildCommand: ./build-image.sh
+    #docker:
+    #  dockerfile: Dockerfile
+    #  noCache: false
+    #hooks:
+    #  before:
+    #    - command: ["dotnet", "build", './HOST/Zapisywarka.API.Host/Zapisywarka.API.Host.csproj', '-o ./dist']
+    
+deploy:
+  kustomize:
+    paths:
+    - deployment

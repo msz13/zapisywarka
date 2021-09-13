@@ -1,20 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: identity
+  name: api
   labels:
-    name: identity
-  annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
+    name: api
 spec:
   rules:
-  - host: zapisywarka.local
+  - host: api.zapisywarka.local
     http:
       paths:
-      - path: "/(sign-up|login|_content/)"
-        pathType: Prefix
+      - pathType: Prefix
+        path: "/"
         backend:
           service:
             name: zapisywarka-api
             port: 
               number: 5000
+

@@ -7,6 +7,7 @@ spec:
   teamId: "test"
   volume:
     size: 1Gi
+    #storageClass: local-path
   numberOfInstances: 1
   users:
     msz13:  # database owner

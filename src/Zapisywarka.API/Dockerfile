@@ -4,6 +4,6 @@ EXPOSE 5000
 
 ENV ASPNETCORE_URLS=http://+:5000
 
-COPY "src/Zapisywarka.API/dist" /app/
+COPY "/dist" /app/
 
 ENTRYPOINT ["dotnet", "Zapisywarka.API.Host.dll"]

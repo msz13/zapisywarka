@@ -4,7 +4,10 @@ name: zapisywarka-local
 ports:
 - port:  80:80
   nodeFilters:
-    - loadbalancer 
+    - loadbalancer
+image: rancher/k3s:v1.21.2-k3s1
+volumes:
+  - volume:  /home/msz13/programowanie/zapisywarka/Deployment/dev-cluster-infrastructure:/var/lib/rancher/k3s/server/manifests
 registries: 
   enable: false
 
