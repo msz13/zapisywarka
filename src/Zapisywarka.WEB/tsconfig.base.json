@@ -57,6 +57,9 @@
       ],
       "@zapisywarka-client-aps/identity/sign-up-feature": [
         "libs/identity/sign-up-feature/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/identity/login-feature": [
+        "libs/identity/login-feature/src/index.ts"
       ]
     }
   },
