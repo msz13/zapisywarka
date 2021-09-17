@@ -9,7 +9,7 @@ namespace Zapisywarka.API.Modules.Identity.Controllers
 {
      
     
-    [Route("api/identity/users")]
+    [Route("users")]
     [ApiController]
     public class UsersController: ControllerBase {
 
@@ -20,13 +20,15 @@ namespace Zapisywarka.API.Modules.Identity.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateUser.Command request) {
+        public async Task<IActionResult> Create([FromBody] CreateUser.Command request) 
+        {
 
             var result = await _mediator.Send(request);
             return NoContent();
         }
 
-        public IActionResult Get() {
+        public IActionResult Get() 
+        {
             return Ok(new {Text = "Users"});
         } 
 
@@ -35,6 +37,7 @@ namespace Zapisywarka.API.Modules.Identity.Controllers
         public async Task<IActionResult> GetAll()
         {
             var users = await _mediator.Send(new GetAllUsers.Query());
+            
             return Ok(users);
         }
 
