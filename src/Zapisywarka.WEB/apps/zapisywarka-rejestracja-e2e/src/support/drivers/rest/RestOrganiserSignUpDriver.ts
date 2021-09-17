@@ -1,16 +1,15 @@
 
 export class RestOrganiserSignUpDriver {
     
+    baseApiUrl: string = "http://api.zapisywarka.local" 
+
+    apiUrl = this.baseApiUrl + '/users'
    
     accessCode: string = ""
     userName: string = ""
     password: string =""
 
-    signUp() {
-        
-        
-    }
-
+   
     enterRegistrationData(userName: string, password: string, passwordConfirmation: string) {
         
       this.userName= userName
@@ -24,12 +23,12 @@ export class RestOrganiserSignUpDriver {
     }
 
     getOrganisers() {
-      cy.wait('@createUser')
-      return cy.request('GET','/api/identity/users').its('body')
+    //  cy.wait('@createUser')
+      return cy.request('GET', this.apiUrl).its('body')
   }
 
   createUser(token: string, Nazwa_uzytkownika: any, password: string) {
-    cy.request('POST', '/api/identity/users', {
+    cy.request('POST', this.apiUrl, {
       accessCode: token,
       userName: Nazwa_uzytkownika,
       password: password

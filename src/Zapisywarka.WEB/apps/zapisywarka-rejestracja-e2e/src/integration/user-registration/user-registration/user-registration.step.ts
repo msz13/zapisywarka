@@ -83,6 +83,7 @@ Then('Baza użytkowników zawiera organizatora zapisów o imieniu {string}', (us
     
 })
 
+
 Then('Nie może procedować rejestracji i widzi komunikat {string}', (userName)=>{
     
     navigationDriver.ShouldSeeSignUpPage()
