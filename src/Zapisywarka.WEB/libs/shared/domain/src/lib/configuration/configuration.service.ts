@@ -4,8 +4,7 @@ import { HttpClient} from '@angular/common/http'
 
 interface Config {
 
-  identityServerUrl: string,
-  clientId: string
+  apiUrl: string
   
 }
 
