@@ -7,7 +7,7 @@ export class NavigationDriver {
 
   ShoudVisitLoginPage() {
     cy.url().should('include', '/logowanie')
-    cy.get('[data-test=login-form]').should('exist');
+    
   }
 
   ShoudVisitMainPage() {

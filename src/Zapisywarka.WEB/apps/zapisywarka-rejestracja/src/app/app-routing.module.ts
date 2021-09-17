@@ -4,11 +4,16 @@ import { HomePageComponent } from './main-component/home-page/home-page.componen
 import { MainComponent } from './main-component/main.component';
 import { LandingPageComponent } from '@zapisywarka-client-aps/landing-page'
 import { SignUpContainerComponent} from '@zapisywarka-client-aps/identity/sign-up-feature'
+import {LoginContainerComponent} from '@zapisywarka-client-aps/identity/login-feature'
 
 const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent    
+  },
+  {
+    path: 'logowanie',
+    component: LoginContainerComponent
   },
   {
     path: 'sign-up',

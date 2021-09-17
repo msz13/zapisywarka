@@ -1,14 +1,16 @@
 <main class="container">
     <h2 class="mat-display-1 title">Zapisywarka</h2>
-<<<<<<< HEAD
-    <button mat-flat-button color="primary" class="authenitication-button" (click)="login()">Zaloguj</button>
-    <a routerLink="sign-up">
-        <button mat-flat-button color="primary" class="authenitication-button" (click)="signUp()">Zarejestruj się</button>
+    <a routerLink="/logowanie" >
+        <button mat-flat-button color="primary" class="authenitication-button" data-test="login-button" >Zaloguj</button>
+    </a>
+    <a routerLink="/sign-up">
+        <button mat-flat-button color="primary" class="authenitication-button" data-test="sign-up-button" >Zarejestruj się</button>
     </a>
         
-=======
-    <button mat-flat-button color="primary" class="authenitication-button" data-test="login-button" (click)="login()">Zaloguj</button>
-    <button mat-flat-button color="primary" class="authenitication-button" data-test="sign-up-button" (click)="signUp()">Zarejestruj się</button>    
->>>>>>> ed6e43e... fix(web-zapisywarka-rejestracja-e2e) fixed implementation of landing page tests
 
 <main>
+
+    <!--
+    [routerLink]="['/logowanie']"
+    [routerLink]="['/sign-up']"]
+    -->
