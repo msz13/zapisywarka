@@ -17,5 +17,6 @@ module.exports = {
     '<rootDir>/libs/shared/domain',
     '<rootDir>/libs/landing-page',
     '<rootDir>/libs/identity/sign-up',
+    '<rootDir>/libs/identity/login',
   ],
 };

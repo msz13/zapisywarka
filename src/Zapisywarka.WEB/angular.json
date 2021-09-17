@@ -603,7 +603,7 @@
           "options": {
             "commands": [
               "nx build zapisywarka-rejestracja --prod",
-              "docker build -f ./apps/zapisywarka-rejestracja/Dockerfile . -t zapisywarka-web:latest"             
+              "docker build -f ./apps/zapisywarka-rejestracja/Dockerfile . -t zapisywarka-web:latest"
             ],
             "parallel": false
           }
@@ -919,6 +919,31 @@
             "lintFilePatterns": [
               "apps/identity-sign-up-feature-e2e/**/*.{js,ts}"
             ]
+          }
+        }
+      }
+    },
+    "identity-login-feature": {
+      "projectType": "library",
+      "root": "libs/identity/login-feature",
+      "sourceRoot": "libs/identity/login-feature/src",
+      "prefix": "zapisywarka-client-aps",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/identity/login-feature/src/**/*.ts",
+              "libs/identity/login-feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/identity/login-feature"],
+          "options": {
+            "jestConfig": "libs/identity/login-feature/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
