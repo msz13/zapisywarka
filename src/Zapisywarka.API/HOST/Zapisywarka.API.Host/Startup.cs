@@ -33,7 +33,7 @@ namespace Zapisywarka.API.Host
         {
 
             services.AddControllers();
-            services.AddRazorPages();
+          //  services.AddRazorPages();
             services.AddControllersWithViews();
             services.AddCommonInfrastructure();
             services.AddOffersModule();
@@ -87,10 +87,8 @@ namespace Zapisywarka.API.Host
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
-                endpoints.MapRazorPages();
-                endpoints.MapGet("/api", context => context.Response.WriteAsync("Zapisywarka.pl - API"));
-                
+                endpoints.MapControllers();               
+                endpoints.MapGet("/", context => context.Response.WriteAsync("Zapisywarka.pl - API"));               
                
             });
         }
