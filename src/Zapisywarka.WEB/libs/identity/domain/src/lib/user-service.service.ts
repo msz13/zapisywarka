@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ConfigurationService } from '@zapisywarka-client-aps/shared/domain';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -16,10 +17,16 @@ export interface User {
 })
 export class UserService {
  
-  constructor(private http: HttpClient) { }
+  private baseUrl: string
+
+  constructor(private http: HttpClient, config: ConfigurationService) { 
+    
+    this.baseUrl = config.getConfig().apiUrl + '/users'
+
+  }
 
   createUser(user: User) {
-    return this.http.post('api/identity/users', user).pipe(map(()=> true),catchError(this.handleError))
+    return this.http.post(this.baseUrl, user).pipe(map(()=> true),catchError(this.handleError))
   }
 
 

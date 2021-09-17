@@ -26,6 +26,7 @@ export class SignUpContainerComponent implements OnInit {
     this.loading = true;
     this.userService.createUser(event).subscribe({
       next: (result) => {
+        console.debug(event)
         if (result) {
           this.redirectToApp();
         }
