@@ -21,7 +21,7 @@ Feature: Rejestracja użytkowników
     Scenario Outline: Użytkownik podaje niepoprawną nazwę użytkownika
         Given Organizator zapisów podał nazwę użytkownika "<nazwa_uzytkownika>"
         When Próbuję się zarejestrować
-        Then Nie może procedować rejestracji i widzimi komunikat "<komunikat>"
+        Then Nie może procedować rejestracji i widzi komunikat "<komunikat>"
 
         Examples: Niepoprawna nazwy użytkownika
             | opis                       | nazwa_uzytkownika                 | komunikat                                                                          |
@@ -45,7 +45,7 @@ Feature: Rejestracja użytkowników
             | wojtek            |
         And Organizator zapisów podaje nazwię użytkownika "<nazwa_użytkownika>"
         When Próbuję się zarejestrować
-        Then Nie może procedować rejestracji i widzimi komunikat "Nazwa użytkownika już istnieje"
+        Then Nie może procedować rejestracji i widzi komunikat "Nazwa użytkownika już istnieje"
 
         Examples:
             | przypadek     | nazwa_użytkownika |
@@ -56,7 +56,7 @@ Feature: Rejestracja użytkowników
     # Rule: Wymagana jest odpowiednia siła hasła
     Scenario Outline: Użytkownik, który próbuje się zarejestrować podaje zbyt słabe hasło
         Given Organizator zapisów podał hasło "<haslo>"
-        Then Nie może procedować rejestracji i widzimi komunikat "<komunikat>"
+        Then Nie może procedować rejestracji i widzi komunikat "<komunikat>"
 
         Examples: Niepoprawne hasła
             | opis                 | haslo                                                               | komunikat                         |
@@ -67,4 +67,4 @@ Feature: Rejestracja użytkowników
     Scenario: Uzytkownik potwierdził nieprawidłoweg hasło
         Given Organizator zapisów podał hasło "Pasword_01"
         When Podaje potwierdzenie hasła "Pasword_02"
-        Then Nie może procedować rejestracji i widzimi komunikat "Podano błędne hasło"
+        Then Nie może procedować rejestracji i widzi komunikat "Podano błędne hasło"
