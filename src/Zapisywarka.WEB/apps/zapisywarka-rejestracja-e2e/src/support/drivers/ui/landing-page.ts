@@ -1,12 +1,12 @@
 
-class LandingPageDriver {
+export class LandingPageDriver {
     
     
     navigateLoginPage() {
-        cy.visit("/login")
+        cy.get('[data-test=login-button]').click()
     }
     navigateSignUpPage() {
-        cy.visit("/sign-up")
+        cy.get('[data-test=sign-up-button]').click()
     }
 
    

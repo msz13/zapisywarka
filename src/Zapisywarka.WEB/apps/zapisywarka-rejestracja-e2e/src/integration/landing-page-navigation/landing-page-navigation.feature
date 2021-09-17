@@ -13,6 +13,6 @@ When Użytkownik kliknie link 'Załóż konto'
 Then Powinien zobaczyć stronę tworzenia konta
 
 #Rule: Wylogowany użytkownik po wejściu na stronę główną powinien mieć możliwość przejścia do strony logowania.
-Scenario: Przejście do strony tworzenia konta
+Scenario: Przejście do strony logowania
 When Użytkownik kliknie link 'Zaloguj'
 Then Powinien zobaczyć stronę logowania

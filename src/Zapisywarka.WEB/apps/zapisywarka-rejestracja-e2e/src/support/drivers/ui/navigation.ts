@@ -6,6 +6,7 @@ export class NavigationDriver {
   }
 
   ShoudVisitLoginPage() {
+    cy.url().should('include', '/logowanie')
     cy.get('[data-test=login-form]').should('exist');
   }
 
@@ -13,11 +14,8 @@ export class NavigationDriver {
     cy.get('[data-test=main-page]').should('exist');
   }
 
-  ShouldVisitLoginPage() {
-   cy.url().should('include', '/login')
-   
-  }
-
+  
+  
   ShouldSeeSignUpPage() {
     cy.url().should('include', '/sign-up')
     
