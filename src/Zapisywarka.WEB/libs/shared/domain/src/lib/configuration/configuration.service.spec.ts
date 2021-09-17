@@ -30,8 +30,7 @@ describe('ConfigurationService', () => {
     
     const config = {
 
-      idenitityServer: "zapisywarka.local",
-      clientId: 'spa'
+      apiUrl: "api.zapisywarka.local",      
 
     }     
    
