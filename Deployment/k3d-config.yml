@@ -7,7 +7,7 @@ ports:
     - loadbalancer
 image: rancher/k3s:v1.21.2-k3s1
 volumes:
-  - volume:  /home/msz13/programowanie/zapisywarka/Deployment/dev-cluster-infrastructure:/var/lib/rancher/k3s/server/manifests
+  - volume:  /home/msz13/programowanie/zapisywarka/Deployment/dev-cluster-infrastructure/postgres-operator.yml:/var/lib/rancher/k3s/server/manifests/postgres-operator.yml
 registries: 
   enable: false
 
