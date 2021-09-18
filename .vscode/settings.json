@@ -3,6 +3,14 @@
     "todo-tree.tree.scanMode": "current file",
     "todo-tree.tree.showBadges": true,
     "todo-tree.tree.showCountsInTree": true,
+    "cucumberautocomplete.steps": [
+        "src/Zapisywarka.WEB/apps/zapisywarka-rejestracja-e2e/src/integration/**/*.step.ts"      
+    ],
+    "cucumberautocomplete.strictGherkinCompletion": true
+    
 
+}
 
+{
+    
 }

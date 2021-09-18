@@ -14,10 +14,10 @@ Feature: Rejestracja użytkowników
         When Próbuję się zarejestrować
         Then Baza użytkowników zawiera organizatora zapisów o imieniu "Jan_sz.cz-13"
         And Przekierowany jest na stronę logowania
+        
 
 
-    # Rule Nazwa użytkownika musi być poprawna
-
+    
     Scenario Outline: Użytkownik podaje niepoprawną nazwę użytkownika
         Given Organizator zapisów podał nazwę użytkownika "<nazwa_uzytkownika>"
         When Próbuję się zarejestrować
