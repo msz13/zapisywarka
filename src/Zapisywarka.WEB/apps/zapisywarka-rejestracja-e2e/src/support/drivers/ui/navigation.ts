@@ -14,7 +14,6 @@ export class NavigationDriver {
     cy.url().should('include', '/main')
     cy.get('[data-test=main-page]').should('exist');
   }
-
   
   
   ShouldSeeSignUpPage() {
