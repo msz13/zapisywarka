@@ -13,7 +13,7 @@ export default {
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [SharedMaterialModule, BrowserAnimationsModule, ReactiveFormsModule, SharedMaterialModule, SharedDomainModule],
+    imports: [SharedMaterialModule, BrowserAnimationsModule, ReactiveFormsModule, SharedDomainModule],
     declarations: [SignUpFormComponent]
   },
   component: SignUpComponent,
