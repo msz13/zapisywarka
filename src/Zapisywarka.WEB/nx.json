@@ -1,18 +1,13 @@
 {
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "npmScope": "zapisywarka-client-aps",
   "tasksRunnerOptions": {
     "default": {
@@ -29,76 +24,46 @@
     }
   },
   "projects": {
-    "zapisywarka-back-office": {
-      "tags": []
-    },
+    "zapisywarka-back-office": { "tags": [] },
     "zapisywarka-back-office-e2e": {
       "tags": [],
       "implicitDependencies": ["zapisywarka-back-office"]
     },
-    "shared-theme": {
-      "tags": []
-    },
-    "offers-feature-offer-creation": {
-      "tags": []
-    },
+    "shared-theme": { "tags": [] },
+    "offers-feature-offer-creation": { "tags": [] },
     "offers-feature-offer-creation-e2e": {
       "tags": [],
       "implicitDependencies": ["offers-feature-offer-creation"]
     },
-    "offers-domain": {
-      "tags": []
-    },
-    "catalog-domain-category": {
-      "tags": []
-    },
-    "catalog-api": {
-      "tags": []
-    },
-    "catalog-utills-testing": {
-      "tags": []
-    },
-    "catalog-domain-catalog-item": {
-      "tags": []
-    },
-    "catalog-feature-catalog": {
-      "tags": []
-    },
+    "offers-domain": { "tags": [] },
+    "catalog-domain-category": { "tags": [] },
+    "catalog-api": { "tags": [] },
+    "catalog-utills-testing": { "tags": [] },
+    "catalog-domain-catalog-item": { "tags": [] },
+    "catalog-feature-catalog": { "tags": [] },
     "catalog-feature-catalog-e2e": {
       "tags": [],
       "implicitDependencies": ["catalog-feature-catalog"]
     },
-    "zapisywarka-rejestracja": {
-      "tags": []
-    },
+    "zapisywarka-rejestracja": { "tags": [] },
     "zapisywarka-rejestracja-e2e": {
       "tags": [],
       "implicitDependencies": ["zapisywarka-rejestracja"]
     },
-    "shared-material": {
-      "tags": []
-    },
-    "shared-ui": {
-      "tags": []
-    },
-    "shared-domain": {
-      "tags": []
-    },
-    "landing-page": {
-      "tags": []
-    },
-    "identity-domain": {
-      "tags": []
-    },
-    "identity-sign-up-feature": {
-      "tags": []
-    },
+    "shared-material": { "tags": [] },
+    "shared-ui": { "tags": [] },
+    "shared-domain": { "tags": [] },
+    "landing-page": { "tags": [] },
+    "identity-domain": { "tags": [] },
+    "identity-sign-up-feature": { "tags": [] },
     "identity-sign-up-feature-e2e": {
       "tags": [],
       "implicitDependencies": ["identity-sign-up-feature"]
     },
-    "identity-login-feature": {
-      "tags": []
+    "identity-login-feature": { "tags": [] },
+    "identity-login-feature-e2e": {
+      "tags": [],
+      "implicitDependencies": ["identity-login-feature"]
     }
   }
 }

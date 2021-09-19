@@ -1,0 +1,45 @@
+@import '../../../../../libs/shared/material/src/theme-variables';
+
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .title {
+    color: mat-color($dark-blue-green-primary, 600);
+  }
+  
+  mat-card {
+    width: 350px;
+    height: 400px;
+  }
+
+    
+  mat-card-content {
+    padding: 1.5em;
+    overflow: hidden;    
+  }
+  
+ 
+  
+  .full-width-field {
+    width: 100%;
+  }
+  
+  
+  .server-error {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: mat-color($dark-blue-green-warn);
+  }
+
+  .buttons-section {
+      width: 100%;
+      display: flex;
+      margin: 1em;
+      justify-content: space-between;
+  }
+  

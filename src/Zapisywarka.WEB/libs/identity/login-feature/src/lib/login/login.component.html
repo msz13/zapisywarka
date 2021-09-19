@@ -1,0 +1,29 @@
+<mat-card data-test="sign-up">
+    <mat-card-title class="title">
+        Zapisywarka
+    </mat-card-title>
+    <mat-card-content>
+        <h2 class="mat-title">Zaloguj się</h2>
+        <form [formGroup]="loginForm">
+            <mat-form-field appearance="outline" class="full-width-field" style="margin-bottom: 1em"
+                data-test="user-name">
+                <mat-label>Nazwa użytkownika</mat-label>
+                <input matInput formControlName="userName" />
+                <mat-error data-test="validation-error"><mat-error data-test="validation-error" >{{loginForm.get('userName') | formErrorMessages: 'first'}}}</mat-error></mat-error>                 
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width-field" data-test="password">
+                <mat-label>Hasło</mat-label>
+                <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password" />
+                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button> 
+                <mat-error data-test="validation-error" >{{loginForm.get('password') | formErrorMessages: 'first'}}}</mat-error>
+            </mat-form-field>
+            <mat-checkbox formControlName="rememberMe">Zapamiętaj mnie</mat-checkbox>
+        </form>
+        <section class="buttons-section">
+            <a mat-button color="primary">Utwórz konto</a>
+            <button mat-flat-button color="primary">Zaloguj</button>
+        </section>        
+    </mat-card-content>
+</mat-card>
