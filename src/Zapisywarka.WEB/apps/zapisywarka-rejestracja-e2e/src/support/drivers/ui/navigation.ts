@@ -5,12 +5,13 @@ export class NavigationDriver {
     cy.visit(url);
   }
 
-  ShoudVisitLoginPage() {
+  ShouldVisitLoginPage() {
     cy.url().should('include', '/logowanie')
     
   }
 
-  ShoudVisitMainPage() {
+  ShouldVisitMainPage() {
+    cy.url().should('include', '/main')
     cy.get('[data-test=main-page]').should('exist');
   }
 
