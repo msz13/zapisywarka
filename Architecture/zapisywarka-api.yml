@@ -1,0 +1,104 @@
+openapi: '3.0.2'
+info:
+  title: Zapisywarka
+  version: '1.0'
+servers:
+  - url: https://api.zapisywarka.pl
+  - url: https://test.api.zapisywarka.pl
+paths: 
+  /users:
+    post:
+      summary: Creates new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                accessCode:
+                  type: string
+                userName:
+                  type: string
+                  minLength: 3
+                  maxLength: 32
+                password:
+                  type: string
+                  minLength: 8
+                  format: password                  
+      responses:
+        '201':
+          description: OK
+    get:
+      summary: Gets all users
+      responses:
+        '200':
+          description: Returns all users
+          content:
+           application/json:
+             schema:
+              type: array
+              items: 
+                  $ref: '#components/schemas/User'            
+  /users/login:
+    post:
+      summary: Login user
+      requestBody:        
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName: 
+                  type: string
+                password: 
+                  type: string
+                rememberMe: 
+                  type: boolean
+              required:
+                - userName
+                - password          
+      responses:
+        '204':
+          description: OK          
+        '400':
+          description: Missing values
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/Error'
+        '401':
+          description: Invalid username or password    
+  /users/me:
+    get:
+      summary: Get user claim of logged in user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Anauthycated user 
+components:
+  schemas:
+    Error: 
+      type: object
+      properties:
+        message:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        userName:
+          type: string
+      required:
+        - id
+        - username
+
+
+        
+
+    
