@@ -37,7 +37,7 @@ export class AuthService {
 
   isLoggedIn() {
     return (
-      this.oauthService.hasValidAccessToken && this.oauthService.hasValidIdToken
+      false //this.oauthService.hasValidAccessToken && this.oauthService.hasValidIdToken
     );
   }
 }

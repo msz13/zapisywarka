@@ -1,21 +1,11 @@
+const { getJestProjects } = require('@nrwl/jest');
+
 module.exports = {
   projects: [
-    '<rootDir>/apps/zapisywarka-back-office',
+    ...getJestProjects(),
     '<rootDir>/libs/offer-creation',
-    '<rootDir>/libs/shared/theme',
-    '<rootDir>/libs/offers/feature-offer-creation',
-    '<rootDir>/libs/offers/domain',
     '<rootDir>/libs/catalog/domain',
-    '<rootDir>/libs/catalog/domain-category',
-    '<rootDir>/libs/catalog/api',
-    '<rootDir>/libs/catalog/utills/testing',
-    '<rootDir>/libs/catalog/feature-catalog',
-    '<rootDir>/apps/zapisywarka-rejestracja',
-    '<rootDir>/libs/shared/material',
-    '<rootDir>/libs/shared/ui',
     '<rootDir>/libs/authentication/domain',
-    '<rootDir>/libs/shared/domain',
-    '<rootDir>/libs/landing-page',
     '<rootDir>/libs/identity/sign-up',
     '<rootDir>/libs/identity/login',
   ],

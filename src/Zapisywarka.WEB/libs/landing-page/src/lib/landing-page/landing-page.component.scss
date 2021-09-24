@@ -1,7 +1,8 @@
-@import '../../../../shared/material/src/theme-variables';
+@use '~@angular/material' as mat;
+@import '../../../../shared/material/src/zapisywarka-theme';
 
 .title {
-    color: mat-color($dark-blue-green-primary, 600);  
+    color: mat.get-color-from-palette($dark-blue-green-primary, 600);  
 }
 
 .container {

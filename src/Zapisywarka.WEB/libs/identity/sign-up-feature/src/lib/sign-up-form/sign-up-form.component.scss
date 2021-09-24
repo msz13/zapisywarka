@@ -1,4 +1,10 @@
-@import '../../../../../libs/shared/material/src/theme-variables';
+@use 'sass:map';
+@use '~@angular/material' as mat;
+@use '../../../../../libs/shared/material/src/zapisywarka-theme' as theme;
+
+$color-config: mat.get-color-config(theme.$dark-blue-green-theme);
+
+$warn-palette: map.get($color-config, 'warn');
 
 .form-container {
   width: 100%;
@@ -17,6 +23,6 @@ button {
 }
 
 .form-error {
-  color: mat-color($dark-blue-green-warn);
+  color: mat.get-color-from-palette($warn-palette);
   font-size: 0.75em;
 }

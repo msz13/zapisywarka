@@ -1,4 +1,5 @@
-@import '../../../../material/src/theme-variables';
+@use '~@angular/material' as mat;
+@use '../../../../material/src/zapisywarka-theme';
 
 .sidenav-container {
   height: 100%;
@@ -6,7 +7,7 @@
 
 //TODO change to variable
 mat-sidenav-content {
-  background-color: mat-color(mat-palette($mat-grey), 50); 
+  background-color: mat.get-color-from-palette(mat.define-palette(mat.$grey-palette), 50); 
   
 }
 

@@ -1,4 +1,6 @@
-@import "../../../../material/src/theme-variables";
+@use 'sass:map';
+@use '~@angular/material' as mat;
+@use "../../../../material/src/zapisywarka-theme" as theme;
 
 .accaunt-info {
     display: flex;
@@ -19,6 +21,5 @@ app-initial-avatar {
 }
 
 .title {
-    font-size: mat-font-size($typography-config, title);
-    font-weight: mat-font-weight($typography-config, title);
+  //  @include mat.typography-level(theme.$typography-config, 'title');  
 }
