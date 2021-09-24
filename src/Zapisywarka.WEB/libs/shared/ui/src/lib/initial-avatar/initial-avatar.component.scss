@@ -1,7 +1,10 @@
-@import "../../../../material/src/theme-variables";
+@use 'sass:map';
+@use '~@angular/material' as mat;
+@use "../../../../material/src/zapisywarka-theme" as theme;
 
+$color-config: mat.get-color-config(theme.$dark-blue-green-theme);
 
-// Extract the palettes you need from the theme definition.
+$accent-palette: map.get($color-config, 'accent');
 
 $size: 40px;
 
@@ -10,7 +13,7 @@ $size: 40px;
   width: $size;
   height: $size;
   display: inline-block;
-  background-color: mat-color($dark-blue-green-accent);
+  background-color: mat.get-color-from-palette($accent-palette);
   text-align: center;
   border-radius: 50%;
 }

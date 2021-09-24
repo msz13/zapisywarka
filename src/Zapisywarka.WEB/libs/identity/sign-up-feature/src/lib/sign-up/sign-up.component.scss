@@ -1,4 +1,12 @@
-@import '../../../../../libs/shared/material/src/theme-variables';
+@use 'sass:map';
+@use '~@angular/material' as mat;
+@use '../../../../../libs/shared/material/src/zapisywarka-theme' as theme;
+
+$color-config: mat.get-color-config(theme.$dark-blue-green-theme);
+ 
+$primary-palette: map.get($color-config, 'primary');
+
+$warn-palette: map.get($color-config, 'warn');
 
 :host {
   display: flex;
@@ -7,7 +15,7 @@
 }
 
 .title {
-  color: mat-color($dark-blue-green-primary, 600);
+  color: mat.get-color-from-palette($primary-palette, 600);
 }
 
 mat-card {
@@ -39,5 +47,5 @@ button {
 .server-error {
   margin-top: 1em;
   margin-bottom: 1em;
-  color: mat-color($dark-blue-green-warn);
+  color: mat.get-color-from-palette($warn-palette);
 }

@@ -5,9 +5,6 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "parserOptions": {
-        "project": ["apps/offers-feature-offer-creation-e2e/tsconfig.*?.json"]
-      },
       "rules": {}
     },
     {

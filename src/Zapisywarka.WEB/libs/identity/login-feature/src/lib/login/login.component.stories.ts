@@ -6,13 +6,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
 
 export default {
-  title: 'LoginComponent'
+  title: 'LoginComponent',
+  argTypes: { submited: {action: 'submit'}}
 }
 
 const loginFormGroup = new FormGroup({
   'userName': new FormControl(),
   'password': new FormControl(),
   'rememberMe': new FormControl()
+})
+
+export const Template<LoginComponent> = (args) => ({
+  moduleMetadata: {
+    imports: [SharedMaterialModule, ReactiveFormsModule, BrowserAnimationsModule, SharedDomainModule],
+    declarations: [LoginComponent]
+  },
+  component: LoginComponent,
+  template: `<app-login-from [loginForm]="loginForm"></app-login-from>`,
+  props: {
+    loginForm: loginFormGroup
+  }
 })
 
 export const primary = () => ({
@@ -43,7 +56,8 @@ export const filled = () => ({
   component: LoginComponent,
   template: `<app-login-from [loginForm]="loginForm"></app-login-from>`,
   props: {
-    loginForm: filledLoginFormGroup
+    loginForm: filledLoginFormGroup,
+
   }
 })
 

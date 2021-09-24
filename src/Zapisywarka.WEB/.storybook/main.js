@@ -1,4 +1,8 @@
 module.exports = {
   stories: [],
-  addons: ['@storybook/preset-scss', '@storybook/addon-knobs/register'],
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/preset-scss',
+    '@storybook/addon-knobs',
+  ],
 };
