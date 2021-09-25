@@ -9,7 +9,7 @@
                 data-test="user-name">
                 <mat-label>Nazwa użytkownika</mat-label>
                 <input matInput formControlName="userName" />
-                <mat-error data-test="validation-error"><mat-error data-test="validation-error" >{{loginForm.get('userName') | formErrorMessages: 'first'}}}</mat-error></mat-error>                 
+                <mat-error data-test="validation-error" >{{loginForm.controls.userName.errors?.required.message}}</mat-error>             
             </mat-form-field>
             <mat-form-field appearance="outline" class="full-width-field" data-test="password">
                 <mat-label>Hasło</mat-label>
@@ -17,12 +17,16 @@
                 <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
                     <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button> 
-                <mat-error data-test="validation-error" >{{loginForm.get('password') | formErrorMessages: 'first'}}}</mat-error>
+                <mat-error data-test="validation-error" >{{loginForm.controls.password.errors?.required.message}}</mat-error>
             </mat-form-field>
             <mat-checkbox formControlName="rememberMe">Zapamiętaj mnie</mat-checkbox>
+            <div>
+            <small >{{loginForm.errors?.invalidCedentials.message}}</small>
+            </div>
+            
         </form>
         <section class="buttons-section">
-            <a mat-button color="primary">Utwórz konto</a>
+            <a mat-button color="primary" [routerLink]="signUpPath" >Utwórz konto</a>
             <button mat-flat-button color="primary" (click)="onSubmit()">Zaloguj</button>
         </section>        
     </mat-card-content>

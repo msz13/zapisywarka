@@ -48,6 +48,7 @@
     "@ngneat/forms-manager": "^2.3.0",
     "@nrwl/angular": "12.9.0",
     "@rxweb/reactive-form-validators": "^2.1.2",
+    "@rxweb/types": "^1.0.7",
     "@storybook/preset-scss": "^1.0.3",
     "@swimlane/ngx-datatable": "^19.0.0",
     "angular-oauth2-oidc": "^10.0.3",
@@ -58,6 +59,7 @@
     "rxjs": "~6.6.3",
     "sass": "^1.32.10",
     "sass-loader": "^10.0.1",
+    "storybook-addon-angular-router": "^1.3.0",
     "style-loader": "^2.0.0",
     "tslib": "^2.0.0",
     "zone.js": "0.11.4"
