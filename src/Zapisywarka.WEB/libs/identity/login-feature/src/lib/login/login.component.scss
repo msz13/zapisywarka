@@ -48,7 +48,11 @@ $warn-palette: map.get($color-config, 'warn');
   .buttons-section {
       width: 100%;
       display: flex;
-      margin: 1em;
+      margin: 1.5em;
       justify-content: space-between;
+  }
+
+  mat-checkbox {
+    margin-top: 0.5em;
   }
   
