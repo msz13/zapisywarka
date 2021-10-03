@@ -1,19 +1,14 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { MemoryStorage, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
+import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { CommonModule } from '@angular/common';
+import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
+import { LoginService, UserService } from '..';
 
-export function storageFactory(): OAuthStorage {
-  return sessionStorage;
-}
 
 @NgModule({
-  imports: [HttpClientModule, OAuthModule.forRoot()],
+  imports: [HttpClientModule, RxReactiveFormsModule],
+  exports: []
 })
-export class IdentityDomainModule {
-  static forRoot(): ModuleWithProviders<IdentityDomainModule> {
-    return {
-      ngModule: IdentityDomainModule,
-      providers: [{ provide: OAuthStorage, useFactory: storageFactory }],
-    };
-  }
-}
+export class IdentityDomainModule { } 
+

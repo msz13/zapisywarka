@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { ConfigurationService } from '@zapisywarka-client-aps/shared/domain';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { LoginCredentials } from '..';
 
 export interface User {
   accessCode: string,
   userName: string,
   password: string
 }
-
 
 
 @Injectable({
@@ -27,6 +27,10 @@ export class UserService {
 
   createUser(user: User) {
     return this.http.post(this.baseUrl, user).pipe(map(()=> true),catchError(this.handleError))
+  }
+
+  login(loginCredentials: LoginCredentials) {
+    return this.http.post(this.baseUrl+'/login', loginCredentials) 
   }
 
 
