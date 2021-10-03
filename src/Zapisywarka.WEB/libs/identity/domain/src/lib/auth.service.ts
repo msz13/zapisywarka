@@ -6,38 +6,17 @@ import { ConfigurationService } from '@zapisywarka-client-aps/shared/domain';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(
-    private oauthService: OAuthService,
-    private conf: ConfigurationService
+  constructor(   
+    
   ) {}
 
-  login() {
-    const authCodeFlowConfig: AuthConfig = {
-      issuer: this.conf.getConfig().apiUrl,
-      redirectUri: window.location.origin + '/index.html',
-      clientId: 'web',
-      responseType: 'code',
-      scope: 'openid profile Zapisywarka.API',
-      showDebugInformation: true,
-      timeoutFactor: 0.01,
-    };
-
-    this.oauthService.configure(authCodeFlowConfig);
-
-    return this.oauthService.loadDiscoveryDocumentAndLogin({
-      onTokenReceived: (context) => {
-        console.log('token: ' + JSON.stringify(context.accessToken));
-      },
-    });
+  login() {  
+  
   }
 
-  signUp() {
-    window.location.href = this.conf.getConfig().apiUrl + '/sign-up';
-  }
+ 
 
   isLoggedIn() {
-    return (
-      false //this.oauthService.hasValidAccessToken && this.oauthService.hasValidIdToken
-    );
+    
   }
 }
