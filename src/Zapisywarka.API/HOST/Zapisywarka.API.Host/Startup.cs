@@ -41,7 +41,7 @@ namespace Zapisywarka.API.Host
 
             if(!_env.IsProduction())
             {
-                services.AddTestStateModule();
+                services.AddTestStateModule();                
                 services.AddControllers().AddJsonOptions(options =>{
                 options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
                 options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;

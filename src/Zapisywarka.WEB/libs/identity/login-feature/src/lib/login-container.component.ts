@@ -1,24 +1,30 @@
-import { Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
-import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '@zapisywarka-client-aps/identity/domain';
+
+
 
 @Component({
-  selector: 'app-login-containter',
-  template: `<p>login-container works!{{test}}</p>
-  <button (click)="onClick()">test</button>
+  selector: 'app-login-container',
+  template: `
+  <app-login-form [invalidCredentialsError]="invalidCredentialsError" (login)="onLogin($event)"></app-login-form>
   `,
   styles: [],
 })
 export class LoginContainerComponent implements OnInit {
-  constructor() {}
+  
+  invalidCredentialsError: string | undefined
+  
+  constructor(private userService: UserService) {}
 
-  @Input() test!: string 
-  @Output() clicked = new EventEmitter<string>()
-
-  ngOnInit(): void {}
-
-  onClick() {
-    this.clicked.emit(this.test)
+  onLogin(loginCredentials: any) {
+    this.userService.login(loginCredentials).subscribe({error: (err: HttpErrorResponse)=> {
+      console.debug(err)
+      this.invalidCredentialsError = err.error.message
+    }})
   }
+   
+  ngOnInit(): void {}
+   
+
 }

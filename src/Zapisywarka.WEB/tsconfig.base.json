@@ -37,6 +37,9 @@
       "@zapisywarka-client-aps/identity/sign-up-feature": [
         "libs/identity/sign-up-feature/src/index.ts"
       ],
+      "@zapisywarka-client-aps/identity/utills": [
+        "libs/identity/utills/src/index.ts"
+      ],
       "@zapisywarka-client-aps/landing-page": [
         "libs/landing-page/src/index.ts"
       ],

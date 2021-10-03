@@ -1,114 +1,39 @@
-
-import { LoginComponent, LoginData } from './login.component';
-import {SharedMaterialModule} from '@zapisywarka.web/material'
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
-import {Story} from '@storybook/angular'
-import {action} from '@storybook/addon-actions'
-import { IFormGroup, RxwebValidators, RxFormBuilder} from '@rxweb/reactive-form-validators'
-import { Component, Output, EventEmitter } from '@angular/core';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { action } from '@storybook/addon-actions';
+import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { SharedMaterialModule } from '@zapisywarka.web/material';
+import { IdentityLoginFeatureModule } from '../identity-login-feature.module';
+import { LoginComponent } from './login.component';
 
 export default {
   title: 'LoginComponent',
-  argTypes: { onSubmit: {action: 'submit'}}
-}
-
-
-
-const buildRxForm = ()=> {
-  
-  const builder = new RxFormBuilder()
-  return builder.group({
-    'userName': new FormControl('',[RxwebValidators.required({message: 'Pole jest wymagane'})]),
-    'password': new FormControl('',[RxwebValidators.required({message: 'Pole jest wymagane'})]),
-    'rememberMe': new FormControl(false)
-  })
-}
-
-const Template: Story = (args) => {
-
-  const loginFormGroup = buildRxForm() 
-
-  loginFormGroup.valueChanges.subscribe((value: any) => action('form')(JSON.stringify(value)))
-  
-  return {
-  moduleMetadata: {
-    imports: [SharedMaterialModule, ReactiveFormsModule, BrowserAnimationsModule, SharedDomainModule],
-    declarations: [LoginComponent]
-  },
   component: LoginComponent,
-  template: `<app-login-form [loginForm]="loginForm" (submited)="onSubmit($event)"></app-login-form>`,
-  props: {
-    ...args,
-    loginForm: loginFormGroup     
-  }
-}
-}
+  decorators: [
+    moduleMetadata({
+      imports: [BrowserAnimationsModule, IdentityLoginFeatureModule],
+    })
+  ],
+ // argTypes: { onSubmit: {action: 'submit'}}
+} as Meta<LoginComponent>;
 
-export const Default = Template.bind({})
-
-const buildRxFormWithError = ()=> {
-  
-  const builder = new RxFormBuilder()
-
-  const group = builder.group({
-    'userName': new FormControl(null,[RxwebValidators.required({message: 'Pole jest wymagane'})]),
-    'password': new FormControl(null,[RxwebValidators.required({message: 'Pole jest wymagane'})]),
-    'rememberMe': new FormControl(false)
-  })
-
-  group.setErrors({invalidCredentials: {message: 'Niepoprawny login lub hasło'}})
-
-  console.log(JSON.stringify(group.errors))
-
-  return group
-}
-
-/*
-@Component({
-  template: `<app-login-from [loginForm]="loginForm" (submited)="onComponentSubmit($event)"></app-login-from>`,
-  selector: 'test-comp' 
-})
-export class TestComponent {
-
-loginForm: IFormGroup<LoginData>
-onSubmit = new EventEmitter<null>()
-
-constructor() {
-  const builder = new RxFormBuilder()
-  this.loginForm = <IFormGroup<LoginData>>builder.group({
-    'userName': new FormControl('',[RxwebValidators.required({message: 'Pole jest wymagane'})]),
-    'password': new FormControl('',[RxwebValidators.required({message: 'Pole jest wymagane'})]),
-    'rememberMe': new FormControl(false)
-  })
-
-}
-
-onComponentSubmit() {
-this.loginForm.setErrors({invalidCredentials: {message: 'Nieporawny login lub hasło'}})
-this.onSubmit.emit(null)
-}
-
-
-}
-
-export const ServerError: Story<LoginComponent> = (args) => {
-
-    
-  return {
-  moduleMetadata: {
-    imports: [SharedMaterialModule, ReactiveFormsModule, BrowserAnimationsModule, SharedDomainModule],
-    declarations: [LoginComponent, TestComponent]
-  },
+const Template: Story<LoginComponent> = (args: LoginComponent) => ({
   component: LoginComponent,
-  template: `<test-comp></test-comp>`,
-  props: {
-      
+  template: `<app-login-form (login)="onSubmit($event)"></app-login-form>`,
+  props: {...args,
+  onSubmit: (e: any)=> {
+    console.log(e+'test')
+    action('submit')(e)
   }
-}
-}
+  }
+  
+});
 
-*/
+
+export const Primary = Template.bind({});
+Primary.args = { }
+
+export const InvalidCredentialsError = Template.bind({})
+InvalidCredentialsError.args = {
+  invalidCredentialsError: "Błęda nazwa użytkownika i hasło"
+}

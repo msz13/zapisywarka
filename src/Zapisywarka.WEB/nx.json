@@ -65,6 +65,9 @@
       "tags": [],
       "implicitDependencies": ["identity-sign-up-feature"]
     },
+    "identity-utills": {
+      "tags": []
+    },
     "landing-page": {
       "tags": []
     },

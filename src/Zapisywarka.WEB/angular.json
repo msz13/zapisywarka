@@ -318,6 +318,9 @@
           "configurations": {
             "ci": {
               "devServerTarget": "identity-login-feature:storybook:ci"
+            },
+            "local": {
+              "watch": true
             }
           }
         },
@@ -413,6 +416,31 @@
             ]
           },
           "outputs": ["{options.outputFile}"]
+        }
+      }
+    },
+    "identity-utills": {
+      "projectType": "library",
+      "root": "libs/identity/utills",
+      "sourceRoot": "libs/identity/utills/src",
+      "prefix": "zapisywarka-client-aps",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/identity/utills/src/**/*.ts",
+              "libs/identity/utills/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/identity/utills"],
+          "options": {
+            "jestConfig": "libs/identity/utills/jest.config.js",
+            "passWithNoTests": true
+          }
         }
       }
     },
