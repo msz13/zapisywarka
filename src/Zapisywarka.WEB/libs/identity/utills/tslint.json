@@ -1,0 +1,17 @@
+{
+  "extends": "../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "zapisywarkaClientAps",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "zapisywarka-client-aps",
+      "kebab-case"
+    ]
+  }
+}

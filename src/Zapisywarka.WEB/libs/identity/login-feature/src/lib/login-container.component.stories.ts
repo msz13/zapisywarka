@@ -1,27 +1,33 @@
-
-import { Story } from '@storybook/angular';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { ConfigurationService, SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
+import { SharedMaterialModule } from '@zapisywarka.web/material';
+import { IdentityLoginFeatureModule } from '..';
 import { LoginContainerComponent } from './login-container.component';
-import {CommonModule} from '@angular/common'
-import {action} from '@storybook/addon-actions'
+import { LoginComponent } from './login/login.component';
+
+const mockConfigurationSrv = {
+  getConfig: ()=> {return {apiUrl: 'http://localhost:4400'}}
+} as ConfigurationService
 
 export default {
-  title: 'LoginContainerComponent',
+  title: 'LoginContainerComponent',  
+  decorators: [
+    moduleMetadata({
+      imports: [IdentityLoginFeatureModule, BrowserAnimationsModule],
+      providers: [{provide: ConfigurationService, useValue: mockConfigurationSrv}]
+      
+    })
+  ],
+} as Meta<LoginContainerComponent>;
+
+const Template: Story<LoginContainerComponent> = (args: LoginContainerComponent) => ({
   component: LoginContainerComponent,
-  argTypes: {
-    clicked: {action: 'clickarg'},
-    test: {control: {type: 'text'}, defaultValue: 'proba1'}
-  }
-}
-
-
-const Template: Story<LoginContainerComponent> = (args) => ({
-  template: `<app-login-containter (clicked)="clicked($event)"></app-login-containter>`,
   props: args,
-  moduleMetadata: {
-    imports: [CommonModule]
-  },
-})
-
-export const primary = Template.bind({})
+});
 
 
+export const Default = Template.bind({});
+Default.args = {
+}
