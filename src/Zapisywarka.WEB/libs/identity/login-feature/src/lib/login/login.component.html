@@ -1,10 +1,19 @@
 <mat-card data-test="sign-up">
     <mat-card-title class="title">
         Zapisywarka
+        <mat-progress-bar
+            *ngIf="loading"
+            mode="indeterminate"
+            data-test="loading-indicator"
+        >
+        </mat-progress-bar>
     </mat-card-title>
     <mat-card-content>
         <h2 class="mat-title">Zaloguj się</h2>
-        <form [formGroup]="loginForm">
+        <div *ngIf="error" class="server-error" data-test="server-error">
+            {{ error }}
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="outline" class="full-width-field" style="margin-bottom: 1em"
                 data-test="user-name">
                 <mat-label>Nazwa użytkownika</mat-label>
@@ -20,14 +29,10 @@
                 <mat-error data-test="validation-error" >{{loginForm.controls.password.errors?.notEmpty?.message}}</mat-error>
             </mat-form-field>
             <mat-checkbox formControlName="rememberMe" data-test="remember-me">Zapamiętaj mnie</mat-checkbox>
-            <mat-error>{{loginForm.errors?.invalidCedentials.message}}</mat-error>
-            <div>                
-            <small *ngIf="invalidCredentialsError" class="server-error" data-test="invalid-credentials-error">{{invalidCredentialsError}}</small>
-            </div>            
-        </form>
-        <section class="buttons-section">
-            <a mat-button color="primary" [routerLink]="signUpPath" >Utwórz konto</a>
-            <button mat-flat-button color="primary" (click)="onSubmit()" data-test="login-button">Zaloguj</button>
-        </section>        
+            <section class="buttons-section">
+                <a mat-button color="primary" [routerLink]="signUpPath" >Utwórz konto</a>
+                <button mat-flat-button type="submit" color="primary" data-test="login-button">Zaloguj</button>
+            </section> 
+        </form>             
     </mat-card-content>
 </mat-card>

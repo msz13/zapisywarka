@@ -1,5 +1,6 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { ConfigurationService, SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
 import { SharedMaterialModule } from '@zapisywarka.web/material';
@@ -15,7 +16,7 @@ export default {
   title: 'LoginContainerComponent',  
   decorators: [
     moduleMetadata({
-      imports: [IdentityLoginFeatureModule, BrowserAnimationsModule],
+      imports: [IdentityLoginFeatureModule, BrowserAnimationsModule, RouterModule],
       providers: [{provide: ConfigurationService, useValue: mockConfigurationSrv}]
       
     })

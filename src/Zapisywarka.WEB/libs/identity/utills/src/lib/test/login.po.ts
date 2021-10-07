@@ -10,4 +10,6 @@ export const getRememberMe = ()=> cy.get('[data-test=remember-me]')
 
 export const getFormError = ()=> cy.get('[data-test=validation-error]')
 
-export const getInvalidCredentialsError = ()=> cy.get('[data-test=invalid-credentials-error]')
+export const getServerError = ()=> cy.get('[data-test=server-error]')
+
+export const getLoadingProgress = ()=> cy.get('[data-test=loading-indicator]')

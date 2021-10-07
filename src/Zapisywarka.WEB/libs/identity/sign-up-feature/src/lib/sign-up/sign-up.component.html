@@ -10,7 +10,7 @@
   <mat-card-content>
     <h2 class="mat-title">Załóż konto</h2>
     <div *ngIf="error" class="server-error" data-test="server-error">
-      {{ error.message }}
+      {{ error?.message }}
     </div>
     <section>
       <div *ngIf="!showSignUpForm" class="form-container">

@@ -2,6 +2,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { action } from '@storybook/addon-actions';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import {RouterModule} from '@angular/router'
 import { SharedMaterialModule } from '@zapisywarka.web/material';
 import { IdentityLoginFeatureModule } from '../identity-login-feature.module';
 import { LoginComponent } from './login.component';
@@ -33,7 +34,7 @@ const Template: Story<LoginComponent> = (args: LoginComponent) => ({
 export const Primary = Template.bind({});
 Primary.args = { }
 
-export const InvalidCredentialsError = Template.bind({})
-InvalidCredentialsError.args = {
-  invalidCredentialsError: "Błęda nazwa użytkownika i hasło"
+export const ServerError = Template.bind({})
+ServerError.args = {
+  error: "Błęda nazwa użytkownika i hasło"
 }

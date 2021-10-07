@@ -1,30 +1,42 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '@zapisywarka-client-aps/identity/domain';
+import { Router } from '@angular/router';
+import { LoginCredentials, UserService } from '@zapisywarka-client-aps/identity/domain';
+import { Observable } from 'rxjs';
 
 
 
 @Component({
   selector: 'app-login-container',
   template: `
-  <app-login-form [invalidCredentialsError]="invalidCredentialsError" (login)="onLogin($event)"></app-login-form>
+  <app-login-form 
+    [error]="error"
+    [loading]="loading$ | async" 
+    (login)="onLogin($event)"
+  >
+  </app-login-form>
   `,
   styles: [],
 })
 export class LoginContainerComponent implements OnInit {
   
-  invalidCredentialsError: string | undefined
-  
-  constructor(private userService: UserService) {}
+  error: string | undefined
 
-  onLogin(loginCredentials: any) {
-    this.userService.login(loginCredentials).subscribe({error: (err: HttpErrorResponse)=> {
-      console.debug(err)
-      this.invalidCredentialsError = err.error.message
+  loading$!: Observable<boolean> | null
+  
+  constructor(private userService: UserService, private router: Router) {}
+
+  onLogin(loginCredentials: LoginCredentials) {
+    this.userService.login(loginCredentials).subscribe({
+      next: ()=> this.router.navigateByUrl('/main'),      
+      error: (err: Error)=> {
+        this.error = err.message
     }})
   }
    
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loading$ = this.userService.loading()
+  }
    
 
 }

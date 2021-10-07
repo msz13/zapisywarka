@@ -15,8 +15,8 @@ import {RouterModule} from '@angular/router'
     ReactiveFormsModule, 
     RxReactiveFormsModule, 
     SharedMaterialModule, 
-    RouterModule,
-    IdentityDomainModule
+    IdentityDomainModule,
+    RouterModule
   ],
   declarations: [LoginContainerComponent, LoginComponent],
   exports: [LoginContainerComponent, LoginComponent],
