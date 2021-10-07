@@ -15,14 +15,9 @@ export class LoginComponent implements OnInit {
 
   loginForm!: IFormGroup<LoginCredentials>
 
- /*  @Input() set invalidCredentialsError(value: string | undefined) {
-    console.debug(value)
-    if(value) {
-      console.debug(value)
-    this.loginForm.setErrors({invalidCredentials: {message: value}})
-    }
-  } */
-  @Input() invalidCredentialsError: string | undefined
+  @Input() loading!: boolean
+  
+  @Input() error: string | undefined
 
   @Output() login: EventEmitter<LoginCredentials> = new EventEmitter()
 
@@ -46,6 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loginForm.markAsDirty()
     if(this.loginForm.valid) {
       this.login.emit(this.loginForm.value!)
     }
