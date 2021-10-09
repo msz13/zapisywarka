@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@zapisywarka-client-aps/identity/domain';
 import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
@@ -12,6 +11,6 @@ export class AppComponent implements OnInit {
   title = 'zapisywarka-rejestracja';
   accauntName = 'Bochenek';
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private router: Router) {}
   ngOnInit(): void {}
 }

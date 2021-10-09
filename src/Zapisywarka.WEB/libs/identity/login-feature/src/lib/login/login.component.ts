@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   loginForm!: IFormGroup<LoginCredentials>
 
-  @Input() loading!: boolean
+  @Input() loading!: boolean | null
   
   @Input() error: string | undefined
 

@@ -22,9 +22,13 @@ export class LoginContainerComponent implements OnInit {
   
   error: string | undefined
 
-  loading$!: Observable<boolean> | null
+  loading$!: Observable<boolean> 
   
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {
+    
+    this.loading$ = this.userService.loading()
+
+  }
 
   onLogin(loginCredentials: LoginCredentials) {
     this.userService.login(loginCredentials).subscribe({
@@ -35,7 +39,7 @@ export class LoginContainerComponent implements OnInit {
   }
    
   ngOnInit(): void {
-    this.loading$ = this.userService.loading()
+    
   }
    
 
