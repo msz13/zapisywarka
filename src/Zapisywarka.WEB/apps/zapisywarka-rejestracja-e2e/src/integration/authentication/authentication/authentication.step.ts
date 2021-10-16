@@ -17,54 +17,28 @@ Before(() => {
 });
 
 
-Given(
-  'Konto organizatora zapisów o nazwie {string} i haśle {string} zostało zarejestrowane',  (name: string, password: string) => {
-     // userDriver.createUser('code', name, password)
+Given('Organizator zapisów {string} zarejestrował konto z hasłem {string}',  (login: string, password: string) => {
+    console.log(login+' '+password)
+    // userDriver.createUser('code', name, password)
   }
 );
 
 
-Given('Użytkownik odwiedza stronę logowania', ()=>{
-  navigationDriver.navigate('login')
-})
-
-
-Given('Użytkownik loguje się zaznaczając opcję "Nie wylogowuj mnie"', ()=>{
- // authenticationDriver.typeLoginData(createdUser.name, createdUser.password,true)
-})
-
-And('Kiedy wprowadza login {string} oraz hasło {string}', (login: string, password: string)=> {
-   // authenticationDriver.typeLoginData(login, password)
+And('Posiadacz konta {string} podaje hasło {string}', (login: string, password: string)=> {
+  console.log(login+' '+password)
+  // navigationDriver.navigate('/'); 
+  // authenticationDriver.typeLoginData(login, password)
 });
 
-When('Niezalogowany użytkownik odwiedza stronę główną aplikacji', () => {
-  // navigationDriver.navigate('/');
-});
 
 When('Próbuje się zalogować', ()=>{
    // authenticationDriver.login()
 })
 
-When('Kiedy ponownie odwiedza stronę startową', ()=>{
-  navigationDriver.navigate('/')
-})
-
-Then('Przekierowany jest na stronę logowania', () => {
-   navigationDriver.ShouldVisitLoginPage();
-});
-
-Then('Przekierowany jest na stronę główną aplikacji', ()=> {
-    navigationDriver.ShouldVisitMainPage();
-})
-
-Then('Widzi swoją nazwę użytkownika {string}', (userName: string)=>{
-  cy.get('[test-data=user_name]').contains(userName)
-})
-
-Then('Przekierowywany jest na stronę startową', ()=>{
-    navigationDriver.ShouldVisitMainPage()
+Then('Powinien otrzymać dostęp do aplikacji', (userName: string)=>{
+  //cy.get('[test-data=user_name]').contains(userName)
 })
 
 Then('Widzi komunikat {string}', (errorMessage)=>{
-  getErrorMessage().contains(errorMessage)
+ // getErrorMessage().contains(errorMessage)
 })
