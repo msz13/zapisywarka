@@ -17,8 +17,8 @@ namespace WEB_API.Controllers
     public class CatalogCategoryController : ControllerBase
     {
         readonly IMediator mediator;
-        readonly IUserService _userService;
-        public CatalogCategoryController(IMediator mediator, IUserService userService)
+        readonly IUsercontextService _userService;
+        public CatalogCategoryController(IMediator mediator, IUsercontextService userService)
         {
             this.mediator = mediator;
             _userService = userService;

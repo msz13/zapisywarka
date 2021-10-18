@@ -15,7 +15,7 @@ namespace OffersBD.Data
             var optionsBuilder = new DbContextOptionsBuilder<OffersDbContext>();
             optionsBuilder.UseNpgsql("Host=localhost;Database=Offers;Username=postgres;Password=Password_01", 
                 o => o.UseNodaTime());
-            var userServie = new UserService();
+            var userServie = new UserContextService();
             return new OffersDbContext(optionsBuilder.Options, userServie);
         }
     }

@@ -23,7 +23,7 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
             public string Password { get; set; }
         }
 
-        public class CommandValidator : FluentValidation.AbstractValidator<Command>
+        class CommandValidator : FluentValidation.AbstractValidator<Command>
         {
             public CommandValidator()
             {
