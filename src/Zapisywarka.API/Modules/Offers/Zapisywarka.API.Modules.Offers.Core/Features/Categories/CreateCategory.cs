@@ -26,9 +26,9 @@ namespace OffersBD.Features.Categories
         class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand, CatalogCategoryDTO> { 
 
             OffersDbContext dbContext;
-            IUserService userService;
+            IUsercontextService userService;
             
-            public CreateCategoryHandler(OffersDbContext dbContext, IUserService userService)
+            public CreateCategoryHandler(OffersDbContext dbContext, IUsercontextService userService)
         {
                 this.dbContext = dbContext;
                 this.userService = userService;

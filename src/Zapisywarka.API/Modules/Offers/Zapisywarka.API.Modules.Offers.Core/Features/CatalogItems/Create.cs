@@ -53,9 +53,9 @@ namespace OffersBD.Features.CatalogItems
 
             IMapper mapper;
 
-            IUserService userService;
+            IUsercontextService userService;
 
-            public CreateCommandHandler(OffersDbContext context, IMapper mapper, IUserService userService)
+            public CreateCommandHandler(OffersDbContext context, IMapper mapper, IUsercontextService userService)
             {
                 this.context = context;
                 this.mapper = mapper;

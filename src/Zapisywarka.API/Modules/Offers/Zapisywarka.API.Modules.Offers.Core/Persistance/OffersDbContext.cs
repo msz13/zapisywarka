@@ -14,16 +14,16 @@ namespace OffersInfrastructure.Persistance
     //TODO: make internal
     public class OffersDbContext : DbContext
     {
-        public OffersDbContext(DbContextOptions<OffersDbContext> options, IUserService userService) : base(options) {
+        public OffersDbContext(DbContextOptions<OffersDbContext> options, IUsercontextService userService) : base(options) {
 
             this._userService = userService;
         }
 
         public OffersDbContext() { }
 
-        IUserService _userService;
+        IUsercontextService _userService;
 
-        public IUserService GetUserService() => this._userService;
+        public IUsercontextService GetUserService() => this._userService;
         public DbSet<CatalogCategory> CatalogCategories { get; set; }
         public DbSet<CatalogItem> CatalogItems { get; set; }
         public DbSet<Offer> Offers { get; set; }
