@@ -58,8 +58,12 @@ paths:
                 - userName
                 - password          
       responses:
-        '204':
-          description: OK          
+        '200':
+          description: OK 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'         
         '400':
           description: Missing values
           content:
@@ -81,7 +85,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UserInfo'
         '401':
           description: Anauthycated user 
 components:
@@ -91,7 +95,7 @@ components:
       properties:
         message:
           type: string
-    User:
+    UserInfo:
       type: object
       properties:
         id:
