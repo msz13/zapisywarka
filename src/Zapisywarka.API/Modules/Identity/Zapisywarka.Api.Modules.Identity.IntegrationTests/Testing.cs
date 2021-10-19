@@ -6,12 +6,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 using NUnit.Framework;
 using Respawn;
-using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Zapisywarka.API.Common.Application;
 using Zapisywarka.API.Modules.Identity.Core;
 using Zapisywarka.API.Modules.Identity.Core.Infrastructure;
-
+using Zapisywarka.API.Common.Infrastructure.Persistance;
+using Microsoft.AspNetCore.Http;
+using Moq;
 namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 {
     [SetUpFixture]
@@ -21,23 +23,11 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         private static IServiceScopeFactory _scopeFactory;
         private static Checkpoint _checkpoint;
 
+
         [OneTimeSetUp]
         public void RunBeforeAnyTests()
         {
-            var confDict = new Dictionary<string, string>
-            {
-                
-                    {"ConnectionStrings:Postgresql", "Host=localhost; Database = Zapisywarka; Username = postgres; Password = Password_01" }
-                
-            };
-
-            var builder = new ConfigurationBuilder()
-                //.SetBasePath(Directory.GetCurrentDirectory())
-                //.AddJsonFile("appsettings.json", true, true)
-                .AddInMemoryCollection(confDict)
-                .AddEnvironmentVariables();
-
-            _configuration = builder.Build();
+            BuildConfiguration();
 
             var services = new ServiceCollection();
 
@@ -48,6 +38,15 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
             _scopeFactory = services.BuildServiceProvider().GetService<IServiceScopeFactory>();
 
+            ConfigureRespawn();
+
+            EnsureDatabase();
+
+
+        }
+
+        private static void ConfigureRespawn()
+        {
             _checkpoint = new Checkpoint
             {
                 TablesToIgnore = new[] { "__EFMigrationsHistory" },
@@ -57,13 +56,17 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
                     },
                 DbAdapter = DbAdapter.Postgres
             };
-
-            EnsureDatabase();
-
-
         }
 
+        private static void BuildConfiguration()
+        {
+            var builder = new ConfigurationBuilder()
+                            .SetBasePath(Directory.GetCurrentDirectory())
+                            .AddJsonFile("/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Modules/Identity/Zapisywarka.Api.Modules.Identity.IntegrationTests/appsettings.json", true, true)
+                            .AddEnvironmentVariables();
 
+            _configuration = builder.Build();
+        }
 
         private void ConfigureCommonServices(IServiceCollection services)
         {
@@ -76,6 +79,9 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
                 typeof(ValidationBehaviour<,>));
             services.AddSingleton<IConfiguration>(_configuration);
             services.AddLogging();
+
+            var httpContext = new Mock<HttpContext>();
+            
 
         }
 
@@ -92,7 +98,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         public static async Task ResetState()
         {
             
-            using (var conn = new NpgsqlConnection(_configuration.GetConnectionString("Postgresql")))
+            using (var conn = new NpgsqlConnection(_configuration.GetPostgresConnectionString()))
             {
                 await conn.OpenAsync();
 
@@ -152,6 +158,13 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
             return await mediator.Send(request);
         }     
+
+        public static HttpContext GetHttpContext()
+        {
+            var scope = _scopeFactory.CreateScope();
+            var context = scope.ServiceProvider.GetService<HttpContext>();
+            return  context as HttpContext; 
+        }
 
         
 
