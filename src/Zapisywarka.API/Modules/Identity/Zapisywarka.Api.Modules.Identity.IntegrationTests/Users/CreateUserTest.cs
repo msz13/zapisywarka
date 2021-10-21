@@ -41,8 +41,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
              
         }
 
-        [Test]
-        [Ignore("failing on thro wrong error")]
+        [Test]        
         public async Task ShouldFailWhenCommandIsInvalid()
         {
              var command = new CreateUser.Command
