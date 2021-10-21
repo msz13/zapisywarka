@@ -18,10 +18,8 @@ Feature: Autentykacja
         Given Kiedy wprowadza login <nazwa_konta> oraz hasło <haslo>
         When Próbuje się zalogować
         Then Widzi komunikat "Podano błędny login lub hasło"
-    Example:
+        Example:
             | opis         | nazwa_konta | haslo       |
             | błędny login | jan_bledny  | Password_01 |
             | błędne hasło | Jan         | Bledne_01   |
-
-
-
+   
