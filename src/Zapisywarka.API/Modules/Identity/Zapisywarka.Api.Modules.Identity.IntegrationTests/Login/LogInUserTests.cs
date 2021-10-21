@@ -1,48 +1,69 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
-using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
-using Zapisywarka.API.Common.Infrastructure.Infrastructure;
 using Zapisywarka.API.Modules.Identity.Core.Features;
 using FluentAssertions;
 using Microsoft.AspNetCore.Identity;
-using CSharpFunctionalExtensions;
-using Microsoft.AspNetCore.Authentication;
+using System;
+using Zapisywarka.API.Common.Application;
+using System.Security.Claims;
 
 namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 {
-    using static Testing;     
+    using static Testing;
 
     [TestFixture]
     public class LogInUserFeatureTests
     {
-        
+        IdentityUser _user;
+        string _password = "Password_01";
+       
+
         [SetUp]
         public async Task Setup()
         {
-           await ResetState();                       
+           await ResetState();
+           _user = await CreateUser(_password);                       
         }
 
         [Test]
-        public async Task ShouldSensUserInfo()
-        {
-            //Given
-            var password = "Password_01";
-            var signedUpUser = await CreateUser(password);            
+        public async Task ShouldReturnUserInfo()
+        {                   
 
             //When   
 
             var result = await SendAsync(new LoginUser.Command
             {
-                UserAccauntName = signedUpUser.UserName,
-                Password = password,
+                UserAccauntName = _user.UserName,
+                Password = _password,
             });
 
             //Then
 
             result.IsSuccess.Should().Be(true);
-            result.Value.Id.Should().Be(signedUpUser.Id);
-            result.Value.UserAccauntName.Should().Be(signedUpUser.UserName);
+            result.Value.UserInfo.Id.Should().Be(_user.Id);
+            result.Value.UserInfo.UserAccauntName.Should().Be(_user.UserName);
+
+
+        }
+
+
+        [Test]
+        public async Task ShouldReturnClaimsPrincipal()
+        {                   
+
+            //When   
+
+            var result = await SendAsync(new LoginUser.Command
+            {
+                UserAccauntName = _user.UserName,
+                Password = _password,
+            });
+
+            //Then
+
+            result.IsSuccess.Should().Be(true);
+            result.Value.ClaimsPrincipal.HasClaim(ClaimTypes.NameIdentifier, _user.Id).Should().Be(true);
+            result.Value.ClaimsPrincipal.HasClaim(ClaimTypes.Name, _user.UserName).Should().Be(true);
 
 
         }
@@ -51,17 +72,13 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         [Test]
         public async Task ShouldReturnFailureWhenUserDoesNotExist()
         {
-
-            //Given
-            var password = "Password_01";
-            var signedUpUser = await CreateUser(password);            
-
+                   
             //When   
 
             var result = await SendAsync(new LoginUser.Command
             {
                 UserAccauntName = "NotExist",
-                Password = password,
+                Password = _password,
             });
 
             //Then
@@ -73,16 +90,12 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
          [Test]
         public async Task ShouldReturnFailureWhenPasswordIsWrong()
         {
-
-            //Given
-            var password = "Password_01";
-            var signedUpUser = await CreateUser(password);            
-
+                      
             //When   
 
             var result = await SendAsync(new LoginUser.Command
             {
-                UserAccauntName = signedUpUser.UserName,
+                UserAccauntName = _user.UserName,
                 Password = "WrongPassword_1",
             });
 
@@ -93,9 +106,32 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
                               
         }
 
+        [Test]
+        public async Task ShoulThrowWhenUsernameIsEmpty()
+        {
+         
+            await FluentActions.Awaiting(() => SendAsync(new LoginUser.Command {
+                UserAccauntName = "",
+                Password = _password,
+            })).Should().ThrowAsync<ValidationException>("Test");                    
+                              
+        }
+
+        [Test]
+        public async Task ShoulThrowWhenPasswordIsEmpty()
+        {                   
+          
+            await FluentActions.Awaiting(() => SendAsync(new LoginUser.Command {
+                UserAccauntName = _user.UserName,
+                Password = ""
+            })).Should().ThrowAsync<ValidationException>("Test");                      
+                              
+        }
+
+
          private async Task<IdentityUser> CreateUser(string password)
         {
-            var userAccauntName = "Bochnek";
+            var userAccauntName = "Bochenek" + Guid.NewGuid().ToString().Substring(20);
             
             var user = await SendAsync(new CreateUser.Command
             {
