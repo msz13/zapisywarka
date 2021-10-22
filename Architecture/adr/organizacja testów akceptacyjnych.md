@@ -21,6 +21,18 @@ Logika w CI/CD
 1. Jesli deployment jest api - robią się testy api, i user yourneys
 2. Jesli web  - testy web i user yourneys
 
+Testy REst API:
+- brak testów, tylko e2e
+- testy integracyjne asp core
+- testy w innym nażedziu - cypress, postman, jako c# klient
+- contrcat testing
+
+Co testować:
+- autoryzację
+- mapowanie
+- routing 
+- poprawne kody błędów
+
 
 
 
