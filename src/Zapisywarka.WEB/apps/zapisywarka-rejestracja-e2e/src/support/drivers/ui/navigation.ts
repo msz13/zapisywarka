@@ -1,5 +1,9 @@
 
-export class NavigationDriver { 
+export class NavigationDriver {
+
+  ShouldVisitLandingPage() {
+    cy.url().should('include', '/main')
+  } 
  
   navigate(url: string) {
     cy.visit(url);

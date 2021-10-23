@@ -1,10 +1,9 @@
-using NUnit.Framework;
 using System.Threading.Tasks;
 using Zapisywarka.API.Modules.Identity.Core.Features;
-using FluentAssertions;
-using System;
 using Zapisywarka.API.Common.Application;
 using System.Collections.Generic;
+using NUnit.Framework;
+using FluentAssertions;
 
 namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 {
@@ -28,7 +27,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         {
             var command = new CreateUser.Command
             {
-                AccessToken = "abcdefgh",
+                AccessCode = "abcdefgh",
                 UserName = "Jan_01",
                 Password = "Password"
             };
@@ -40,11 +39,9 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
             var user = await FindUser(command.UserName);
           user.UserName.Should().Be(command.UserName);  
              
-
-
         }
 
-        [Test]
+        [Test]        
         public async Task ShouldFailWhenCommandIsInvalid()
         {
              var command = new CreateUser.Command
@@ -65,7 +62,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         {
             var command = new CreateUser.Command
             {
-                AccessToken = "abcdefgh",
+                AccessCode = "abcdefgh",
                 UserName = "jan$",
                 Password = "Password"
             };
@@ -82,7 +79,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         {
             var command = new CreateUser.Command
             {
-                AccessToken = "abcdefgh",
+                AccessCode = "abcdefgh",
                 UserName = "jan13",
                 Password = "Password"
             };

@@ -41,7 +41,6 @@ Given('Organizator zapisów podał kod dostępu {string}', (accesCode) => {
 
 Given('Baza użytkowników zawiera następujących organizatorów', (organisers) => {
   const userName = uniqueName(organisers.hashes()[0].Nazwa_uzytkownika);
-  console.log('token: ', token);
   restDriver.createUser(token, userName, 'Password_01');
 });
 

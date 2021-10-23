@@ -10,7 +10,7 @@ namespace Zapisywarka.API.Common.Infrastructure
     {
         public static void AddCommonInfrastructure(this IServiceCollection services)
         {
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUsercontextService, UserContextService>();
             services.AddSingleton<IClock>(sp => SystemClock.Instance);
 
             services.AddScoped(

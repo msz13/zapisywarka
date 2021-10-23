@@ -35,6 +35,8 @@ bld/
 **/bin/Debug
 **/obj/Debug
 **/*.dll
+HOST/Zapisywarka.API.Host/bin/
+HOST/Zapisywarka.API.Host/obj/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
