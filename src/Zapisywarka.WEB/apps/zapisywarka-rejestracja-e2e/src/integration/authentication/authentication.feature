@@ -1,4 +1,4 @@
-Feature: Autentykacja
+Feature: Autentykacja poprzez login i hasło
     Indywidalni posiadacze kont organizatorów zapisów, 
     aby korzystać z aplikacji, 
     muszę się zautentykować poprzez podanie nazwy konta i hasła.
@@ -15,11 +15,17 @@ Feature: Autentykacja
 
     @story_11
     Scenario Outline: Użytkownik podaje błędne dane
-        Given Kiedy wprowadza login <nazwa_konta> oraz hasło <haslo>
+        Given Posiadacz konta <nazwa_konta> podaje hasło <haslo>
         When Próbuje się zalogować
-        Then Widzi komunikat "Podano błędny login lub hasło"
-        Example:
+        Then Nie ma dostępu do aplikacji i widzi komunikat "Podano błędny login lub hasło"
+        
+        Examples:
             | opis         | nazwa_konta | haslo       |
             | błędny login | jan_bledny  | Password_01 |
             | błędne hasło | Jan         | Bledne_01   |
-   
+
+    
+   @story_11 @web
+    Scenario: Niezalogowany użytkownik chce skorzystać z aplikacji
+        When Niezalogowany użytkownik chce skorzystać z aplikacji
+        Then Przekierowywany jest na stronę startową 
