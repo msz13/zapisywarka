@@ -1,35 +1,31 @@
-Feature: Autentykacja
+Feature: Autentykacja poprzez login i hasło
+    Indywidalni posiadacze kont organizatorów zapisów, 
+    aby korzystać z aplikacji, 
+    muszę się zautentykować poprzez podanie nazwy konta i hasła.
 
-Background: 
-    Given Konto organizatora zapisów o nazwie "Jan" i haśle "Password_01" zostało zarejestrowane
 
-    @story_11  
-    Scenario: Użytkownik poprawnie loguje się do systemu  
-        Given Użytkownik odwiedza stronę logowania    
-        And Kiedy wprowadza login "Jan" oraz hasło "Password_01"
-        When Próbuje się zalogować
-        Then Przekierowany jest na stronę główną aplikacji
-        And Widzi swoją nazwę użytkownika "Jan"
-    
-    @story_11 
-    Scenario: Niezalogowany użytkownik wchodzi na stronę główną aplikacji
-        When Niezalogowany użytkownik odwiedza stronę główną aplikacji
-        Then Przekierowywany jest na stronę startową
-    
-    @story_11 
-    Scenario: Zalogowany użytkownik przekierowany jest na stronę główną aplikacji           
-        Given Użytkownik loguje się zaznaczając opcję "Nie wylogowuj mnie"
-        When Kiedy ponownie odwiedza stronę startową
-        Then Przekierowywany jest na stronę główną aplikacji
-    
-    @story_11 
-    Scenario: Użytkownik nie istnieje
-        Given Kiedy wprowadza login "jan_bledny" oraz hasło "Password_01"
-        When Próbuje się zalogować
-        Then Widzi komunikat "Podano błędny login lub hasło"
+    Background:
+        Given Organizator zapisów "Bochenek" zarejestrował konto z hasłem "Password_01"
 
-    @story_11 
-    Scenario: Użytkownik podał błędne hasło
-        Kiedy Kiedy wprowadza login "Jan" oraz hasło "Bledne_01"
+    @story_11
+    Scenario: Użytkownik poprawnie loguje się do systemu
+        Given Posiadacz konta "Bochenek" podaje hasło "Password_01"
         When Próbuje się zalogować
-        Then Widzi komunikat "Podano błędny login lub hasło"
+        Then Powinien otrzymać dostęp do aplikacji
+
+    @story_11
+    Scenario Outline: Użytkownik podaje błędne dane
+        Given Posiadacz konta <nazwa_konta> podaje hasło <haslo>
+        When Próbuje się zalogować
+        Then Nie ma dostępu do aplikacji i widzi komunikat "Podano błędny login lub hasło"
+        
+        Examples:
+            | opis         | nazwa_konta | haslo       |
+            | błędny login | jan_bledny  | Password_01 |
+            | błędne hasło | Jan         | Bledne_01   |
+
+    
+   @story_11 @web
+    Scenario: Niezalogowany użytkownik chce skorzystać z aplikacji
+        When Niezalogowany użytkownik chce skorzystać z aplikacji
+        Then Przekierowywany jest na stronę startową 
