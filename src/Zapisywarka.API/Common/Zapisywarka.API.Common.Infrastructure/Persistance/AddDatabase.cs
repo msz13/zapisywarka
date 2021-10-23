@@ -28,8 +28,8 @@ namespace Zapisywarka.API.Common.Infrastructure.Persistance
                 var postgresConfig = configuration.GetSection("Postgresql");
                 
                                                 
-                var connectionString = $"HOST={postgresConfig["HOST"]};DATABASE={postgresConfig["Db"]};USERNAME={postgresConfig["User"]};PASSWORD={postgresConfig["Password"]};";
-                //TODO dodac osobna konfigurację na produkcji i w testach ssl connection   SSLMode=Require;Trust Server Certificate=true           
+                var connectionString = $"HOST={postgresConfig["HOST"]};DATABASE={postgresConfig["Db"]};USERNAME={postgresConfig["User"]};PASSWORD={postgresConfig["Password"]};SSLMode=Require;Trust Server Certificate=true";
+                //TODO dodac osobna konfigurację na produkcji i w testach ssl connection             
                 options.UseNpgsql(connectionString, o => o.UseNodaTime());
                 options.EnableSensitiveDataLogging();
 
