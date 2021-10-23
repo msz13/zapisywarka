@@ -12,7 +12,7 @@ const routes: Routes = [
     component: LandingPageComponent    
   },
   {
-    path: 'logowanie',
+    path: 'login',
     component: LoginContainerComponent
   },
   {

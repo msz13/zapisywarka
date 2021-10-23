@@ -1,21 +1,28 @@
+import {getLoginButton, getRememberMe, getServerError, getUserName, getPassword} from '../../../../../../libs/identity/utills/src/lib/test/login.po'
+
+
 
 export class AuthenticationDriver {
     
     
     typeLoginData(login: string, password: string, rememberMe: boolean = false) {
          
-         cy.get('[data-test=login]').type(login)
+         getUserName().type(login)
 
-         cy.get('[data-test=password]').type(password)
+         getPassword().type(password)
 
          if(rememberMe) {
-             cy.get('[data-test]=remember-me').click()
+             getRememberMe().click()
          }
     }
     
     login() {
 
-        cy.get('[data-test=login-button]').click()
+        getLoginButton().click()
+    }
+
+    getServerError() {
+        return getServerError()
     }
 
 }
