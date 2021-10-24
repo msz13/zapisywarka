@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 # Organizacja testów akcpetacyjnych
 
 ## Status
@@ -41,3 +42,5 @@ Co testować:
 
 
 ## Consequences
+=======
+>>>>>>> cb32d24... Create organizacja testów akceptacyjnych.md
