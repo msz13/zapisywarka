@@ -1,30 +1,34 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router'
-import { Observable, of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router'
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { SessionQuery } from '../session/session.query';
-import { UserService } from '../user-service.service';
 
-export interface User {
-  
-}
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild {
 
   constructor(private sessionQuery: SessionQuery, private router: Router) { }
-  
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+
     
-    return this.sessionQuery.isLoggedIn().pipe(tap(isLoggedIn =>{
-      if(!isLoggedIn) {
-        this.router.navigateByUrl('/')
-      }
-      
-    }))     
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+   
+   
+    return this.sessionQuery.isLoggedIn().pipe(
+       tap(canActivate => {
+        if(!canActivate) {
+          this.router.navigateByUrl('/')
+        }
+      })
+    )
+  }
+
+    canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot):  Observable<boolean> {
+      return this.canActivate(childRoute, state)
+    }
     
      
-  }
+  
 }

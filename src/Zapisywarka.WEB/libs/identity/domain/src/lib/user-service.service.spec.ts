@@ -7,83 +7,135 @@ import {
   SpectatorHttp,
 } from "@ngneat/spectator/jest";
 import { ConfigurationService } from "@zapisywarka-client-aps/shared/domain";
+import { LoginCredentials } from "..";
 import { SessionQuery } from "./session/session.query";
 import { SessionStore } from "./session/session.store";
-import { UserService } from "./user-service.service";
+import { UserService, UserInfo } from "./user-service.service";
 
-describe("Load user", () => {
-  let spectator: SpectatorHttp<UserService>;
+describe('user service', () => {
 
-  const baseUrl = "http://test.pl";
-  class StubConfigSrv {
-    getConfig() {
-      return {
-        apiUrl: baseUrl,
-      };
+  describe('login user', () => {
+    let spectator: SpectatorHttp<UserService>;
+
+    const baseUrl = "http://test.pl";
+    class StubConfigSrv {
+      getConfig() {
+        return {
+          apiUrl: baseUrl,
+        };
+      }
     }
-  }
-  const createHttp = createHttpFactory({
-    service: UserService,
-    providers: [{ provide: ConfigurationService, useClass: StubConfigSrv }],
-   // mocks: [SessionStore]
+    const createHttp = createHttpFactory({
+      service: UserService,
+      providers: [{ provide: ConfigurationService, useClass: StubConfigSrv }],
     
-  });
+    });
 
-  beforeEach(() => (spectator = createHttp()));
+    beforeEach(() => (spectator = createHttp()));
 
-  it("should load user", () => {
+    it('should save logged user to store', ()=>{
+      const query = spectator.inject(SessionQuery)
+      const loginCredentials: LoginCredentials = {userName: 'test', password: 'password'}
+      var userInfo = {id: '1', userName: loginCredentials.userName}
 
-    spectator.service.loadUser().subscribe();
+      spectator.service.login(loginCredentials).subscribe()
 
-    spectator.expectOne(baseUrl + "/users/me", HttpMethod.GET);
+      const req = spectator.expectOne(baseUrl + "/users/login", HttpMethod.POST)
 
-  });
+      req.flush(userInfo, { status: 200, statusText: 'success' })
+      expect(req.request.body).toEqual(loginCredentials)
 
-  it('should save user to store', ()=>{ 
+      let isLoggedIn: boolean
+      query.isLoggedIn().subscribe(result => isLoggedIn = result)
 
+      let responseUser: UserInfo
 
-    const user = {id: '1', userName: 'mat'}
-    const query = spectator.inject(SessionQuery)
+      query.select().subscribe(user => responseUser = user)
 
-    spectator.service.loadUser().subscribe()
+      expect(isLoggedIn).toBe(true)
+      expect(responseUser).toEqual(userInfo)
 
-    const req =  spectator.expectOne(baseUrl + "/users/me", HttpMethod.GET)
+    })
 
-    req.flush(user,{status: 200, statusText: 'test'})
-
-    let isLoggedIn: boolean 
-    query.isLoggedIn().subscribe(result => isLoggedIn = result)
-
-    expect(isLoggedIn).toBe(true)   
 
 
   })
 
-  it('should not save user to store when user is not logged in', () => {
+  describe("Load user", () => {
+    let spectator: SpectatorHttp<UserService>;
 
-    const query = spectator.inject(SessionQuery)
+    const baseUrl = "http://test.pl";
+    class StubConfigSrv {
+      getConfig() {
+        return {
+          apiUrl: baseUrl,
+        };
+      }
+    }
+    const createHttp = createHttpFactory({
+      service: UserService,
+      providers: [{ provide: ConfigurationService, useClass: StubConfigSrv }],
+    
+    });
 
-    spectator.service.loadUser().subscribe()
+    beforeEach(() => (spectator = createHttp()));
 
-    const req =  spectator.expectOne(baseUrl + "/users/me", HttpMethod.GET)
+    it("should load user", () => {
 
-    req.flush({status: 401, statusText: 'anauthenticated'})
+      spectator.service.loadUser().subscribe();
 
-    let isLoggedIn: boolean 
-    query.isLoggedIn().subscribe(result => isLoggedIn = result)
+      spectator.expectOne(baseUrl + "/users/me", HttpMethod.GET);
 
-    expect(isLoggedIn).toBe(false) 
+    });
+
+    it('should save user to store', () => {
+
+
+      const user = { id: '1', userName: 'mat' }
+      const query = spectator.inject(SessionQuery)
+
+      spectator.service.loadUser().subscribe()
+
+      const req = spectator.expectOne(baseUrl + "/users/me", HttpMethod.GET)
+
+      req.flush(user, { status: 200, statusText: 'test' })
+
+      let isLoggedIn: boolean
+      query.isLoggedIn().subscribe(result => isLoggedIn = result)
+
+      expect(isLoggedIn).toBe(true)
+
+
+    })
+
+    it('should not save user to store when user is not logged in', () => {
+
+      const query = spectator.inject(SessionQuery)
+
+      spectator.service.loadUser().subscribe()
+
+      const req = spectator.expectOne(baseUrl + "/users/me", HttpMethod.GET)
+
+      req.flush({ status: 401, statusText: 'anauthenticated' })
+
+      let isLoggedIn: boolean
+      query.isLoggedIn().subscribe(result => isLoggedIn = result)
+
+      expect(isLoggedIn).toBe(false)
+
+    })
+
 
   })
 
-  
-})  
- 
-   
-   
-    
+})
 
-   
- 
-  
+
+
+
+
+
+
+
+
 

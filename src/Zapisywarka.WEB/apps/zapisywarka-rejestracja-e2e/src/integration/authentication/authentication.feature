@@ -15,9 +15,9 @@ Feature: Autentykacja poprzez login i hasło
 
     @story_11
     Scenario Outline: Użytkownik podaje błędne dane
-        Given Posiadacz konta <nazwa_konta> podaje hasło <haslo>
+        Given Posiadacz konta "<nazwa_konta>" podaje hasło "<haslo>"
         When Próbuje się zalogować
-        Then Nie ma dostępu do aplikacji i widzi komunikat "Podano błędny login lub hasło"
+        Then Nie ma dostępu do aplikacji i widzi komunikat " Błędny login lub hasło "
         
         Examples:
             | opis         | nazwa_konta | haslo       |

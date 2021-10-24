@@ -14,9 +14,9 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
     public class LoginUser
     {
 
-        public class Command : IRequest<Result<AuthenticationResult>>
+        public class Command : IRequest<Result<AuthenticationResult, AuthenticationError>>
         {
-            public string UserAccauntName { get; set; }
+            public string UserName { get; set; }
             public string Password { get; set; }
             public bool RememberMe { get; set; } = false;
 
@@ -25,7 +25,7 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
         public class UserInfo
         {
             public string Id { get; set; }
-            public string UserAccauntName { get; set; }
+            public string UserName { get; set; }
 
         }
 
@@ -37,16 +37,23 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
 
         }
 
+        public class AuthenticationError
+        {
+            public string Message { get; set; } = "Błędny login lub hasło";
+        }
+
+          
+
         class CommandValidator : FluentValidation.AbstractValidator<Command>
         {
             public CommandValidator()
             {
-                RuleFor(command => command.UserAccauntName).NotNull().NotEmpty();
+                RuleFor(command => command.UserName).NotNull().NotEmpty();
                 RuleFor(command => command.Password).NotNull().NotEmpty();
             }
         }
 
-        class Handler : IRequestHandler<Command, Result<AuthenticationResult>>
+        class Handler : IRequestHandler<Command, Result<AuthenticationResult, AuthenticationError>>
         {
             UserManager<IdentityUser> _userManager;
             IUserClaimsPrincipalFactory<IdentityUser> _claimsFactory;
@@ -57,18 +64,18 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
                 _claimsFactory = claimsFactory;
             }
 
-            public async Task<Result<AuthenticationResult>> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<AuthenticationResult, AuthenticationError>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var user = await _userManager.FindByNameAsync(request.UserAccauntName);
+                var user = await _userManager.FindByNameAsync(request.UserName);
 
                 var result = await ValidateLoginCredentials(user, request.Password);
 
                 if (!result)
                 {
-                    return Result.Failure<AuthenticationResult>("Błędny login lub hasło");
+                    return Result.Failure<AuthenticationResult, AuthenticationError>(new AuthenticationError());
                 }
                 
-                return Result.Success(await CreateResult(user));
+                return Result.Success<AuthenticationResult, AuthenticationError>(await CreateResult(user));
             }
 
             private async Task<bool> ValidateLoginCredentials(IdentityUser user, string password)
@@ -92,8 +99,7 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
             {
                 return new AuthenticationResult
                 {
-
-                    UserInfo = new UserInfo { Id = user.Id, UserAccauntName = user.UserName },
+                    UserInfo = new UserInfo { Id = user.Id, UserName = user.UserName },
                     ClaimsPrincipal = await _claimsFactory.CreateAsync(user)
                 };
             }

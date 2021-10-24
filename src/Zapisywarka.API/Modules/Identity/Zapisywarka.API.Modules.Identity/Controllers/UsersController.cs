@@ -38,12 +38,12 @@ namespace Zapisywarka.API.Modules.Identity.Controllers
             return Ok(users);
         }
 
-        [HttpPost("/login")]
+        [HttpPost("login")]
         public async Task<IActionResult> Login(LoginUser.Command request) 
-        {
+        {           
             return await _mediator.Send(request)
                 .Tap(authResult => HttpContext.SignInAsync(authResult.ClaimsPrincipal))
-                .Finally<LoginUser.AuthenticationResult, IActionResult>(result => result.IsSuccess ? Ok(result.Value.UserInfo) : Unauthorized(result.Error));
+                .Finally<LoginUser.AuthenticationResult, IActionResult, LoginUser.AuthenticationError>(result => result.IsSuccess ? Ok(result.Value.UserInfo) : Unauthorized(result.Error));
         }
        
     }

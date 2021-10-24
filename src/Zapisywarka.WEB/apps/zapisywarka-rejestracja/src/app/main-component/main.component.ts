@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionQuery } from '@zapisywarka-client-aps/identity/domain';
 
 @Component({
   selector: 'app-main-component',
@@ -7,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  accauntName: string = "Bochenek"
+  accauntName!: string
 
-  constructor() { }
+  constructor(private sessionQuery: SessionQuery) { }
 
   ngOnInit(): void {
+    console.debug('userName: '+this.sessionQuery.getValue().userName)
+    this.accauntName = this.sessionQuery.getValue().userName
   }
 
 }

@@ -5,14 +5,16 @@ import { MainComponent } from './main-component/main.component';
 import { LandingPageComponent } from '@zapisywarka-client-aps/landing-page'
 import { SignUpContainerComponent} from '@zapisywarka-client-aps/identity/sign-up-feature'
 import {LoginContainerComponent} from '@zapisywarka-client-aps/identity/login-feature'
+import {AuthGuard} from '@zapisywarka-client-aps/identity/domain'
 
 const routes: Routes = [
   {
     path: '',
-    component: LandingPageComponent    
+    component: LandingPageComponent, 
+
   },
   {
-    path: 'login',
+    path: 'logowanie',
     component: LoginContainerComponent
   },
   {
@@ -22,6 +24,8 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',

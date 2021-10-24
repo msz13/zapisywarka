@@ -50,7 +50,7 @@ describe('Authguard', () => {
   }))
 
  
-  it('should redirect to landing page when user is not logged in', fakeAsync(()=>{
+  it('should redirect to main page when user is not logged in', fakeAsync(()=>{
 
     const sessionQuery = spectator.inject<SessionQuery>(SessionQuery) 
     const router = spectator.inject<Router>(Router)

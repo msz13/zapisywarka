@@ -26,7 +26,7 @@ export class LoginContainerComponent implements OnInit {
   
   constructor(private userService: UserService, private router: Router) {
     
-    this.loading$ = this.userService.loading()
+  this.loading$ = this.userService.loading()
 
   }
 

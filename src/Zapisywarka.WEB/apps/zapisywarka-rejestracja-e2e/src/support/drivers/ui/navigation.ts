@@ -2,7 +2,7 @@
 export class NavigationDriver {
 
   ShouldVisitLandingPage() {
-    cy.url().should('include', '/main')
+    cy.url().should('eq', Cypress.config().baseUrl+'/')
   } 
  
   navigate(url: string) {

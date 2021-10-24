@@ -7,7 +7,7 @@ import {
   Then,
   When,
 } from 'cypress-cucumber-preprocessor/steps';
-import { RestOrganiserSignUpDriver } from 'apps/zapisywarka-rejestracja-e2e/src/support/drivers/rest/RestOrganiserSignUpDriver';
+import { RestOrganiserSignUpDriver } from '../../../support/drivers/rest/RestOrganiserSignUpDriver';
 
 let driver: OrganiserSignUpDriver;
 let navigationDriver: NavigationDriver;

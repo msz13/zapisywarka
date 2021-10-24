@@ -1,5 +1,5 @@
 { 
-"identityServer": "http://localhost:80",
-"clientId": "spa" 
+    "apiUrl": "/api"
+
 }
 

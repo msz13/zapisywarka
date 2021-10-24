@@ -7,8 +7,9 @@ import { RestOrganiserSignUpDriver } from '../../../support/drivers/rest/RestOrg
 let navigationDriver: NavigationDriver;
 let authenticationDriver: AuthenticationDriver;
 let userDriver: RestOrganiserSignUpDriver;
-let createdUser: {name: string, password: string}
+let createdUser: {userName: string, password: string}
 let uniqueId: string
+
 
 Before(() => {
   navigationDriver = new NavigationDriver();
@@ -19,13 +20,14 @@ Before(() => {
 
 
 Given('Organizator zapisów {string} zarejestrował konto z hasłem {string}',  (login: string, password: string) => {
-    userDriver.createUser('code', login+uniqueId, password)
+  createdUser =   {userName: login+uniqueId, password}
+  userDriver.createUser('code', createdUser.userName, createdUser.password )
   }
 );
 
 Given('Posiadacz konta {string} podaje hasło {string}', (login: string, password: string) => {
-  navigationDriver.navigate('/login')
-  authenticationDriver.typeLoginData(login, password)
+  navigationDriver.navigate('/logowanie')
+  authenticationDriver.typeLoginData(login+uniqueId, password)
 })
 
 
@@ -38,13 +40,13 @@ When('Niezalogowany użytkownik chce skorzystać z aplikacji', ()=>{
   navigationDriver.navigate('/main')  
 })
 
-Then('Powinien otrzymać dostęp do aplikacji', (userName: string)=>{
+Then('Powinien otrzymać dostęp do aplikacji', ()=>{
   navigationDriver.ShouldVisitMainPage()
-  cy.get('[test-data=accaunt_name]').contains(userName)
+  cy.get('[data-test=accaunt_name]').contains(createdUser.userName)
 })
 
 Then('Nie ma dostępu do aplikacji i widzi komunikat {string}', (errorMessage)=>{
-   authenticationDriver.getServerError().should('be.a', errorMessage)
+   authenticationDriver.getServerError().should('have.text', errorMessage)
 })
 
 Then('Przekierowywany jest na stronę startową', () =>{
