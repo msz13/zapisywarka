@@ -1,5 +1,5 @@
-import { NavigationDriver } from 'apps/zapisywarka-rejestracja-e2e/src/support/drivers/ui/navigation';
-import { LandingPageDriver } from 'apps/zapisywarka-rejestracja-e2e/src/support/drivers/ui/landing-page';
+import { NavigationDriver } from '../../../../src/support/drivers/ui/navigation';
+import { LandingPageDriver } from '../../../../src/support/drivers/ui/landing-page';
 import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
 
 let navigationDriver: NavigationDriver;
@@ -23,7 +23,7 @@ When("Użytkownik kliknie link 'Zaloguj'", () => {
 });
 
 Then('Powinien zobaczyć stronę logowania', () => {
-  navigationDriver.ShoudVisitLoginPage();
+  navigationDriver.ShouldVisitLoginPage();
 });
 
 Then('Powinien zobaczyć stronę tworzenia konta', () => {

@@ -981,9 +981,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "zapisywarka-rejestracja:build"
+            "browserTarget": "zapisywarka-rejestracja:build",
+            "proxyConfig": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-rejestracja/proxy.config.json"
           },
           "configurations": {
+
             "production": {
               "browserTarget": "zapisywarka-rejestracja:build:production"
             }
@@ -1040,6 +1042,11 @@
           "configurations": {
             "production": {
               "devServerTarget": "zapisywarka-rejestracja:serve:production"
+            },
+            "local": {
+              "skipServe": true,
+               "watch": true,
+               "baseUrl": "http://zapisywarka.local"
             }
           }
         },

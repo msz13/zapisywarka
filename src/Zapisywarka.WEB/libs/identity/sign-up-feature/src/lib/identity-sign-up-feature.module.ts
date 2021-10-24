@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
 
 @NgModule({
-  imports: [IdentityDomainModule, ReactiveFormsModule, SharedMaterialModule, ReactiveFormsModule, SharedDomainModule],
+  imports: [IdentityDomainModule, SharedMaterialModule, ReactiveFormsModule, SharedDomainModule],
   declarations: [
     SignUpComponent,
     SignUpContainerComponent,

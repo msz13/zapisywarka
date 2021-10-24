@@ -88,6 +88,10 @@ paths:
                 $ref: '#/components/schemas/UserInfo'
         '401':
           description: Anauthycated user 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
 components:
   schemas:
     Error: 

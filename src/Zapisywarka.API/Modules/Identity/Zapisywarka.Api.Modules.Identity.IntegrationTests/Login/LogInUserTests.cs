@@ -33,7 +33,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
             var result = await SendAsync(new LoginUser.Command
             {
-                UserAccauntName = _user.UserName,
+                UserName = _user.UserName,
                 Password = _password,
             });
 
@@ -41,7 +41,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
             result.IsSuccess.Should().Be(true);
             result.Value.UserInfo.Id.Should().Be(_user.Id);
-            result.Value.UserInfo.UserAccauntName.Should().Be(_user.UserName);
+            result.Value.UserInfo.UserName.Should().Be(_user.UserName);
 
 
         }
@@ -55,7 +55,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
             var result = await SendAsync(new LoginUser.Command
             {
-                UserAccauntName = _user.UserName,
+                UserName = _user.UserName,
                 Password = _password,
             });
 
@@ -77,13 +77,13 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
             var result = await SendAsync(new LoginUser.Command
             {
-                UserAccauntName = "NotExist",
+                UserName = "NotExist",
                 Password = _password,
             });
 
             //Then
             result.IsFailure.Should().BeTrue();
-            result.Error.Should().Be("Błędny login lub hasło");           
+            result.Error.Message.Should().Be("Błędny login lub hasło");           
                                
         }
 
@@ -95,13 +95,13 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
             var result = await SendAsync(new LoginUser.Command
             {
-                UserAccauntName = _user.UserName,
+                UserName = _user.UserName,
                 Password = "WrongPassword_1",
             });
 
             //Then
             result.IsFailure.Should().BeTrue();
-            result.Error.Should().Be("Błędny login lub hasło");
+            result.Error.Message.Should().Be("Błędny login lub hasło");
          
                               
         }
@@ -111,7 +111,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         {
          
             await FluentActions.Awaiting(() => SendAsync(new LoginUser.Command {
-                UserAccauntName = "",
+                UserName = "",
                 Password = _password,
             })).Should().ThrowAsync<ValidationException>("Test");                    
                               
@@ -122,7 +122,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         {                   
           
             await FluentActions.Awaiting(() => SendAsync(new LoginUser.Command {
-                UserAccauntName = _user.UserName,
+                UserName = _user.UserName,
                 Password = ""
             })).Should().ThrowAsync<ValidationException>("Test");                      
                               
