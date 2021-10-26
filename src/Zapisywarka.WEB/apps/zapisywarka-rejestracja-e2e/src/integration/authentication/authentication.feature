@@ -11,7 +11,7 @@ Feature: Autentykacja poprzez login i hasło
     Scenario: Użytkownik poprawnie loguje się do systemu
         Given Posiadacz konta "Bochenek" podaje hasło "Password_01"
         When Próbuje się zalogować
-        Then Powinien otrzymać dostęp do aplikacji
+        Then Powinien otrzymać dostęp do swojego konta w aplikacji
 
     @story_11
     Scenario Outline: Użytkownik podaje błędne dane

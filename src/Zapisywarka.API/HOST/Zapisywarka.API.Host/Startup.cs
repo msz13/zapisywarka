@@ -83,8 +83,7 @@ namespace Zapisywarka.API.Host
 
             app.UseIdenityModule();
 
-            app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();               

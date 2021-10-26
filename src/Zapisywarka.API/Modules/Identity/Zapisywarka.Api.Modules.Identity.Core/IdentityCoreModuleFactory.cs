@@ -21,11 +21,14 @@ namespace Zapisywarka.API.Modules.Identity.Core
                 .AddUserValidator<AppUserValidator>()
                 .AddEntityFrameworkStores<ZapisywarkaIdentityDbContext>();
 
-            /* services.ConfigureApplicationCookie(options => {
-                options.Cookie.SameSite = SameSiteMode.Strict;
-                options.Cookie.HttpOnly = true;
-            }) */
+            services.ConfigureApplicationCookie(options => {
+              options.Cookie.Name = "Auth";
+              options.Cookie.Domain = "zapisywarka.local";
+              options.Cookie.SameSite = SameSiteMode.Strict;
+              options.Cookie.HttpOnly = true;
+              
             
+             }); 
 
             services.Configure<IdentityOptions>(options =>
             {

@@ -11,4 +11,5 @@
   "screenshotsFolder": "../../dist/cypress/apps/zapisywarka-rejestracja-e2e/screenshots",
   "chromeWebSecurity": false,
   "baseUrl": "http://localhost:80"
+  
 }

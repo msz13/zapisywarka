@@ -19,7 +19,6 @@ namespace Zapisywarka.API.Modules.Identity
                 options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
               
             });
-            services.AddIdentityServerConfiguration();
             services.AddIdentityCoreModule();
                       
 
@@ -28,10 +27,11 @@ namespace Zapisywarka.API.Modules.Identity
 
         public static void UseIdenityModule(this IApplicationBuilder app)
         {
-            app.UseIdentityServer();
-            app.UseCookiePolicy();
-
+            app.UseCookiePolicy(new CookiePolicyOptions {
+                Secure = Microsoft.AspNetCore.Http.CookieSecurePolicy.None
+            });
             app.UseAuthentication();
+            app.UseAuthorization();
         }
     }
 }

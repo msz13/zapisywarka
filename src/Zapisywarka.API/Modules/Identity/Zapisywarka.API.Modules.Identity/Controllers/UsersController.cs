@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Zapisywarka.API.Modules.Identity.Core.Features;
 
@@ -42,7 +43,7 @@ namespace Zapisywarka.API.Modules.Identity.Controllers
         public async Task<IActionResult> Login(LoginUser.Command request) 
         {           
             return await _mediator.Send(request)
-                .Tap(authResult => HttpContext.SignInAsync(authResult.ClaimsPrincipal))
+                .Tap(authResult => HttpContext.SignInAsync(IdentityConstants.ApplicationScheme, authResult.ClaimsPrincipal))
                 .Finally<LoginUser.AuthenticationResult, IActionResult, LoginUser.AuthenticationError>(result => result.IsSuccess ? Ok(result.Value.UserInfo) : Unauthorized(result.Error));
         }
        
