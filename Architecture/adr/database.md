@@ -12,5 +12,6 @@
 3. Elephant Postgresql
 4. Baza nosql - w wariancie servless
 5. Menaged db od claud providerów
+6. https://www.scaleway.com - 10 dolarów miesięcznie
 
 
