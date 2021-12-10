@@ -17,14 +17,15 @@
     1. MongoDb Atlas
     2. CockroachDB (relacyjna, api postgresql, free plans)(nie ma jasnej integracji z teraform, można hostować na kubernetes, ale ma duże wymagania zasobów, servless beta) 
 
-| Wariant | Koszt w fazie rozwoju * | Koszt przy dużym ruchu  | Vendor lock | Łatwość utrzymania | Niezawodność |
+| Wariant | Koszt w fazie rozwoju * | Koszt przy dużym ruchu  | Vendor lock | Łatwość utrzymania | Niezawodność | Uwagi |
 |---|---|---|---|---|---|
 | Elephant | 0 | 49$ | Nie | Tak | Tak |
-| Baza na serwerze | 4 Euro | 64 - 90 $ vs 12 eu | nie | mała | tak   |
+| Baza na serwerze | 4 Euro | 64 - 90 $ vs 12 eu * | nie | mała | tak   |
 | Baza kubernetes | 5,5 eu | 11 eu | nie | średnia | nie |
-| Cockroach | 
+| Cockroach dedicated| free | 310$ | nie | Tak | Tak |
+| Cockroach servless | free | 310$ | nie | Tak | NIE | Trzeba sie nauczyć |
 | GC SQL | 32 $ | 93$ | Tak | TAK | TAK |
 
 * Min 2 gm RAM, min 10 gb storage, HA (min. 2 instancje)
 
-* google compute engine 2 instance 1 vCore 3,75 ram, albo hetzner 2 x 2 vcore 4 gb | 
+** google compute engine 2 instance 1 vCore 3,75 ram, albo hetzner 2 x 2 vcore 4 gb | 
