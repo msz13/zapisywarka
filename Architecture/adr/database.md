@@ -18,13 +18,13 @@
     2. CockroachDB (relacyjna, api postgresql, free plans)(nie ma jasnej integracji z teraform, można hostować na kubernetes, ale ma duże wymagania zasobów, servless beta) 
 
 | Wariant | Koszt w fazie rozwoju * | Koszt przy dużym ruchu  | Vendor lock | Łatwość utrzymania | Niezawodność | Uwagi |
-|---|---|---|---|---|---|
-| Elephant | 0 | 49$ | Nie | Tak | Tak |
-| Baza na serwerze | 4 Euro | 64 - 90 $ vs 12 eu * | nie | mała | tak   |
-| Baza kubernetes | 5,5 eu | 11 eu | nie | średnia | nie |
-| Cockroach dedicated| free | 310$ | nie | Tak | Tak |
+|---|---|---|---|---|---|---|
+| Elephant | 0 | 49$ | Nie | Tak | Tak | |
+| Baza na serwerze | 4 Euro | 64 - 90 $ vs 12 eu * | nie | mała | tak   | |
+| Baza kubernetes | 5,5 eu | 11 eu | nie | średnia | nie | |
+| Cockroach dedicated| free | 310$ | nie | Tak | Tak | |
 | Cockroach servless | free | 310$ | nie | Tak | NIE | Trzeba sie nauczyć |
-| GC SQL | 32 $ | 93$ | Tak | TAK | TAK |
+| GC SQL | 32 $ | 93$ | Tak | TAK | TAK | |
 
 * Min 2 gm RAM, min 10 gb storage, HA (min. 2 instancje)
 
