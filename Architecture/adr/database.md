@@ -25,10 +25,12 @@
 | Cockroach dedicated| free | 310$ | nie | Tak | Tak | |
 | Cockroach servless | free | 310$ | nie | Tak | NIE | Trzeba sie nauczyć |
 | GC SQL | 32 $ | 93$ | Tak | TAK | TAK | |
+| ScaleGrid | 10$ | 88$ * | nie | tak | tak| |
 
 * Min 2 gm RAM, min 10 gb storage, HA (min. 2 instancje)
 
 ** google compute engine 2 instance 1 vCore 3,75 ram, albo hetzner 2 x 2 vcore 4 gb |
+* scalegrid na gcp
 
 ### Wnioski
 
