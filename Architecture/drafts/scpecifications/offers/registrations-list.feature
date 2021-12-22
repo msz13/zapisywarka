@@ -29,3 +29,6 @@ Given Organizator stworzył ofertę Poniedziałek
     When Przechodzi do drugiej strony zapisów
     Then Widzi 20 kolejnych zapisów
       
+      
+      #Wyszukiwanie zapisu po kodzie odbioru
+      
