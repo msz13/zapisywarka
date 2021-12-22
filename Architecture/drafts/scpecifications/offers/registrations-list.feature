@@ -17,6 +17,7 @@ Feature: Przeglądanie listy zapisów
             | 2020/08/20 15:00 | 3            | Kowalski    |                      |
         When Odwiedza listę zapisów
         Then Widzi następujące informacje o liście zapisów:
+<<<<<<< HEAD
             | Numer zamówienia | Kod odbioru | Data zamówienia |
 
     Scenario: Paginacja
@@ -56,3 +57,20 @@ Feature: Filtrowanie zamówień w ofercie po kodzie odbioru
             | wój                | wójcik, wójcikowski,                |
             | wójciko            | wójcikowski                         |
 
+=======
+        |Numer zamówienia | Kod odbioru | Data zamówienia | 
+
+    Scenario: Paginacja 
+    Given Organizator zapisał 50 klient
+    When Odwiedza listę zapisów
+    Then Widzi pierwsze 10 zapisów
+
+    Scenario: Paginacja2 
+    Given Organizator zapisał 50 klient
+    When Przechodzi do drugiej strony zapisów
+    Then Widzi 20 kolejnych zapisów
+      
+      
+      #Wyszukiwanie zapisu po kodzie odbioru
+      
+>>>>>>> 5e0f0181fac6c23177a1509197e8ec80b025138d
