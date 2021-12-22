@@ -50,9 +50,9 @@ Feature: Składanie zapisu przez organizatora
     Scenario: Nie podano kodów odbioru
         When Organizator zapisów zapisuje klienta nie podają kodu odbioru
         Then Zapis, który otrzymał numer "1", posiada kod odbioru "1"
-Złożone zamówienie może być poprawione
-Może nawigować do list zamówień
-Ze szczegółów zapisów można przejśc do nowego zapisu, z tym samym kodem odbioru
+
+# Do decyzji
+#czy kod obioru ma ograniczenia, np. jedno słowo, albo długośc, dostępne znaki
 
 @Security
 #Organizator może dodać zamówienie tylko do swoich ofert

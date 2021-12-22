@@ -111,3 +111,15 @@ Feature: Wskazanie pozycji oferty
             | Kg   |
             | l.   |
             
+Feature: Zakończenie zapisu po zakończeniu daty zapisów
+
+    Jako organizator zapisów, oczekuje, aby po zakończeniu okresu zbierania zapisów, 
+    oferta osiągnęła status zakończonej, 
+    aby łatwiej było filtorwać spośród wielu ofert, 
+    aby uniemożliwić składanie zapisów przez klientów i współpracowników.
+
+    Scenario: Zapis jest złożony po zakończeniu zapisów
+   Given Sprzedawca w ofercie wskazał termin zakończenia zapisów na "2020/08/25 16:00"
+   And Jest "2020/08/25 16:01"
+   When Sprzedawca przegląda listę ofert
+   Then  Oferta ma status "Zakończona"
