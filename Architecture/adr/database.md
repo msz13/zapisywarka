@@ -5,6 +5,7 @@
 - jak najmniesze czas włożony w utrzymanie bazy
 - walory edukacyjne
 - nie narzuca rozwiązań architektonicznych
+- łatwość przenoszenia między dostawcami clauda
 
 
 ### Warianty
