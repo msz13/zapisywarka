@@ -26,6 +26,18 @@ Warianty:
 |docker swarm na jednej maszynie| |
 |kubernetes na jednej maszynie | |
 
+#### Opcje kubernetes
+	| |civo	|hetzner	|hetzner with cp |
+ | --- | --- | --- |---|
+|control plane|	free	|no	|dedicated
+nodes (2gb, 1 vc)|	|	|	
+liczba|	2	|3	|5|
+cena waluta |	8	|4,15|	4,15|
+cena waluty pln|	4,08|	4,6|	4,6|
+łaczny koszt	|65,28	|57,27	|95,45|
+
+
+
 
 Wymagania dla środowisk prod/stateg:
 - wspólne logowanie z web, api, db
