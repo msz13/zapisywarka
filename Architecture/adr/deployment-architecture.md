@@ -28,8 +28,8 @@ Warianty:
 
 #### Opcje kubernetes
 
-	| | civo	| hetzner	| hetzner with cp |
- | --- | --- | --- | --- |
+| | civo	| hetzner	| hetzner with cp |
+| --- | --- | --- | --- |
 |control plane|	free	| no	|dedicated |
 nodes (2gb, 1 vc)|	|	|	|
 liczba |	2	| 3	| 5 |
