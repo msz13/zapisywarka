@@ -15,6 +15,9 @@ Wymagnia:
 - prostota
 - środowisko lokalne deweloperskie, środoiwsko prelease do testów integracyjnych, środowisko staginh do testów eksloatacyjnych, środowisko produkcyjne
 
+#### Dodatkowe komponenty
+- s3 storage (mini?)
+
 
 Warianty:
 
