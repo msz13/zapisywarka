@@ -15,5 +15,10 @@
 ### Avability 
 1. Aplikacja powinna być dostępna w 99,5% w godzinach 7-24. 
 
+### Portbality 
+1. Aplikacja powinna być łatwo przenoszalna między róznymi dostawcami clauda. 
+2. Zmiana dostawcy nie powinna generować zmiany kodu, jedynie konfiguracji.
+3. Baza danych powinna umożliwić migrację danych w powszechnie wykorzystawnych formatach.
+
 
    
