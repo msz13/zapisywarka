@@ -7,7 +7,7 @@ inaczej niż, inne programy do zapisywania nasz produkt, będzie nastawiony na d
 
 # Users
 
-**Organizatora zapisów (rejestracji)** - inwywidualne - konto przypisane do konkretnego uzytkownika
+**Organizatora zapisów ** - inwywidualne - konto przypisane do konkretnego uzytkownika
 Konto grupowe/organizacji - konto w ramach którego operacje mogą wykonaywac różni użytkownicy. W koncie grupowym jest właściciel organizacji, który moze wykonywać wszystkie czynnosci, dodawać i uwuwać innych uzytkowników 
 Konto klienta - uzytkowjik ktory moze zapisywać sie na oferty roznych dosawcow
 Konto członka grupy - uzytkownik przypisany do danego dostawcy, dostawca moze tworzyc oferty zamknietych zapisow, tylko dla grupy czlonkow
