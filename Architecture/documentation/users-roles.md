@@ -11,6 +11,8 @@
 ### Jan - pracownik restauracji/firmy kateringowej
 #### Opis  
 Organizator zapisów na katering świąteczny. Organizuje jednorazowe zapisy okazyjnie, raz/dwa razy w roku. 
+#### Główna intencja
+Sprzedać wszystkie dostępne produkty.
 #### Cele 
 - Eliminacja odbierania telefonów i zapisywania zamówień 
 - Oszczędność czasu na opracowaniu podsumowania zapisów 
@@ -24,6 +26,8 @@ Organizator zapisów na katering świąteczny. Organizuje jednorazowe zapisy oka
 ### Ela - sporadyczna klientka restauracji
 #### Opis  
 Składająca zapisy sporadycznie.
+#### Główna intencja
+Zarezerwaowac produkty przed innymi. Zrobić to jak najprościej i szybciej.
 #### Cele 
 - Zapoznanie się z ofertą zapisów  
 - Jak najszybsze złożenie zapisu
@@ -34,6 +38,8 @@ Składająca zapisy sporadycznie.
 ### Magłorzata - regularna klientka piekarni rzemieślniczej
 #### Opis  
 Składająca zapisy regularnie.
+#### Główna intencja
+Zarezerwaowac produkty przed innymi. Zrobić to jak najprościej i szybciej.
 #### Cele 
 - Zapoznanie się z ofertą zapisów  
 - Jak najszybsze złożenie zapisu
