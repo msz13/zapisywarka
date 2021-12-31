@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Text.Json.Serialization;
+using System.Runtime.CompilerServices;
 
 namespace Zapisywarka.API.Modules.Identity.Core.Features
 {
@@ -23,7 +24,7 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
             public string Password { get; set; }
         }
 
-        class CommandValidator : FluentValidation.AbstractValidator<Command>
+        internal class CommandValidator : FluentValidation.AbstractValidator<Command>
         {
             public CommandValidator()
             {

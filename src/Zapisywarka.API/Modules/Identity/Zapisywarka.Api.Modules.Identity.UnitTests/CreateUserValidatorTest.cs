@@ -54,7 +54,7 @@ namespace Zapisywarka.Api.Modules.Identity.UnitTests
 
             var result = validator.TestValidate(command);
 
-            result.ShouldHaveValidationErrorFor(command => command.AccessToken).WithErrorCode("NotNullValidator");
+            result.ShouldHaveValidationErrorFor(command => command.AccessCode).WithErrorCode("NotNullValidator");
         }
 
            [Test]
