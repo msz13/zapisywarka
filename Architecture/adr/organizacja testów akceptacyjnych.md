@@ -10,7 +10,12 @@ in-progress
 Jak zorganizowac testy akceptacyjnych poszczególnych komponentów systemu frontend i backend
 1. Jedne testy dla całej aplikacji, tylko częśc zaimplementowana dla backendu i frondentdu
 2. Jedne scenariusze, ale uruchomiany odpowiedni driwer za pomocą tagów
-3. Odzielne specyfikacje dla każdej z aplikacji frondent i backend
+3. Odzielne specyfikacje dla każdej z aplikacji frondent i backend i jedne wspólne
+
+Jakie środowiska testowe:
+1.Front - ng serve
+2.APi - docker + baza danych, albo tylko testy na port/adapteres
+3.E2E - pełne środowisko wdrożeniowe
 
 Rodzaje testów
 - WEB - mogą być e2e i mockiem API
