@@ -28,6 +28,7 @@ Warianty:
 |dwa vps | jeden dla bazy danych druga dla aplikacji (nginx, kestrel)|
 |docker swarm na jednej maszynie| |
 |kubernetes na jednej maszynie | |
+|kubernetes na oracle claud + baza | |
 
 #### Opcje kubernetes
 
