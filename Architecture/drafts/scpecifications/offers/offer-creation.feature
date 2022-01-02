@@ -14,6 +14,8 @@ Feature: Kreator formularza zapisów
         Then Lista ofert zawiera:
             | Nazwa oferty | Data utworzenia  |
             | Poniedziałek | 2021-12-18T15:13 |
+         Or Oferta jest dostępna pod adresem
+         Or Przekierowany jest do formularza oferty
 
 
 
