@@ -32,15 +32,18 @@ Warianty:
 
 #### Opcje kubernetes
 
-| | civo	| hetzner	| hetzner with cp | OCI HA * | OCI HA + workeres (2) ** |
+| | civo	| hetzner	| hetzner with cp | OCI HA ** | OCI HA + workeres (2) *** |
 | --- | --- | --- | --- | --- | --- |
 |control plane|	free	| no	|dedicated | 3 | 3 |
-nodes (2gb, 1 vc)|	|	|	| | |
+nodes |	|	|	| | |
 liczba |	2	| 3	| 5 | 3 | | |
-cena waluta |	8	| 4,15 |	4,15 | | |
+cena waluta * |	8	| 4,15 |	4,15 | | |
 cena waluty pln |	4,08 |	4,6 |	4,6 | 4,08 | 4,08 |
 łączny koszt	| 65,28	| 57,27	| 95,45 | 58,46 |  175 |
 
+* civo agen 2gb, 1vcore
+* * 3 nody, po 4gb, 2core
+* ** 3 nody, po 4gb, 2core, 
 
 
 
