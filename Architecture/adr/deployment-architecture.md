@@ -37,13 +37,13 @@ Warianty:
 |control plane|	free	| no	|dedicated | 3 | 3 |
 nodes |	|	|	| | |
 liczba |	2	| 3	| 5 | 3 | | |
-cena waluta * |	8	| 4,15 |	4,15 | | |
+cena waluta * |	8	| 5,83 |	5,53/4,15  | | |
 cena waluty pln |	4,08 |	4,6 |	4,6 | 4,08 | 4,08 |
-łączny koszt	| 65,28	| 57,27	| 95,45 | 58,46 |  175 |
+łączny koszt	| 65,28	| 80,4	| 118,6 | 58,46 |  117 |
 
 * civo agen 2gb, 1vcore
 * * 3 nody, po 4gb, 2core
-* ** 3 nody, po 4gb, 2core, 
+* ** 3 nody, po 4gb, 2core, 4 nody 1cvore, 2gb
 
 
 
