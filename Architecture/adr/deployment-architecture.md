@@ -32,14 +32,15 @@ Warianty:
 
 #### Opcje kubernetes
 
-| | civo	| hetzner	| hetzner with cp |
-| --- | --- | --- | --- |
-|control plane|	free	| no	|dedicated |
-nodes (2gb, 1 vc)|	|	|	|
-liczba |	2	| 3	| 5 |
-cena waluta |	8	| 4,15 |	4,15 |
-cena waluty pln |	4,08 |	4,6 |	4,6 |
-łaczny koszt	| 65,28	| 57,27	| 95,45 |
+| | civo	| hetzner	| hetzner with cp | OCI HA * | OCI HA + workeres (2) ** |
+| --- | --- | --- | --- | --- | --- |
+|control plane|	free	| no	|dedicated | 3 | 3 |
+nodes (2gb, 1 vc)|	|	|	| | |
+liczba |	2	| 3	| 5 | 3 | | |
+cena waluta |	8	| 4,15 |	4,15 | | |
+cena waluty pln |	4,08 |	4,6 |	4,6 | 4,08 | 4,08 |
+łączny koszt	| 65,28	| 57,27	| 95,45 | 58,46 |  175 |
+
 
 
 
