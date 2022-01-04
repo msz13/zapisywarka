@@ -43,7 +43,7 @@ cena waluty pln |	4,08 |	4,6 |	4,6 | 4,08 | 4,08 |
 
 * civo agen 2gb, 1vcore
 * * 3 nody, po 4gb, 2core
-* ** 3 nody, po 4gb, 2core, 4 nody 1cvore, 2gb
+* ** 3 nody, po 4gb, 2core, 2 nody 1cvore, 2gb
 
 
 
