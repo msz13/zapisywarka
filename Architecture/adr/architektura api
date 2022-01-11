@@ -6,11 +6,12 @@
 in progress
 
 ## Context
+Warianty implementacji Warstwy aplikacyjnej
 
 Warianty:
-
-
-
+- użycie application service
+- użycie mediatr i command/query handlerów
+- użycie command/query handlerów i bezpośrednie ich wstrzyknięcie do controllerów, bez pośrednictwa mediatr
 
 ## Decision
 
