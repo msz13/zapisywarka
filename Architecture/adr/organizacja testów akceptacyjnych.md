@@ -12,6 +12,12 @@ Jak zorganizowac testy akceptacyjnych poszczególnych komponentów systemu front
 2. Jedne scenariusze, ale uruchomiany odpowiedni driwer za pomocą tagów
 3. Odzielne specyfikacje dla każdej z aplikacji frondent i backend i jedne wspólne
 
+Jak zorganizować pipeline:
+- jeden dla całej aplikacji, uruchomienie procesów na podstawie nx affected
+- osobne joby dla web i api uruchamiane na podstawie affacted
+- osobne workflowy
+
+
 Jakie środowiska testowe:
 1.Front - ng serve
 2.APi - docker + baza danych, albo tylko testy na port/adapteres
