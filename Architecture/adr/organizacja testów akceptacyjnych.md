@@ -45,6 +45,20 @@ Co testować:
 - poprawne kody błędów
 
 
+#### strategia testowania
+
+Testy api
+|rodzaj testu| zakres | narzędzie | uwagi |
+| --- | --- | --- | --- |
+|unit | feature, aggregates, infrastructure/domain services, controllers?? | nunit | |
+| integrations | feature + db (docker, in memory) | nunit | alternatywa |
+| api | e2e | cypress/ cypress+cucumber/ specflow+restassured / postman/ asp integration | 
+
+
+
+tesety web
+
+testy e2e
 
 
 ## Decision
