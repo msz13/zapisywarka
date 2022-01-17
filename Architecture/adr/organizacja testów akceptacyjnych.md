@@ -47,16 +47,24 @@ Co testować:
 
 #### strategia testowania
 
-Testy api
+##### Testy api
 |rodzaj testu| zakres | narzędzie | uwagi |
 | --- | --- | --- | --- |
 |unit | feature, aggregates, infrastructure/domain services, controllers?? | nunit | |
 | integrations | feature + db (docker, in memory) | nunit | alternatywa |
 | api | e2e | cypress/ cypress+cucumber/ specflow+restassured / postman/ asp integration | 
 
-
-
 tesety web
+|rodzaj testu| zakres | narzędzie | uwagi |
+| --- | --- | --- | --- |
+| compents |
+| page | 
+| interaction|
+| visual |
+| accesibilty |
+| worflow |
+
+
 
 testy e2e
 
