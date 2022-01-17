@@ -63,12 +63,12 @@ tesety web
 | compoenents interaction|
 | visual |
 | accesibilty |
-| worflow - ui acceptance | cypress/ cypress+cucumber/ | ng serve |
+| worflow - ui acceptance | cypress/ cypress+cucumber/ |  | ng serve |
 
 
 
 |rodzaj testu| zakres | narzędzie | uwagi |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | acceptance | user-flows | cypress/ cypress+cucumber/ specflow+playwright |
 
 ## Decision
