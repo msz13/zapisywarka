@@ -48,26 +48,28 @@ Co testować:
 #### strategia testowania
 
 ##### Testy api
-|rodzaj testu| zakres | narzędzie | uwagi |
+|rodzaj testu| zakres | narzędzie | środowisko | uwagi |
 | --- | --- | --- | --- |
 |unit | feature, aggregates, infrastructure/domain services, controllers?? | nunit | |
 | integrations | feature + db (docker, in memory) | nunit | alternatywa |
 | api | e2e | cypress/ cypress+cucumber/ specflow+restassured / postman/ asp integration | 
 
 tesety web
-|rodzaj testu| zakres | narzędzie | uwagi |
+|rodzaj testu| zakres | narzędzie |  środowisko | uwagi |
 | --- | --- | --- | --- |
+| domain libs |
 | compents |
 | page | 
-| interaction|
+| compoenents interaction|
 | visual |
 | accesibilty |
-| worflow |
+| worflow - ui acceptance | cypress/ cypress+cucumber/ | ng serve |
 
 
 
-testy e2e
-
+|rodzaj testu| zakres | narzędzie | uwagi |
+| --- | --- | --- | --- |
+| acceptance | user-flows | cypress/ cypress+cucumber/ specflow+playwright |
 
 ## Decision
 
