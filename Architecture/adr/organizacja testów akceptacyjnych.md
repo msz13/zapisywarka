@@ -49,14 +49,14 @@ Co testować:
 
 ##### Testy api
 |rodzaj testu| zakres | narzędzie | środowisko | uwagi |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 |unit | feature, aggregates, infrastructure/domain services, controllers?? | nunit | |
 | integrations | feature + db (docker, in memory) | nunit | alternatywa |
 | api | e2e | cypress/ cypress+cucumber/ specflow+restassured / postman/ asp integration | 
 
 tesety web
 |rodzaj testu| zakres | narzędzie |  środowisko | uwagi |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | domain libs |
 | compents |
 | page | 
@@ -68,7 +68,7 @@ tesety web
 
 
 |rodzaj testu| zakres | narzędzie | uwagi |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | acceptance | user-flows | cypress/ cypress+cucumber/ specflow+playwright |
 
 ## Decision
