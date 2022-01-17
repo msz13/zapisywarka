@@ -67,9 +67,9 @@ tesety web
 
 
 
-|rodzaj testu| zakres | narzędzie | uwagi |
+|rodzaj testu| zakres | narzędzie | środowisko | uwagi |
 | --- | --- | --- | --- |
-| acceptance | user-flows | cypress/ cypress+cucumber/ specflow+playwright |
+| acceptance | user-flows | cypress/ cypress+cucumber/ specflow+playwright | namspace in cluster |
 
 ## Decision
 
