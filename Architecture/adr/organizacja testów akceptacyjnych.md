@@ -77,7 +77,13 @@ poziomy testów akceotacyjnych
 2. steps UI i NON UI
 3. business rules
 
+Alternatywny podział testów - tagi:
+1. Scenariusze mają tagi
+2. Gdy api, lub web uruchamiane są poszczególne testy, na podstawie tagów
 
+Alternatywny podział testów - test driver:
+1. Istnieją jedne testy, ale jest różna implementacja za pomocą test driver
+2. Gdy api, lub web wstrzykiwane są odpowiednie web drivery na podstawie tagow
 
 ## Decision
 
