@@ -66,10 +66,18 @@ tesety web
 | worflow - ui acceptance | cypress/ cypress+cucumber/ |  | ng serve |
 
 
-
+testy e2e
 |rodzaj testu| zakres | narzędzie | środowisko | uwagi |
 | --- | --- | --- | --- | --- |
 | acceptance | user-flows | cypress/ cypress+cucumber/ specflow+playwright | namspace in cluster |
+
+
+poziomy testów akceotacyjnych
+1. workflow/user journey/ feature
+2. steps UI i NON UI
+3. business rules
+
+
 
 ## Decision
 
