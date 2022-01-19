@@ -77,6 +77,8 @@ poziomy testów akceotacyjnych
 2. steps UI i NON UI
 3. business rules
 
+cześc scenariuszy będzie się powtarzać??
+
 scenario składa się z:
 command
 query
