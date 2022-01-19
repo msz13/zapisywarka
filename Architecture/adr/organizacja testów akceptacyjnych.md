@@ -77,6 +77,11 @@ poziomy testów akceotacyjnych
 2. steps UI i NON UI
 3. business rules
 
+scenario składa się z:
+command
+query
+
+
 Alternatywny podział testów - tagi:
 1. Scenariusze mają tagi
 2. Gdy api, lub web uruchamiane są poszczególne testy, na podstawie tagów
