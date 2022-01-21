@@ -1,6 +1,6 @@
 Feature: Składanie zapisu przez organizatora
 
-    Organizator może sam dokonać zapisu w imieniu klienta., a by przyjąć zapis, który składa osobiście, telefonicznie lub przez media społecznościowe.
+    Organizator może sam dokonać zapisu w imieniu klienta. by przyjąć zapis, który składa osobiście, telefonicznie lub przez media społecznościowe.
     Organizator może wskazać ilość pozycji, które klient chce zamówić.
 
     Scenario: Sprzedawca po przyjęciu zamówienia widzi dodane zamówienie do listy zamówień
@@ -57,3 +57,37 @@ Feature: Składanie zapisu przez organizatora
 @Security
 #Organizator może dodać zamówienie tylko do swoich ofert
 #Tylko zalogowany moze wykonywac operacje
+
+Background: 
+    Given Organizator zapisów stworzy ofertę zawierającą następujące pozycje:
+            | Name                       |
+            | Chleb wiejski              |
+            | Chleb foremkowy z żurawiną |
+            | Chleb foremkowy z oliwkami | 
+    And Jest "2020/08/20 15:00"
+
+    Scenario: Zapis jest dodany jest do list zapisów
+    Scenario: Lista zapisów zawiera
+    Scenario: Zapis zawiera następujące szczegóły
+
+    Scenario: Organizator dodał poprawny zapis 
+    Then Powinien dodać zapis z sukcesem
+    
+             
+        Given Przyjmujący zapisy uzupełnia dane klienta o kodzie odbioru "Szczeciński", z uwagą "Odbierze żona Joanna", który zamówił:
+            | Name                       | Quantity |
+            | Chleb wiejski              | 1        |
+            | Chleb foremkowy z żurawiną | 3        |
+        When Dokonuje zapisu
+        Then Lista zapisów na ofertę zawiera zapis:
+
+            | Data złozenia    | Numer zapisu | Kod odbioru | 
+            | 2020/08/20 15:00 | 1            | Szczeciński | 
+        And Szczegóły zapisu zawierają następujące pozycje
+
+            | Name                       | Quantity |
+            | Chleb wiejski              | 1        |
+            | Chleb foremkowy z żurawiną | 3        |
+        And Dodatkowe informacje:
+        | Data_złożenia | Uwagi|
+        |"2020/08/20 15:00" | "Odbierze żona Joanna"

@@ -1,0 +1,411 @@
+{
+  "id" : 1,
+  "name" : "Getting Started",
+  "description" : "This is a model of my software system.",
+  "revision" : 0,
+  "lastModifiedDate" : "2022-01-07T18:56:57Z",
+  "lastModifiedAgent" : "structurizr-web/2605/diagram",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlICJHZXR0aW5nIFN0YXJ0ZWQiICJUaGlzIGlzIGEgbW9kZWwgb2YgbXkgc29mdHdhcmUgc3lzdGVtLiIgewoKICAgICFhZHJzIGRlY2lzaW9ucwoKICAgIG1vZGVsIHsKICAgICAgICBhZG1pbmlzdHJhdG9yID0gcGVyc29uICJBZG1pbmlzdHJhdG9yIiAiV8WCYcWbY2ljaWVsIHN5c3RlbXUiCiAgICAgICAgb3JnYW5pemF0b3IgPSBwZXJzb24gIk9yZ2FuaXphdG9yIHphcGlzw7N3IgogICAgICAgIHphcGlzeXdhcmthID0gc29mdHdhcmVTeXN0ZW0gIlphcGlzeXdhcmthLnBsIiAiU3lzdGVtIGRvIG9yZ2FuaXphY2ppIHphcGlzw7N3IiB7CiAgICAgICAgICAgIHdlYlJlamVzdHJhY2phID0gY29udGFpbmVyICJ6YXBpc3l3YXJrYS5wbCIgIlNQQS9Bbmd1bGFyIiAiQXBsaWthY2phIHByemV6bmFjem9uYSBkbyBvcmdhbml6YWNqaSB6YXBpc8OzdyIgewogICAgICAgICAgICAgICAgdXJsICJodHRwczovL3phcGlzeXdhcmthLnBsIgogICAgICAgICAgICAgICAgcHJvcGVydGllcyB7CiAgICAgICAgICAgICAgICAgICAgInByb2QtdXJsIiAiaHR0cHM6Ly96YXBpc3l3YXJrYS5wbCIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgICAKICAgICAgICAgICAgYXBpID0gIGNvbnRhaW5lciAiWkFQSVNZV0FSS0EuQVBJIiAiQVNQIENvcmUiIHsKICAgICAgICAgICAgICB1cmwgImh0dHBzOi8vYXBpLnphcGlzeXdhcmthLnBsLyIKICAgICAgICAgICAgfQogICAgICAgICAgICBkYiA9ICBjb250YWluZXIgIkRhdGFiYXNlIiAiUG9zdGdyZXNxbCIgewogICAgICAgICAgICAgICAgCiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIHdlYlJlamVzdHJhY2phIC0+IGFwaSAiTWFrZXMgQVBJIGNhbGxzIiAiSFRUUFMvSlNPTiIgCiAgICAgICAgICAgIHdlYlJlamVzdHJhY2phIC0+IGFwaSAiTWFrZXMgQVBJIGNhbGxzIiAiSFRUUFMvSlNPTiIKICAgICAgICAgICAgYXBpIC0+IGRiICJSZWFkcyBhbmQgd3JpdGVzIHRvIgogICAgICAgIH0KCiAgICAgICAgb3JnYW5pemF0b3IgLT4gemFwaXN5d2Fya2EgIlpiaWVyYSB6YXBpc3kiCgogICAgICAgIHByb2QgPSBkZXBsb3ltZW50RW52aXJvbm1lbnQgIlNyb2Rvd2lza28gcHJvZHVrY3lqbmUiIHsKICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIk9yYWNsZSBDbGF1ZCIgewoKICAgICAgICAgICAgICBsYiA9IGluZnJhc3RydWN0dXJlTm9kZSAiTG9hZCBiYWxhbmNlciIgewogICAgICAgICAgICAgICAgICB0YWdzICJPcmFjbGUgQ2xvdWQgSW5mcmFzdHJ1Y3R1cmUgLSBMb2FkIEJhbGFuY2VyIgogICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgIGszcyA9IGRlcGxveW1lbnROb2RlICJLM3Mga2xhc3RlciIgeyAKICAgICAgICAgICAgICAgICAgIHRhZ3MgIkszcyIgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIk9DSSBzdWJuZXQgLSBzZXJ2ZXIiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJPQ0kgQ29tcHV0ZSBJbnN0YW5jZSIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNlcnZlciA9IGluZnJhc3RydWN0dXJlTm9kZSAiSzNzIHNlcnZlciIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgfSAgICAgICAgICAgICAgICAgIAoKICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiT0NJIHN1Ym5ldCAtIGFnZW50cyIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIk9DSSBDb21wdXRlIHBvb2wgLSBPcmFjbGUgTGludXgiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJPcmFjbGUgQ2xvdWQgSW5mcmFzdHJ1Y3R1cmUgLSBJbnN0YW5jZSBQb29scyIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFnZW50cyA9IGRlcGxveW1lbnROb2RlICJLM3MgYWdlbnRzIHBvb2wiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJOZ2lueCBjb250YWluZXIiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRhaW5lckluc3RhbmNlIHdlYlJlamVzdHJhY2phCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJEb3RuZXQgY29udGFpbmVyIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb250YWluZXJJbnN0YW5jZSBhcGkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIlN0YWNrR3JlcyBwb3N0cmdyZXNxbCBjbHVzdGVyIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb250YWluZXJJbnN0YW5jZSBkYgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgIGxiIC0+IGszcyAiUHJ6ZWtpZXJvd3VqZSBydWNoIgogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBzZXJ2ZXIgLT4gYWdlbnRzCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CgogICAgdmlld3MgewogICAgICAgIHN5c3RlbUNvbnRleHQgemFwaXN5d2Fya2EgIlN5c3RlbUNvbnRleHQiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICB9CgogICAgICAgICBjb250YWluZXIgemFwaXN5d2Fya2EgIkNvbnRhaW5lcnMiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICB9CgogICAgICAgIGRlcGxveW1lbnQgemFwaXN5d2Fya2EgcHJvZCB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICB0aGVtZSBodHRwczovL3N0YXRpYy5zdHJ1Y3R1cml6ci5jb20vdGhlbWVzL29yYWNsZS1jbG91ZC1pbmZyYXN0cnVjdHVyZS0yMDIxLjA0LjMwL3RoZW1lLmpzb24KCgogICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgIGVsZW1lbnQgIlNvZnR3YXJlIFN5c3RlbSIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjMTE2OGJkCiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiUGVyc29uIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBwZXJzb24KICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzA4NDI3YgogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICB9CgogICAgICAgICAgICBlbGVtZW50ICJrM3MiIHsKICAgICAgICAgICAgICAgIGljb24gaHR0cHM6Ly9jbmNmLWJyYW5kaW5nLm5ldGxpZnkuYXBwL2ltZy9wcm9qZWN0cy9rM3MvaG9yaXpvbnRhbC9jb2xvci9rM3MtaG9yaXpvbnRhbC1jb2xvci5wbmcKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KICAgIAp9Cg=="
+  },
+  "configuration" : { },
+  "model" : {
+    "people" : [ {
+      "id" : "1",
+      "tags" : "Element,Person",
+      "name" : "Administrator",
+      "description" : "Właściciel systemu",
+      "location" : "Unspecified",
+      "defaultTags" : [ "Element", "Person" ]
+    }, {
+      "id" : "2",
+      "tags" : "Element,Person",
+      "name" : "Organizator zapisów",
+      "relationships" : [ {
+        "id" : "9",
+        "tags" : "Relationship",
+        "sourceId" : "2",
+        "destinationId" : "3",
+        "description" : "Zbiera zapisy",
+        "defaultTags" : [ "Relationship" ]
+      } ],
+      "location" : "Unspecified",
+      "defaultTags" : [ "Element", "Person" ]
+    } ],
+    "softwareSystems" : [ {
+      "id" : "3",
+      "tags" : "Element,Software System",
+      "name" : "Zapisywarka.pl",
+      "description" : "System do organizacji zapisów",
+      "location" : "Unspecified",
+      "containers" : [ {
+        "id" : "5",
+        "tags" : "Element,Container",
+        "url" : "https://api.zapisywarka.pl/",
+        "name" : "ZAPISYWARKA.API",
+        "description" : "ASP Core",
+        "relationships" : [ {
+          "id" : "8",
+          "tags" : "Relationship",
+          "sourceId" : "5",
+          "destinationId" : "6",
+          "description" : "Reads and writes to",
+          "defaultTags" : [ "Relationship" ]
+        } ],
+        "defaultTags" : [ "Element", "Container" ]
+      }, {
+        "id" : "6",
+        "tags" : "Element,Container",
+        "name" : "Database",
+        "description" : "Postgresql",
+        "defaultTags" : [ "Element", "Container" ]
+      }, {
+        "id" : "4",
+        "tags" : "Element,Container",
+        "url" : "https://zapisywarka.pl",
+        "properties" : {
+          "prod-url" : "https://zapisywarka.pl"
+        },
+        "name" : "zapisywarka.pl",
+        "description" : "SPA/Angular",
+        "relationships" : [ {
+          "id" : "7",
+          "tags" : "Relationship",
+          "sourceId" : "4",
+          "destinationId" : "5",
+          "description" : "Makes API calls",
+          "technology" : "HTTPS/JSON",
+          "defaultTags" : [ "Relationship" ]
+        } ],
+        "technology" : "Aplikacja przeznaczona do organizacji zapisów",
+        "defaultTags" : [ "Element", "Container" ]
+      } ],
+      "defaultTags" : [ "Element", "Software System" ]
+    } ],
+    "deploymentNodes" : [ {
+      "id" : "10",
+      "tags" : "Element,Deployment Node",
+      "name" : "Oracle Claud",
+      "environment" : "Srodowisko produkcyjne",
+      "instances" : 1,
+      "children" : [ {
+        "id" : "12",
+        "tags" : "Element,Deployment Node,K3s",
+        "name" : "K3s klaster",
+        "environment" : "Srodowisko produkcyjne",
+        "instances" : 1,
+        "children" : [ {
+          "id" : "16",
+          "tags" : "Element,Deployment Node",
+          "name" : "OCI subnet - agents",
+          "environment" : "Srodowisko produkcyjne",
+          "instances" : 1,
+          "children" : [ {
+            "id" : "17",
+            "tags" : "Element,Deployment Node,Oracle Cloud Infrastructure - Instance Pools",
+            "name" : "OCI Compute pool - Oracle Linux",
+            "environment" : "Srodowisko produkcyjne",
+            "instances" : 1,
+            "children" : [ {
+              "id" : "18",
+              "tags" : "Element,Deployment Node",
+              "name" : "K3s agents pool",
+              "environment" : "Srodowisko produkcyjne",
+              "instances" : 1,
+              "children" : [ {
+                "id" : "24",
+                "tags" : "Element,Deployment Node",
+                "name" : "StackGres postrgresql cluster",
+                "environment" : "Srodowisko produkcyjne",
+                "instances" : 1,
+                "containerInstances" : [ {
+                  "id" : "25",
+                  "tags" : "Container Instance",
+                  "environment" : "Srodowisko produkcyjne",
+                  "deploymentGroups" : [ "Default" ],
+                  "instanceId" : 1,
+                  "containerId" : "6"
+                } ]
+              }, {
+                "id" : "21",
+                "tags" : "Element,Deployment Node",
+                "name" : "Dotnet container",
+                "environment" : "Srodowisko produkcyjne",
+                "instances" : 1,
+                "containerInstances" : [ {
+                  "id" : "22",
+                  "tags" : "Container Instance",
+                  "url" : "https://api.zapisywarka.pl/",
+                  "relationships" : [ {
+                    "id" : "26",
+                    "sourceId" : "22",
+                    "destinationId" : "25",
+                    "description" : "Reads and writes to",
+                    "linkedRelationshipId" : "8"
+                  } ],
+                  "environment" : "Srodowisko produkcyjne",
+                  "deploymentGroups" : [ "Default" ],
+                  "instanceId" : 1,
+                  "containerId" : "5"
+                } ]
+              }, {
+                "id" : "19",
+                "tags" : "Element,Deployment Node",
+                "name" : "Nginx container",
+                "environment" : "Srodowisko produkcyjne",
+                "instances" : 1,
+                "containerInstances" : [ {
+                  "id" : "20",
+                  "tags" : "Container Instance",
+                  "url" : "https://zapisywarka.pl",
+                  "properties" : {
+                    "prod-url" : "https://zapisywarka.pl"
+                  },
+                  "relationships" : [ {
+                    "id" : "23",
+                    "sourceId" : "20",
+                    "destinationId" : "22",
+                    "description" : "Makes API calls",
+                    "technology" : "HTTPS/JSON",
+                    "linkedRelationshipId" : "7"
+                  } ],
+                  "environment" : "Srodowisko produkcyjne",
+                  "deploymentGroups" : [ "Default" ],
+                  "instanceId" : 1,
+                  "containerId" : "4"
+                } ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "id" : "13",
+          "tags" : "Element,Deployment Node",
+          "name" : "OCI subnet - server",
+          "environment" : "Srodowisko produkcyjne",
+          "instances" : 1,
+          "children" : [ {
+            "id" : "14",
+            "tags" : "Element,Deployment Node",
+            "name" : "OCI Compute Instance",
+            "environment" : "Srodowisko produkcyjne",
+            "instances" : 1,
+            "infrastructureNodes" : [ {
+              "id" : "15",
+              "tags" : "Element,Infrastructure Node",
+              "name" : "K3s server",
+              "relationships" : [ {
+                "id" : "28",
+                "tags" : "Relationship",
+                "sourceId" : "15",
+                "destinationId" : "18",
+                "defaultTags" : [ "Relationship" ]
+              } ],
+              "environment" : "Srodowisko produkcyjne"
+            } ]
+          } ]
+        } ]
+      } ],
+      "infrastructureNodes" : [ {
+        "id" : "11",
+        "tags" : "Element,Infrastructure Node,Oracle Cloud Infrastructure - Load Balancer",
+        "name" : "Load balancer",
+        "relationships" : [ {
+          "id" : "27",
+          "tags" : "Relationship",
+          "sourceId" : "11",
+          "destinationId" : "12",
+          "description" : "Przekierowuje ruch",
+          "defaultTags" : [ "Relationship" ]
+        } ],
+        "environment" : "Srodowisko produkcyjne"
+      } ]
+    } ]
+  },
+  "documentation" : {
+    "decisions" : [ {
+      "id" : "1",
+      "date" : "2016-02-13T00:00:00Z",
+      "title" : "Help comments",
+      "status" : "Accepted",
+      "content" : "# 5. Help comments\n\nDate: 2016-02-13\n\n## Status\n\nAccepted\n\nAmended by [9. Help scripts](0009-help-scripts.md)\n\n## Context\n\nThe tool will have a `help` subcommand to provide documentation\nfor users.\n\nIt's nice to have usage documentation in the script files\nthemselves, in comments.  When reading the code, that's the first\nplace to look for information about how to run a script.\n\n## Decision\n\nWrite usage documentation in comments in the source file.\n\nDistinguish between documentation comments and normal comments.\nDocumentation comments have two hash characters at the start of\nthe line.\n\nThe `adr help` command can parse comments out from the script\nusing the standard Unix tools `grep` and `cut`.\n\n## Consequences\n\nNo need to maintain help text in a separate file.\n\nHelp text can easily be kept up to date as the script is edited.\n\nThere's no automated check that the help text is up to date.  The\ntests do not work well as documentation for users, and the help\ntext is not easily cross-checked against the code.\n\nThis won't work if any subcommands are not implemented as scripts\nthat use '#' as a comment character.\n",
+      "format" : "Markdown"
+    } ]
+  },
+  "views" : {
+    "systemContextViews" : [ {
+      "softwareSystemId" : "3",
+      "key" : "SystemContext",
+      "paperSize" : "A6_Portrait",
+      "dimensions" : {
+        "width" : 866,
+        "height" : 1416
+      },
+      "automaticLayout" : {
+        "implementation" : "Graphviz",
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "nodeSeparation" : 300,
+        "edgeSeparation" : 0,
+        "vertices" : false
+      },
+      "enterpriseBoundaryVisible" : true,
+      "elements" : [ {
+        "id" : "2",
+        "x" : 232,
+        "y" : 207
+      }, {
+        "id" : "3",
+        "x" : 207,
+        "y" : 907
+      } ],
+      "relationships" : [ {
+        "id" : "9"
+      } ]
+    } ],
+    "containerViews" : [ {
+      "softwareSystemId" : "3",
+      "key" : "Containers",
+      "paperSize" : "A5_Portrait",
+      "dimensions" : {
+        "width" : 1108,
+        "height" : 2158
+      },
+      "automaticLayout" : {
+        "implementation" : "Graphviz",
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "nodeSeparation" : 300,
+        "edgeSeparation" : 0,
+        "vertices" : false
+      },
+      "externalSoftwareSystemBoundariesVisible" : true,
+      "elements" : [ {
+        "id" : "4",
+        "x" : 329,
+        "y" : 329
+      }, {
+        "id" : "5",
+        "x" : 329,
+        "y" : 929
+      }, {
+        "id" : "6",
+        "x" : 329,
+        "y" : 1529
+      } ],
+      "relationships" : [ {
+        "id" : "7"
+      }, {
+        "id" : "8"
+      } ]
+    } ],
+    "deploymentViews" : [ {
+      "softwareSystemId" : "3",
+      "key" : "Zapisywarkapl-Srodowiskoprodukcyjne-Deployment",
+      "paperSize" : "A2_Landscape",
+      "dimensions" : {
+        "width" : 3741,
+        "height" : 3691
+      },
+      "automaticLayout" : {
+        "implementation" : "Graphviz",
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "nodeSeparation" : 300,
+        "edgeSeparation" : 0,
+        "vertices" : false
+      },
+      "environment" : "Srodowisko produkcyjne",
+      "elements" : [ {
+        "id" : "11",
+        "x" : 850,
+        "y" : 3062
+      }, {
+        "id" : "22",
+        "x" : 1645,
+        "y" : 1200
+      }, {
+        "id" : "12",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "24",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "13",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "25",
+        "x" : 2441,
+        "y" : 1200
+      }, {
+        "id" : "14",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "15",
+        "x" : 1645,
+        "y" : 2345
+      }, {
+        "id" : "16",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "17",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "18",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "19",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "20",
+        "x" : 850,
+        "y" : 1200
+      }, {
+        "id" : "21",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "10",
+        "x" : 175,
+        "y" : 175
+      } ],
+      "relationships" : [ {
+        "id" : "28"
+      }, {
+        "id" : "27"
+      }, {
+        "id" : "26"
+      }, {
+        "id" : "23"
+      } ]
+    } ],
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "tag" : "Software System",
+          "background" : "#1168bd",
+          "color" : "#ffffff"
+        }, {
+          "tag" : "Person",
+          "background" : "#08427b",
+          "color" : "#ffffff",
+          "shape" : "Person"
+        }, {
+          "tag" : "k3s",
+          "icon" : "https://cncf-branding.netlify.app/img/projects/k3s/horizontal/color/k3s-horizontal-color.png"
+        } ]
+      },
+      "themes" : [ "https://static.structurizr.com/themes/oracle-cloud-infrastructure-2021.04.30/theme.json" ],
+      "terminology" : { },
+      "lastSavedView" : "SystemContext"
+    }
+  }
+}
