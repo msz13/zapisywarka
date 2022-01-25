@@ -38,7 +38,7 @@ Testy REst API:
 - testy w innym nażedziu - cypress, postman, jako c# klient
 - contrcat testing
 
-Co testować:
+Co testować na UI:
 - autoryzację
 - mapowanie
 - routing 
@@ -82,6 +82,7 @@ cześc scenariuszy będzie się powtarzać??
 scenario składa się z:
 command
 query
+
 
 
 Alternatywny podział testów - tagi:
