@@ -1,28 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewOfferComponent } from './new-offer.component';
-import { ThemeModule } from '@zapisywarka-client-aps/shared/theme';
-import { NbDatepickerModule } from '@nebular/theme';
-
-import { OfferItemsComponent } from './offer-form/offer-items/offer-items.component';
-import { CatalogItemsSelectComponent } from './offer-form/offer-items/catalog-items-select/catalog-items-select.component';
-import { CatalogItemsSelectPipe } from './offer-form/offer-items/catalog-items-select/catalog-items-select.pipe';
-import { TestComponent } from './test/test.component';
-
+import { OfferCreationFormComponent } from './offer-creation-form/offer-creation-form.component';
+import { SharedMaterialModule} from '@zapisywarka.web/material'
 
 @NgModule({
   declarations: [
-    NewOfferComponent, 
-    OfferItemsComponent,
-    CatalogItemsSelectComponent,
-    CatalogItemsSelectPipe,
-    TestComponent
+    OfferCreationFormComponent
   ],
   imports: [
-    CommonModule,
-    NbDatepickerModule,
-    ThemeModule,
+    CommonModule,   
+    SharedMaterialModule
   ],
-  exports: [NewOfferComponent]
+  exports: [OfferCreationFormComponent]
 })
 export class NewOfferModule { }

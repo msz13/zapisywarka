@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,6 +13,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import {MatSelectModule} from '@angular/material/select'
 import {MatCheckboxModule} from '@angular/material/checkbox'
+import {MatDialogModule} from '@angular/material/dialog'; 
  
 const MODULES = [
   LayoutModule,
@@ -30,7 +30,8 @@ const MODULES = [
   MatProgressBarModule,
   MatDatepickerModule,
   MatSelectModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatDialogModule
 ]
 
 @NgModule({

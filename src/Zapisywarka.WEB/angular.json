@@ -34,6 +34,35 @@
     }
   },
   "projects": {
+    "..-libs-offers-feature-offer-creation-e2e": {
+      "root": "libs/offers/feature-offer-creation-e2e",
+      "sourceRoot": "libs/offers/feature-offer-creation-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "libs/offers/feature-offer-creation-e2e/cypress.json",
+            "devServerTarget": "offers-feature-offer-creation:storybook",
+            "tsConfig": "libs/offers/feature-offer-creation-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "offers-feature-offer-creation:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": [
+              "libs/offers/feature-offer-creation-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
     "catalog-api": {
       "projectType": "library",
       "root": "libs/catalog/api",
@@ -588,35 +617,6 @@
         }
       }
     },
-    "offers-feature-offer-creation-e2e": {
-      "root": "apps/offers-feature-offer-creation-e2e",
-      "sourceRoot": "apps/offers-feature-offer-creation-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/offers-feature-offer-creation-e2e/cypress.json",
-            "tsConfig": "apps/offers-feature-offer-creation-e2e/tsconfig.e2e.json",
-            "devServerTarget": "offers-feature-offer-creation:storybook"
-          },
-          "configurations": {
-            "ci": {
-              "devServerTarget": "offers-feature-offer-creation:storybook:ci"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/offers-feature-offer-creation-e2e/**/*.{js,ts}"
-            ]
-          },
-          "outputs": ["{options.outputFile}"]
-        }
-      }
-    },
     "shared-domain": {
       "projectType": "library",
       "root": "libs/shared/domain",
@@ -985,7 +985,6 @@
             "proxyConfig": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-rejestracja/proxy.config.json"
           },
           "configurations": {
-
             "production": {
               "browserTarget": "zapisywarka-rejestracja:build:production"
             }
@@ -1045,8 +1044,8 @@
             },
             "local": {
               "skipServe": true,
-               "watch": true,
-               "baseUrl": "http://zapisywarka.local"
+              "watch": true,
+              "baseUrl": "http://zapisywarka.local"
             }
           }
         },

@@ -29,6 +29,10 @@
     }
   },
   "projects": {
+    "..-libs-offers-feature-offer-creation-e2e": {
+      "tags": [],
+      "implicitDependencies": ["offers-feature-offer-creation"]
+    },
     "catalog-api": {
       "tags": []
     },
@@ -76,10 +80,6 @@
     },
     "offers-feature-offer-creation": {
       "tags": []
-    },
-    "offers-feature-offer-creation-e2e": {
-      "tags": [],
-      "implicitDependencies": ["offers-feature-offer-creation"]
     },
     "shared-domain": {
       "tags": []

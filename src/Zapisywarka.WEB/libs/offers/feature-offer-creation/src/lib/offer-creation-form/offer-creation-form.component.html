@@ -1,0 +1,18 @@
+<h3>Stwórz nową ofertę</h3>
+<mat-form-field appearance="fill">
+    <mat-label>Nazwa oferty</mat-label>
+    <input matInput>
+</mat-form-field>
+<p>
+    <button 
+        mat-raised-button 
+        color="primary"
+        (click)="addItem()"
+        >
+        Dodaj pozycję
+    </button>
+</p>
+<ul>
+    <li data-test="offer-items"*ngIf="offerItems$ | async as item">{{item}}</li>
+</ul>
+

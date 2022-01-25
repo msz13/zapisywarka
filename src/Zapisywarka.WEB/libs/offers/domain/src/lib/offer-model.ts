@@ -26,12 +26,12 @@ export interface OfferItemInput {
   initialAvaibleQuantity: number;
 }
 
-interface OfferItemView {
-  id: string;
-  catalogName: string;
-  category: string;
-  price: number;
-  avaibleQuantity: number;
+export interface OfferItemView {
+//  id: string;
+  name: string;
+//  category: string;
+//  price: number;
+//  avaibleQuantity: number;
 }
 
 interface OfferDetailView {
