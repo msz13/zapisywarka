@@ -43,17 +43,20 @@ Feature: Specyfikacja pozycji oferty
         When Zapisuje ofertę
         Then Widzi komunikat błędu "Należy wskazać przynajmniej jedną pozycję oferty"
 
-        #Rule: Organizator zapisów może wskazać ceny pozycji
+    #Rule: Organizator zapisów może wskazać ceny pozycji
+    Scenario: Jan organizator zapisów tworzy ofertę zawierającą pozycje z maksymalną ilością właściwości
         Given Jan organizator zapisów wskazał nazwę oferty "Poniedziałek"
         And Wskazał pozycje oferty:
-            | Nazwa     | Jednostka | Cena zł |
-            | Chleb     | szt.      | 10      |
-            | Ziemniaki | kg        | 2       |
+            | Nazwa     | Jednostka | Cena zł | Kategoria |
+            | Chleb     | szt.      | 10      | Bochenki  |
+            | Ziemniaki | kg        | 2       | Foremkowe |
         When Zapisuje ofertę
         Then Oferta zapisów o nazwie "Poniedziałek" jest dostępna do zbierania zapisów
         And Zawiera następujące pozycje:
-            | Nazwa     | Cena zł |
-            | Chleb     | 10      |
-            | Ziemniaki | 2       |
+            | Kateogria | Nazwa     | Jednostka | Cena zł |
+            | Bochenki  | Chleb     | szt.      | 10      |
+            | Foremkowe | Ziemniaki | kg        | 2       |
+
+#Rule pozycje mogę mieć kategorie
 
 #Rule: Organizator zapisów może wskazać opis pozycji i zdjęcie
