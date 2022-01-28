@@ -1,11 +1,12 @@
 Feature: Tworzenie oferty zapisów
 
-    @first-story
+    @first-story @web @api
     Scenario: Organizator zapisów tworzy ofertę
         Given Jan organizator zapisów wskazał nazwę oferty "Poniedziałek"
         When Zapisuje ofertę
         Then Oferta zapisów o nazwie "Poniedziałek" jest dostępna aby zbierac zapisy
 
+    @api
     Scenario: Organizator zapisów tworzy oferty z tą samą nazwą
         Given Administrator ofert stworzył ofertę o nazwie "Poniedziałek"
         And Tworzy nową ofertę o nazwie "Poniedziałek"
@@ -15,7 +16,7 @@ Feature: Tworzenie oferty zapisów
             | Poniedziałek  |
             | Poniedziałek2 |
 
-    
+    @api
     Scenario: Organizator zapisów tworzy kilka ofert bez nazwy
         Given Administrator ofert stworzył ofertę o nazwie "Poniedziałek"
         And Administrator ofert stworzył ofertę o nazwie ""
@@ -27,6 +28,7 @@ Feature: Tworzenie oferty zapisów
             | Oferta1      |
             | Oferta2      |
 
+    @api
     Scenario: Nazwa oferty jest zbyt długa
         Given Jan organizator zapisów tworzy ofertę nazywającą się "0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"
         When Zapisuje ofertę

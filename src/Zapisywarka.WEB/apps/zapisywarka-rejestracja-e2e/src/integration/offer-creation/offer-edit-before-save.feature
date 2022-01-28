@@ -2,6 +2,7 @@ Feature: Modyfikacja pozycji oferty przed zapisem
 
     Organizator zapisów, aby móc poprawić, wcześniej wprowadzone informacje o pozycjach oferty, może je edytować.
 
+    @web
     Scenario: Jan organizator zapisów poprawia dane pozycji ofert przed publikacją
         Given Jan organizator zapisów wskazał pozycje oferty:
             | Nazwa     | Jednostka |
@@ -15,7 +16,7 @@ Feature: Modyfikacja pozycji oferty przed zapisem
             | Bochenek             | szt.      |
             | Foremkowy z pieprzem | szt.      |
 
-
+    @web
     Scenario: Jan organizator zapisów zmienia kolejność pozycji ofert przed publikacją
 
         Given Jan organizator zapisów wskazał pozycje oferty:

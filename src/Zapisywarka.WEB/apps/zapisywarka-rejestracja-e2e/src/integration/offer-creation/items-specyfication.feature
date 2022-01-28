@@ -1,6 +1,6 @@
 Feature: Specyfikacja pozycji oferty
 
-    @second story
+    @second story @web @api
     Scenario: Sprzedawca tworzy formularz zapisów
         Given Jan organizator zapisów wskazał nazwę oferty "Poniedziałek"
         And Wskazał pozycje oferty:
@@ -15,6 +15,7 @@ Feature: Specyfikacja pozycji oferty
             | Ziemniaki | kg        |
 
     #Rule pozycje mogą być specyfikowane w różnych jednostkach
+    @api
     Scenario: Organizator zapisów wybiera jednostkę ilości pozycji
         When Organizator zapisów chce wybrać jednostkę ilości pozucji oferty
         Then Ma do dyspozycji następujące jednostki:
@@ -26,6 +27,7 @@ Feature: Specyfikacja pozycji oferty
 
     #Rule pozycje powinny mieć unikalne nazwy
 
+    @api @ui
     Scenario: Organizator zapisów specyfikuje pozycje z tą samą nazwą
         Given Jan organizator zapisów wskazał pozycje oferty:
             | Nazwa |
@@ -34,8 +36,9 @@ Feature: Specyfikacja pozycji oferty
         When Zapisuje ofertę
         Then Widzi komunikat błędu "Nazwy pozycji oferty nie mogą się powtarzać"
 
+    
     #Rule: Lista pozycji nie może być pusta.
-
+    @api @ui
     Scenario: Organizator zapisów nie wskazał pozycji oferty
         Given Jan organizator zapisów wskazał pozycje oferty:
             | Nazwa |
@@ -44,6 +47,9 @@ Feature: Specyfikacja pozycji oferty
         Then Widzi komunikat błędu "Należy wskazać przynajmniej jedną pozycję oferty"
 
     #Rule: Organizator zapisów może wskazać ceny pozycji
+    #Rule pozycje mogę mieć kategorie
+
+    @web @api
     Scenario: Jan organizator zapisów tworzy ofertę zawierającą pozycje z maksymalną ilością właściwości
         Given Jan organizator zapisów wskazał nazwę oferty "Poniedziałek"
         And Wskazał pozycje oferty:
@@ -57,6 +63,6 @@ Feature: Specyfikacja pozycji oferty
             | Bochenki  | Chleb     | szt.      | 10      |
             | Foremkowe | Ziemniaki | kg        | 2       |
 
-#Rule pozycje mogę mieć kategorie
+
 
 #Rule: Organizator zapisów może wskazać opis pozycji i zdjęcie
