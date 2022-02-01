@@ -1,10 +1,10 @@
 {
-  "version": 1,
+  "version": 2,
   "cli": {
     "defaultCollection": "@nrwl/angular"
   },
   "defaultProject": "zapisywarka-rejestracja",
-  "schematics": {
+  "generators": {
     "@nrwl/angular": {
       "application": {
         "linter": "eslint"
@@ -39,9 +39,9 @@
       "root": "libs/catalog/api",
       "sourceRoot": "libs/catalog/api/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/catalog/api/src/**/*.ts",
@@ -51,7 +51,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/catalog/api"],
           "options": {
             "jestConfig": "libs/catalog/api/jest.config.js",
@@ -65,9 +65,9 @@
       "root": "libs/catalog/domain-catalog-item",
       "sourceRoot": "libs/catalog/domain-catalog-item/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/catalog/domain-catalog-item/src/**/*.ts",
@@ -77,7 +77,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/catalog/domain-catalog-item"],
           "options": {
             "jestConfig": "libs/catalog/domain-catalog-item/jest.config.js",
@@ -91,9 +91,9 @@
       "root": "libs/catalog/domain-category",
       "sourceRoot": "libs/catalog/domain-category/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/catalog/domain-category/src/**/*.ts",
@@ -103,7 +103,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/catalog/domain-category"],
           "options": {
             "jestConfig": "libs/catalog/domain-category/jest.config.js",
@@ -116,16 +116,16 @@
       "root": "libs/catalog/feature-catalog",
       "sourceRoot": "libs/catalog/feature-catalog/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/catalog/feature-catalog/**/*.ts"]
           },
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/catalog/feature-catalog"],
           "options": {
             "jestConfig": "libs/catalog/feature-catalog/jest.config.js",
@@ -133,7 +133,7 @@
           }
         },
         "storybook": {
-          "builder": "@nrwl/storybook:storybook",
+          "executor": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/angular",
             "port": 4400,
@@ -148,7 +148,7 @@
           }
         },
         "build-storybook": {
-          "builder": "@nrwl/storybook:build",
+          "executor": "@nrwl/storybook:build",
           "outputs": ["{options.outputPath}"],
           "options": {
             "uiFramework": "@storybook/angular",
@@ -169,9 +169,9 @@
       "root": "apps/catalog-feature-catalog-e2e",
       "sourceRoot": "apps/catalog-feature-catalog-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/catalog-feature-catalog-e2e/cypress.json",
             "tsConfig": "apps/catalog-feature-catalog-e2e/tsconfig.e2e.json",
@@ -184,7 +184,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "apps/catalog-feature-catalog-e2e/**/*.{js,ts}"
@@ -199,9 +199,9 @@
       "root": "libs/catalog/utills/testing",
       "sourceRoot": "libs/catalog/utills/testing/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/catalog/utills/testing/src/**/*.ts",
@@ -211,7 +211,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/catalog/utills/testing"],
           "options": {
             "jestConfig": "libs/catalog/utills/testing/jest.config.js",
@@ -225,9 +225,9 @@
       "root": "libs/identity/domain",
       "sourceRoot": "libs/identity/domain/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/identity/domain/src/**/*.ts",
@@ -237,7 +237,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/identity/domain"],
           "options": {
             "jestConfig": "libs/identity/domain/jest.config.js",
@@ -251,9 +251,9 @@
       "root": "libs/identity/login-feature",
       "sourceRoot": "libs/identity/login-feature/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/identity/login-feature/src/**/*.ts",
@@ -263,7 +263,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/identity/login-feature"],
           "options": {
             "jestConfig": "libs/identity/login-feature/jest.config.js",
@@ -271,7 +271,7 @@
           }
         },
         "storybook": {
-          "builder": "@nrwl/storybook:storybook",
+          "executor": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/angular",
             "port": 4400,
@@ -286,7 +286,7 @@
           }
         },
         "build-storybook": {
-          "builder": "@nrwl/storybook:build",
+          "executor": "@nrwl/storybook:build",
           "outputs": ["{options.outputPath}"],
           "options": {
             "uiFramework": "@storybook/angular",
@@ -307,9 +307,9 @@
       "root": "apps/identity-login-feature-e2e",
       "sourceRoot": "apps/identity-login-feature-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/identity-login-feature-e2e/cypress.json",
             "tsConfig": "apps/identity-login-feature-e2e/tsconfig.e2e.json",
@@ -325,7 +325,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/identity-login-feature-e2e/**/*.{js,ts}"]
           },
@@ -338,9 +338,9 @@
       "root": "libs/identity/sign-up-feature",
       "sourceRoot": "libs/identity/sign-up-feature/src",
       "prefix": "app",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/identity/sign-up-feature/src/**/*.ts",
@@ -350,7 +350,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/identity/sign-up-feature"],
           "options": {
             "jestConfig": "libs/identity/sign-up-feature/jest.config.js",
@@ -358,7 +358,7 @@
           }
         },
         "storybook": {
-          "builder": "@nrwl/storybook:storybook",
+          "executor": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/angular",
             "port": 4400,
@@ -373,7 +373,7 @@
           }
         },
         "build-storybook": {
-          "builder": "@nrwl/storybook:build",
+          "executor": "@nrwl/storybook:build",
           "outputs": ["{options.outputPath}"],
           "options": {
             "uiFramework": "@storybook/angular",
@@ -394,9 +394,9 @@
       "root": "apps/identity-sign-up-feature-e2e",
       "sourceRoot": "apps/identity-sign-up-feature-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/identity-sign-up-feature-e2e/cypress.json",
             "tsConfig": "apps/identity-sign-up-feature-e2e/tsconfig.e2e.json",
@@ -409,7 +409,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "apps/identity-sign-up-feature-e2e/**/*.{js,ts}"
@@ -424,9 +424,9 @@
       "root": "libs/identity/utills",
       "sourceRoot": "libs/identity/utills/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/identity/utills/src/**/*.ts",
@@ -435,7 +435,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/identity/utills"],
           "options": {
             "jestConfig": "libs/identity/utills/jest.config.js",
@@ -449,9 +449,9 @@
       "root": "libs/landing-page",
       "sourceRoot": "libs/landing-page/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/landing-page/src/**/*.ts",
@@ -461,7 +461,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/landing-page"],
           "options": {
             "jestConfig": "libs/landing-page/jest.config.js",
@@ -469,7 +469,7 @@
           }
         },
         "storybook": {
-          "builder": "@nrwl/storybook:storybook",
+          "executor": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/angular",
             "port": 4400,
@@ -484,7 +484,7 @@
           }
         },
         "build-storybook": {
-          "builder": "@nrwl/storybook:build",
+          "executor": "@nrwl/storybook:build",
           "outputs": ["{options.outputPath}"],
           "options": {
             "uiFramework": "@storybook/angular",
@@ -506,9 +506,9 @@
       "root": "libs/offers/domain",
       "sourceRoot": "libs/offers/domain/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/offers/domain/src/**/*.ts",
@@ -518,7 +518,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/offers/domain"],
           "options": {
             "jestConfig": "libs/offers/domain/jest.config.js",
@@ -532,9 +532,9 @@
       "root": "libs/offers/feature-offer-creation",
       "sourceRoot": "libs/offers/feature-offer-creation/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/offers/feature-offer-creation/src/**/*.ts",
@@ -548,7 +548,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/offers/feature-offer-creation"],
           "options": {
             "jestConfig": "libs/offers/feature-offer-creation/jest.config.js",
@@ -556,7 +556,7 @@
           }
         },
         "storybook": {
-          "builder": "@nrwl/storybook:storybook",
+          "executor": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/angular",
             "port": 4400,
@@ -571,7 +571,7 @@
           }
         },
         "build-storybook": {
-          "builder": "@nrwl/storybook:build",
+          "executor": "@nrwl/storybook:build",
           "outputs": ["{options.outputPath}"],
           "options": {
             "uiFramework": "@storybook/angular",
@@ -592,9 +592,9 @@
       "root": "apps/offers-feature-offer-creation-e2e",
       "sourceRoot": "apps/offers-feature-offer-creation-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/offers-feature-offer-creation-e2e/cypress.json",
             "tsConfig": "apps/offers-feature-offer-creation-e2e/tsconfig.e2e.json",
@@ -607,7 +607,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "apps/offers-feature-offer-creation-e2e/**/*.{js,ts}"
@@ -622,9 +622,9 @@
       "root": "libs/shared/domain",
       "sourceRoot": "libs/shared/domain/src",
       "prefix": "zapisywarka-web",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/shared/domain/src/**/*.ts",
@@ -634,7 +634,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared/domain"],
           "options": {
             "jestConfig": "libs/shared/domain/jest.config.js",
@@ -648,9 +648,9 @@
       "root": "libs/shared/material",
       "sourceRoot": "libs/shared/material/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/shared/material/src/**/*.ts",
@@ -660,7 +660,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared/material"],
           "options": {
             "jestConfig": "libs/shared/material/jest.config.js",
@@ -674,9 +674,9 @@
       "root": "libs/shared/theme",
       "sourceRoot": "libs/shared/theme/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/shared/theme/src/**/*.ts",
@@ -686,7 +686,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared/theme"],
           "options": {
             "jestConfig": "libs/shared/theme/jest.config.js",
@@ -700,9 +700,9 @@
       "root": "libs/shared/ui",
       "sourceRoot": "libs/shared/ui/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/shared/ui/src/**/*.ts",
@@ -712,7 +712,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared/ui"],
           "options": {
             "jestConfig": "libs/shared/ui/jest.config.js",
@@ -720,7 +720,7 @@
           }
         },
         "storybook": {
-          "builder": "@nrwl/storybook:storybook",
+          "executor": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/angular",
             "port": 4400,
@@ -735,7 +735,7 @@
           }
         },
         "build-storybook": {
-          "builder": "@nrwl/storybook:build",
+          "executor": "@nrwl/storybook:build",
           "outputs": ["{options.outputPath}"],
           "options": {
             "uiFramework": "@storybook/angular",
@@ -752,14 +752,16 @@
         }
       }
     },
+    "zapisywarka-api": "apps/zapisywarka-api",
+    "zapisywarka-api-test": "apps/zapisywarka-api-test",
     "zapisywarka-back-office": {
       "projectType": "application",
       "root": "apps/zapisywarka-back-office",
       "sourceRoot": "apps/zapisywarka-back-office/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "executor": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/apps/zapisywarka-back-office",
             "index": "apps/zapisywarka-back-office/src/index.html",
@@ -818,7 +820,7 @@
           "defaultConfiguration": ""
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "executor": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "zapisywarka-back-office:build"
           },
@@ -829,13 +831,13 @@
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "executor": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "zapisywarka-back-office:build"
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "apps/zapisywarka-back-office/src/**/*.ts",
@@ -845,7 +847,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/zapisywarka-back-office"],
           "options": {
             "jestConfig": "apps/zapisywarka-back-office/jest.config.js",
@@ -853,7 +855,7 @@
           }
         },
         "storybook": {
-          "builder": "@nrwl/storybook:storybook",
+          "executor": "@nrwl/storybook:storybook",
           "options": {
             "uiFramework": "@storybook/angular",
             "port": 4400,
@@ -868,7 +870,7 @@
           }
         },
         "build-storybook": {
-          "builder": "@nrwl/storybook:build",
+          "executor": "@nrwl/storybook:build",
           "outputs": ["{options.outputPath}"],
           "options": {
             "uiFramework": "@storybook/angular",
@@ -889,9 +891,9 @@
       "root": "apps/zapisywarka-back-office-e2e",
       "sourceRoot": "apps/zapisywarka-back-office-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/zapisywarka-back-office-e2e/cypress.json",
             "tsConfig": "apps/zapisywarka-back-office-e2e/tsconfig.e2e.json",
@@ -904,7 +906,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "apps/zapisywarka-back-office-e2e/**/*.{js,ts}"
@@ -919,9 +921,9 @@
       "root": "apps/zapisywarka-rejestracja",
       "sourceRoot": "apps/zapisywarka-rejestracja/src",
       "prefix": "zapisywarka-client-aps",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "executor": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/apps/zapisywarka-rejestracja",
             "index": "apps/zapisywarka-rejestracja/src/index.html",
@@ -979,26 +981,25 @@
           "defaultConfiguration": ""
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "executor": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "zapisywarka-rejestracja:build",
             "proxyConfig": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-rejestracja/proxy.config.json"
           },
           "configurations": {
-
             "production": {
               "browserTarget": "zapisywarka-rejestracja:build:production"
             }
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "executor": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "zapisywarka-rejestracja:build"
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "apps/zapisywarka-rejestracja/src/**/*.ts",
@@ -1008,7 +1009,7 @@
           "outputs": ["{options.outputFile}"]
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/zapisywarka-rejestracja"],
           "options": {
             "jestConfig": "apps/zapisywarka-rejestracja/jest.config.js",
@@ -1016,7 +1017,7 @@
           }
         },
         "buildImage": {
-          "builder": "@nrwl/workspace:run-commands",
+          "executor": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
               "nx build zapisywarka-rejestracja --prod",
@@ -1031,9 +1032,9 @@
       "root": "apps/zapisywarka-rejestracja-e2e",
       "sourceRoot": "apps/zapisywarka-rejestracja-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/zapisywarka-rejestracja-e2e/cypress.json",
             "tsConfig": "apps/zapisywarka-rejestracja-e2e/tsconfig.e2e.json",
@@ -1045,13 +1046,13 @@
             },
             "local": {
               "skipServe": true,
-               "watch": true,
-               "baseUrl": "http://zapisywarka.local"
+              "watch": true,
+              "baseUrl": "http://zapisywarka.local"
             }
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "apps/zapisywarka-rejestracja-e2e/**/*.{js,ts}"

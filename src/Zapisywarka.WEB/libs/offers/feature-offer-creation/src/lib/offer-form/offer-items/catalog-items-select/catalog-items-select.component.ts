@@ -1,76 +1,87 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+} from '@angular/core';
 import { ControlValueAccessor, FormControl } from '@angular/forms';
 import { ID } from '@datorama/akita';
 
 export interface CatalogItem {
-  id: ID,
-  name: string,
-  categoryId
+  id: ID;
+  name: string;
+  categoryId;
 }
 
 export interface Category {
-  id: ID,
-  name: string,
+  id: ID;
+  name: string;
 }
 
 @Component({
   selector: 'app-catalog-items-select',
   templateUrl: './catalog-items-select.component.html',
   styleUrls: ['./catalog-items-select.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CatalogItemsSelectComponent implements OnInit, ControlValueAccessor {
+export class CatalogItemsSelectComponent
+  implements OnInit, ControlValueAccessor
+{
+  @Input() catalogItems: CatalogItem[] = [
+    {
+      id: 1,
+      categoryId: 1,
+      name: 'pierwszy',
+    },
+    {
+      id: 2,
+      categoryId: 1,
+      name: 'drugi',
+    },
+  ];
+  @Input() categories: Category[] = [
+    {
+      id: 1,
+      name: 'kategoria',
+    },
+  ];
 
-  @Input() catalogItems: CatalogItem[] = [{
-    id: 1,
-    categoryId: 1,
-    name: 'pierwszy'
-  }, {
-    id: 2,
-    categoryId: 1,
-    name: 'drugi'
-  }]
-  @Input() categories: Category[] = [{
-    id: 1,
-    name: "kategoria"
-  }]
- 
+  selectedCount: number;
 
+  constructor() {}
 
-  selectedCount: number
-
-  constructor() { }
-  
   setDisabledState?(isDisabled: boolean): void {
     throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
     this.selectedControl.valueChanges.subscribe((val: CatalogItem[]) => {
-      this.selectedCount = val.length
-       console.log(JSON.stringify(val))
-    })
+      this.selectedCount = val.length;
+      console.log(JSON.stringify(val));
+    });
   }
 
-  selected = [{
-    id: 1,
-    name: 'Bochenek tradycyjny',
-    categoryId: 1,
-    price: 9,
-    avaibleQuantity: 60
-  },
-  {
-    id: 6,
-    name: 'Foremkowy z żurawiną',
-    categoryId: 2,
-    price: 6,
-    avaibleQuantity: 40
-  }]
+  selected = [
+    {
+      id: 1,
+      name: 'Bochenek tradycyjny',
+      categoryId: 1,
+      price: 9,
+      avaibleQuantity: 60,
+    },
+    {
+      id: 6,
+      name: 'Foremkowy z żurawiną',
+      categoryId: 2,
+      price: 6,
+      avaibleQuantity: 40,
+    },
+  ];
 
   onSelect(selected: any) {
-    console.log(JSON.stringify(selected))
+    console.log(JSON.stringify(selected));
   }
-  selectedControl = new FormControl([])
+  selectedControl = new FormControl([]);
 
   writeValue(obj: any): void {
     this.selectedControl.setValue(obj);
@@ -83,7 +94,6 @@ export class CatalogItemsSelectComponent implements OnInit, ControlValueAccessor
   }
 
   compareById(i1: CatalogItem, i2: CatalogItem): boolean {
-    return i1.id === i2.id
+    return i1.id === i2.id;
   }
-  
 }

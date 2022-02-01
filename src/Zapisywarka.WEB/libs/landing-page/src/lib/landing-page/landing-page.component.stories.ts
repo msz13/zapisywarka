@@ -9,11 +9,7 @@ export default {
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [
-      SharedMaterialModule,
-      IdentityDomainModule,
-      RouterTestingModule,
-    ],
+    imports: [SharedMaterialModule, IdentityDomainModule, RouterTestingModule],
   },
   component: LandingPageComponent,
   props: {},

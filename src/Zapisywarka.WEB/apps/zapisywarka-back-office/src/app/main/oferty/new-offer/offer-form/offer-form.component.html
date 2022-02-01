@@ -1,47 +1,51 @@
-<form [formGroup]= "offerForm" (onSubmit)="onSubmit()">
-    <div class="form-group row">
-        <label for="inputName" class="label col-sm-3 col-form-label">Nazwa oferty</label>
-        <div class="col-sm-9">
-          <input 
-            nbInput             
-            id="inputName" 
-            placeholder="Nazwa" 
-            formControlName="offerName"
-            data-cy="offer-name"
-            >
-        
-         
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputEndOffer" class="label col-sm-3 col-form-label">Zakończenie zapisów</label>
-        <div class="col-sm-9">
-            <app-date-time-input></app-date-time-input>                            
-        </div>
+<form [formGroup]="offerForm" (onSubmit)="onSubmit()">
+  <div class="form-group row">
+    <label for="inputName" class="label col-sm-3 col-form-label"
+      >Nazwa oferty</label
+    >
+    <div class="col-sm-9">
+      <input
+        nbInput
+        id="inputName"
+        placeholder="Nazwa"
+        formControlName="offerName"
+        data-cy="offer-name"
+      />
     </div>
-      <b class="subtitle">Data odbioru</b>
-      <div class="row" formGroupName="collectionDate" class="collection-date">
-          <div class="col-lg-6">
-            <div class="form-group">
-                <label for="sinceDate" class="label ">Od</label>
-                    <input nbInput placeholder="Wybierz datę" id="sinceDate" formControlName="from"  data-cy="start-collection">
-                                
-                                      
-               </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="form-group">
-                <label for="toDate" class="label">Do</label>
-                    <input nbInput placeholder="Wybierz datę" id="toDate" formControlName="to"  data-cy="end-collection" >
-                    
-                </div>                       
-            </div>
-
+  </div>
+  <div class="form-group row">
+    <label for="inputEndOffer" class="label col-sm-3 col-form-label"
+      >Zakończenie zapisów</label
+    >
+    <div class="col-sm-9">
+      <app-date-time-input></app-date-time-input>
+    </div>
+  </div>
+  <b class="subtitle">Data odbioru</b>
+  <div class="row" formGroupName="collectionDate" class="collection-date">
+    <div class="col-lg-6">
+      <div class="form-group">
+        <label for="sinceDate" class="label">Od</label>
+        <input
+          nbInput
+          placeholder="Wybierz datę"
+          id="sinceDate"
+          formControlName="from"
+          data-cy="start-collection"
+        />
       </div>
-     
-      
-      
-      
-
-
+    </div>
+    <div class="col-lg-6">
+      <div class="form-group">
+        <label for="toDate" class="label">Do</label>
+        <input
+          nbInput
+          placeholder="Wybierz datę"
+          id="toDate"
+          formControlName="to"
+          data-cy="end-collection"
+        />
+      </div>
+    </div>
+  </div>
 </form>

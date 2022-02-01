@@ -1,24 +1,24 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+} from '@angular/core';
 
 @Component({
   selector: 'app-initial-avatar',
   templateUrl: './initial-avatar.component.html',
   styleUrls: ['./initial-avatar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InitialAvatarComponent implements OnInit {
+  _initial: string = '';
 
-  _initial: string = ''
-  
   @Input() set content(value: string) {
-
-    this._initial = value[0]
+    this._initial = value[0];
   }
 
-  constructor() { }
+  constructor() {}
 
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

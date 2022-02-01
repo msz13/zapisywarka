@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {MENU_ITEMS} from './menu-items';
+import { MENU_ITEMS } from './menu-items';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+  menu = MENU_ITEMS;
 
-  menu = MENU_ITEMS
-  
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

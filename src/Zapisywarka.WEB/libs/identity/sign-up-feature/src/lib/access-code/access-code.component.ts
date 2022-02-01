@@ -5,23 +5,19 @@ import { FormControl, Validators } from '@angular/forms';
   selector: 'app-access-code',
   templateUrl: './access-code.component.html',
   styleUrls: ['./access-code.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccessCodeComponent implements OnInit {
-
   accessCodeControl = new FormControl('', Validators.required);
-  
+
   validateAccessCode() {
     this.accessCodeControl.markAsTouched();
 
     if (this.accessCodeControl.valid) {
-     
     }
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

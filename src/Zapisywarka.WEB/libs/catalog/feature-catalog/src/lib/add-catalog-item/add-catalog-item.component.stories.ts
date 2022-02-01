@@ -1,15 +1,13 @@
-
 import { AddCatalogItemComponent } from './add-catalog-item.component';
 
 export default {
-  title: 'AddCatalogItemComponent'
-}
+  title: 'AddCatalogItemComponent',
+};
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: []
+    imports: [],
   },
   component: AddCatalogItemComponent,
-  props: {
-  }
-})
+  props: {},
+});

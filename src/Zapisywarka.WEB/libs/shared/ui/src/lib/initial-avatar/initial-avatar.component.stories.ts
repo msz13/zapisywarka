@@ -1,17 +1,16 @@
-
 import { text } from '@storybook/addon-knobs';
 import { InitialAvatarComponent } from './initial-avatar.component';
 
 export default {
-  title: 'InitialAvatarComponent'
-}
+  title: 'InitialAvatarComponent',
+};
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: []
+    imports: [],
   },
   component: InitialAvatarComponent,
   props: {
-    content: text('content', 'Mateusz')
-  }
-})
+    content: text('content', 'Mateusz'),
+  },
+});

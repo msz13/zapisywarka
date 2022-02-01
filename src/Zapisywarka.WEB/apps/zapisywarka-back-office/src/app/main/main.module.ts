@@ -7,18 +7,15 @@ import { MainComponent } from './main.component';
 import { StartModule } from './start/start.module';
 import { OfertyModule } from './oferty/oferty.module';
 
-
-
 @NgModule({
   declarations: [MainComponent],
   imports: [
     ThemeModule,
     NbMenuModule,
     StartModule,
-    OfertyModule,     
+    OfertyModule,
     MainRoutingModule,
-        
   ],
-  exports: [MainComponent]
+  exports: [MainComponent],
 })
-export class MainModule { }
+export class MainModule {}

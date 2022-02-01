@@ -1,0 +1,28 @@
+{
+  "root": "apps/zapisywarka-api-test",
+  "projectType": "application",
+  "sourceRoot": "apps/zapisywarka-api-test",
+  "targets": {
+    "build": {
+      "executor": "@nx-dotnet/core:build",
+      "outputs": ["dist/apps/zapisywarka-api-test"],
+      "options": {
+        "configuration": "Debug",
+        "noDependencies": true
+      },
+      "configurations": {
+        "production": {
+          "configuration": "Release"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx-dotnet/core:test",
+      "options": {}
+    },
+    "lint": {
+      "executor": "@nx-dotnet/core:format"
+    }
+  },
+  "tags": ["nx-dotnet"]
+}
