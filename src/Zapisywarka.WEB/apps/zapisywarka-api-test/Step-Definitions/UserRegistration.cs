@@ -54,7 +54,7 @@ namespace MyNamespace
             var name = actor.Using<MemoryAbility>().Recall("UserName") as string;
             var password = actor.Using<MemoryAbility>().Recall("Password") as string;
             var request = new RestRequest("users").AddJsonBody(new {UserName = name, Password = password });
-            var result = await client.ExecutePostAsync(request);
+            var result = await client.PostAsync(request);
              result.ErrorMessage.Should().BeNullOrEmpty();
              result.IsSuccessful.Should().BeTrue();
              
