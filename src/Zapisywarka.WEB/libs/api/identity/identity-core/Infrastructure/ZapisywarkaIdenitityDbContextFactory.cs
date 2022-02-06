@@ -8,7 +8,7 @@ namespace Zapisywarka.API.Modules.Identity.Core.Infrastructure
        public ZapisywarkaIdentityDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ZapisywarkaIdentityDbContext>();
-            optionsBuilder.UseNpgsql("Host=localhost;Database=Offers;Username=postgres;Password=Password_01",
+            optionsBuilder.UseNpgsql("Host=localhost;Database=zapisywarka;Username=postgres;Password=Password_01",
                 o => o.UseNodaTime());
             
             return new ZapisywarkaIdentityDbContext(optionsBuilder.Options);

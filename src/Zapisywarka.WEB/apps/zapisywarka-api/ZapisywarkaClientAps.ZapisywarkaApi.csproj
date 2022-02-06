@@ -20,6 +20,11 @@
   <ItemGroup>
     <ProjectReference Include="..\..\libs\api\identity\identity-api\ZapisywarkaClientAps.Api.Identity.IdentityApi.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+     <InternalsVisibleTo Include="ZapisywarkaClientAps.ZapisywarkaApi.Test" />
+  </ItemGroup>
+
   
   <Target Name="CheckNxModuleBoundaries" BeforeTargets="Build">
     

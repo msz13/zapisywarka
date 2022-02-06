@@ -26,7 +26,9 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "prepare": "nx g @nx-dotnet/core:restore"
+    "prepare": "nx g @nx-dotnet/core:restore",
+    "local-db": "docker run -p 5432:5432 -d -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=Password_01 -e POSTGRES_DB=zapisywarka --name=postgres-db postgres",
+    "remove-db": "docker rm -f postgres-db"
   },
   "private": true,
   "dependencies": {

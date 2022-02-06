@@ -9,23 +9,36 @@ using Boa.Constrictor.Logging;
 using RestSharp;
 using RestSharp.Extensions;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Testing;
+using System.Net.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.Net.Http.Json;
+using Zapisywarka.API.AcceptanceTests.Interactions;
+using Zapisywarka.API.AcceptanceTests.Interactions.Identity;
 
 namespace MyNamespace
 {
     [Binding]
     public class StepDefinitions
     {
-        
         private readonly ScenarioContext _scenarioContext;
 
         private Actor actor;
 
+        private WebApplicationFactory<Program> _factory;
+        private HttpClient _client;
+
        
         private Dictionary<string, dynamic> memory = new Dictionary<string, dynamic>(); 
 
-        public StepDefinitions(ScenarioContext scenarioContext)
+        public StepDefinitions(ScenarioContext scenarioContext, WebApplicationFactory<Program> factory)
         {
-            _scenarioContext = scenarioContext;         
+            _scenarioContext = scenarioContext;
+            _factory = factory;
+            _client = _factory.WithWebHostBuilder((host)=> {
+                host.UseEnvironment(Microsoft.Extensions.Hosting.Environments.Development);
+            }).CreateClient();
+
 
         }
 
@@ -34,6 +47,7 @@ namespace MyNamespace
         {
             actor = new Actor(name: "Jan", logger: new ConsoleLogger());
             actor.Can(new MemoryAbility());
+            actor.Can(new ItentityTestServerAbility(_client));
         }
 
         [Given(@"Organizator zapisów wypełnił dane rejestracji konta")]
@@ -50,24 +64,26 @@ namespace MyNamespace
         [When(@"Próbuję się zarejestrować")]
         public async Task WhenProbujeSieZarejestrowac()
         {
-            var client = new RestClient("http://zapisywarka.local");
-            var name = actor.Using<MemoryAbility>().Recall("UserName") as string;
-            var password = actor.Using<MemoryAbility>().Recall("Password") as string;
-            var request = new RestRequest("users").AddJsonBody(new {UserName = name, Password = password });
-            var result = await client.PostAsync(request);
-             result.ErrorMessage.Should().BeNullOrEmpty();
-             result.IsSuccessful.Should().BeTrue();
-             
+            await actor.AttemptsToAsync(CreateUserAccount.ForThemselves());
         }
         
         [Then(@"Baza użytkowników zawiera organizatora zapisów o imieniu ""(.*)""")]
-        public void ThenBazaUzytkownikowZawieraOrganizatoraZapisowOImieniu(string userName)
+        public async Task ThenBazaUzytkownikowZawieraOrganizatoraZapisowOImieniu(string userName)
         {
-            var name = actor.Using<MemoryAbility>().Recall("UserName") as string;
-            name.Should().Be(userName);
+           var acauntName = actor.AskingFor<object>(Recall.Fact("UserName")) as string;
+           var accaunt = await actor.AskingForAsync<string>(GetUserAccount.For(acauntName));
+           accaunt.Should().Be(acauntName);
+
         }
         
-        
+       /*  public async Task ThenBazaUzytkownikowZawieraOrganizatoraZapisowOImieniu(string userName)
+        {
+           identityDriver.CreateAndLogUser();
+           offersdriver.CreateOfferBy(organiser: user, name: "test", startDate: startDate);
+           registrationDriver.Register(offer, positions, receivecode);
+           registrationDriver.GetRegistration(receivecode, user);
+        }
+         */
       
     }
 }

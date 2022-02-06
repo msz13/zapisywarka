@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using CSharpFunctionalExtensions;
 using MediatR;
 using Zapisywarka.API.Modules.Identity.Core.Features;
+using Microsoft.AspNetCore.Routing;
 
 namespace Zapisywarka.API.Modules.Identity
 {
@@ -26,18 +27,17 @@ namespace Zapisywarka.API.Modules.Identity
         }
 
 
-        public static void UseIdenityModule(this IApplicationBuilder app)
+        public static void UseIdenityModule(this IEndpointRouteBuilder  app)
         {
-            app.MapPost("/users", (IMediator _mediatr, CreateUser.Command request)=> {
+          /*  app.MapPost("/users", (IMediator _mediatr, CreateUser.Command request)=> {
                 await _mediator.Send(request);
                 return Results.NoContent();
             });
             app.MapGet("/users", ()=> "users");
-            app.UseCookiePolicy(new CookiePolicyOptions {
+             app.UseCookiePolicy(new CookiePolicyOptions {
                 Secure = Microsoft.AspNetCore.Http.CookieSecurePolicy.None
-            });
-            app.UseAuthentication();
-            app.UseAuthorization();
+            }); */ 
+            
         }
     }
 }
