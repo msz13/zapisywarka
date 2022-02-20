@@ -1,28 +1,47 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Boa.Constrictor.Screenplay;
+using NodaTime;
+using TechTalk.SpecFlow.Assist.Attributes;
+using static Zapisywarka.API.AcceptanceTests.Interactions.Identity.GetUserAccount;
 
-namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity 
+namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
-  internal class GetUserAccount : IQuestionAsync<string>
+ 
+  internal class GetUserAccount : IQuestionAsync<UserInfo>
   {
-     string _accauntName;
+    string _accauntName;
 
     public GetUserAccount(string accauntName)
     {
       _accauntName = accauntName;
     }
 
-    internal static IQuestionAsync<string> For(string acauntName)
+    public class UserInfo
+    {
+      public string UserName { get; set; }
+    }
+
+    internal static IQuestionAsync<UserInfo> For(string acauntName)
     {
       return new GetUserAccount(acauntName);
     }
 
-    public async Task<string> RequestAsAsync(IActor actor)
+
+
+    public async Task<UserInfo> RequestAsAsync(IActor actor)
     {
-      var users = await actor.Using<ItentityTestServerAbility>().GetUsers();
-      return users.Single<string>(name => name == "testuser");
+      var user = await actor.Using<ItentityTestServerAbility>().GetUser(_accauntName);
+      return user;
     }
+
+    public override string ToString()
+    {
+      return $"user accaount with name {_accauntName}";
+    }
+
+
   }
 }

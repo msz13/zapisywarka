@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using Boa.Constrictor.Screenplay;
-using Zapisywarka.API.AcceptanceTests.Interactions;
-using ZapisywarkaApi.AcceptanceTests.Helpers;
+using NodaTime;
 
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
@@ -13,22 +12,37 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
     string _password = "Password_01";
     string _passwordConfirmation = "Password_01";
 
-    public CreateUserAccount()    {
-
+    public CreateUserAccount(string name)    {
+      _userName = name;
     }
 
-    public static CreateUserAccount ForThemselves()
+     public static CreateUserAccount WithName(string name)
     {
-      return new CreateUserAccount();
-
+        return new CreateUserAccount(name);
     }
+
+    public CreateUserAccount WithPassword(string password)
+    {
+        _password = password;
+        return this;
+    }
+
+    public CreateUserAccount WithPasswordConfirmation(string passwordconfirmation)
+    {
+        _passwordConfirmation = passwordconfirmation;
+        return this;
+    }
+
     public async Task PerformAsAsync(IActor actor)
     {
-      _userName = actor.Using<MemoryAbility>().Recall("UserName");
-      _password = actor.Using<MemoryAbility>().Recall("Password");
-      _passwordConfirmation = actor.Using<MemoryAbility>().Recall("PasswordConfirmation");
+       await actor.Using<ItentityTestServerAbility>().CreateUser(_accessCode, _userName, _password, _passwordConfirmation);
+    }
 
-      await actor.Using<ItentityTestServerAbility>().CreateUser(_accessCode, _userName, _password, _passwordConfirmation);
+  
+
+    public override string ToString()
+    {
+      return $"Create user accaount with username: {_userName}";
     }
   }
 }

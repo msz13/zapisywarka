@@ -7,13 +7,15 @@
     <Nullable>enable</Nullable>
     
     <IsPackable>false</IsPackable>
-    
+
     <OutputPath>../../dist/apps/zapisywarka-api-test</OutputPath>
+    
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="Boa.Constrictor" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.1" />
+    <PackageReference Include="Ductus.FluentDocker" Version="2.10.44" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.1" />   
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="RestSharp" Version="107.1.2" />
     <PackageReference Include="SpecFlow.Assist.Dynamic" Version="1.4.2" />
@@ -26,6 +28,10 @@
   
   <ItemGroup>
     <ProjectReference Include="..\zapisywarka-api\ZapisywarkaClientAps.ZapisywarkaApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="docker-compose-postgresql.yml" CopyToOutputDirectory="Always" />
   </ItemGroup>
   
   <Target Name="CheckNxModuleBoundaries" BeforeTargets="Build">

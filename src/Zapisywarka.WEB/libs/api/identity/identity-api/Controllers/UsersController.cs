@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Zapisywarka.API.Modules.Identity.Core.Features;
+using static Zapisywarka.API.Modules.Identity.Core.Features.GetUserByName;
 
 namespace Zapisywarka.API.Modules.Identity.Controllers
 {         
@@ -35,6 +36,14 @@ namespace Zapisywarka.API.Modules.Identity.Controllers
             var users = await _mediator.Send(new GetAllUsers.Query());
             
             return Ok(users);
+        }
+
+        [HttpGet("{userName}")]
+        public async Task<IActionResult> GetByUserName(string userName)
+        {
+            var user = await _mediator.Send<Result<UserDTO>>(new GetUserByName.Query {UserName = userName});
+            
+            return Ok(user.Value);
         }
 
         [HttpPost("login")]

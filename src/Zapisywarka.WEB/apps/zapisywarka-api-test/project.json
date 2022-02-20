@@ -22,7 +22,15 @@
     },
     "lint": {
       "executor": "@nx-dotnet/core:format"
+    },
+    "generate-living-doc": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "livingdoc test-assembly ZapisywarkaClientAps.ZapisywarkaApi.Test.dll -t TestExecution.json --output /mnt/c/Users/matsz/zapisywarka/test-report.html",
+        "cwd": "dist/apps/zapisywarka-api-test/net6.0"
+      }
     }
+
   },
   "tags": ["nx-dotnet"]
 }

@@ -7,55 +7,42 @@ using System.Collections.Generic;
 using Boa.Constrictor.Screenplay;
 using static System.Net.Mime.MediaTypeNames;
 using System.Linq;
+using static Zapisywarka.API.AcceptanceTests.Interactions.Identity.GetUserAccount;
+using System.Net.Http.Json;
 
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity 
 {
    
-public class ItentityTestServerAbility : IAbility
+internal class ItentityTestServerAbility : IAbility
 {
   HttpClient _client;
-  string baseUrl = "/users";
+  string _baseUrl = "/users";
   public ItentityTestServerAbility(HttpClient client)
   {
     _client = client;
   }
 
   public async Task CreateUser(string accesCode, string userName, string password, string passwordConfirmation)
-  {
-    
-     var request = new StringContent(
-        JsonSerializer.Serialize(new {
+  {         
+        var request = new {
             AccessCode = accesCode, 
             UserName = userName, 
             Password = password, 
             PasswordConfirmation = passwordConfirmation
-            }),
-        System.Text.Encoding.UTF8,
-        Application.Json
-    ); 
+            };
 
-
-        var response = await _client.PostAsync(baseUrl, request);
-        if(!response.IsSuccessStatusCode) {
-            var error = await response.Content.ReadAsStringAsync();
-            throw new Exception(error);
-        }            
+        await _client.PostAsJsonAsync(_baseUrl, request);
 
     }
 
-    public class UserInfo 
+    internal async Task<UserInfo> GetUser(string accauntName)
     {
-        public string UserName {get; set; }
+      var response = await _client.GetFromJsonAsync<UserInfo>($"/users/{accauntName}");
+                        
+        return response;
     }
 
-    public async Task<IEnumerable<UserInfo>> GetUsers()
-    {
-        var response = await _client.GetAsync("/users");
-        response.EnsureSuccessStatusCode();
-        
-        var users = await JsonSerializer.DeserializeAsync<IEnumerable<UserInfo>>(response.Content.ReadAsStream());
-        return users;
-    }
+   
 }
 }
 

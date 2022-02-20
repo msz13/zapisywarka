@@ -14,7 +14,7 @@ namespace Zapisywarka.API.Modules.Identity.Core
     {
         public static void AddIdentityCoreModule(this IServiceCollection services)
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(IdentityCoreModuleFactory));
             services.AddDatabase<ZapisywarkaIdentityDbContext>();
 
             services.AddIdentity<IdentityUser, IdentityRole>()

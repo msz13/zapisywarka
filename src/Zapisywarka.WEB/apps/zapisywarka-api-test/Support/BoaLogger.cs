@@ -1,13 +1,14 @@
+
 using Boa.Constrictor.Logging;
 using TechTalk.SpecFlow.Infrastructure;
 
-namespace Zapisywarka.Api.AcceptanceTests.Helpers
+namespace Zapisywarka.API.AcceptanceTests.Helpers
 {
-    public class BoaConstrictorFlowLogger : AbstractLogger
+     public class BoaSpecFlowLogger : AbstractLogger
     {
         private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
 
-        public BoaConstrictorFlowLogger(ISpecFlowOutputHelper specFlowOutputHelper)
+        public BoaSpecFlowLogger(ISpecFlowOutputHelper specFlowOutputHelper)
         {
             _specFlowOutputHelper = specFlowOutputHelper;
         }

@@ -15,7 +15,7 @@ namespace ZapisywarkaApi.AcceptanceTests.Helpers
     public void Remember(string name, dynamic fact) 
     {
         dynamic factToSave = fact;
-      //  Console.WriteLine(name, (string)factToSave);
+      
         memory.Add(name, fact);
       
     }

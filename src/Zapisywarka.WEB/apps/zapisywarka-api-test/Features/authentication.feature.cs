@@ -19,7 +19,7 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class RejestracjaUzytkownikowFeature : object, Xunit.IClassFixture<RejestracjaUzytkownikowFeature.FixtureData>, System.IDisposable
+    public partial class AutentykacjaPoprzezLoginIHasloFeature : object, Xunit.IClassFixture<AutentykacjaPoprzezLoginIHasloFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "user-registration.feature"
+#line 1 "authentication.feature"
 #line hidden
         
-        public RejestracjaUzytkownikowFeature(RejestracjaUzytkownikowFeature.FixtureData fixtureData, ZapisywarkaClientAps_ZapisywarkaApi_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public AutentykacjaPoprzezLoginIHasloFeature(AutentykacjaPoprzezLoginIHasloFeature.FixtureData fixtureData, ZapisywarkaClientAps_ZapisywarkaApi_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Rejestracja użytkowników", "    Aby organizatorzy zapisów mogli korzystać z systemu muszą stworzyć konto użyt" +
-                    "kownika.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Autentykacja poprzez login i hasło", "    Posiadacze kont organizatorów zapisów, \n    aby korzystać z aplikacji, \n    m" +
+                    "uszę się zautentykować poprzez podanie nazwy konta i hasła.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,16 +81,16 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Użytkownik rejestruje się w systemie")]
-        [Xunit.TraitAttribute("FeatureTitle", "Rejestracja użytkowników")]
-        [Xunit.TraitAttribute("Description", "Użytkownik rejestruje się w systemie")]
-        public virtual void UzytkownikRejestrujeSieWSystemie()
+        [Xunit.SkippableFactAttribute(DisplayName="Użytkownik poprawnie loguje się do systemu")]
+        [Xunit.TraitAttribute("FeatureTitle", "Autentykacja poprzez login i hasło")]
+        [Xunit.TraitAttribute("Description", "Użytkownik poprawnie loguje się do systemu")]
+        public virtual void UzytkownikPoprawnieLogujeSieDoSystemu()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Użytkownik rejestruje się w systemie", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
-    this.ScenarioInitialize(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Użytkownik poprawnie loguje się do systemu", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 7
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -109,22 +109,18 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Nazwa",
-                            "Haslo",
-                            "PotwierdzenieHasla"});
-                table1.AddRow(new string[] {
-                            "Jan_sz.cz-13",
-                            "Pasword_01",
-                            "Pasword_01"});
-#line 7
-        testRunner.And("Organizator zapisów wypełnił dane rejestracji konta", ((string)(null)), table1, "And ");
+#line 8
+       testRunner.Given("Organizator zapisów zarejestrował konto jako użytkownik \"Bochenek\" z hasłem \"Pass" +
+                        "word_01\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 9
+       testRunner.And("Podaje poprawne dane logowania", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-        testRunner.When("Próbuję się zarejestrować", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+       testRunner.When("Próbuje się zalogować", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
-        testRunner.Then("Baza użytkowników zawiera organizatora zapisów o imieniu \"Jan_sz.cz-13\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+       testRunner.Then("Powinien otrzymać dostęp do swojego konta w aplikacji", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -137,12 +133,12 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
             
             public FixtureData()
             {
-                RejestracjaUzytkownikowFeature.FeatureSetup();
+                AutentykacjaPoprzezLoginIHasloFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                RejestracjaUzytkownikowFeature.FeatureTearDown();
+                AutentykacjaPoprzezLoginIHasloFeature.FeatureTearDown();
             }
         }
     }

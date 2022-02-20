@@ -1,16 +1,10 @@
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Text.Json.Serialization;
-using System.Runtime.CompilerServices;
 
 namespace Zapisywarka.API.Modules.Identity.Core.Features
 {
-    public class CreateUser
+  public class CreateUser
     {
 
         public class Command : IRequest<IdentityResult>

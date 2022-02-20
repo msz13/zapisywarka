@@ -6,6 +6,7 @@ namespace ZapisywarkaApi.AcceptanceTests.Helpers
   internal class Recall : IQuestion<object>
   {
     string _fact;
+    
 
     public Recall(string fact)
     {
@@ -23,7 +24,7 @@ namespace ZapisywarkaApi.AcceptanceTests.Helpers
 
     public override string ToString()
     {
-      return "Actor recalls";
+      return $"Actor recalls {_fact}";
     }
 
 

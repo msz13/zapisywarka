@@ -44,6 +44,7 @@
     "catalog-feature-catalog": "libs/catalog/feature-catalog",
     "catalog-feature-catalog-e2e": "apps/catalog-feature-catalog-e2e",
     "catalog-utills-testing": "libs/catalog/utills/testing",
+    "db-migrations": "apps/db-migrations",
     "identity-domain": "libs/identity/domain",
     "identity-login-feature": "libs/identity/login-feature",
     "identity-login-feature-e2e": "apps/identity-login-feature-e2e",
