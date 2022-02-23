@@ -8,6 +8,10 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
   {
      HttpClient _client;   
 
+     public HttpClient Client { get {
+         return _client;
+     }}
+
     public CallApi(HttpClient httpClient)
     {
       _client = httpClient;
@@ -16,6 +20,7 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
     internal static IAbility WithClient(HttpClient httpClient)
     {
       var ability = new CallApi(httpClient);
+      return ability;
     }
   }
 }

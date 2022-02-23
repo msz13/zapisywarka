@@ -1,6 +1,9 @@
 using System;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Boa.Constrictor.Screenplay;
+using Zapisywarka.API.AcceptanceTests.Helpers;
+using Zapisywarka.API.AcceptanceTests.StepDefinitions;
 
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
@@ -8,6 +11,8 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
   {
     private string _userName;
     private string _password;
+
+    public string? IdentityEndpoint { get; private set; }
 
     public Login(string userName)
     {
@@ -27,12 +32,13 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 
     public async Task PerformAsAsync(IActor actor)
     {
-      
+      var request = new { UserName = _userName, Password = _password };
+      await actor.Using<CallApi>().Client.PostAsJsonAsync(IdentityEndpoints.LogIn, request);
     }
 
     public override string ToString()
     {
-      return $"Log with userName: {_userName} and {_password}";
+      return $"log in with userName: {_userName} and password: {_password}";
     }
   }
 }

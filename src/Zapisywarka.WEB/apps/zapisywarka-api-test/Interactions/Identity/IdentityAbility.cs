@@ -35,12 +35,14 @@ internal class ItentityTestServerAbility : IAbility
 
     }
 
-    internal async Task<UserInfo> GetUser(string accauntName)
+    internal async Task<UserAccauntInfo> GetUser(string accauntName)
     {
-      var response = await _client.GetFromJsonAsync<UserInfo>($"/users/{accauntName}");
+      var response = await _client.GetFromJsonAsync<UserAccauntInfo>($"/users/{accauntName}");
                         
         return response;
     }
+
+   
 
    
 }

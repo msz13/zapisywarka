@@ -23,7 +23,7 @@ namespace Zapisywarka.API.Modules.Identity.Core
 
             services.ConfigureApplicationCookie(options => {
               options.Cookie.Name = "Auth";
-              options.Cookie.Domain = "zapisywarka.local";
+              options.Cookie.Domain = "localhost";
               options.Cookie.SameSite = SameSiteMode.Strict;
               options.Cookie.HttpOnly = true;
               

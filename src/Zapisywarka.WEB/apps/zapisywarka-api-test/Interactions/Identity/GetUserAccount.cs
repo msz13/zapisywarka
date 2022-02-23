@@ -10,7 +10,7 @@ using static Zapisywarka.API.AcceptanceTests.Interactions.Identity.GetUserAccoun
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
  
-  internal class GetUserAccount : IQuestionAsync<UserInfo>
+  internal class GetUserAccount : IQuestionAsync<UserAccauntInfo>
   {
     string _accauntName;
 
@@ -19,19 +19,19 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
       _accauntName = accauntName;
     }
 
-    public class UserInfo
+    public class UserAccauntInfo
     {
       public string UserName { get; set; }
     }
 
-    internal static IQuestionAsync<UserInfo> For(string acauntName)
+    internal static IQuestionAsync<UserAccauntInfo> For(string acauntName)
     {
       return new GetUserAccount(acauntName);
     }
 
 
 
-    public async Task<UserInfo> RequestAsAsync(IActor actor)
+    public async Task<UserAccauntInfo> RequestAsAsync(IActor actor)
     {
       var user = await actor.Using<ItentityTestServerAbility>().GetUser(_accauntName);
       return user;

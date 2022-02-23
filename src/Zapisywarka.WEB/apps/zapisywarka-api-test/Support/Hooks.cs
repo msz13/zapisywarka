@@ -37,25 +37,21 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
         }  
 
         [BeforeScenario]
-        public static void SetUpTestServer()
+        public void SetUpTestServer()
         {
-          _factory = new WebApplicationFactory<Program>().WithWebHostBuilder((host) =>
-          {
-            host.UseEnvironment(Microsoft.Extensions.Hosting.Environments.Development); 
-            /* host.ConfigureServices(services => {
-              var sp = services.BuildServiceProvider();
-              var context = sp.GetRequiredService<ZapisywarkaIdentityDbContext>();
-              context.Database.Migrate();
-             
-            }); */ 
+          var factory = new WebApplicationFactory<Program>().WithWebHostBuilder((host) =>
+           {
+            host.UseEnvironment(Microsoft.Extensions.Hosting.Environments.Development);           
           });       
+          
+          _scenarioContext.ScenarioContainer.RegisterInstanceAs<WebApplicationFactory<Program>>(factory);
 
         }
 
         [BeforeScenario]
         public void SetUpHttpclient()
         {
-          _scenarioContext.ScenarioContainer.RegisterInstanceAs<HttpClient>(_factory.CreateClient());
+      //    _scenarioContext.ScenarioContainer.RegisterInstanceAs<HttpClient>(_factory.CreateClient());
         }
  
     }
