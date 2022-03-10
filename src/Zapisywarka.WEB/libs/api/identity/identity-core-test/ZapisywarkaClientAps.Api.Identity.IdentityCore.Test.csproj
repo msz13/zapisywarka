@@ -20,8 +20,15 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
     
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.7" />
+    <PackageReference Include="Moq" Version="4.16.1" />
+     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+      <PackageReference Include="Respawn" Version="4.0.0" />
     
   </ItemGroup>
+
+ 
   
   <ItemGroup>
     <ProjectReference Include="..\identity-core\ZapisywarkaClientAps.Api.Identity.IdentityCore.csproj" />

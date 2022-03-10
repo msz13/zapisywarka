@@ -27,16 +27,26 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
     : base(scenarioContext, specFlowOutputHelper) { }
 
         [BeforeScenario]
-        public void SetUpTest() 
+        public void SetUpTest()         
         {
-            actor = new Actor(name: "Jan", logger: new BoaSpecFlowLogger(_specFlowOutputHelper));
-            actor.Can(new MemoryAbility());
-            _factory = _factory = new WebApplicationFactory<Program>().WithWebHostBuilder((host) =>
+          /*
+           _factory = _factory = new WebApplicationFactory<Program>().WithWebHostBuilder((host) =>
            {
             host.UseEnvironment(Microsoft.Extensions.Hosting.Environments.Development);           
-          }); 
-            actor.Can(new ItentityTestServerAbility(_factory.CreateClient()));
-            
+          });
+          
+ */
+      var httpClientHandler = new HttpClientHandler();
+      httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) =>
+      {
+        return true;
+      };
+      var client = new HttpClient(httpClientHandler);
+      client.BaseAddress = new Uri("http://localhost:5287");
+            actor = new Actor(name: "Jan", logger: new BoaSpecFlowLogger(_specFlowOutputHelper));
+            actor.Can(new MemoryAbility());           
+           // actor.Can(new ItentityTestServerAbility(_factory.CreateClient()));
+            actor.Can(new ItentityTestServerAbility(client));
         }
 
         [Given(@"Organizator zapisów wypełnił dane rejestracji konta")]

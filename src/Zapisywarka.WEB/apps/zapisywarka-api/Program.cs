@@ -1,3 +1,4 @@
+using Zapisywarka.API.Common.Infrastructure;
 using Zapisywarka.API.Modules.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddIdentityModule();
+builder.Services.AddCommonInfrastructure();
+
 
 
 
@@ -23,6 +26,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapGet("/", ()=> "Zapisywarka.pl api v5");
 app.MapGet("/test", ()=> "Zapisywarka.pl api test");
 
@@ -32,7 +38,6 @@ app.UseIdenityModule();
 app.UseHttpsRedirection();
 
 
-app.UseAuthorization();
 
 app.MapControllers();
 

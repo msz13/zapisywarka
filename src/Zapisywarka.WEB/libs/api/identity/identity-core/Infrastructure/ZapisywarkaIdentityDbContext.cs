@@ -8,11 +8,12 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-[assembly: InternalsVisibleTo("Zapisywarka.Api.Modules.Identity.IntegrationTests")]
+[assembly: InternalsVisibleTo("ZapisywarkaClientAps.Api.Identity.IdentityCore.Test")]
 
 namespace Zapisywarka.API.Modules.Identity.Core.Infrastructure
 {
 
+    
     internal class ZapisywarkaIdentityDbContext : IdentityDbContext
     {
         public ZapisywarkaIdentityDbContext(DbContextOptions options) : base(options)

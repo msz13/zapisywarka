@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Zapisywarka.API.Common.Application
 {
-    public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> 
+        where TRequest : IRequest<TResponse>
     {
         ILoggerFactory _loggerFactory;
 

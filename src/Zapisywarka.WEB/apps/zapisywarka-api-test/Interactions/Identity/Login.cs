@@ -1,9 +1,11 @@
 using System;
+using System.Linq;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Boa.Constrictor.Screenplay;
 using Zapisywarka.API.AcceptanceTests.Helpers;
 using Zapisywarka.API.AcceptanceTests.StepDefinitions;
+using ZapisywarkaApi.AcceptanceTests.Helpers;
 
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
@@ -33,7 +35,9 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
     public async Task PerformAsAsync(IActor actor)
     {
       var request = new { UserName = _userName, Password = _password };
-      await actor.Using<CallApi>().Client.PostAsJsonAsync(IdentityEndpoints.LogIn, request);
+      var response = await actor.Using<CallApi>().Client.PostAsJsonAsync(IdentityEndpoints.LogIn, request);
+      response.Headers.TryGetValues("Set-cookie", out var cookies);
+      actor.AttemptsTo(Remember.Fact("cookie", cookies.ToArray()[0]));
     }
 
     public override string ToString()

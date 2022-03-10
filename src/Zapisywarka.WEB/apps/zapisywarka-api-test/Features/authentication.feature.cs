@@ -40,8 +40,8 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Autentykacja poprzez login i hasło", "    Posiadacze kont organizatorów zapisów, \n    aby korzystać z aplikacji, \n    m" +
-                    "uszę się zautentykować poprzez podanie nazwy konta i hasła.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Autentykacja poprzez login i hasło", "    Posiadacze kont organizatorów zapisów,\n    aby korzystać z aplikacji,\n    mus" +
+                    "zę się zautentykować poprzez podanie nazwy konta i hasła.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -90,7 +90,7 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Użytkownik poprawnie loguje się do systemu", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
-this.ScenarioInitialize(scenarioInfo);
+    this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -110,17 +110,55 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 8
-       testRunner.Given("Organizator zapisów zarejestrował konto jako użytkownik \"Bochenek\" z hasłem \"Pass" +
+        testRunner.Given("Organizator zapisów zarejestrował konto jako użytkownik \"Bochenek\" z hasłem \"Pass" +
                         "word_01\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
-       testRunner.And("Podaje poprawne dane logowania", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And("Podaje poprawne dane logowania", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-       testRunner.When("Próbuje się zalogować", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+        testRunner.When("Próbuje się zalogować", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
-       testRunner.Then("Powinien otrzymać dostęp do swojego konta w aplikacji", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.Then("Powinien otrzymać dostęp do swojego konta w aplikacji", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Niezalogowany subsrybent chce uzyskać dostęp do konta")]
+        [Xunit.TraitAttribute("FeatureTitle", "Autentykacja poprzez login i hasło")]
+        [Xunit.TraitAttribute("Description", "Niezalogowany subsrybent chce uzyskać dostęp do konta")]
+        public virtual void NiezalogowanySubsrybentChceUzyskacDostepDoKonta()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Niezalogowany subsrybent chce uzyskać dostęp do konta", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 13
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 14
+        testRunner.When("Niezalogowany użytkownik chce otrzymać dostęp do swojego konta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 15
+        testRunner.Then("Widzi komunikat błędu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

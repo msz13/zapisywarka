@@ -1,9 +1,11 @@
 
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Zapisywarka.API.Modules.Identity.Core.Features;
@@ -52,6 +54,21 @@ namespace Zapisywarka.API.Modules.Identity.Controllers
             return await _mediator.Send(request)
                 .Tap(authResult => HttpContext.SignInAsync(IdentityConstants.ApplicationScheme, authResult.ClaimsPrincipal))
                 .Finally<LoginUser.AuthenticationResult, IActionResult, LoginUser.AuthenticationError>(result => result.IsSuccess ? Ok(result.Value.UserInfo) : Unauthorized(result.Error));
+        }
+
+        [HttpGet("me")]
+        [Authorize]
+        public async Task<IActionResult> UserInfo()
+        {            
+           var userClaims = User.Claims;
+                             
+           var userInfo = new {
+               Id = userClaims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value,
+               UserName = userClaims.FirstOrDefault(x => x.Type == ClaimTypes.Name).Value,                 
+           };
+          
+           return Ok(userInfo);
+           
         }
        
     }
