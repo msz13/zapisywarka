@@ -6,6 +6,7 @@
     "Microsoft.EntityFrameworkCore": "6.0.2",
     "dbup": "4.5.0",
     "dbup-postgresql": "4.5.0",
-    "Npgsql": "6.0.3"
+    "Npgsql": "6.0.3",
+    "RestSharp": "107.3.0"
   }
 }
