@@ -51,20 +51,11 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
       httpClientHandler.UseCookies = true;
       httpClientHandler.UseDefaultCredentials = true;
       var client = new HttpClient(httpClientHandler);
-      client.BaseAddress = new Uri("http://localhost:5287");
+      client.BaseAddress = new Uri("http://localhost:5287");        
      
-      var authenticator = new CookieAuthenticator();
-       var options = new RestClientOptions("http://localhost:5287");
-      options.CookieContainer = authenticator.CookieContainer;
-      options.RemoteCertificateValidationCallback = (message, cert, chain, sslPolicyErrors) => true;
-
-      _client = new RestClient(options) 
-      {
-        Authenticator = authenticator
-      };
-
-
-
+      var ability = CallApiRestSharp.WithBaseAdress("http://localhost:5287");
+      _client = ability.Client;
+           
 
       john = new Actor(name: "Jan", logger: new BoaSpecFlowLogger(_specFlowOutputHelper));
       john.Can(new MemoryAbility());

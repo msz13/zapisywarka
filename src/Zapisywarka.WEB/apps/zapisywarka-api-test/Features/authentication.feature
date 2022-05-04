@@ -10,6 +10,6 @@ Feature: Autentykacja poprzez login i hasło
         When Próbuje się zalogować
         Then Powinien otrzymać dostęp do swojego konta w aplikacji
 
- #   Scenario: Niezalogowany subsrybent chce uzyskać dostęp do konta
- #       When Niezalogowany użytkownik chce otrzymać dostęp do swojego konta
- #       Then Widzi komunikat błędu
+   Scenario: Niezalogowany subsrybent chce uzyskać dostęp do konta
+       When Niezalogowany użytkownik chce otrzymać dostęp do swojego konta
+       Then Widzi komunikat błędu

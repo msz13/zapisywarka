@@ -3,7 +3,6 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System.Net;
 using System.Linq;
-using System;
 
 namespace Zapisywarka.API.AcceptanceTests.Helpers
 {
