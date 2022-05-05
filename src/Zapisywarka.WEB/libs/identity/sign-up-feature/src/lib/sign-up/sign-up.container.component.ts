@@ -12,7 +12,7 @@ import { UserService, User } from '@zapisywarka-client-aps/identity/domain';
   `,
   styleUrls: ['./sign-up.container.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
-  selector: 'app-sing-iup-coint',
+  selector: 'app-sing-iup-coint'
 })
 export class SignUpContainerComponent implements OnInit {
   loading: boolean = false;

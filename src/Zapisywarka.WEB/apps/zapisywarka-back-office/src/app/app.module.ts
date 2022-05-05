@@ -23,14 +23,16 @@ import {
 import { MainModule } from './main/main.module';
 import { CatalogModule } from '@zapisywarka-client-aps/catalog/feature-catalog';
 import { environment } from '../environments/environment';
-import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import {AkitaNgDevtools} from '@datorama/akita-ngdevtools'
+
+
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
+    HttpClientModule,     
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -42,14 +44,15 @@ import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
-    /*  ErrorTailorModule.forRoot({errors: {useValue: {
+  /*  ErrorTailorModule.forRoot({errors: {useValue: {
       required: 'Pole wymagane z bibl'
     }}}), */
     MainModule,
     AppRoutingModule,
     CatalogModule,
-    environment.production ? [] : AkitaNgDevtools.forRoot(),
-  ],
+    environment.production ? [] : AkitaNgDevtools.forRoot()    
+  ], 
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

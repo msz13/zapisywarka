@@ -26,7 +26,7 @@ import { IdentitySignUpFeatureModule } from '@zapisywarka-client-aps/identity/si
     AppRoutingModule,
     SharedUiModule,
     SharedMaterialModule,
-    // IdentityDomainModule.forRoot(),
+   // IdentityDomainModule.forRoot(),
     IdentitySignUpFeatureModule,
     SharedDomainModule.forRoot(),
   ],

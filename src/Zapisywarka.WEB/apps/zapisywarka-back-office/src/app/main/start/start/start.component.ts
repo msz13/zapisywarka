@@ -5,16 +5,19 @@ import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './start.component.html',
-  styleUrls: ['./start.component.scss'],
+  styleUrls: ['./start.component.scss']
 })
 export class StartComponent implements OnInit {
-  menu = MENU_ITEMS;
 
-  constructor(private router: Router) {}
+  menu = MENU_ITEMS
 
-  ngOnInit(): void {}
+  constructor(private router: Router) { }
 
-  navigate(route: string) {
-    this.router.navigate([route]);
+  ngOnInit(): void {
   }
+
+  navigate(route: string) {    
+    this.router.navigate([route])
+  }
+
 }

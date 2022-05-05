@@ -9,15 +9,20 @@ import { CatalogItemsSelectComponent } from './offer-form/offer-items/catalog-it
 import { CatalogItemsSelectPipe } from './offer-form/offer-items/catalog-items-select/catalog-items-select.pipe';
 import { TestComponent } from './test/test.component';
 
+
 @NgModule({
   declarations: [
-    NewOfferComponent,
+    NewOfferComponent, 
     OfferItemsComponent,
     CatalogItemsSelectComponent,
     CatalogItemsSelectPipe,
-    TestComponent,
+    TestComponent
   ],
-  imports: [CommonModule, NbDatepickerModule, ThemeModule],
-  exports: [NewOfferComponent],
+  imports: [
+    CommonModule,
+    NbDatepickerModule,
+    ThemeModule,
+  ],
+  exports: [NewOfferComponent]
 })
-export class NewOfferModule {}
+export class NewOfferModule { }

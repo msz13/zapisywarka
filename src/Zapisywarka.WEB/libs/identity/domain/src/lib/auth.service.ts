@@ -6,9 +6,17 @@ import { ConfigurationService } from '@zapisywarka-client-aps/shared/domain';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(   
+    
+  ) {}
 
-  login() {}
+  login() {  
+  
+  }
 
-  isLoggedIn() {}
+ 
+
+  isLoggedIn() {
+    
+  }
 }

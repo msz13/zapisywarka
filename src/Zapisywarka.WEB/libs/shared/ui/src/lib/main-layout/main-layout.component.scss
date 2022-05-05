@@ -7,10 +7,8 @@
 
 //TODO change to variable
 mat-sidenav-content {
-  background-color: mat.get-color-from-palette(
-    mat.define-palette(mat.$grey-palette),
-    50
-  );
+  background-color: mat.get-color-from-palette(mat.define-palette(mat.$grey-palette), 50); 
+  
 }
 
 .sidenav {
@@ -21,12 +19,14 @@ mat-sidenav-content {
   background: inherit;
 }
 
-app-header {
-  position: sticky;
+app-header{
+  position: sticky;  
   z-index: 1;
 }
 
 app-side-nav-account-info {
   display: block;
-  margin: 1em;
+  margin: 1em;  
+ 
 }
+

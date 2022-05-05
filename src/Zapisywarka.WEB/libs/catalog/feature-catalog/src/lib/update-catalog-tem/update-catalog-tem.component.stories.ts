@@ -1,13 +1,15 @@
+
 import { UpdateCatalogTemComponent } from './update-catalog-tem.component';
 
 export default {
-  title: 'UpdateCatalogTemComponent',
-};
+  title: 'UpdateCatalogTemComponent'
+}
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [],
+    imports: []
   },
   component: UpdateCatalogTemComponent,
-  props: {},
-});
+  props: {
+  }
+})

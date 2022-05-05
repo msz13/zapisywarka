@@ -66,4 +66,5 @@ export class CatalogService {
   }
 
   updateFilter(filter: CatalogFilter) {}
+   
 }

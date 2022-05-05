@@ -13,12 +13,12 @@ import { Subject } from 'rxjs';
       [secondValueLabel]="'LTR'"
       [value]="currentDirection"
       (valueChange)="toggleDirection($event)"
-      [vertical]="vertical"
-    >
+      [vertical]="vertical">
     </ngx-switcher>
   `,
 })
 export class LayoutDirectionSwitcherComponent implements OnDestroy {
+
   protected destroy$ = new Subject<void>();
 
   directions = NbLayoutDirection;
@@ -29,10 +29,9 @@ export class LayoutDirectionSwitcherComponent implements OnDestroy {
   constructor(private directionService: NbLayoutDirectionService) {
     this.currentDirection = this.directionService.getDirection();
 
-    this.directionService
-      .onDirectionChange()
+    this.directionService.onDirectionChange()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((newDirection) => (this.currentDirection = newDirection));
+      .subscribe(newDirection => this.currentDirection = newDirection);
   }
 
   toggleDirection(newDirection) {

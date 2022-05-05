@@ -1,30 +1,24 @@
-<nb-form-field style="width: 12em">
+<nb-form-field style="width: 12em;">
   <nb-icon nbPrefix icon="calendar-outline" *ngIf="!date.value"></nb-icon>
-  <input
-    nbInput
-    [placeholder]="placeholder"
-    [status]="status"
-    [nbDatepicker]="dateTimePicker"
-    readonly
-    [formControl]="date"
-    (blur)="onBlur()"
-  />
-  <button
-    nbButton
-    ghost
-    nbSuffix
-    *ngIf="cancelEnabled && date.value"
-    (click)="clear()"
-    class="clear"
-  >
-    <nb-icon icon="close-outline"></nb-icon>
-  </button>
+    <input 
+        nbInput         
+        [placeholder]="placeholder"
+        [status]="status" 
+        [nbDatepicker]="dateTimePicker"
+        readonly
+        [formControl]="date" 
+        (blur)="onBlur()"       
+        >
+    <button nbButton ghost nbSuffix *ngIf="cancelEnabled && date.value"  (click)="clear()" class="clear">
+      <nb-icon icon="close-outline"></nb-icon> 
+    </button>  
 </nb-form-field>
 <nb-date-timepicker
-  #dateTimePicker
-  singleColumn
-  [step]="30"
-  [min]="minDate"
-  format="E d LLL H:mm"
->
+   #dateTimePicker
+   singleColumn
+   [step]="30"
+   [min]="minDate"
+   format="E d LLL H:mm"
+   
+   >
 </nb-date-timepicker>

@@ -4,8 +4,13 @@ import { StartComponent } from './start/start.component';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 import { ThemeModule } from '@zapisywarka-client-aps/shared/theme';
 
+
+
 @NgModule({
   declarations: [StartComponent, MenuCardComponent],
-  imports: [CommonModule, ThemeModule],
+  imports: [
+    CommonModule,
+    ThemeModule    
+  ]
 })
-export class StartModule {}
+export class StartModule { }

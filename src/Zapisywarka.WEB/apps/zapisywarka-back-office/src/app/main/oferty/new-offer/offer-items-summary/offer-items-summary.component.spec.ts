@@ -8,8 +8,9 @@ describe('OfferItemsSummaryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OfferItemsSummaryComponent],
-    }).compileComponents();
+      declarations: [ OfferItemsSummaryComponent ]
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {

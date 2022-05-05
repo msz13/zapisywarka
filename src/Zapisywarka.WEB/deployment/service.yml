@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: web
 spec:
-  selector:
-    app: web
+  selector: 
+    app: web    
   ports:
-    - port: 80
-      targetPort: 80
+  - port: 80
+    targetPort: 80

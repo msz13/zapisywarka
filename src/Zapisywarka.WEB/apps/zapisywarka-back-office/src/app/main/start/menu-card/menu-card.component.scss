@@ -1,45 +1,47 @@
 @import '../../../../../../../libs/shared/theme/src/lib/styles/themes.scss';
 
-@include nb-install-component {
-  nb-icon {
+@include nb-install-component{
+    nb-icon {
+        height: 2.5em;
+        width: 2.5em;
+        align-self: center;
+    }
+    
+    h6 {
+        text-align: center;
+        color: nb-theme(text-basic-color);
+    }
+
+    
+    nb-card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-content: center;
+    }
+    
+    nb-card-body:hover {
+        background-color: nb-theme(color-basic-transparent-hover);
+    }
+
+    nb-card-body:focus {
+        background-color: nb-theme(color-basic-transparent-focus);
+    }
+}
+
+nb-icon {
     height: 2.5em;
     width: 2.5em;
     align-self: center;
-  }
+}
 
-  h6 {
+h6 {
     text-align: center;
-    color: nb-theme(text-basic-color);
-  }
-
-  nb-card-body {
+}
+nb-card-body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-content: center;
-  }
-
-  nb-card-body:hover {
-    background-color: nb-theme(color-basic-transparent-hover);
-  }
-
-  nb-card-body:focus {
-    background-color: nb-theme(color-basic-transparent-focus);
-  }
 }
 
-nb-icon {
-  height: 2.5em;
-  width: 2.5em;
-  align-self: center;
-}
-
-h6 {
-  text-align: center;
-}
-nb-card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-content: center;
-}

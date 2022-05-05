@@ -8,8 +8,9 @@ describe('OfferConfirmationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OfferConfirmationComponent],
-    }).compileComponents();
+      declarations: [ OfferConfirmationComponent ]
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {

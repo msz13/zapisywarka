@@ -1,43 +1,45 @@
 .numeric {
-  width: 5em;
+    width: 5em;
 }
 
 nb-select {
-  margin-bottom: 2em;
+margin-bottom: 2em;
 }
 
 .table td {
-  text-align: left;
-  vertical-align: middle;
+
+    text-align: left;
+    vertical-align: middle;
 }
+
 
 @media (max-width: 40em) {
-  /*  Negate the margin between sections */
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    display: block;
-  }
+    /*  Negate the margin between sections */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
 
-  tr:first-child {
-    display: none;
-  }
+    tr:first-child {
+        display: none;
+    }
+    
 }
 
+
+
 .my-class .grp-item {
-  font-weight: 800;
-  text-transform: none;
+   
+        font-weight: 800;
+        text-transform: none;
+      
 }
 
 .grp-item {
-  font-weight: 800 !important;
-  text-transform: none;
-}
-
+    font-weight: 800 !important;
+    text-transform: none;
+  }
+ 
 .grp-title {
-  font-weight: 600 !important;
-  text-transform: none !important;
-}
+   font-weight: 600 !important;
+   text-transform: none !important;
+ }

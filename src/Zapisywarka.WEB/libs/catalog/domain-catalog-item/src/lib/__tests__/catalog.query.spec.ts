@@ -120,7 +120,7 @@ describe('Catalog query', () => {
     it('should return items grouped by cateogry', fakeAsync(() => {
       const categoriesQuery = spectator.inject(CatalogCategoryQuery);
       categoriesQuery.getAll.mockReturnValue(
-        CATEGORIES_RAW as unknown as CatalogItem[]
+        (CATEGORIES_RAW as unknown) as CatalogItem[]
       );
 
       let transformedItem;

@@ -4,15 +4,16 @@ metadata:
   name: zapisywarka
 build:
   tagPolicy:
-    gitCommit: {}
+    gitCommit: {}      
   artifacts:
-    - image: zapisywarka-web
-      custom:
-        buildCommand: ./build-image.sh
-
+  - image: zapisywarka-web 
+    custom:
+      buildCommand: ./build-image.sh  
+    
   local: {}
-
+     
+ 
 deploy:
   kustomize:
     paths:
-      - deployment
+    - deployment

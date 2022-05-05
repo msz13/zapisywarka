@@ -1,32 +1,19 @@
+
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import {
-  NbButtonModule,
-  NbCardComponent,
-  NbCardModule,
-  NbLayoutModule,
-  NbThemeModule,
-} from '@nebular/theme';
+import { NbButtonModule, NbCardComponent, NbCardModule, NbLayoutModule, NbThemeModule } from '@nebular/theme';
 import { TestComponent } from './test.component';
 
 export default {
   title: 'TestComponent',
-  component: TestComponent,
-};
+  component: TestComponent
+}
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [
-      NbThemeModule.forRoot({ name: 'default' }),
-      NbLayoutModule,
-      NbCardModule,
-      NbButtonModule,
-      RouterTestingModule.withRoutes([]),
-      CommonModule,
-      FormsModule,
-    ],
-    declarations: [TestComponent],
+    imports: [NbThemeModule.forRoot({name: 'default'}), NbLayoutModule, NbCardModule, NbButtonModule, RouterTestingModule.withRoutes([]), CommonModule, FormsModule],
+    declarations: [TestComponent]
   },
   component: TestComponent,
   template: `
@@ -41,5 +28,6 @@ export const primary = () => ({
   </nb-layout-column>  
 </nb-layout>
   `,
-  props: {},
-});
+  props: {
+  }
+})

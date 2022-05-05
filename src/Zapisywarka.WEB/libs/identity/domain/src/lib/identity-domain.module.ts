@@ -5,8 +5,10 @@ import { CommonModule } from '@angular/common';
 import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
 import { LoginService, UserService } from '..';
 
+
 @NgModule({
   imports: [HttpClientModule, RxReactiveFormsModule],
-  exports: [],
+  exports: []
 })
-export class IdentityDomainModule {}
+export class IdentityDomainModule { } 
+

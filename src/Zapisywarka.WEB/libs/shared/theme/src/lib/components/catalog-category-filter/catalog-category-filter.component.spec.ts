@@ -8,8 +8,9 @@ describe('CatalogCategoryFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CatalogCategoryFilterComponent],
-    }).compileComponents();
+      declarations: [ CatalogCategoryFilterComponent ]
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {

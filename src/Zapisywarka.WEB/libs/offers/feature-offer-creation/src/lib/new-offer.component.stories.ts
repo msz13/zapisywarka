@@ -1,14 +1,15 @@
-import { ThemeModule } from '@zapisywarka-client-aps/shared/theme';
+import {ThemeModule} from '@zapisywarka-client-aps/shared/theme'
 import { NewOfferComponent } from './new-offer.component';
 
 export default {
-  title: 'NewOfferComponent',
-};
+  title: 'NewOfferComponent'
+}
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [ThemeModule.forRoot()],
+    imports: [ThemeModule.forRoot()]
   },
   component: NewOfferComponent,
-  props: {},
-});
+  props: {
+  }
+})
