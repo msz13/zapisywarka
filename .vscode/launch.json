@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        },
+
+           {
             "name": "Docker .NET Core Launch",
             "type": "docker",
             "request": "launch",
@@ -13,5 +20,6 @@
                 "appProject": "${workspaceFolder}/src/Zapisywarka.API/Host/Zapisywarka.API.Host/Zapisywarka.API.Host.csproj"
             }
         }
+     
     ]
 }

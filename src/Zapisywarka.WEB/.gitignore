@@ -8,6 +8,28 @@
 # dependencies
 /node_modules
 
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+publish/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Dd]ist/
+**/bin/Debug
+**/obj/Debug
+**/*.dll
+HOST/Zapisywarka.API.Host/bin/
+HOST/Zapisywarka.API.Host/obj/
+
 # IDEs and editors
 /.idea
 .project

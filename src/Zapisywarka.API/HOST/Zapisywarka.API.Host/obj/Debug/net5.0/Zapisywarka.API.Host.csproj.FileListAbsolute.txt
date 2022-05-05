@@ -220,3 +220,10 @@ D:/programowanie/zapisywarka/src/Zapisywarka.API/build/Zapisywarka.API.Host.View
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/obj/Debug/net5.0/ref/Zapisywarka.API.Host.dll
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/obj/Debug/net5.0/Zapisywarka.API.Host.pdb
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/obj/Debug/net5.0/Zapisywarka.API.Host.genruntimeconfig.cache
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/dist/Zapisywarka.API.Modules.Identity.Views.dll
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/dist/Zapisywarka.API.Modules.Identity.Views.pdb
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/dist/appsettings.Development.json
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/dist/appsettings.json
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/dist/Zapisywarka.API.Host.StaticWebAssets.xml
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/dist/Zapisywarka.API.Modules.Identity.StaticWebAssets.xml
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/dist/Zapisywarka.API.Host

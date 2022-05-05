@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xJQUZGPB98jtDRX60Vyr+74eAfi9DFvVj2va0RVze776lxspEBqvyDS5DpFz6RSuRvgPbMaCTaVjYB0tosZIvA==",
+  "dgSpecHash": "fKX/EQ7A5Gp2GAh6MONVx2QoC+JK62V1XVWNCz+8eHLpikFsTEwlTH/uRuHC9Ln0TCTE8zdJx2UJLjweRtp93g==",
   "success": true,
   "projectFilePath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/HOST/Zapisywarka.API.Host/Zapisywarka.API.Host.csproj",
   "expectedPackageFiles": [
@@ -154,7 +154,8 @@
     "/home/msz13/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/home/msz13/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
     "/home/msz13/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "/home/msz13/.nuget/packages/system.xml.xmlserializer/4.3.0/system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "/home/msz13/.nuget/packages/system.xml.xmlserializer/4.3.0/system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "/home/msz13/.nuget/packages/microsoft.netcore.app.host.linux-x64/5.0.13/microsoft.netcore.app.host.linux-x64.5.0.13.nupkg.sha512"
   ],
   "logs": []
 }
