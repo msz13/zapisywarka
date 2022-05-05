@@ -1,7 +1,7 @@
 export class AppConfiguration {
-  baseUrl: string;
+    baseUrl: string 
 }
 
 export const appConfiguration: AppConfiguration = {
-  baseUrl: 'localhost:5000/api',
-};
+    baseUrl: 'localhost:5000/api'
+}

@@ -1,75 +1,69 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Input,
-  forwardRef,
-} from '@angular/core';
-import {
-  FormControl,
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy, Input, forwardRef } from '@angular/core';
+import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-date-time-input',
   templateUrl: './date-time-input.component.html',
   styleUrls: ['./date-time-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DateTimeInputComponent),
-      multi: true,
-    },
-  ],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(()=> DateTimeInputComponent),
+    multi: true
+  }]
 })
 export class DateTimeInputComponent implements OnInit, ControlValueAccessor {
-  date = new FormControl();
 
-  @Input() placeholder = '';
+  date = new FormControl()
 
-  @Input() cancelEnabled = true;
+  @Input() placeholder = ''
 
-  @Input() status: string = 'basic';
+  @Input() cancelEnabled = true
 
-  minDate: Date;
+  @Input() status: string= 'basic'
 
-  onChange = (_: any) => {};
+  minDate: Date
 
-  onBlur = () => {};
+  onChange = (_: any) => {}
 
-  constructor() {}
+  onBlur = () => {}
+
+  constructor() { }
 
   writeValue(date: any): void {
-    this.date.setValue(date);
+    this.date.setValue(date)
+    
   }
 
   registerOnChange(fn: any): void {
-    this.onChange = fn;
+    this.onChange = fn
   }
 
   registerOnTouched(fn: any): void {
-    this.onBlur = fn;
+    this.onBlur = fn
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+    throw new Error("Method not implemented.");
   }
 
   clear() {
-    this.date.reset();
+    this.date.reset()
   }
 
   ngOnInit(): void {
-    this.date.valueChanges.subscribe((value) => this.onChange(value));
+    this.date.valueChanges.subscribe(value => this.onChange(value))
 
-    this.minDate = this.today();
+    this.minDate = this.today()
   }
 
   today() {
-    const dt = new Date();
-    dt.setDate(dt.getDate() - 1);
-    return dt;
+    const dt = new Date()
+    dt.setDate(dt.getDate()-1)
+    return dt
   }
+
+
 }

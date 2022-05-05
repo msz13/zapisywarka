@@ -9,14 +9,5 @@ image: rancher/k3s:v1.21.2-k3s1
 volumes:
   - volume:  /home/msz13/programowanie/zapisywarka/Deployment/dev-cluster-infrastructure/postgres-operator.yml:/var/lib/rancher/k3s/server/manifests/postgres-operator.yml
 registries: 
-  ##create: # creates a default registry to be used with the cluster; same as `--registry-create registry.localhost`
-  #  name: zapisywarka.localhost
-    # host: "0.0.0.0"
-  #  hostPort: "9009"
-  use: k3d-zapisywarka.localhost:9009
-  config: | # define contents of the `registries.yaml` file (or reference a file); same as `--registry-config /path/to/config.yaml`
-    mirrors:
-      "localhost:9009":
-        endpoint:
-          - http://k3d-zapisywarka.localhost:9009
+  enable: false
 

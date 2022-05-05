@@ -13,6 +13,7 @@
 
 //const { preprocessTypescript } = require('@nrwl/cypress/plugins/preprocessor');
 
+
 /* module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
@@ -36,7 +37,7 @@ const cucumber = require('cypress-cucumber-preprocessor').default;
 const resolve = require('resolve');
 
 module.exports = (on, config) => {
-  console.log('baseDir: ' + config.projectRoot);
+  console.log('baseDir: ' + config.projectRoot)
   const options = {
     ...browserify.defaultOptions,
     typescript: resolve.sync('typescript', { baseDir: config.projectRoot }),

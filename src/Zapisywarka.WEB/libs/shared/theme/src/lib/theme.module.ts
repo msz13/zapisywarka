@@ -23,8 +23,8 @@ import {
   NbFormFieldModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable'
 
 import {
   FooterComponent,
@@ -60,6 +60,7 @@ import { TextSearchComponent } from './components/text-search/text-search.compon
 import { EditIconComponent } from './components/edit-icon/edit-icon.component';
 import { DateTimeInputComponent } from './components/date-time-input/date-time-input.component';
 
+
 const NB_MODULES = [
   NbLayoutModule,
   NbMenuModule,
@@ -67,26 +68,20 @@ const NB_MODULES = [
   NbActionsModule,
   NbSearchModule,
   NbSidebarModule,
-  NbContextMenuModule,
+  NbContextMenuModule,  
   NbButtonModule,
   NbSelectModule,
   NbIconModule,
   NbEvaIconsModule,
-  NbCardModule,
+  NbCardModule,  
   NbStepperModule,
-  NbInputModule,
+  NbInputModule  ,
   NbDatepickerModule,
-  NbSpinnerModule,
+  NbSpinnerModule,  
   RxReactiveFormsModule,
   NbFormFieldModule,
-  NgxDatatableModule.forRoot({
-    messages: {
-      emptyMessage: 'Brak danych',
-      totalMessage: 'Wszystkich wiadomości jest',
-      selectedMessage: 'Wybrano następujące komórki',
-    },
-  }),
-  FormsModule,
+  NgxDatatableModule.forRoot({messages: {emptyMessage: "Brak danych", totalMessage: "Wszystkich wiadomości jest", selectedMessage: "Wybrano następujące komórki"}}),
+  FormsModule
 ];
 
 const NB_EXPORT_MODULES = [
@@ -102,8 +97,9 @@ const NB_EXPORT_MODULES = [
   NbSpinnerModule,
   NgxDatatableModule,
   NbFormFieldModule,
-  FormsModule,
-];
+  FormsModule
+
+]
 
 const COMPONENTS = [
   SwitcherComponent,
@@ -117,13 +113,14 @@ const COMPONENTS = [
   InputErrorsComponent,
   AppControlErrorDirective,
   AppCurrencyDirective,
-  DeleteConfirmationComponent,
+  DeleteConfirmationComponent, 
   NameInputComponent,
   EditIconComponent,
   DateTimeInputComponent,
-  CatalogCategoryFilterComponent,
+  CatalogCategoryFilterComponent, 
   TextSearchComponent,
 ];
+
 
 const PIPES = [
   CapitalizePipe,
@@ -131,18 +128,12 @@ const PIPES = [
   RoundPipe,
   TimingPipe,
   NumberWithCommasPipe,
+  
 ];
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, FormsModule, ...NB_MODULES],
-  exports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    ...PIPES,
-    ...COMPONENTS,
-    ...NB_EXPORT_MODULES,
-  ],
+  exports: [CommonModule, ReactiveFormsModule, FormsModule,...PIPES, ...COMPONENTS, ...NB_EXPORT_MODULES],
   declarations: [...COMPONENTS, ...PIPES],
 })
 export class ThemeModule {
@@ -154,7 +145,7 @@ export class ThemeModule {
           {
             name: 'default',
           },
-          [DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME]
+          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
         ).providers,
       ],
     };

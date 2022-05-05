@@ -6,10 +6,17 @@ import { OfertyComponent } from './oferty.component';
 import { ThemeModule } from '@zapisywarka-client-aps/shared/theme';
 import { NB_TIME_PICKER_CONFIG } from '@nebular/theme';
 
+
+
 @NgModule({
   declarations: [OfertyComponent],
-  imports: [CommonModule, ThemeModule],
-  providers: [{ provide: NB_TIME_PICKER_CONFIG, useValue: {} }],
-  exports: [],
+  imports: [
+    CommonModule,
+    ThemeModule,    
+    
+  ],
+  providers: [{provide: NB_TIME_PICKER_CONFIG,
+    useValue:{}}],
+  exports: []
 })
-export class OfertyModule {}
+export class OfertyModule { }

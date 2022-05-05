@@ -1,9 +1,12 @@
 @import '../../styles/themes.scss';
 
 @include nb-install-component {
-  .text-lenght-counter {
-    font-size: 0.875em;
-    font-weight: lighter;
-    color: nb-theme(text-hint-color);
+
+    .text-lenght-counter {
+        font-size: 0.875em;
+        font-weight: lighter;
+        color: nb-theme(text-hint-color)
+    }
   }
-}
+
+

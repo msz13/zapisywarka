@@ -8,8 +8,9 @@ describe('EditIconComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EditIconComponent],
-    }).compileComponents();
+      declarations: [ EditIconComponent ]
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {

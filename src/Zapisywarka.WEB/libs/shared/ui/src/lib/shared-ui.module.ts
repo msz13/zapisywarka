@@ -8,7 +8,7 @@ import { SideNavAccountInfoComponent } from './side-nav-account-info/side-nav-ac
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
+import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component'
 
 const COMPONENTS = [
   HeaderComponent,
@@ -16,7 +16,7 @@ const COMPONENTS = [
   InitialAvatarComponent,
   SideNavAccountInfoComponent,
   MainLayoutComponent,
-  MenuCardComponent,
+  MenuCardComponent
 ];
 
 @NgModule({

@@ -1,10 +1,8 @@
-<nb-select
-  placeholder="Kategoria"
-  (selectedChange)="onSelected($event)"
-  size="small"
->
-  <nb-option *ngFor="let category of $categories | async" [value]="category.id">
-    {{ category.name }}
-  </nb-option>
-  <nb-option [value]="undefined">Wszystkie..</nb-option>
+<nb-select placeholder="Kategoria" (selectedChange)="onSelected($event)" size="small">
+      <nb-option *ngFor="let category of $categories | async" 
+        [value]="category.id"        
+        >
+        {{category.name}} 
+       </nb-option>
+       <nb-option [value]="undefined" >Wszystkie..</nb-option>
 </nb-select>

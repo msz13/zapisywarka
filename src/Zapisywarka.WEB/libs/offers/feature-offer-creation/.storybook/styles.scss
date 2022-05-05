@@ -3,10 +3,10 @@
 $test-color: orchid;
 
 p {
-  background-color: orange;
+    background-color: orange;
 }
 
 .test {
-  background-color: $test-color;
-  margin: 1em;
+    background-color: $test-color;
+    margin: 1em;
 }

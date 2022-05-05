@@ -1,90 +1,72 @@
+
 import { LoginComponent } from './login.component';
-import { SharedMaterialModule } from '@zapisywarka.web/material';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {SharedMaterialModule} from '@zapisywarka.web/material'
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
-import { Story } from '@storybook/angular';
-import { action } from '@storybook/addon-actions';
-import {
-  IFormGroup,
-  RxwebValidators,
-  RxFormBuilder,
-} from '@rxweb/reactive-form-validators';
+import {Story} from '@storybook/angular'
+import {action} from '@storybook/addon-actions'
+import { IFormGroup, RxwebValidators, RxFormBuilder} from '@rxweb/reactive-form-validators'
 import { Component, Output, EventEmitter } from '@angular/core';
 import { IdentityLoginFeatureModule } from '../identity-login-feature.module';
 
+
+
 export default {
   title: 'LoginComponent',
-  argTypes: { onSubmit: { action: 'submit' } },
-};
+  argTypes: { onSubmit: {action: 'submit'}}
+}
 
-const buildRxForm = () => {
-  const builder = new RxFormBuilder();
+
+
+const buildRxForm = ()=> {
+  
+  const builder = new RxFormBuilder()
   return builder.group({
-    userName: new FormControl('', [
-      RxwebValidators.required({ message: 'Pole jest wymagane' }),
-    ]),
-    password: new FormControl('', [
-      RxwebValidators.required({ message: 'Pole jest wymagane' }),
-    ]),
-    rememberMe: new FormControl(false),
-  });
-};
+    'userName': new FormControl('',[RxwebValidators.required({message: 'Pole jest wymagane'})]),
+    'password': new FormControl('',[RxwebValidators.required({message: 'Pole jest wymagane'})]),
+    'rememberMe': new FormControl(false)
+  })
+}
 
 const Template: Story = (args) => {
-  const loginFormGroup = buildRxForm();
 
-  loginFormGroup.valueChanges.subscribe((value: any) =>
-    action('form')(JSON.stringify(value))
-  );
+  const loginFormGroup = buildRxForm() 
 
+  loginFormGroup.valueChanges.subscribe((value: any) => action('form')(JSON.stringify(value)))
+  
   return {
-    moduleMetadata: {
-      imports: [
-        SharedMaterialModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        SharedDomainModule,
-      ],
-      declarations: [LoginComponent],
-    },
-    component: LoginComponent,
-    template: `<app-login-form [loginForm]="loginForm" (submited)="onSubmit($event)"></app-login-form>`,
-    props: {
-      ...args,
-      loginForm: loginFormGroup,
-    },
-  };
-};
+  moduleMetadata: {
+    imports: [SharedMaterialModule, ReactiveFormsModule, BrowserAnimationsModule, SharedDomainModule],
+    declarations: [LoginComponent]
+  },
+  component: LoginComponent,
+  template: `<app-login-form [loginForm]="loginForm" (submited)="onSubmit($event)"></app-login-form>`,
+  props: {
+    ...args,
+    loginForm: loginFormGroup     
+  }
+}
+}
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 
-const buildRxFormWithError = () => {
-  const builder = new RxFormBuilder();
+const buildRxFormWithError = ()=> {
+  
+  const builder = new RxFormBuilder()
 
   const group = builder.group({
-    userName: new FormControl(null, [
-      RxwebValidators.required({ message: 'Pole jest wymagane' }),
-    ]),
-    password: new FormControl(null, [
-      RxwebValidators.required({ message: 'Pole jest wymagane' }),
-    ]),
-    rememberMe: new FormControl(false),
-  });
+    'userName': new FormControl(null,[RxwebValidators.required({message: 'Pole jest wymagane'})]),
+    'password': new FormControl(null,[RxwebValidators.required({message: 'Pole jest wymagane'})]),
+    'rememberMe': new FormControl(false)
+  })
 
-  group.setErrors({
-    invalidCredentials: { message: 'Niepoprawny login lub hasło' },
-  });
+  group.setErrors({invalidCredentials: {message: 'Niepoprawny login lub hasło'}})
 
-  console.log(JSON.stringify(group.errors));
+  console.log(JSON.stringify(group.errors))
 
-  return group;
-};
+  return group
+}
 
 /*
 @Component({

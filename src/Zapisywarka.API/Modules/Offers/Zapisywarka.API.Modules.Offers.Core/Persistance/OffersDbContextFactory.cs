@@ -13,7 +13,7 @@ namespace OffersBD.Data
         public OffersDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<OffersDbContext>();
-            optionsBuilder.UseNpgsql("Host=localhost;Database=zapisywarka;Username=postgres;Password=Password_01", 
+            optionsBuilder.UseNpgsql("Host=localhost;Database=Offers;Username=postgres;Password=Password_01", 
                 o => o.UseNodaTime());
             var userServie = new UserContextService();
             return new OffersDbContext(optionsBuilder.Options, userServie);

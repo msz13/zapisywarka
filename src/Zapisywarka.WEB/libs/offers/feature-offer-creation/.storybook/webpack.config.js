@@ -16,6 +16,6 @@ module.exports = async ({ config, mode }) => {
   config.resolve.plugins
     ? config.resolve.plugins.push(tsPaths)
     : (config.resolve.plugins = [tsPaths]);
-
+   
   return config;
 };

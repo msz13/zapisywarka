@@ -1,13 +1,15 @@
+
 import { CatalogListComponent } from './catalog-list.component';
 
 export default {
-  title: 'CatalogListComponent',
-};
+  title: 'CatalogListComponent'
+}
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [],
+    imports: []
   },
   component: CatalogListComponent,
-  props: {},
-});
+  props: {
+  }
+})

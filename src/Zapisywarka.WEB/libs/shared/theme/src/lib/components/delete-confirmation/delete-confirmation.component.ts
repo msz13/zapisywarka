@@ -1,29 +1,27 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Input,
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
 
 @Component({
   selector: 'delete-confirmation',
   templateUrl: './delete-confirmation.component.html',
   styleUrls: ['./delete-confirmation.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DeleteConfirmationComponent implements OnInit {
+
   @Input() message: string;
 
-  constructor(private ref: NbDialogRef<DeleteConfirmationComponent>) {}
+  constructor(private ref: NbDialogRef<DeleteConfirmationComponent>) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   close() {
-    this.ref.close(false);
+    this.ref.close(false)
   }
 
   confirm() {
-    this.ref.close(true);
+    this.ref.close(true)
   }
+
 }

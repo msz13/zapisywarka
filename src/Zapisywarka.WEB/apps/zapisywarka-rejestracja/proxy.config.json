@@ -1,7 +1,10 @@
 {
-  "/api/users/login": {
-    "target": "http://api.zapisywarka.local",
-
-    "secure": false
+    "/api/users/login": {
+  
+      "target": "http://api.zapisywarka.local",
+  
+      "secure": false
+  
+    }
+  
   }
-}

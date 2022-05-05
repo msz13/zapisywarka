@@ -10,15 +10,11 @@ export default {
   title: 'SignUpComponent',
 };
 
+
 export const primary = () => ({
   moduleMetadata: {
-    imports: [
-      SharedMaterialModule,
-      BrowserAnimationsModule,
-      ReactiveFormsModule,
-      SharedDomainModule,
-    ],
-    declarations: [SignUpFormComponent],
+    imports: [SharedMaterialModule, BrowserAnimationsModule, ReactiveFormsModule, SharedDomainModule],
+    declarations: [SignUpFormComponent]
   },
   component: SignUpComponent,
   props: {},

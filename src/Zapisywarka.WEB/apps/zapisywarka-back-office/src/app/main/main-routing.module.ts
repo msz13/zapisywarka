@@ -5,34 +5,28 @@ import { StartComponent } from './start/start/start.component';
 import { OfertyComponent } from './oferty/oferty.component';
 import { CatalogComponent } from '@zapisywarka-client-aps/catalog/feature-catalog';
 
-const routes: Routes = [
+const routes: Routes = [{
+  path: "main",
+  component: MainComponent,
+  children: [
+    {
+      path: "start",
+      component: StartComponent
+  }, { 
+    path: 'katalog',
+    loadChildren: () => import('../../../../../libs/catalog/feature-catalog/src').then(m => m.CatalogModule)
+  }, 
+  
+  
   {
-    path: 'main',
-    component: MainComponent,
-    children: [
-      {
-        path: 'start',
-        component: StartComponent,
-      },
-      {
-        path: 'katalog',
-        loadChildren: () =>
-          import('../../../../../libs/catalog/feature-catalog/src').then(
-            (m) => m.CatalogModule
-          ),
-      },
-
-      {
-        path: '',
-        redirectTo: 'start',
-        pathMatch: 'full',
-      },
-    ],
-  },
-];
+    path: "",
+    redirectTo: "start",
+    pathMatch: "full"}
+  ]
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class MainRoutingModule {}
+export class MainRoutingModule { }

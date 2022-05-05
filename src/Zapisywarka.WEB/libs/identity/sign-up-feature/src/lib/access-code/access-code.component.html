@@ -1,23 +1,25 @@
 <div *ngIf="!showSignUpForm" class="form-container">
-  <mat-form-field
-    appearance="outline"
-    class="full-width-field"
-    data-test="access-code"
-  >
-    <mat-label>Kod dostępu</mat-label>
-    <input type="password" matInput [formControl]="accessCodeControl" />
-    <mat-hint>Podaj kod dostępu podany przez administratora</mat-hint>
-    <mat-error data-test="validation-error">{{ 'error' }}</mat-error>
-  </mat-form-field>
-  <button
-    (click)="validateAccessCode()"
-    mat-raised-button
-    [disabled]="accessCodeControl?.invalid"
-    type="button"
-    class="full-width-field"
-    color="primary"
-    data-test="next-button"
-  >
-    Dalej
-  </button>
-</div>
+    <mat-form-field
+      appearance="outline"
+      class="full-width-field"
+      data-test="access-code"
+    >
+      <mat-label>Kod dostępu</mat-label>
+      <input type="password" matInput [formControl]="accessCodeControl" />
+      <mat-hint>Podaj kod dostępu podany przez administratora</mat-hint>
+      <mat-error data-test="validation-error">{{
+        "error"
+      }}</mat-error>
+    </mat-form-field>
+    <button
+      (click)="validateAccessCode()"
+      mat-raised-button
+      [disabled]="accessCodeControl?.invalid"
+      type="button"
+      class="full-width-field"
+      color="primary"
+      data-test="next-button"
+    >
+      Dalej
+    </button>
+  </div>

@@ -12,17 +12,20 @@ import { CatalogCategoriesComponent } from './categories/categories.component';
 import { NewCategoryComponent } from './categories/new-category/new-category.component';
 import { CategoriesListComponent } from './categories/category-list/categories-list.component';
 
+
 @NgModule({
-  declarations: [
-    CatalogItemFormComponent,
-    CatalogComponent,
-    CatalogListComponent,
-    AddCatalogItemComponent,
-    UpdateCatalogTemComponent,
-    CatalogCategoriesComponent,
-    NewCategoryComponent,
-    CategoriesListComponent,
-  ],
-  imports: [CommonModule, ThemeModule, NbWindowModule, CatalogRoutingModule],
+  declarations: [CatalogItemFormComponent, 
+                 CatalogComponent, 
+                 CatalogListComponent, 
+                 AddCatalogItemComponent, 
+                 UpdateCatalogTemComponent, 
+                 CatalogCategoriesComponent, NewCategoryComponent, CategoriesListComponent
+                ],
+  imports: [
+    CommonModule,
+    ThemeModule,
+    NbWindowModule,   
+    CatalogRoutingModule
+  ]
 })
-export class CatalogModule {}
+export class CatalogModule { }

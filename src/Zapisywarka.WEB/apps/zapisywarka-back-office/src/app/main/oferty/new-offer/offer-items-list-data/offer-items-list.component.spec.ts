@@ -8,8 +8,9 @@ describe('OfferItemsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OfferItemsListComponent],
-    }).compileComponents();
+      declarations: [ OfferItemsListComponent ]
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,7 +23,9 @@ describe('OfferItemsListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show empty selected items list', () => {});
+  it('should show empty selected items list', ()=>{
+
+  })
 
   /* -sholud load catalog items list to select
   - should add selected catalog items to form
@@ -33,4 +36,5 @@ describe('OfferItemsListComponent', () => {
   - it should change price and quantity of selected items
   - should expose offer items array
   */
+
 });
