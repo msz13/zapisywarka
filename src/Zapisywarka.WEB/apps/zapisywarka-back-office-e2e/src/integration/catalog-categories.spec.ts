@@ -1,39 +1,30 @@
-describe("Catalog categories", () =>{
+describe('Catalog categories', () => {
+  const getCategories = () => cy.get('[data-cy="category-list"]');
+  const getCategory = (name) => cy.get('[data-cy="category"]').contains(name);
+  it('should display catalog categories page', () => {
+    cy.visit('/main/katalog/kategorie');
 
-const getCategories = ()=> cy.get('[data-cy="category-list"]')
-const getCategory = name=> cy.get('[data-cy="category"]').contains(name)
-    it("should display catalog categories page", ()=> {
-        cy.visit("/main/katalog/kategorie")
-        
-        cy.contains('Kategorie')
-    })
+    cy.contains('Kategorie');
+  });
 
-    describe('Adding category', ()=> {
+  describe('Adding category', () => {
+    const category = 'Specjalne';
+    const addCategory = (name) => {
+      cy.get('[data-cy="name-input"]').type(name);
 
-        const category = "Specjalne"
-        const addCategory = name => {
-            cy.get('[data-cy="name-input"]').type(name)
-            
-            cy.get('[data-cy="save"]').click()
-        }
+      cy.get('[data-cy="save"]').click();
+    };
 
-        beforeEach(()=>{
-            cy.visit("localhost:4200/main/katalog/kategorie")
-            cy.wait(300)            
-                                   
-        })
-        it('adds cateogry to list', ()=> {
-            
-            const categoryName = 'Bochenki'             
-                       
-                   
-            addCategory(categoryName)
+    beforeEach(() => {
+      cy.visit('localhost:4200/main/katalog/kategorie');
+      cy.wait(300);
+    });
+    it('adds cateogry to list', () => {
+      const categoryName = 'Bochenki';
 
-            cy.wait(100).get('[data-cy="category-list"]').contains(`${categoryName}`)
-             
+      addCategory(categoryName);
 
-        })  
-        
-    })
-
-})
+      cy.wait(100).get('[data-cy="category-list"]').contains(`${categoryName}`);
+    });
+  });
+});

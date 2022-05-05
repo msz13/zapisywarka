@@ -38,9 +38,11 @@ const categoryFilter = (categoryId: Id) => (item: CatalogItem) =>
 const nameFilter = (name: string) => (item: CatalogItem) =>
   item.name.toLocaleLowerCase().includes(name);
 
-const executeFilters = (filteres: any[]) => (item: CatalogItem): boolean => {
-  const result = filteres.reduce((result, filter) => {
-    return result ? filter(item) : result;
-  }, true);
-  return result;
-};
+const executeFilters =
+  (filteres: any[]) =>
+  (item: CatalogItem): boolean => {
+    const result = filteres.reduce((result, filter) => {
+      return result ? filter(item) : result;
+    }, true);
+    return result;
+  };

@@ -4,47 +4,40 @@ import { ConfigurationService } from './configuration.service';
 
 import { HttpClient } from '@angular/common/http';
 
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
-
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 
 describe('ConfigurationService', () => {
   let service: ConfigurationService;
-  let httpTestingController: HttpTestingController
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ]
+      imports: [HttpClientTestingModule],
     });
     httpTestingController = TestBed.inject(HttpTestingController);
     service = TestBed.inject(ConfigurationService);
-
-  })
+  });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
- 
 
-  it('should get config',  () => {
-
-    
+  it('should get config', () => {
     const config = {
+      apiUrl: 'api.zapisywarka.local',
+    };
 
-      apiUrl: "api.zapisywarka.local",      
-
-    }     
-   
-     service.loadConfig().then(()=>{
+    service.loadConfig().then(() => {
       expect(service.getConfig()).toStrictEqual(config);
-    })    
+    });
 
     const req = httpTestingController.expectOne('./assets/config.json');
 
-    req.flush(config)
+    req.flush(config);
 
     httpTestingController.verify();
-
   });
-
-
 });

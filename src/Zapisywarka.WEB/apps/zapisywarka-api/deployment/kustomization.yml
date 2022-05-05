@@ -1,0 +1,17 @@
+namePrefix: zapisywarka-
+
+commonLabels: 
+  app: zapisywarkaApi
+
+patchesStrategicMerge:
+ - init-container.yml
+
+resources:
+  - postgresql-db.yml
+  - deployment.yml
+  - service.yml
+  - api-ingress.yml
+  
+
+  
+  

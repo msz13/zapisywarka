@@ -1,2 +1,2 @@
 export * from './lib/identity-sign-up-feature.module';
-export * from './lib/sign-up/sign-up.container.component'
+export * from './lib/sign-up/sign-up.container.component';

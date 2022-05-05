@@ -2,19 +2,19 @@
 @import '../../../../shared/material/src/zapisywarka-theme';
 
 .title {
-    color: mat.get-color-from-palette($dark-blue-green-primary, 600);  
+  color: mat.get-color-from-palette($dark-blue-green-primary, 600);
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
 }
 
 .authenitication-button {
-    margin: 1em;
-    width: 10em;
+  margin: 1em;
+  width: 10em;
 }

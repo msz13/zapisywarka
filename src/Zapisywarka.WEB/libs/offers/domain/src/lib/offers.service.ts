@@ -4,19 +4,18 @@ import { map } from 'rxjs/operators';
 import { Offer } from './offer-model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OffersService {
-
-
-  constructor() { }
+  constructor() {}
 
   publishOffer(offer: Offer) {
-    console.log(offer)
+    console.log(offer);
   }
 
   isNameValid(name: string): Observable<boolean> {
-    
-    return timer(800).pipe(map(_=> (name=="Poniedziałek, 13.02"? false : true)))
+    return timer(800).pipe(
+      map((_) => (name == 'Poniedziałek, 13.02' ? false : true))
+    );
   }
 }

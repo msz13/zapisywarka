@@ -1,18 +1,13 @@
 <nb-form-field>
-    <input 
-        type="text"
-        [attr.maxlength]="maxLength"        
-        nbInput
-        [(ngModel)] ="value"
-        (focus)="onFocus()"
-        (blur)="onBlur()"   
-           
-        >
-    <span 
-        *ngIf="counterVisibility" 
-        nbSuffix 
-        class="text-lenght-counter"
-        >
-        {{counter}}
-    </span>
-</nb-form-field>  
+  <input
+    type="text"
+    [attr.maxlength]="maxLength"
+    nbInput
+    [(ngModel)]="value"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+  />
+  <span *ngIf="counterVisibility" nbSuffix class="text-lenght-counter">
+    {{ counter }}
+  </span>
+</nb-form-field>

@@ -28,86 +28,7 @@
       }
     }
   },
-  "projects": {
-    "catalog-api": {
-      "tags": []
-    },
-    "catalog-domain-catalog-item": {
-      "tags": []
-    },
-    "catalog-domain-category": {
-      "tags": []
-    },
-    "catalog-feature-catalog": {
-      "tags": []
-    },
-    "catalog-feature-catalog-e2e": {
-      "tags": [],
-      "implicitDependencies": ["catalog-feature-catalog"]
-    },
-    "catalog-utills-testing": {
-      "tags": []
-    },
-    "identity-domain": {
-      "tags": []
-    },
-    "identity-login-feature": {
-      "tags": []
-    },
-    "identity-login-feature-e2e": {
-      "tags": [],
-      "implicitDependencies": ["identity-login-feature"]
-    },
-    "identity-sign-up-feature": {
-      "tags": []
-    },
-    "identity-sign-up-feature-e2e": {
-      "tags": [],
-      "implicitDependencies": ["identity-sign-up-feature"]
-    },
-    "identity-utills": {
-      "tags": []
-    },
-    "landing-page": {
-      "tags": []
-    },
-    "offers-domain": {
-      "tags": []
-    },
-    "offers-feature-offer-creation": {
-      "tags": []
-    },
-    "offers-feature-offer-creation-e2e": {
-      "tags": [],
-      "implicitDependencies": ["offers-feature-offer-creation"]
-    },
-    "shared-domain": {
-      "tags": []
-    },
-    "shared-material": {
-      "tags": []
-    },
-    "shared-theme": {
-      "tags": []
-    },
-    "shared-ui": {
-      "tags": []
-    },
-    "zapisywarka-back-office": {
-      "tags": []
-    },
-    "zapisywarka-back-office-e2e": {
-      "tags": [],
-      "implicitDependencies": ["zapisywarka-back-office"]
-    },
-    "zapisywarka-rejestracja": {
-      "tags": []
-    },
-    "zapisywarka-rejestracja-e2e": {
-      "tags": [],
-      "implicitDependencies": ["zapisywarka-rejestracja"]
-    }
-  },
+  "projects": {},
   "targetDependencies": {
     "build": [
       {
@@ -115,5 +36,6 @@
         "projects": "dependencies"
       }
     ]
-  }
+  },
+  "plugins": ["@nx-dotnet/core"]
 }

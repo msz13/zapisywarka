@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "root": "libs/identity/domain",
+  "sourceRoot": "libs/identity/domain/src",
+  "prefix": "zapisywarka-client-aps",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/identity/domain/src/**/*.ts",
+          "libs/identity/domain/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/identity/domain"],
+      "options": {
+        "jestConfig": "libs/identity/domain/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

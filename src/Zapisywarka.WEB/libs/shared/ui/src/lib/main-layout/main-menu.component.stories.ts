@@ -7,17 +7,20 @@ import { MainMenuComponent } from '../main-menu/main-menu.component';
 import { SideNavAccountInfoComponent } from '../side-nav-account-info/side-nav-account-info.component';
 import { MainLayoutComponent } from './main-layout.component';
 
-
 export default {
-  title: 'MainLayoutComponent'
-}
+  title: 'MainLayoutComponent',
+};
 
 export const primary = () => ({
   moduleMetadata: {
     imports: [BrowserModule, BrowserAnimationsModule, SharedMaterialModule],
-    declarations: [HeaderComponent, MainMenuComponent, SideNavAccountInfoComponent, InitialAvatarComponent]
+    declarations: [
+      HeaderComponent,
+      MainMenuComponent,
+      SideNavAccountInfoComponent,
+      InitialAvatarComponent,
+    ],
   },
   component: MainLayoutComponent,
-  props: {
-  }
-})
+  props: {},
+});

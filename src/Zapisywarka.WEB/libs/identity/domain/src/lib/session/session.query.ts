@@ -6,15 +6,11 @@ import { SessionStore, UserSession } from './session.store';
 
 @Injectable({ providedIn: 'root' })
 export class SessionQuery extends Query<UserSession> {
-
   constructor(protected store: SessionStore) {
     super(store);
   }
 
   isLoggedIn(): Observable<boolean> {
-    return this.select('id').pipe(map(id => !!id))
+    return this.select('id').pipe(map((id) => !!id));
   }
-
 }
-
-

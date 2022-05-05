@@ -1,21 +1,22 @@
 import { text, number, boolean } from '@storybook/addon-knobs';
 import { HeaderComponent } from './header.component';
-import {SharedMaterialModule} from '@zapisywarka.web/material'
+import { SharedMaterialModule } from '@zapisywarka.web/material';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'HeaderComponent'
-}
+  title: 'HeaderComponent',
+};
 
 export const primary = () => ({
   moduleMetadata: {
     imports: [SharedMaterialModule],
-    declarations: [HeaderComponent]
+    declarations: [HeaderComponent],
   },
   component: HeaderComponent,
-  template: '<app-header [userName]="userName" (toggleMenu)="onToggleMenu()"></app-header>',
+  template:
+    '<app-header [userName]="userName" (toggleMenu)="onToggleMenu()"></app-header>',
   props: {
     userName: text('userName', 'Bochenek'),
-    onToggleMenu: action('onToggleMenu')
-  }
-})
+    onToggleMenu: action('onToggleMenu'),
+  },
+});

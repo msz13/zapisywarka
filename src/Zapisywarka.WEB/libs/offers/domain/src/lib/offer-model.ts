@@ -1,16 +1,16 @@
 export interface Offer {
- name: string
- endOfferDate?: Date
- startCollectionDate: Date
- endCollectionDate: Date 
- offerItems: OfferItem[]
+  name: string;
+  endOfferDate?: Date;
+  startCollectionDate: Date;
+  endCollectionDate: Date;
+  offerItems: OfferItem[];
 }
 
 export interface OfferItem {
-    id: string
-    catalogItemId: string,
-    price: number
-    avaibleQuantity: number
+  id: string;
+  catalogItemId: string;
+  price: number;
+  avaibleQuantity: number;
 }
 
 interface OfferListView {

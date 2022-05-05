@@ -3,14 +3,14 @@ kind: Ingress
 metadata:
   name: web
 spec:
-  rules: 
-  - host: zapisywarka.local 
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: web
-            port: 
-              number: 80
+  rules:
+    - host: zapisywarka.local
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: web
+                port:
+                  number: 80

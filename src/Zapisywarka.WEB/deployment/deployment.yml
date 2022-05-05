@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web
-spec:  
-  template:   
+spec:
+  template:
     spec:
       containers:
-      - name: web
-        image: zapisywarka-web:latest            
-        ports:
-        - containerPort: 80
-        volumeMounts:
-          - name: angular-config-volume
-            mountPath: /usr/share/nginx/html/assets/
-          - name: ngnix-config-volume
-            mountPath: /etc/nginx/conf.d
+        - name: web
+          image: zapisywarka-web:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: angular-config-volume
+              mountPath: /usr/share/nginx/html/assets/
+            - name: ngnix-config-volume
+              mountPath: /etc/nginx/conf.d
       volumes:
         - name: angular-config-volume
           configMap:
@@ -22,4 +22,3 @@ spec:
         - name: ngnix-config-volume
           configMap:
             name: ngnix-configuration
-

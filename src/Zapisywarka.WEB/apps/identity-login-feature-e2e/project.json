@@ -1,0 +1,32 @@
+{
+  "root": "apps/identity-login-feature-e2e",
+  "sourceRoot": "apps/identity-login-feature-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/identity-login-feature-e2e/cypress.json",
+        "tsConfig": "apps/identity-login-feature-e2e/tsconfig.e2e.json",
+        "devServerTarget": "identity-login-feature:storybook"
+      },
+      "configurations": {
+        "ci": {
+          "devServerTarget": "identity-login-feature:storybook:ci"
+        },
+        "local": {
+          "watch": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/identity-login-feature-e2e/**/*.{js,ts}"]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["identity-login-feature"]
+}

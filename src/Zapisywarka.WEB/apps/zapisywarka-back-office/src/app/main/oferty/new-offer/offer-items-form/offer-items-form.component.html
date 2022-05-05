@@ -1,29 +1,50 @@
 <table class="table" [formGroup]="offerItemsForm">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Nazwa</th>
-            <th>Kategoria</th>
-            <th>Cena(zł)</th>
-            <th>Dostępna ilość</th>
-            <th style="width:5%">#</th>
-        </tr>
-    </thead>
-    <tbody formArrayName="offerItems">
-        <tr *ngFor="let item of offerItems.controls; index as i">
-            <ng-container [formGroup]="item">
-                <td><strong>{{i+1}}</strong></td>
-                <td>{{getName(i)}}</td>
-                <td class="text-secondary">{{getCategory(i)}}</td>
-                <td><input type="number" min=0 nbInput class="numeric" formControlName="price"></td>
-                <td><input type="number" nbInput class="numeric" formControlName="avaibleQuantity"></td>
-                <td>
-                    <button nbButton ghost>
-                        <nb-icon icon="trash-outline" [options]="{ animation: { type: 'zoom' } }" (click)="onRemove(i)">
-                        </nb-icon>
-                    </button>
-                </td>
-            </ng-container>            
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nazwa</th>
+      <th>Kategoria</th>
+      <th>Cena(zł)</th>
+      <th>Dostępna ilość</th>
+      <th style="width: 5%">#</th>
+    </tr>
+  </thead>
+  <tbody formArrayName="offerItems">
+    <tr *ngFor="let item of offerItems.controls; index as i">
+      <ng-container [formGroup]="item">
+        <td>
+          <strong>{{ i + 1 }}</strong>
+        </td>
+        <td>{{ getName(i) }}</td>
+        <td class="text-secondary">{{ getCategory(i) }}</td>
+        <td>
+          <input
+            type="number"
+            min="0"
+            nbInput
+            class="numeric"
+            formControlName="price"
+          />
+        </td>
+        <td>
+          <input
+            type="number"
+            nbInput
+            class="numeric"
+            formControlName="avaibleQuantity"
+          />
+        </td>
+        <td>
+          <button nbButton ghost>
+            <nb-icon
+              icon="trash-outline"
+              [options]="{ animation: { type: 'zoom' } }"
+              (click)="onRemove(i)"
+            >
+            </nb-icon>
+          </button>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
 </table>

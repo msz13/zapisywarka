@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 /**
  * Export a function. Accept the base config as the only param.
  * @param {Object} options
@@ -7,7 +7,6 @@ const path = require('path')
  */
 module.exports = async ({ config, mode }) => {
   // Make whatever fine-grained changes you need
-    
 
   return config;
 };

@@ -3,57 +3,51 @@
 @use '../../../../../libs/shared/material/src/zapisywarka-theme.scss' as theme;
 
 $color-config: mat.get-color-config(theme.$dark-blue-green-theme);
- 
+
 $primary-palette: map.get($color-config, 'primary');
 
 $warn-palette: map.get($color-config, 'warn');
 
-
 :host {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  .title {
-    color: mat.get-color-from-palette($primary-palette, 600);
-  }
-  
-  mat-card {
-    width: 350px;
-    height: 400px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
 
-    
-  mat-card-content {
-    padding: 1.5em;
-    overflow: hidden;    
-  }
-  
- 
-  
-  .full-width-field {
-    width: 100%;
-  }
-  
-  
-  .server-error {
-    display: block;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    color: mat.get-color-from-palette($warn-palette);
-  }
+.title {
+  color: mat.get-color-from-palette($primary-palette, 600);
+}
 
-  .buttons-section {
-      width: 100%;
-      display: flex;
-      margin: 1.5em;
-      justify-content: space-between;
-  }
+mat-card {
+  width: 350px;
+  height: 400px;
+}
 
-  mat-checkbox {
-    margin-top: 0.5em;
-  }
-  
+mat-card-content {
+  padding: 1.5em;
+  overflow: hidden;
+}
+
+.full-width-field {
+  width: 100%;
+}
+
+.server-error {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: mat.get-color-from-palette($warn-palette);
+}
+
+.buttons-section {
+  width: 100%;
+  display: flex;
+  margin: 1.5em;
+  justify-content: space-between;
+}
+
+mat-checkbox {
+  margin-top: 0.5em;
+}

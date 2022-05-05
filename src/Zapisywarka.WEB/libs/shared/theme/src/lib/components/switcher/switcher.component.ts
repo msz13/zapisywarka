@@ -6,18 +6,20 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <label class="switch-label" [class.vertical]="vertical">
       <span class="first" [class.active]="vertical || isFirstValue()">
-        {{vertical ? currentValueLabel() : firstValueLabel}}
+        {{ vertical ? currentValueLabel() : firstValueLabel }}
       </span>
 
       <div class="switch">
-        <input type="checkbox" [checked]="isSecondValue()" (change)="changeValue()">
+        <input
+          type="checkbox"
+          [checked]="isSecondValue()"
+          (change)="changeValue()"
+        />
         <span class="slider"></span>
       </div>
 
-      <span *ngIf="!vertical"
-            class="second"
-            [class.active]="isSecondValue()">
-          {{secondValueLabel}}
+      <span *ngIf="!vertical" class="second" [class.active]="isSecondValue()">
+        {{ secondValueLabel }}
       </span>
     </label>
   `,
@@ -43,15 +45,11 @@ export class SwitcherComponent {
   }
 
   currentValueLabel() {
-    return this.isFirstValue()
-      ? this.firstValueLabel
-      : this.secondValueLabel;
+    return this.isFirstValue() ? this.firstValueLabel : this.secondValueLabel;
   }
 
   changeValue() {
-    this.value = this.isFirstValue()
-      ? this.secondValue
-      : this.firstValue;
+    this.value = this.isFirstValue() ? this.secondValue : this.firstValue;
 
     this.valueChange.emit(this.value);
   }

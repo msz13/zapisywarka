@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "root": "libs/catalog/utills/testing",
+  "sourceRoot": "libs/catalog/utills/testing/src",
+  "prefix": "zapisywarka-client-aps",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/catalog/utills/testing/src/**/*.ts",
+          "libs/catalog/utills/testing/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/catalog/utills/testing"],
+      "options": {
+        "jestConfig": "libs/catalog/utills/testing/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -8,9 +8,8 @@ describe('NewCategoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewCategoryComponent ]
-    })
-    .compileComponents();
+      declarations: [NewCategoryComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
