@@ -123,18 +123,9 @@ Feature: Specyfikacja pozycji oferty
         Then Lista pozycji zawiera:
             | ProductName   |
             | Chleb wiejski |
+   
 
-        #Rule Organizator może zmienić nazwę pozycji w czasie tworzenia
-        Given Organizator zapisów dodał pozycję "Chleb wiejski"
-        When Zmienia nazwę na "Chleb tradycyjny"
-        Then Lista pozycji zawiera "Chleb tradycjny"
-
-        #Rule Nazwa pozycji nie może być pusta
-        Given Organizator zapisów dodał pozycję ""
-        When Zapisuję ofertę
-        Then Widzi komunikat błędu "Nazwa pozycji nie może być pusta"
-
-        #Rule Nazwa pozycji musi być poprawna
+    
 
 
         #Rule Dodane kategorie podpowiadają się organizatorowi
