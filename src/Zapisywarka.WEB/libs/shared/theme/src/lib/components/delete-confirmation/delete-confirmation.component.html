@@ -1,8 +1,12 @@
 <nb-card>
-    <nb-card-header>Potwierdź usunięcie</nb-card-header>
-    <nb-card-body>{{message}}</nb-card-body>
-    <nb-card-footer>
-        <button nbButton size="small" outline status="primary" (click)="close()">Anuluj</button>
-        <button nbButton size="small" status="primary" (click)="confirm()">Potwierdź</button>
-    </nb-card-footer>
+  <nb-card-header>Potwierdź usunięcie</nb-card-header>
+  <nb-card-body>{{ message }}</nb-card-body>
+  <nb-card-footer>
+    <button nbButton size="small" outline status="primary" (click)="close()">
+      Anuluj
+    </button>
+    <button nbButton size="small" status="primary" (click)="confirm()">
+      Potwierdź
+    </button>
+  </nb-card-footer>
 </nb-card>

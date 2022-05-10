@@ -85,7 +85,6 @@ export class SignUpComponent implements OnInit {
 
     this.userSubmited.emit(user);
   }
-  
 
   getErrorMessage() {
     return 'Kod dostępu jest wymagany';

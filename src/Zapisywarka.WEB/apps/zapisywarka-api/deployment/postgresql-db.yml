@@ -1,0 +1,19 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: postgres
+  namespace: default
+spec:
+  teamId: zapisywarka
+  volume:
+    size: 1Gi
+    #storageClass: local-path
+  numberOfInstances: 1
+  users:
+    zapisywarka-api:  # database owner
+    - superuser
+    - createdb
+  databases:
+    zapisywarka_db: zapisywarka-api  # dbname: owner  
+  postgresql:
+    version: "13"

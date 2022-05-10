@@ -1,31 +1,31 @@
-import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 
-
-interface CatalogCategory {
-
-}
+interface CatalogCategory {}
 
 @Component({
   selector: 'app-catalog-category-filter',
   templateUrl: './catalog-category-filter.component.html',
   styleUrls: ['./catalog-category-filter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CatalogCategoryFilterComponent implements OnInit {
+  $categories: Observable<CatalogCategory[]>;
+  @Output() selected = new EventEmitter<any>();
 
-  $categories: Observable<CatalogCategory[]>
-  @Output() selected = new EventEmitter<any>()
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.$categories 
-
+    this.$categories;
   }
 
-  onSelected(id) {    
-     this.selected.emit(id)
+  onSelected(id) {
+    this.selected.emit(id);
   }
-
 }

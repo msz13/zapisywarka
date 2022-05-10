@@ -1,1 +1,1 @@
-export * from './lib/test/login.po'
+export * from './lib/test/login.po';

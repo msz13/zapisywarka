@@ -1,44 +1,49 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
-import {CatalogCategory, Id} from '@zapisywarka-client-aps/catalog/domain-category'
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+  EventEmitter,
+  Output,
+} from '@angular/core';
+import {
+  CatalogCategory,
+  Id,
+} from '@zapisywarka-client-aps/catalog/domain-category';
 import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-categories-list',
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoriesListComponent implements OnInit {
+  @Input() categories: CatalogCategory[];
+  @Output() updated = new EventEmitter();
 
-  @Input() categories: CatalogCategory[]
-  @Output() updated = new EventEmitter()
+  editedCategoryControl = new FormControl();
 
-  editedCategoryControl = new FormControl()
+  edited: Id = null;
 
-  edited: Id = null
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  edit(category: CatalogCategory) {
+    this.edited = category.id;
+    this.editedCategoryControl.setValue(category.name);
   }
 
-  edit(category: CatalogCategory){
-    this.edited = category.id
-    this.editedCategoryControl.setValue(category.name)
-  }
-
-  
   isEdited(id: Id) {
-    return this.edited? this.edited == id : false 
+    return this.edited ? this.edited == id : false;
   }
 
-  saveEdited() {  
-    this.updated.emit({id: this.edited, name: this.editedCategoryControl.value })
-    this.edited = null
+  saveEdited() {
+    this.updated.emit({
+      id: this.edited,
+      name: this.editedCategoryControl.value,
+    });
+    this.edited = null;
   }
-
-
-
-  
-
 }

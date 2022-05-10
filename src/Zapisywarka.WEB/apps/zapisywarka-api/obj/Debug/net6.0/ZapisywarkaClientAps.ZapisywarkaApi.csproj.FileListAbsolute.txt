@@ -5,7 +5,6 @@
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/apps/zapisywarka-api/net6.0/ZapisywarkaClientAps.ZapisywarkaApi.deps.json
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/apps/zapisywarka-api/net6.0/ZapisywarkaClientAps.ZapisywarkaApi.runtimeconfig.json
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/apps/zapisywarka-api/net6.0/ZapisywarkaClientAps.ZapisywarkaApi.dll
-/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/apps/zapisywarka-api/net6.0/ref/ZapisywarkaClientAps.ZapisywarkaApi.dll
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/apps/zapisywarka-api/net6.0/ZapisywarkaClientAps.ZapisywarkaApi.pdb
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/obj/Debug/net6.0/ZapisywarkaClientAps.ZapisywarkaApi.csproj.AssemblyReference.cache
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/obj/Debug/net6.0/ZapisywarkaClientAps.ZapisywarkaApi.GeneratedMSBuildEditorConfig.editorconfig
@@ -22,3 +21,4 @@
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/obj/Debug/net6.0/ref/ZapisywarkaClientAps.ZapisywarkaApi.dll
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/obj/Debug/net6.0/ZapisywarkaClientAps.ZapisywarkaApi.pdb
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/obj/Debug/net6.0/ZapisywarkaClientAps.ZapisywarkaApi.genruntimeconfig.cache
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/obj/Debug/net6.0/refint/ZapisywarkaClientAps.ZapisywarkaApi.dll

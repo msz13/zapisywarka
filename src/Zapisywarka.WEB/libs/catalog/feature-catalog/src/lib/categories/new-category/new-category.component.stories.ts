@@ -1,15 +1,13 @@
-
 import { NewCategoryComponent } from './new-category.component';
 
 export default {
-  title: 'NewCategoryComponent'
-}
+  title: 'NewCategoryComponent',
+};
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: []
+    imports: [],
   },
   component: NewCategoryComponent,
-  props: {
-  }
-})
+  props: {},
+});

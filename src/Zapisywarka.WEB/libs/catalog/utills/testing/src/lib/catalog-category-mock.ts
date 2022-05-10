@@ -1,10 +1,14 @@
-export const CATALOG_CATEGORIES = [{
+export const CATALOG_CATEGORIES = [
+  {
     id: 1,
-    name:"Bochenki"
-}, {
+    name: 'Bochenki',
+  },
+  {
     id: 2,
-    name: "Foremkowe"
-}, {
+    name: 'Foremkowe',
+  },
+  {
     id: 3,
-    name: 'Specjalne'
-}]
+    name: 'Specjalne',
+  },
+];

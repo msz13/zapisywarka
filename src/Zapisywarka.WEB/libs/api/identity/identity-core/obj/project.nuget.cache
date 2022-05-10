@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "j4RsxadvKADTx62BN1ae6VGYUOqZXScv1KpnU06K/g8QGRRrsWGyTDQrKaSEVo+7Mbsdzd0rAAQ/crr9YQYHyw==",
+  "dgSpecHash": "rTiaeOTjF4nO4Uc2kcJ+8Oiusv4X33xvT45yr6MoJvgRcObiYIfH6R+p67MxFFn0X3jv0tXh4EUMk1+Z/Hvzzg==",
   "success": true,
   "projectFilePath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/ZapisywarkaClientAps.Api.Identity.IdentityCore.csproj",
   "expectedPackageFiles": [
@@ -9,8 +9,9 @@
     "/home/msz13/.nuget/packages/fluentvalidation.aspnetcore/10.2.3/fluentvalidation.aspnetcore.10.2.3.nupkg.sha512",
     "/home/msz13/.nuget/packages/fluentvalidation.dependencyinjectionextensions/10.2.3/fluentvalidation.dependencyinjectionextensions.10.2.3.nupkg.sha512",
     "/home/msz13/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
-    "/home/msz13/.nuget/packages/mediatr/9.0.0/mediatr.9.0.0.nupkg.sha512",
-    "/home/msz13/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/9.0.0/mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
+    "/home/msz13/.nuget/packages/mediatr/10.0.1/mediatr.10.0.1.nupkg.sha512",
+    "/home/msz13/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
+    "/home/msz13/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/10.0.1/mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.aspnetcore.authentication/2.2.0/microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.2.0/microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.aspnetcore.authentication.cookies/2.2.0/microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
@@ -38,7 +39,7 @@
     "/home/msz13/.nuget/packages/microsoft.extensions.caching.memory/5.0.0/microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.extensions.configuration.abstractions/5.0.0/microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.extensions.dependencyinjection/5.0.1/microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
-    "/home/msz13/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/5.0.0/microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "/home/msz13/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.extensions.fileproviders.abstractions/2.2.0/microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.extensions.hosting.abstractions/2.2.0/microsoft.extensions.hosting.abstractions.2.2.0.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.extensions.identity.core/5.0.7/microsoft.extensions.identity.core.5.0.7.nupkg.sha512",

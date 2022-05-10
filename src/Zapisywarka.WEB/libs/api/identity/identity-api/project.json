@@ -1,0 +1,24 @@
+{
+  "root": "libs/api/identity/identity-api",
+  "projectType": "library",
+  "sourceRoot": "libs/api/identity/identity-api",
+  "targets": {
+    "build": {
+      "executor": "@nx-dotnet/core:build",
+      "outputs": ["dist/libs/api/identity/identity-api"],
+      "options": {
+        "configuration": "Debug",
+        "noDependencies": true
+      },
+      "configurations": {
+        "production": {
+          "configuration": "Release"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx-dotnet/core:format"
+    }
+  },
+  "tags": ["nx-dotnet"]
+}

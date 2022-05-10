@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "vC+xdvESmU32sHOXBJQG2VA+YtJAgZq/nXaZAIWiwtOulErbX86ho4zmTVCD0UQdgFG/gh2IQ1TR3T2BcD9CHQ==",
+  "dgSpecHash": "dTNQoSfi/dusInAXsnu/m1FVMIC+P2rITvQtvouTBSKxLfTn8iYMLsMXO2QhrSBvPwD6FzcioDnoZ8yCQSnSZg==",
   "success": true,
   "projectFilePath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/ZapisywarkaClientAps.Api.Common.Infrastructure.csproj",
   "expectedPackageFiles": [
     "/home/msz13/.nuget/packages/csharpfunctionalextensions/2.15.1/csharpfunctionalextensions.2.15.1.nupkg.sha512",
     "/home/msz13/.nuget/packages/fluentvalidation/10.0.2/fluentvalidation.10.0.2.nupkg.sha512",
-    "/home/msz13/.nuget/packages/mediatr/9.0.0/mediatr.9.0.0.nupkg.sha512",
+    "/home/msz13/.nuget/packages/mediatr/10.0.1/mediatr.10.0.1.nupkg.sha512",
+    "/home/msz13/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.entityframeworkcore/5.0.7/microsoft.entityframeworkcore.5.0.7.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.entityframeworkcore.abstractions/5.0.7/microsoft.entityframeworkcore.abstractions.5.0.7.nupkg.sha512",
     "/home/msz13/.nuget/packages/microsoft.entityframeworkcore.analyzers/5.0.7/microsoft.entityframeworkcore.analyzers.5.0.7.nupkg.sha512",

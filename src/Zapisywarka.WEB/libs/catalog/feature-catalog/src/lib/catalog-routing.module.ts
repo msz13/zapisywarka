@@ -7,32 +7,31 @@ import { AddCatalogItemComponent } from './add-catalog-item/add-catalog-item.com
 import { UpdateCatalogTemComponent } from './update-catalog-tem/update-catalog-tem.component';
 import { CatalogCategoriesComponent } from './categories/categories.component';
 
-const routes: Routes = [ {
-  path: '',
-  component: CatalogComponent,
-  children: [
-    {path: '',
-     redirectTo: 'pozycje',
-     pathMatch: 'full'
-    },
-    {path: 'pozycje',
-     component: CatalogListComponent
-    },
-    {
-      path: 'kategorie',
-      component: CatalogCategoriesComponent
-    }, {
-      path: 'nowa-pozycja',
-      component: AddCatalogItemComponent
-    }, {
-      path:':id',
-      component: UpdateCatalogTemComponent
-    }, 
-  ]}
+const routes: Routes = [
+  {
+    path: '',
+    component: CatalogComponent,
+    children: [
+      { path: '', redirectTo: 'pozycje', pathMatch: 'full' },
+      { path: 'pozycje', component: CatalogListComponent },
+      {
+        path: 'kategorie',
+        component: CatalogCategoriesComponent,
+      },
+      {
+        path: 'nowa-pozycja',
+        component: AddCatalogItemComponent,
+      },
+      {
+        path: ':id',
+        component: UpdateCatalogTemComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CatalogRoutingModule { }
+export class CatalogRoutingModule {}

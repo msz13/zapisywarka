@@ -1,18 +1,27 @@
-<p> Data od </p>
+<p>Data od</p>
 
 <div [style.font-size.px]="14">
-    <mat-form-field appearance="fill" [floatLabel]="'never'" [style.width]="'10em'">
-        <input matInput [matDatepicker]="picker" placeholder="13.05.1983" readonly (click)="picker.open()">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+  <mat-form-field
+    appearance="fill"
+    [floatLabel]="'never'"
+    [style.width]="'10em'"
+  >
+    <input
+      matInput
+      [matDatepicker]="picker"
+      placeholder="13.05.1983"
+      readonly
+      (click)="picker.open()"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
-    <mat-form-field appearance="fill" [floatLabel]="'never'" class="time">
-        <mat-select placeholder="10:00">
-            <mat-option *ngFor="let hour of hours" [value]="hour">
-                {{hour}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-
+  <mat-form-field appearance="fill" [floatLabel]="'never'" class="time">
+    <mat-select placeholder="10:00">
+      <mat-option *ngFor="let hour of hours" [value]="hour">
+        {{ hour }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>

@@ -1,25 +1,24 @@
 a {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 }
 
 .name {
-    width: 35%;
+  width: 35%;
 }
 
 nb-icon:hover {
-    cursor: pointer;  
+  cursor: pointer;
 }
 
 thead tr th {
-    border: none;
+  border: none;
 }
 
 .ngx-datatable.scroll-vertical {
-    height: 610px;
-  }
+  height: 610px;
+}
 
 .filter-panel {
-      display: flex;
-      margin-bottom: 1.5em;
-  }
-
+  display: flex;
+  margin-bottom: 1.5em;
+}

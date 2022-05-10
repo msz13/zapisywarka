@@ -1,8 +1,8 @@
 <app-catalog-item-form
-[categories]="$categories | async"
-(cencel)="onCencel()"
-(submit)="onSubmit($event)"
-[catalogItem]="catalogItem"
+  [categories]="$categories | async"
+  (cencel)="onCencel()"
+  (submit)="onSubmit($event)"
+  [catalogItem]="catalogItem"
 >
 </app-catalog-item-form>
-<div>{{$isLoading | async}}</div>
+<div>{{ $isLoading | async }}</div>

@@ -8,9 +8,8 @@ describe('UpdateCatalogTemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateCatalogTemComponent ]
-    })
-    .compileComponents();
+      declarations: [UpdateCatalogTemComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

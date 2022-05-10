@@ -1,6 +1,5 @@
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/libs/api/identity/identity-core/net6.0/ZapisywarkaClientAps.Api.Identity.IdentityCore.deps.json
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/libs/api/identity/identity-core/net6.0/ZapisywarkaClientAps.Api.Identity.IdentityCore.dll
-/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/libs/api/identity/identity-core/net6.0/ref/ZapisywarkaClientAps.Api.Identity.IdentityCore.dll
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/libs/api/identity/identity-core/net6.0/ZapisywarkaClientAps.Api.Identity.IdentityCore.pdb
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/obj/Debug/net6.0/ZapisywarkaClientAps.Api.Identity.IdentityCore.csproj.AssemblyReference.cache
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/obj/Debug/net6.0/ZapisywarkaClientAps.Api.Identity.IdentityCore.GeneratedMSBuildEditorConfig.editorconfig
@@ -13,3 +12,4 @@
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/libs/api/identity/identity-core/net6.0/ZapisywarkaClientAps.Api.Identity.IdentityCore.runtimeconfig.json
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/obj/Debug/net6.0/ZapisywarkaClientAps.Api.Identity.IdentityCore.csproj.CopyComplete
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/obj/Debug/net6.0/ZapisywarkaClientAps.Api.Identity.IdentityCore.genruntimeconfig.cache
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/obj/Debug/net6.0/refint/ZapisywarkaClientAps.Api.Identity.IdentityCore.dll

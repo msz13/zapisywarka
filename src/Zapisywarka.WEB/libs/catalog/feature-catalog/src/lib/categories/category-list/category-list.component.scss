@@ -1,28 +1,28 @@
 nb-list :first-child {
-    border-top: none;
+  border-top: none;
 }
 
 nb-list :last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 nb-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400;
+}
+
+.categories-list {
+  margin-top: 3em;
+  max-width: 75%;
+}
+
+:host {
+  .category {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: 400;
-}
-
-.categories-list {
-    margin-top: 3em;
-    max-width: 75%;
-}
-
-:host {
-    .category {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 400;
-    }
+  }
 }

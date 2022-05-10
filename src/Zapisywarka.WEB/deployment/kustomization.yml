@@ -1,6 +1,6 @@
 namePrefix: dev-zapisywarka-
 
-commonLabels: 
+commonLabels:
   app: zapisywarka-web
 
 configMapGenerator:
@@ -11,9 +11,7 @@ configMapGenerator:
     files:
       - nginx.conf
 
-
 resources:
   - deployment.yml
   - service.yml
   - ingress.yml
-  

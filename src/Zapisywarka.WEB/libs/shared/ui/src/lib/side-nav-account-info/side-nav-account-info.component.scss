@@ -1,25 +1,24 @@
 @use 'sass:map';
 @use '~@angular/material' as mat;
-@use "../../../../material/src/zapisywarka-theme" as theme;
+@use '../../../../material/src/zapisywarka-theme' as theme;
 
 .accaunt-info {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    height: 40px;
-    width: 290px;
-   
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 40px;
+  width: 290px;
 }
 
 app-initial-avatar {
-    display: block;
-    margin-right: 1em;
+  display: block;
+  margin-right: 1em;
 }
 
 .mat-title {
-    line-height: 10px !important;
+  line-height: 10px !important;
 }
 
 .title {
-  //  @include mat.typography-level(theme.$typography-config, 'title');  
+  //  @include mat.typography-level(theme.$typography-config, 'title');
 }

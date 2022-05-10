@@ -1,18 +1,24 @@
-<app-header (toggleMenu)="drawer.toggle()" ></app-header>
+<app-header (toggleMenu)="drawer.toggle()"></app-header>
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" 
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false"
-      [fixedTopGap] = "'64px'"
-      > 
-      <app-side-nav-account-info [accauntName]="accauntName" style="margin-top: 1em; margin-bottom: 1em;" data-test="accaunt_name"></app-side-nav-account-info>
-      <mat-divider></mat-divider>
-      <app-main-menu></app-main-menu>
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+    [fixedTopGap]="'64px'"
+  >
+    <app-side-nav-account-info
+      [accauntName]="accauntName"
+      style="margin-top: 1em; margin-bottom: 1em"
+      data-test="accaunt_name"
+    ></app-side-nav-account-info>
+    <mat-divider></mat-divider>
+    <app-main-menu></app-main-menu>
   </mat-sidenav>
   <mat-sidenav-content>
     <main>
       <ng-content></ng-content>
-    </main>    
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

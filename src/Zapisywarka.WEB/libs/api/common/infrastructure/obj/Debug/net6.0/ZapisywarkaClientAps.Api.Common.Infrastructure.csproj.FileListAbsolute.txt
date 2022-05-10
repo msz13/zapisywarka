@@ -5,9 +5,9 @@
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/obj/Debug/net6.0/ZapisywarkaClientAps.Api.Common.Infrastructure.csproj.CoreCompileInputs.cache
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/libs/api/common/infrastructure/net6.0/ZapisywarkaClientAps.Api.Common.Infrastructure.deps.json
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/libs/api/common/infrastructure/net6.0/ZapisywarkaClientAps.Api.Common.Infrastructure.dll
-/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/libs/api/common/infrastructure/net6.0/ref/ZapisywarkaClientAps.Api.Common.Infrastructure.dll
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/dist/libs/api/common/infrastructure/net6.0/ZapisywarkaClientAps.Api.Common.Infrastructure.pdb
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/obj/Debug/net6.0/EFCoreNpgsqlNodaTime.cs
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/obj/Debug/net6.0/ZapisywarkaClientAps.Api.Common.Infrastructure.dll
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/obj/Debug/net6.0/ref/ZapisywarkaClientAps.Api.Common.Infrastructure.dll
 /home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/obj/Debug/net6.0/ZapisywarkaClientAps.Api.Common.Infrastructure.pdb
+/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/obj/Debug/net6.0/refint/ZapisywarkaClientAps.Api.Common.Infrastructure.dll
