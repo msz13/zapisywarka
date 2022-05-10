@@ -1,0 +1,421 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api-test/ZapisywarkaClientAps.ZapisywarkaApi.Test.csproj": {}
+  },
+  "projects": {
+    "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api-test/ZapisywarkaClientAps.ZapisywarkaApi.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api-test/ZapisywarkaClientAps.ZapisywarkaApi.Test.csproj",
+        "projectName": "ZapisywarkaClientAps.ZapisywarkaApi.Test",
+        "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api-test/ZapisywarkaClientAps.ZapisywarkaApi.Test.csproj",
+        "packagesPath": "/home/msz13/.nuget/packages/",
+        "outputPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api-test/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/msz13/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/ZapisywarkaClientAps.ZapisywarkaApi.csproj": {
+                "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/ZapisywarkaClientAps.ZapisywarkaApi.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Boa.Constrictor": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.0.0, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[107.1.2, )"
+            },
+            "SpecFlow.Assist.Dynamic": {
+              "target": "Package",
+              "version": "[1.4.2, )"
+            },
+            "SpecFlow.Plus.LivingDocPlugin": {
+              "target": "Package",
+              "version": "[3.9.57, )"
+            },
+            "SpecFlow.xUnit": {
+              "target": "Package",
+              "version": "[3.9.40, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/ZapisywarkaClientAps.ZapisywarkaApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/ZapisywarkaClientAps.ZapisywarkaApi.csproj",
+        "projectName": "ZapisywarkaClientAps.ZapisywarkaApi",
+        "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/ZapisywarkaClientAps.ZapisywarkaApi.csproj",
+        "packagesPath": "/home/msz13/.nuget/packages/",
+        "outputPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/msz13/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-api/ZapisywarkaClientAps.Api.Identity.IdentityApi.csproj": {
+                "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-api/ZapisywarkaClientAps.Api.Identity.IdentityApi.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/ZapisywarkaClientAps.Api.Common.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/ZapisywarkaClientAps.Api.Common.Infrastructure.csproj",
+        "projectName": "ZapisywarkaClientAps.Api.Common.Infrastructure",
+        "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/ZapisywarkaClientAps.Api.Common.Infrastructure.csproj",
+        "packagesPath": "/home/msz13/.nuget/packages/",
+        "outputPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/msz13/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "CSharpFunctionalExtensions": {
+              "target": "Package",
+              "version": "[2.15.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[10.0.2, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "NodaTime": {
+              "target": "Package",
+              "version": "[3.0.5, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL.NodaTime": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-api/ZapisywarkaClientAps.Api.Identity.IdentityApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-api/ZapisywarkaClientAps.Api.Identity.IdentityApi.csproj",
+        "projectName": "ZapisywarkaClientAps.Api.Identity.IdentityApi",
+        "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-api/ZapisywarkaClientAps.Api.Identity.IdentityApi.csproj",
+        "packagesPath": "/home/msz13/.nuget/packages/",
+        "outputPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/msz13/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/ZapisywarkaClientAps.Api.Identity.IdentityCore.csproj": {
+                "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/ZapisywarkaClientAps.Api.Identity.IdentityCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/ZapisywarkaClientAps.Api.Identity.IdentityCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/ZapisywarkaClientAps.Api.Identity.IdentityCore.csproj",
+        "projectName": "ZapisywarkaClientAps.Api.Identity.IdentityCore",
+        "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/ZapisywarkaClientAps.Api.Identity.IdentityCore.csproj",
+        "packagesPath": "/home/msz13/.nuget/packages/",
+        "outputPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/identity/identity-core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/msz13/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/ZapisywarkaClientAps.Api.Common.Infrastructure.csproj": {
+                "projectPath": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/libs/api/common/infrastructure/ZapisywarkaClientAps.Api.Common.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "CSharpFunctionalExtensions": {
+              "target": "Package",
+              "version": "[2.17.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[10.2.3, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[10.2.3, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
