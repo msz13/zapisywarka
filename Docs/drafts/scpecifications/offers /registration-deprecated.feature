@@ -51,6 +51,56 @@ Feature: Składanie zapisu przez organizatora
         When Organizator zapisów zapisuje klienta nie podają kodu odbioru
         Then Zapis, który otrzymał numer "1", posiada kod odbioru "1"
 
+            Scenario: Użytkwonik zapisuje klientów
+        Given Jan stworzył formularz zapisów, który zawiera następujace pozycje:       
+            | Nazwa pozycji |
+            | Bochenek      |
+            | Foremkowy     |
+            | Foremkowy     |     
+        When Sprzedawca zapisuje klientów o kodzie odbioru "Szczeciński", z uwagą "Odbierze żona Joanna" na następujące pozycje
+            | Nazwa                      | Ilość |
+            | Chleb wiejski              | 1     |
+            | Chleb foremkowy z żurawiną | 2     |
+       Then Lista zapisów na ofertę "Poniedziałek" zawiera rezerwację:
+             | Numer zapisu | Data złożenia    | Kod odbioru | Uwagi                |  
+             | 1            | 2020/08/20 15:00 | Szczeciński | Odbierze żona Joanna | 
+
+#Czy zostawić numer zamówienia, jeśli nie to jaka będzie domyslny kod odbioru
+
+
+ Scenario: Użytkwonik zapisuje klientów
+        Given Jan stworzył formularz zapisów, który zawiera następujace pozycje:       
+            | Nazwa pozycji |
+            | Bochenek      |
+            | Foremkowy     |
+            | Foremkowy     |     
+        And Rezerwuje pozycje 
+            | Nazwa                      | Ilość |
+            | Chleb wiejski              | 1     |
+            | Chleb foremkowy z żurawiną | 2     |
+        And Zapisuje dodatkowe dane 
+         | Kod odbioru | Uwagi                  |
+         | Szczeciński | "Odbierze żona Joanna" |
+        When Zatwierdza zapis
+        Then Lista zapisów na ofertę "Poniedziałek" zawiera rezerwację:
+             | Numer zapisu | Data złożenia    | Kod odbioru | Uwagi                |  
+             | 1            | 2020/08/20 15:00 | Szczeciński | Odbierze żona Joanna | 
+        Then Informacja o zapisie zawiera następujące dane
+             | Numer zapisu | Data złożenia    | Kod odbioru | Uwagi                |  
+             | 1            | 2020/08/20 15:00 | Szczeciński | Odbierze żona Joanna | 
+        And Pozycje 
+            | Nazwa                      | Ilość |
+            | Chleb wiejski              | 1     |
+            | Chleb foremkowy z żurawiną | 2     |
+
+#Rule Numer zamówienia jest unikalny dla właściciela konta
+
+Scenario: Numer zamówienia
+* Poprawny format numeru
+| Przykład | Opis                    |
+| 222222-F1ZS | numerZapisu-NumerOferty |
+
+
 # Do decyzji
 #czy kod obioru ma ograniczenia, np. jedno słowo, albo długośc, dostępne znaki
 
