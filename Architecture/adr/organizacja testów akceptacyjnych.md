@@ -93,6 +93,13 @@ Alternatywny podział testów - test driver:
 1. Istnieją jedne testy, ale jest różna implementacja za pomocą test driver
 2. Gdy api, lub web wstrzykiwane są odpowiednie web drivery na podstawie tagow
 
+Test framework
+specflow, czy light bdd framework: https://github.com/LightBDD/LightBDD
+gdy sotsujemy screanplay pattern, trochę zasadnosc stosowania gherkin spada
+brakuej tylko raportów
+
+
+
 ## Decision
 
 
