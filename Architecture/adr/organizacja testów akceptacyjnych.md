@@ -96,5 +96,9 @@ Alternatywny podział testów - test driver:
 ## Decision
 
 
+### Wzorce testów automatycznych
+- użycie wzorca "Screanplay pattern" z "TestDataBuilders";
+Taki wcorzec pozwala na dowolną kompozycję zadań użytkownika, komend i zapytań. Pozwala na różną implementację zadań użytwkonika (np. poprzez UI lub zapytania Rest) z wykorzystaniem wspólnych danych (komend). Użycie komend pozwala również na łatwe konwertowanie tabeli gherkin na instancje komend.
+
 
 ## Consequences
