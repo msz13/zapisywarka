@@ -1,6 +1,6 @@
 @use 'sass:map';
 @use '~@angular/material' as mat;
-@use '../../../../../libs/shared/material/src/zapisywarka-theme.scss' as theme;
+@use '../../../../../shared/material/src/zapisywarka-theme.scss' as theme;
 
 $color-config: mat.get-color-config(theme.$dark-blue-green-theme);
 

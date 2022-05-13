@@ -2,7 +2,7 @@
   "projectType": "application",
   "root": "apps/zapisywarka-rejestracja",
   "sourceRoot": "apps/zapisywarka-rejestracja/src",
-  "prefix": "zapisywarka-client-aps",
+  "prefix": "zapisywarka",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -18,11 +18,11 @@
         ],
         "styles": [
           "apps/zapisywarka-rejestracja/src/styles.scss",
-          "libs/shared/material/src/zapisywarka-theme.scss"
+          "libs/web/shared/material/src/zapisywarka-theme.scss"
         ],
         "scripts": [],
         "stylePreprocessorOptions": {
-          "includePaths": ["libs/shared/material/src/_theme-variables.scss"]
+          "includePaths": ["libs/web/shared/material/src/_theme-variables.scss"]
         },
         "vendorChunk": true,
         "extractLicenses": false,
