@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
-import { ConfigurationService } from '@zapisywarka-client-aps/shared/domain';
+import { ConfigurationService } from '@zapisywarka-web/web-shared-domain';
 import { WebIdentityLoginFeatureModule } from '..';
 import { LoginContainerComponent } from './login-container.component';
 

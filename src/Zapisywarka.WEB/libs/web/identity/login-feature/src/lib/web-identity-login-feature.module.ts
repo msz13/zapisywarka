@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginContainerComponent } from './login-container.component';
 import { LoginComponent } from './login/login.component';
-import { SharedMaterialModule } from '@zapisywarka.web/material';
+import { WebSharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WebIdentityDomainModule } from '@zapisywarka-client-aps/web-identity-domain';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
-    SharedMaterialModule,
+    WebSharedMaterialModule,
     WebIdentityDomainModule,
     RouterModule,
   ],

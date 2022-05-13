@@ -1,0 +1,31 @@
+{
+  "root": "apps/test/libs/identity/login-feature-e2e",
+  "sourceRoot": "apps/test/libs/identity/login-feature-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/test/libs/identity/login-feature-e2e/cypress.json",
+        "devServerTarget": "web-identity-login-feature:storybook",
+        "tsConfig": "apps/test/libs/identity/login-feature-e2e/tsconfig.json"
+      },
+      "configurations": {
+        "ci": {
+          "devServerTarget": "web-identity-login-feature:storybook:ci"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/test/libs/identity/login-feature-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["web-identity-login-feature"]
+}

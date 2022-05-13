@@ -1,7 +1,7 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
-import { SharedMaterialModule } from '@zapisywarka.web/material';
+import { WebSharedDomainModule } from '@zapisywarka-web/web-shared-domain';
+import { WebSharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 import { SignUpFormComponent } from '../sign-up-form/sign-up-form.component';
 import { SignUpComponent } from './sign-up.component';
 
@@ -12,10 +12,10 @@ export default {
 export const primary = () => ({
   moduleMetadata: {
     imports: [
-      SharedMaterialModule,
+      WebSharedMaterialModule,
       BrowserAnimationsModule,
       ReactiveFormsModule,
-      SharedDomainModule,
+      WebSharedDomainModule,
     ],
     declarations: [SignUpFormComponent],
   },

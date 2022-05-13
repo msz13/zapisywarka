@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ConfigurationService } from '@zapisywarka-client-aps/shared/domain';
-import { BehaviorSubject, EMPTY, Observable, of, throwError } from 'rxjs';
+import { ConfigurationService } from '@zapisywarka-web/web-shared-domain';
+import { BehaviorSubject, EMPTY, Observable, throwError } from 'rxjs';
 import { catchError, finalize, map, tap } from 'rxjs/operators';
 import { LoginCredentials } from '..';
 import { SessionStore } from './session/session.store';

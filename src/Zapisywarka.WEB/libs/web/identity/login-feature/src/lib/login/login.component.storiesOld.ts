@@ -1,5 +1,5 @@
 import { LoginComponent } from './login.component';
-import { SharedMaterialModule } from '@zapisywarka.web/material';
+import { WebSharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 import {
   FormControl,
   FormGroup,
@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
+import { WebSharedDomainModule } from '@zapisywarka-web/web-shared-domain';
 import { Story } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import {
@@ -46,10 +46,10 @@ const Template: Story = (args) => {
   return {
     moduleMetadata: {
       imports: [
-        SharedMaterialModule,
+        WebSharedMaterialModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
-        SharedDomainModule,
+        WebSharedDomainModule,
       ],
       declarations: [LoginComponent],
     },
@@ -119,7 +119,7 @@ export const ServerError: Story<LoginComponent> = (args) => {
     
   return {
   moduleMetadata: {
-    imports: [SharedMaterialModule, ReactiveFormsModule, BrowserAnimationsModule, SharedDomainModule],
+    imports: [WebSharedMaterialModule, ReactiveFormsModule, BrowserAnimationsModule, WebSharedDomainModule],
     declarations: [LoginComponent, TestComponent]
   },
   component: LoginComponent,

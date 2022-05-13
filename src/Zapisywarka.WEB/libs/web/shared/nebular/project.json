@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "root": "libs/web/shared/nebular",
+  "sourceRoot": "libs/web/shared/nebular/src",
+  "prefix": "zapisywarka-client-aps",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/shared/nebular/src/**/*.ts",
+          "libs/web/shared/nebular/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/shared/nebular"],
+      "options": {
+        "jestConfig": "libs/web/shared/nebular/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

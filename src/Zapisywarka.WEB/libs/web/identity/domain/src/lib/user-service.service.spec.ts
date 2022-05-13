@@ -3,7 +3,7 @@ import {
   HttpMethod,
   SpectatorHttp,
 } from '@ngneat/spectator/jest';
-import { ConfigurationService } from '@zapisywarka-client-aps/shared/domain';
+import { ConfigurationService } from '@zapisywarka-web/web-shared-domain';
 import { LoginCredentials } from '..';
 import { SessionQuery } from './session/session.query';
 import { UserService, UserInfo } from './user-service.service';

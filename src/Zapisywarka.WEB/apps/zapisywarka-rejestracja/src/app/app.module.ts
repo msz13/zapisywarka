@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedUiModule } from '@zapisywarka-client-aps/shared/ui';
-import { SharedMaterialModule } from '@zapisywarka.web/material';
+import { WebSharedUiKitModule } from '@zapisywarka-web/web-shared-ui-kit';
+import { WebSharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 import { HomePageComponent } from './main-component/home-page/home-page.component';
 import { MainComponent } from './main-component/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WebIdentityDomainModule } from '@zapisywarka-client-aps/web-identity-domain';
 import { LoadingComponent } from './loading/loading.component';
-import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
+import { WebSharedDomainModule } from '@zapisywarka-web/web-shared-domain';
 import { WebIdentitySignUpFeatureDepModule } from '@zapisywarka-web/web-identity-sign-up-feature-dep';
 
 @NgModule({
@@ -24,11 +24,11 @@ import { WebIdentitySignUpFeatureDepModule } from '@zapisywarka-web/web-identity
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedUiModule,
-    SharedMaterialModule,
+    WebSharedUiKitModule,
+    WebSharedMaterialModule,
     // WebIdentityDomainModule.forRoot(),
     WebIdentitySignUpFeatureDepModule,
-    SharedDomainModule.forRoot(),
+    WebSharedDomainModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

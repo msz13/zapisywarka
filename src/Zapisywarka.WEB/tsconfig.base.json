@@ -15,31 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@zapisywarka-client-aps/catalog/domain-catalog-item": [
-        "libs/catalog/domain-catalog-item/src/index.ts"
-      ],
-      "@zapisywarka-client-aps/catalog/domain-category": [
-        "libs/catalog/domain-category/src/index.ts"
-      ],
-      "@zapisywarka-client-aps/catalog/feature-catalog": [
-        "libs/catalog/feature-catalog/src/index.ts"
-      ],
-      "@zapisywarka-client-aps/catalog/utills/testing": [
-        "libs/catalog/utills/testing/src/index.ts"
-      ],
       "@zapisywarka-client-aps/offer-creation": [
         "libs/offer-creation/src/index.ts"
       ],
       "@zapisywarka-client-aps/offers/domain": [
         "libs/offers/domain/src/index.ts"
       ],
-      "@zapisywarka-client-aps/shared/domain": [
-        "libs/shared/domain/src/index.ts"
-      ],
-      "@zapisywarka-client-aps/shared/theme": [
-        "libs/shared/theme/src/index.ts"
-      ],
-      "@zapisywarka-client-aps/shared/ui": ["libs/shared/ui/src/index.ts"],
       "@zapisywarka-client-aps/web-identity-domain": [
         "libs/web/identity/domain/src/index.ts"
       ],
@@ -52,13 +33,36 @@
       "@zapisywarka-client-aps/web-landing-page": [
         "libs/web/landing-page/src/index.ts"
       ],
+      "@zapisywarka-web/web-catalog-catalog-feature": [
+        "libs/web/catalog/catalog-feature/src/index.ts"
+      ],
+      "@zapisywarka-web/web-catalog-catalog-item-domain": [
+        "libs/web/catalog/catalog-item-domain/src/index.ts"
+      ],
+      "@zapisywarka-web/web-catalog-category-domain": [
+        "libs/web/catalog/category-domain/src/index.ts"
+      ],
+      "@zapisywarka-web/web-catalog-utills-testing": [
+        "libs/web/catalog/utills-testing/src/index.ts"
+      ],
       "@zapisywarka-web/web-identity-sign-up-feature-dep": [
         "libs/web/identity/sign-up-feature-dep/src/index.ts"
+      ],
+      "@zapisywarka-web/web-shared-domain": [
+        "libs/web/shared/domain/src/index.ts"
+      ],
+      "@zapisywarka-web/web-shared-material": [
+        "libs/web/shared/material/src/index.ts"
+      ],
+      "@zapisywarka-web/web-shared-nebular": [
+        "libs/web/shared/nebular/src/index.ts"
+      ],
+      "@zapisywarka-web/web-shared-ui-kit": [
+        "libs/web/shared/ui-kit/src/index.ts"
       ],
       "@zapisywarka-web/web/identity/sign-up-feature": [
         "libs/web/identity/sign-up-feature/src/index.ts"
       ],
-      "@zapisywarka.web/material": ["libs/shared/material/src/index.ts"],
       "@zapisywarka/sign-up-form": [
         "libs/sign-up/sign-up-element/src/index.ts"
       ],
