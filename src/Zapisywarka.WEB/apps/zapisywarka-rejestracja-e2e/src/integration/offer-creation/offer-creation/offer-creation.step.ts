@@ -1,4 +1,4 @@
-import { OfferCreationDriver } from "apps/zapisywarka-rejestracja-e2e/src/support/drivers/ui/offer-creation";
+import { OfferCreationDriver } from "../../../support/drivers/ui/offer-creation";
 import { And, Given, Then, When } from "cypress-cucumber-preprocessor/steps/index";
 
 let offerCreationDriver: OfferCreationDriver
@@ -6,7 +6,7 @@ let offerData: any
 let offer: any
 
 beforeEach(()=>{
- 
+ offerCreationDriver = new OfferCreationDriver()
 })
 
 

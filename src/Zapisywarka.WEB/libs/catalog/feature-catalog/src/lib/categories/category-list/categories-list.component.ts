@@ -18,17 +18,14 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./category-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CategoriesListComponent implements OnInit {
+export class CategoriesListComponent  {
   @Input() categories: CatalogCategory[];
   @Output() updated = new EventEmitter();
 
   editedCategoryControl = new FormControl();
 
   edited: Id = null;
-
-  constructor() {}
-
-  ngOnInit(): void {}
+ 
 
   edit(category: CatalogCategory) {
     this.edited = category.id;

@@ -4,10 +4,10 @@ import {
   getServerError,
   getUserName,
   getPassword,
-} from '../../../../../../libs/identity/utills/src/lib/test/login.po';
+} from '@zapisywarka/identity/utills';
 
 export class AuthenticationDriver {
-  typeLoginData(login: string, password: string, rememberMe: boolean = false) {
+  typeLoginData(login: string, password: string, rememberMe = false) {
     getUserName().type(login);
 
     getPassword().type(password);

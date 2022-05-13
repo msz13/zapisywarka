@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "root": "libs/web/identity/domain",
+  "sourceRoot": "libs/web/identity/domain/src",
+  "prefix": "zapisywarka-web",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/identity/domain/src/**/*.ts",
+          "libs/web/identity/domain/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/identity/domain"],
+      "options": {
+        "jestConfig": "libs/web/identity/domain/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

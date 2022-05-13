@@ -9,7 +9,7 @@ import { CatalogCategory } from '@zapisywarka-client-aps/catalog/domain-category
   templateUrl: './catalog-item-form.component.html',
   styleUrls: ['./catalog-item-form.component.scss'],
 })
-export class CatalogItemFormComponent implements OnInit {
+export class CatalogItemFormComponent  {
   itemForm: FormGroup = this.fb.group({
     name: [''],
     categoryId: [null],
@@ -32,13 +32,12 @@ export class CatalogItemFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private window: NbWindowService) {}
 
-  ngOnInit(): void {}
-
+  
   onCencel() {
     this.cencel.emit();
   }
 
-  addCategory() {}
+  addCategory() { throw new Error("Not implemented") }
 
   submitItem() {
     this.submit.emit(this.itemForm.value);

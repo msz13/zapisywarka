@@ -10,6 +10,8 @@ import { NbDialogService } from '@nebular/theme';
 import { switchMap } from 'rxjs/operators';
 import { ID } from '@datorama/akita';
 import { Router } from '@angular/router';
+//TODO przejrzeć to
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { DeleteConfirmationComponent } from '@zapisywarka-client-aps/shared/theme';
 import { Id } from '@zapisywarka-client-aps/catalog/domain-category';
 
@@ -63,7 +65,7 @@ export class CatalogListComponent implements OnInit {
       })
       .onClose.subscribe((result) => {
         if (result == true) {
-          this.catalogService.remove(row.id).subscribe(() => {});
+          this.catalogService.remove(row.id).subscribe();
         }
       });
   }

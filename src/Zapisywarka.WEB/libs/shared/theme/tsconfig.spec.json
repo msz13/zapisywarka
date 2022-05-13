@@ -6,5 +6,5 @@
     "types": ["jest", "node"]
   },
   "files": ["src/test-setup.ts"],
-  "include": ["**/*.spec.ts", "**/*.d.ts"]
+  "include": ["**/*.spec.ts", "**/*.d.ts", "src/lib/components/name-input/name-input.component.spec.exclude.ts", "src/lib/components/date-time-input/date-time-input.component.spec.exlude.ts"]
 }

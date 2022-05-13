@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-date-time-picker',
+  selector: 'sui-date-time-picker',
   templateUrl: './date-time-picker.component.html',
   styleUrls: ['./date-time-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DateTimePickerComponent implements OnInit {
+export class DateTimePickerComponent  {
   currentDate = new Date();
 
   hours = [
@@ -24,7 +24,5 @@ export class DateTimePickerComponent implements OnInit {
     '11:00',
   ];
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  
 }

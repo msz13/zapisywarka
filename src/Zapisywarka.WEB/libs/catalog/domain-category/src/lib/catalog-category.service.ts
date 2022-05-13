@@ -38,7 +38,7 @@ export class CatalogCategoryService {
           this.catalogCategoryStore.add(category as CatalogCategory);
         })
       )
-      .subscribe((_) => {});
+      .subscribe();
   }
 
   update(id, catalogCategory: Partial<CatalogCategory>) {
@@ -49,7 +49,7 @@ export class CatalogCategoryService {
           this.catalogCategoryStore.update(id, catalogCategory);
         })
       )
-      .subscribe((_) => {});
+      .subscribe();
   }
 
   remove(id: ID) {

@@ -30,7 +30,6 @@
         "cwd": "dist/apps/zapisywarka-api-test/net6.0"
       }
     }
-
   },
   "tags": ["nx-dotnet"]
 }

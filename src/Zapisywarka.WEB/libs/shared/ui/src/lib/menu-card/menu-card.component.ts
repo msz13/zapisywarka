@@ -6,15 +6,14 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-menu-card',
+  selector: 'sui-menu-card',
   templateUrl: './menu-card.component.html',
   styleUrls: ['./menu-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MenuCardComponent implements OnInit {
-  @Input() title: string = '';
+export class MenuCardComponent  {
+  @Input() title = '';
 
-  constructor() {}
 
-  ngOnInit(): void {}
+
 }

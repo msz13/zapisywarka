@@ -8,10 +8,10 @@ import { SharedMaterialModule } from '@zapisywarka.web/material';
 import { HomePageComponent } from './main-component/home-page/home-page.component';
 import { MainComponent } from './main-component/main.component';
 import { AppRoutingModule } from './app-routing.module';
-import { IdentityDomainModule } from '@zapisywarka-client-aps/identity/domain';
+import { WebIdentityDomainModule } from '@zapisywarka-client-aps/web-identity-domain';
 import { LoadingComponent } from './loading/loading.component';
 import { SharedDomainModule } from '@zapisywarka-client-aps/shared/domain';
-import { IdentitySignUpFeatureModule } from '@zapisywarka-client-aps/identity/sign-up-feature';
+import { WebIdentitySignUpFeatureDepModule } from '@zapisywarka-web/web-identity-sign-up-feature-dep';
 
 @NgModule({
   declarations: [
@@ -26,8 +26,8 @@ import { IdentitySignUpFeatureModule } from '@zapisywarka-client-aps/identity/si
     AppRoutingModule,
     SharedUiModule,
     SharedMaterialModule,
-    // IdentityDomainModule.forRoot(),
-    IdentitySignUpFeatureModule,
+    // WebIdentityDomainModule.forRoot(),
+    WebIdentitySignUpFeatureDepModule,
     SharedDomainModule.forRoot(),
   ],
   providers: [],

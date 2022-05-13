@@ -1,4 +1,4 @@
-<app-header (toggleMenu)="drawer.toggle()"></app-header>
+<sui-header (toggleMenu)="drawer.toggle()"></sui-header>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
@@ -8,13 +8,13 @@
     [opened]="(isHandset$ | async) === false"
     [fixedTopGap]="'64px'"
   >
-    <app-side-nav-account-info
+    <sui-side-nav-account-info
       [accauntName]="accauntName"
       style="margin-top: 1em; margin-bottom: 1em"
       data-test="accaunt_name"
-    ></app-side-nav-account-info>
+    ></sui-side-nav-account-info>
     <mat-divider></mat-divider>
-    <app-main-menu></app-main-menu>
+    <sui-main-menu></sui-main-menu>
   </mat-sidenav>
   <mat-sidenav-content>
     <main>

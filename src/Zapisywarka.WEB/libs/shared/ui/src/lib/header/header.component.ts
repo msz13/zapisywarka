@@ -2,19 +2,15 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
+  selector: 'sui-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  @Input() userName: string = '';
+export class HeaderComponent  {
+  @Input() userName = '';
   @Output() toggleMenu = new EventEmitter();
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  onClick() {
+    onClick() {
     this.toggleMenu.emit(undefined);
   }
 }

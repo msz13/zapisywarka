@@ -1,13 +1,13 @@
 import { NavigationDriver } from '../../../../src/support/drivers/ui/navigation';
-import { LandingPageDriver } from '../../../../src/support/drivers/ui/landing-page';
+import { WebLandingPageDriver } from '../../../../src/support/drivers/ui/landing-page';
 import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
 
 let navigationDriver: NavigationDriver;
-let landingPageDriver: LandingPageDriver;
+let landingPageDriver: WebLandingPageDriver;
 
 beforeEach(() => {
   navigationDriver = new NavigationDriver();
-  landingPageDriver = new LandingPageDriver();
+  landingPageDriver = new WebLandingPageDriver();
 });
 
 Given('Użytkownik odwiedził stronę główną', () => {

@@ -7,17 +7,16 @@ import {
 import { NbDialogRef } from '@nebular/theme';
 
 @Component({
-  selector: 'delete-confirmation',
+  selector: 'zapisywarka-client-aps-delete-confirmation',
   templateUrl: './delete-confirmation.component.html',
   styleUrls: ['./delete-confirmation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DeleteConfirmationComponent implements OnInit {
+export class DeleteConfirmationComponent  {
   @Input() message: string;
 
   constructor(private ref: NbDialogRef<DeleteConfirmationComponent>) {}
 
-  ngOnInit(): void {}
 
   close() {
     this.ref.close(false);

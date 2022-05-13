@@ -6,7 +6,6 @@ import {
   forwardRef,
 } from '@angular/core';
 import {
-  FormControl,
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
@@ -25,11 +24,11 @@ import {
   ],
 })
 export class NameInputComponent implements OnInit, ControlValueAccessor {
-  constructor() {}
 
-  @Input() maxLength: number = 60;
 
-  counterVisibility: boolean = false;
+  @Input() maxLength = 60;
+
+  counterVisibility = false;
 
   counter: number;
 
@@ -48,9 +47,12 @@ export class NameInputComponent implements OnInit, ControlValueAccessor {
     return this._value;
   }
 
+  /* eslint-disable */
   onChanges: (_: any) => {};
 
   onTouch: () => {};
+  
+ /* eslint-enable */
 
   ngOnInit(): void {
     this.counter = this.maxLength;

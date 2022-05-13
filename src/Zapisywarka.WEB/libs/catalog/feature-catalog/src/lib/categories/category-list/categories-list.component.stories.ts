@@ -1,4 +1,4 @@
-import { text, number, boolean, object } from '@storybook/addon-knobs';
+import { object } from '@storybook/addon-knobs';
 import { CategoriesListComponent } from './categories-list.component';
 import { CATALOG_CATEGORIES } from '@zapisywarka-client-aps/catalog/utills/testing';
 

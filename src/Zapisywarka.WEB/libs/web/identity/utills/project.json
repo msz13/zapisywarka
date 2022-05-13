@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/identity/utills",
+  "sourceRoot": "libs/web/identity/utills/src",
+  "prefix": "zapisywarka",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/identity/utills/src/**/*.ts",
+          "libs/web/identity/utills/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/identity/utills"],
+      "options": {
+        "jestConfig": "libs/web/identity/utills/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

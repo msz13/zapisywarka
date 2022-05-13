@@ -38,7 +38,7 @@ interface OfferDetailView {
   offerName: string;
   endOfRegistration: Date;
   isActive: boolean;
-  collectionDates: object;
+  collectionDates: any;
   offerItems: OfferItemView[];
 }
 
@@ -55,6 +55,6 @@ interface OfferSummary {
   offerName: string;
   endOfRegistration: Date;
   isActive: boolean;
-  collectionDates: object;
+  collectionDates: any;
   offerItems: offerItemStatsView[];
 }

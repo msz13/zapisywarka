@@ -7,10 +7,10 @@ import { OAuthService } from 'angular-oauth2-oidc';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'zapisywarka-rejestracja';
   accauntName = 'Bochenek';
 
   constructor(private router: Router) {}
-  ngOnInit(): void {}
+
 }

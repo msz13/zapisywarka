@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-main-layout',
+  selector: 'sui-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
 })
 export class MainLayoutComponent {
-  @Input() accauntName: string = '';
+  @Input() accauntName = '';
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)

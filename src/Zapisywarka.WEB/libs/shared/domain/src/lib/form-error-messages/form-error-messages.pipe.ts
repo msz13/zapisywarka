@@ -10,7 +10,7 @@ export class FormErrorMessagesPipe implements PipeTransform {
     control: AbstractControl | null,
     first: 'first' | 'many' = 'many'
   ): string[] {
-    let errors = control?.errors;
+    const errors = control?.errors;
 
     if (!errors) {
       return [];

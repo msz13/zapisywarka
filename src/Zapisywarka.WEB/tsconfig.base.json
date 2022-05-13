@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@zapisywarka-client-aps/catalog/api": ["libs/catalog/api/src/index.ts"],
       "@zapisywarka-client-aps/catalog/domain-catalog-item": [
         "libs/catalog/domain-catalog-item/src/index.ts"
       ],
@@ -28,29 +27,11 @@
       "@zapisywarka-client-aps/catalog/utills/testing": [
         "libs/catalog/utills/testing/src/index.ts"
       ],
-      "@zapisywarka-client-aps/identity/domain": [
-        "libs/identity/domain/src/index.ts"
-      ],
-      "@zapisywarka-client-aps/identity/login-feature": [
-        "libs/identity/login-feature/src/index.ts"
-      ],
-      "@zapisywarka-client-aps/identity/sign-up-feature": [
-        "libs/identity/sign-up-feature/src/index.ts"
-      ],
-      "@zapisywarka-client-aps/identity/utills": [
-        "libs/identity/utills/src/index.ts"
-      ],
-      "@zapisywarka-client-aps/landing-page": [
-        "libs/landing-page/src/index.ts"
-      ],
       "@zapisywarka-client-aps/offer-creation": [
         "libs/offer-creation/src/index.ts"
       ],
       "@zapisywarka-client-aps/offers/domain": [
         "libs/offers/domain/src/index.ts"
-      ],
-      "@zapisywarka-client-aps/offers/feature-offer-creation": [
-        "libs/offers/feature-offer-creation/src/index.ts"
       ],
       "@zapisywarka-client-aps/shared/domain": [
         "libs/shared/domain/src/index.ts"
@@ -59,6 +40,24 @@
         "libs/shared/theme/src/index.ts"
       ],
       "@zapisywarka-client-aps/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@zapisywarka-client-aps/web-identity-domain": [
+        "libs/web/identity/domain/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/web-identity-login-feature": [
+        "libs/web/identity/login-feature/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/web-identity-utills": [
+        "libs/web/identity/utills/src/index.ts"
+      ],
+      "@zapisywarka-client-aps/web-landing-page": [
+        "libs/web/landing-page/src/index.ts"
+      ],
+      "@zapisywarka-web/web-identity-sign-up-feature-dep": [
+        "libs/web/identity/sign-up-feature-dep/src/index.ts"
+      ],
+      "@zapisywarka-web/web/identity/sign-up-feature": [
+        "libs/web/identity/sign-up-feature/src/index.ts"
+      ],
       "@zapisywarka.web/material": ["libs/shared/material/src/index.ts"],
       "@zapisywarka/sign-up-form": [
         "libs/sign-up/sign-up-element/src/index.ts"

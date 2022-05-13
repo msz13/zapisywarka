@@ -7,12 +7,8 @@ import { MENU_ITEMS, MenuItem } from '../menu-items';
   styleUrls: ['./home-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent  {
   menuItems: MenuItem[] = MENU_ITEMS;
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  navigate(link: string) {}
+  navigate(link: string) { throw new Error("Not implemented  exception")}
 }

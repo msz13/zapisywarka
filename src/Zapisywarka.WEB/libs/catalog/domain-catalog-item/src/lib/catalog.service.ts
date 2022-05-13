@@ -5,14 +5,13 @@ import { tap, mapTo, map, catchError } from 'rxjs/operators';
 import { CatalogItem, NewCatalogItem } from './catalog.model';
 import { CatalogStore } from './catalog.store';
 import { of, Observable } from 'rxjs';
-import { odd } from '@rxweb/reactive-form-validators';
 import { CatalogFilter } from './catalog.filter';
 
 @Injectable({ providedIn: 'root' })
 export class CatalogService {
-  private path: string = '/catalog-items';
+  private path = '/catalog-items';
 
-  private url: string = '/api/catalog-items';
+  private url = '/api/catalog-items';
 
   constructor(private catalogStore: CatalogStore, private http: HttpClient) {}
 
@@ -65,5 +64,5 @@ export class CatalogService {
       .pipe(tap(() => this.catalogStore.remove(id)));
   }
 
-  updateFilter(filter: CatalogFilter) {}
+  updateFilter(filter: CatalogFilter) { throw new Error("Not implementes") }
 }

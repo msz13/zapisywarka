@@ -8,11 +8,9 @@ import {
 import { CatalogStore, CatalogState } from './catalog.store';
 import { CatalogCategoryQuery } from '@zapisywarka-client-aps/catalog/domain-category';
 import { CatalogItem, CatalogItemsGroupedByCategoryVM } from './catalog.model';
-import { map, tap, startWith, switchMap } from 'rxjs/operators';
-import { Observable, combineLatest, of, asapScheduler } from 'rxjs';
-import { json } from '@rxweb/reactive-form-validators';
-import { CatalogFilter, CatalogFilterData } from './catalog.filter';
-import { CatalogItemView } from './catalog.model';
+import { map } from 'rxjs/operators';
+import { Observable, combineLatest } from 'rxjs';
+import { CatalogFilter } from './catalog.filter';
 
 @Injectable({ providedIn: 'root' })
 @QueryConfig({

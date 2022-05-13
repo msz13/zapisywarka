@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "zapisywarka-client-aps",
+            "prefix": "sui",
             "style": "kebab-case"
           }
         ]

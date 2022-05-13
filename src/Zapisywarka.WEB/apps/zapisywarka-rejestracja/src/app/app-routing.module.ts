@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './main-component/home-page/home-page.component';
 import { MainComponent } from './main-component/main.component';
-import { LandingPageComponent } from '@zapisywarka-client-aps/landing-page';
-import { SignUpContainerComponent } from '@zapisywarka-client-aps/identity/sign-up-feature';
-import { LoginContainerComponent } from '@zapisywarka-client-aps/identity/login-feature';
-import { AuthGuard } from '@zapisywarka-client-aps/identity/domain';
+import { WebLandingPageComponent } from '@zapisywarka-client-aps/web-landing-page';
+import { SignUpContainerComponent } from '@zapisywarka-web/web-identity-sign-up-feature-dep';
+import { LoginContainerComponent } from '@zapisywarka-client-aps/web-identity-login-feature';
+import { AuthGuard } from '@zapisywarka-client-aps/web-identity-domain';
 
 const routes: Routes = [
   {
     path: '',
-    component: LandingPageComponent,
+    component: WebLandingPageComponent,
   },
   {
     path: 'logowanie',

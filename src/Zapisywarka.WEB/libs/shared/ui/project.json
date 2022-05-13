@@ -2,7 +2,7 @@
   "projectType": "library",
   "root": "libs/shared/ui",
   "sourceRoot": "libs/shared/ui/src",
-  "prefix": "zapisywarka-client-aps",
+  "prefix": "sui",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",

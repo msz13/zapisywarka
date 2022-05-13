@@ -1,11 +1,11 @@
 export class RestOrganiserSignUpDriver {
-  baseApiUrl: string = 'http://api.zapisywarka.local';
+  baseApiUrl = 'http://api.zapisywarka.local';
 
   apiUrl = this.baseApiUrl + '/users';
 
-  accessCode: string = '';
-  userName: string = '';
-  password: string = '';
+  accessCode = '';
+  userName = '';
+  password = '';
 
   enterRegistrationData(
     userName: string,

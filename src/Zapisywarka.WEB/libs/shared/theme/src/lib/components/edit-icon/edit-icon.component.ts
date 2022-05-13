@@ -12,14 +12,11 @@ import {
   styleUrls: ['./edit-icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditIconComponent implements OnInit {
-  @Output() click = new EventEmitter();
+export class EditIconComponent  {
+  @Output() clicked = new EventEmitter();
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
+  
   onClick() {
-    this.click.emit();
+    this.clicked.emit();
   }
 }

@@ -7,7 +7,7 @@ import { Offer } from './offer-model';
   providedIn: 'root',
 })
 export class OffersService {
-  constructor() {}
+  
 
   publishOffer(offer: Offer) {
     console.log(offer);

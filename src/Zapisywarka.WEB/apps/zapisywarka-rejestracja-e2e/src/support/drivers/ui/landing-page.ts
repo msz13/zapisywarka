@@ -1,4 +1,4 @@
-export class LandingPageDriver {
+export class WebLandingPageDriver {
   navigateLoginPage() {
     cy.get('[data-test=login-button]').click();
   }

@@ -12,7 +12,7 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-date-time-input',
+  selector: 'zapisywarka-client-aps-date-time-input',
   templateUrl: './date-time-input.component.html',
   styleUrls: ['./date-time-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,15 +31,15 @@ export class DateTimeInputComponent implements OnInit, ControlValueAccessor {
 
   @Input() cancelEnabled = true;
 
-  @Input() status: string = 'basic';
+  @Input() status = 'basic';
 
   minDate: Date;
 
+  /* eslint-disable */
   onChange = (_: any) => {};
 
   onBlur = () => {};
-
-  constructor() {}
+/* eslint-enable */
 
   writeValue(date: any): void {
     this.date.setValue(date);
