@@ -28,7 +28,8 @@
         "port": 4400,
         "config": {
           "configFolder": "libs/web/identity/sign-up-feature/.storybook"
-        }
+        },
+        "projectBuildConfig": "web-identity-sign-up-feature:build-storybook"
       },
       "configurations": {
         "ci": {
@@ -44,7 +45,8 @@
         "outputPath": "dist/storybook/web-identity-sign-up-feature",
         "config": {
           "configFolder": "libs/web/identity/sign-up-feature/.storybook"
-        }
+        },
+        "projectBuildConfig": "web-identity-sign-up-feature:build-storybook"
       },
       "configurations": {
         "ci": {

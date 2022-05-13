@@ -8,8 +8,11 @@
   "files": ["src/test-setup.ts"],
   "include": [
     "**/*.spec.ts",
+    "**/*.test.ts",
     "**/*.d.ts",
     "src/lib/components/name-input/name-input.component.spec.exclude.ts",
-    "src/lib/components/date-time-input/date-time-input.component.spec.exlude.ts"
+    "src/lib/components/name-input/name-input.component.test.exclude.ts",
+    "src/lib/components/date-time-input/date-time-input.component.spec.exlude.ts",
+    "src/lib/components/date-time-input/date-time-input.component.test.exlude.ts"
   ]
 }

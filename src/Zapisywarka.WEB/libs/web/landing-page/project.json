@@ -29,7 +29,8 @@
         "port": 4400,
         "config": {
           "configFolder": "libs/web/landing-page/.storybook"
-        }
+        },
+        "projectBuildConfig": "web-landing-page:build-storybook"
       },
       "configurations": {
         "ci": {
@@ -45,7 +46,8 @@
         "outputPath": "dist/storybook/landing-page",
         "config": {
           "configFolder": "libs/web/landing-page/.storybook"
-        }
+        },
+        "projectBuildConfig": "web-landing-page:build-storybook"
       },
       "configurations": {
         "ci": {

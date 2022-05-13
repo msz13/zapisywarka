@@ -18,7 +18,7 @@ import { LoginCredentials } from '@zapisywarka-client-aps/web-identity-domain';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class LoginComponent {
-  loginForm!: IFormGroup<LoginCredentials>;
+  loginForm!: FormGroup;
 
   @Input() loading!: boolean | null;
 
@@ -47,7 +47,7 @@ export class LoginComponent {
         RxwebValidators.notEmpty({ message: 'Hasło jest wymagane' }),
       ],
       rememberMe: [false],
-    });
+    }) as FormGroup;
   }
 
   onSubmit() {

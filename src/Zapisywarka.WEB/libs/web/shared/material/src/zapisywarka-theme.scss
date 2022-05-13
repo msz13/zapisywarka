@@ -1,4 +1,4 @@
-@use '~@angular/material' as mat;
+@use '@angular/material' as mat;
 @use '_theme-variables' as palette;
 
 @include mat.core();

@@ -25,7 +25,8 @@
         "port": 4400,
         "config": {
           "configFolder": "libs/web/catalog/catalog-feature/.storybook"
-        }
+        },
+        "projectBuildConfig": "web-catalog-catalog-feature:build-storybook"
       },
       "configurations": {
         "ci": {
@@ -41,7 +42,8 @@
         "outputPath": "dist/storybook/catalog-feature-catalog",
         "config": {
           "configFolder": "libs/web/catalog/catalog-feature/.storybook"
-        }
+        },
+        "projectBuildConfig": "web-catalog-catalog-feature:build-storybook"
       },
       "configurations": {
         "ci": {
