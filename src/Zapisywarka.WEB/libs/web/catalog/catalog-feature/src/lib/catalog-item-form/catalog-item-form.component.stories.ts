@@ -3,13 +3,13 @@ import { CatalogItemFormComponent } from './catalog-item-form.component';
 
 export default {
   title: 'CatalogItemFormComponent',
-};
+component: CatalogItemFormComponent,};
 
 export const primary = () => ({
   moduleMetadata: {
     imports: [],
   },
-  component: CatalogItemFormComponent,
+  
   props: {
     categories: null,
     catalogItem: null,

@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'web-shared-material',
+/* eslint-disable */
+export default {
+  displayName: 'web-shared-ui-kit',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +10,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/web/shared/material',
+  coverageDirectory: '../../../../coverage/libs/web/shared/ui-kit',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

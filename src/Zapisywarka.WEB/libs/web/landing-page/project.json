@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/landing-page",
   "sourceRoot": "libs/web/landing-page/src",
   "prefix": "zapisywarka-client-aps",
   "targets": {
@@ -18,7 +17,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/landing-page"],
       "options": {
-        "jestConfig": "libs/web/landing-page/jest.config.js",
+        "jestConfig": "libs/web/landing-page/jest.config.ts",
         "passWithNoTests": true
       }
     },

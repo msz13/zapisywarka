@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/catalog/utills-testing",
   "sourceRoot": "libs/web/catalog/utills-testing/src",
   "prefix": "zapisywarka-client-aps",
   "targets": {
@@ -18,7 +17,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/catalog/utills-testing"],
       "options": {
-        "jestConfig": "libs/web/catalog/utills-testing/jest.config.js",
+        "jestConfig": "libs/web/catalog/utills-testing/jest.config.ts",
         "passWithNoTests": true
       }
     }

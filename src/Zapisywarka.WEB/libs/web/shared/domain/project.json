@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/shared/domain",
   "sourceRoot": "libs/web/shared/domain/src",
   "prefix": "zapisywarka-web",
   "targets": {
@@ -18,7 +17,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/shared/domain"],
       "options": {
-        "jestConfig": "libs/web/shared/domain/jest.config.js",
+        "jestConfig": "libs/web/shared/domain/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'web-shared-ui-kit',
+/* eslint-disable */
+export default {
+  displayName: 'web-identity-sign-up-feature-dep',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +10,8 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/web/shared/ui-kit',
+  coverageDirectory:
+    '../../../../coverage/libs/web/identity/sign-up-feature-dep',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

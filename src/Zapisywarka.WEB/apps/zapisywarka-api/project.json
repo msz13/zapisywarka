@@ -1,5 +1,4 @@
 {
-  "root": "apps/zapisywarka-api",
   "projectType": "application",
   "sourceRoot": "apps/zapisywarka-api",
   "targets": {

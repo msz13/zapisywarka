@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/identity/login-feature",
   "sourceRoot": "libs/web/identity/login-feature/src",
   "prefix": "ifl",
   "targets": {
@@ -18,7 +17,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/identity/login-feature"],
       "options": {
-        "jestConfig": "libs/web/identity/login-feature/jest.config.js",
+        "jestConfig": "libs/web/identity/login-feature/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -47,7 +46,8 @@
         "config": {
           "configFolder": "libs/web/identity/login-feature/.storybook"
         },
-        "projectBuildConfig": "web-identity-login-feature:build-storybook"
+        "projectBuildConfig": "web-identity-login-feature:build-storybook",
+        "styles": ["libs/web/shared/material/src/zapisywarka-theme.scss"]
       },
       "configurations": {
         "ci": {

@@ -6,7 +6,7 @@ import { SignUpContainerComponent } from './sign-up.container.component';
 
 export default {
   title: 'SignUpContainerComponent',
-};
+component: SignUpContainerComponent,};
 
 export const primary = () => ({
   moduleMetadata: {
@@ -17,6 +17,6 @@ export const primary = () => ({
     ],
     providers: [UserService],
   },
-  component: SignUpContainerComponent,
+  
   props: {},
 });

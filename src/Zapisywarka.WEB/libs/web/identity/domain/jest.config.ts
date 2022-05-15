@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'web-shared-domain',
+/* eslint-disable */
+export default {
+  displayName: 'web-identity-domain',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +10,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/web/shared/domain',
+  coverageDirectory: '../../../../coverage/libs/web/identity/domain',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

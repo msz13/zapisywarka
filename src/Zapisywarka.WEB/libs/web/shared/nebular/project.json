@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/shared/nebular",
   "sourceRoot": "libs/web/shared/nebular/src",
   "prefix": "zapisywarka-client-aps",
   "targets": {
@@ -18,7 +17,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/shared/nebular"],
       "options": {
-        "jestConfig": "libs/web/shared/nebular/jest.config.js",
+        "jestConfig": "libs/web/shared/nebular/jest.config.ts",
         "passWithNoTests": true
       }
     }

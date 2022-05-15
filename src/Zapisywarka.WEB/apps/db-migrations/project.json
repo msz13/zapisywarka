@@ -1,5 +1,4 @@
 {
-  "root": "apps/db-migrations",
   "projectType": "application",
   "sourceRoot": "apps/db-migrations",
   "targets": {

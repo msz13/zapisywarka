@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/shared/ui-kit",
   "sourceRoot": "libs/web/shared/ui-kit/src",
   "prefix": "sui",
   "targets": {
@@ -18,7 +17,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/shared/ui-kit"],
       "options": {
-        "jestConfig": "libs/web/shared/ui-kit/jest.config.js",
+        "jestConfig": "libs/web/shared/ui-kit/jest.config.ts",
         "passWithNoTests": true
       }
     },

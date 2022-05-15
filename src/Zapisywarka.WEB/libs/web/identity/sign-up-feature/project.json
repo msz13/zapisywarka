@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/identity/sign-up-feature",
   "sourceRoot": "libs/web/identity/sign-up-feature/src",
   "prefix": "isf",
   "targets": {
@@ -17,7 +16,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/identity/sign-up-feature"],
       "options": {
-        "jestConfig": "libs/web/identity/sign-up-feature/jest.config.js",
+        "jestConfig": "libs/web/identity/sign-up-feature/jest.config.ts",
         "passWithNoTests": true
       }
     },

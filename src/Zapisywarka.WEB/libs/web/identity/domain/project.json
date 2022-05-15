@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/identity/domain",
   "sourceRoot": "libs/web/identity/domain/src",
   "prefix": "zapisywarka-web",
   "targets": {
@@ -18,7 +17,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/identity/domain"],
       "options": {
-        "jestConfig": "libs/web/identity/domain/jest.config.js",
+        "jestConfig": "libs/web/identity/domain/jest.config.ts",
         "passWithNoTests": true
       }
     }

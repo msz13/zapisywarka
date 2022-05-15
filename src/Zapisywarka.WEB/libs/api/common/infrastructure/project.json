@@ -1,5 +1,4 @@
 {
-  "root": "libs/api/common/infrastructure",
   "projectType": "library",
   "sourceRoot": "libs/api/common/infrastructure",
   "targets": {

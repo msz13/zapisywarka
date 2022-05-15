@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/catalog/catalog-item-domain",
   "sourceRoot": "libs/web/catalog/catalog-item-domain/src",
   "prefix": "zapisywarka-client-aps",
   "targets": {
@@ -18,7 +17,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/catalog/catalog-item-domain"],
       "options": {
-        "jestConfig": "libs/web/catalog/catalog-item-domain/jest.config.js",
+        "jestConfig": "libs/web/catalog/catalog-item-domain/jest.config.ts",
         "passWithNoTests": true
       }
     }

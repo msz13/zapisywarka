@@ -1,5 +1,4 @@
 {
-  "root": "apps/zapisywarka-rejestracja-e2e",
   "sourceRoot": "apps/zapisywarka-rejestracja-e2e/src",
   "projectType": "application",
   "targets": {

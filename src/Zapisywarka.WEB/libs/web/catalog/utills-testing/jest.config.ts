@@ -1,6 +1,7 @@
-module.exports = {
-  displayName: 'zapisywarka-rejestracja',
-  preset: '../../jest.preset.js',
+/* eslint-disable */
+export default {
+  displayName: 'web-catalog-utills-testing',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,7 +10,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../coverage/apps/zapisywarka-rejestracja',
+  coverageDirectory: '../../../../coverage/libs/web/catalog/utills-testing',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

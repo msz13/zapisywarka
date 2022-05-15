@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'web-catalog-catalog-feature',
   preset: '../../../../jest.preset.js',
   globals: {

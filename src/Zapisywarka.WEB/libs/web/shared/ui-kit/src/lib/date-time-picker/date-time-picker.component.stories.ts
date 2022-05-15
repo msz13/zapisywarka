@@ -5,7 +5,7 @@ import { DateTimePickerComponent } from './date-time-picker.component';
 
 export default {
   title: 'DateTimePickerComponent',
-};
+component: DateTimePickerComponent,};
 
 export const primary = () => ({
   moduleMetadata: {
@@ -15,6 +15,6 @@ export const primary = () => ({
       MatNativeDateModule,
     ],
   },
-  component: DateTimePickerComponent,
+  
   props: {},
 });

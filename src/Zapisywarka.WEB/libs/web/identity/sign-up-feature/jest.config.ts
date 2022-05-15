@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'web-identity-utills',
+/* eslint-disable */
+export default {
+  displayName: 'web-identity-sign-up-feature',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +9,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/web/identity/utills',
+  coverageDirectory: '../../../../coverage/libs/web/identity/sign-up-feature',
   transform: {
     '^.+.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

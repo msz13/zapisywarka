@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/shared/material",
   "sourceRoot": "libs/web/shared/material/src",
   "prefix": "zapisywarka-client-aps",
   "targets": {
@@ -18,7 +17,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/shared/material"],
       "options": {
-        "jestConfig": "libs/web/shared/material/jest.config.js",
+        "jestConfig": "libs/web/shared/material/jest.config.ts",
         "passWithNoTests": true
       }
     }

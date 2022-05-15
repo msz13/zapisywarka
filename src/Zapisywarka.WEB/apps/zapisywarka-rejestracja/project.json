@@ -1,6 +1,5 @@
 {
   "projectType": "application",
-  "root": "apps/zapisywarka-rejestracja",
   "sourceRoot": "apps/zapisywarka-rejestracja/src",
   "prefix": "zapisywarka",
   "targets": {
@@ -94,7 +93,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/zapisywarka-rejestracja"],
       "options": {
-        "jestConfig": "apps/zapisywarka-rejestracja/jest.config.js",
+        "jestConfig": "apps/zapisywarka-rejestracja/jest.config.ts",
         "passWithNoTests": true
       }
     },

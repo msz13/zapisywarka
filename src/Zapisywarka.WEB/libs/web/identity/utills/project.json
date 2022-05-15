@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/identity/utills",
   "sourceRoot": "libs/web/identity/utills/src",
   "prefix": "zapisywarka",
   "targets": {
@@ -17,7 +16,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/web/identity/utills"],
       "options": {
-        "jestConfig": "libs/web/identity/utills/jest.config.js",
+        "jestConfig": "libs/web/identity/utills/jest.config.ts",
         "passWithNoTests": true
       }
     }

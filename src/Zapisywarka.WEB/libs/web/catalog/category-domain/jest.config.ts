@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'web-catalog-utills-testing',
+/* eslint-disable */
+export default {
+  displayName: 'web-catalog-category-domain',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +10,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/web/catalog/utills-testing',
+  coverageDirectory: '../../../../coverage/libs/web/catalog/category-domain',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

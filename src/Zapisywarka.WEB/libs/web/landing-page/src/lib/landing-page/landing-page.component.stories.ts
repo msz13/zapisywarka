@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 export default {
   title: 'WebLandingPageComponent',
-};
+component: WebLandingPageComponent,};
 
 export const primary = () => ({
   moduleMetadata: {
@@ -15,6 +15,6 @@ export const primary = () => ({
       RouterTestingModule,
     ],
   },
-  component: WebLandingPageComponent,
+  
   props: {},
 });

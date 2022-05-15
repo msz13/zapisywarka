@@ -1,5 +1,4 @@
 {
-  "root": "libs/api/identity/identity-core-test",
   "projectType": "library",
   "sourceRoot": "libs/api/identity/identity-core-test",
   "targets": {
