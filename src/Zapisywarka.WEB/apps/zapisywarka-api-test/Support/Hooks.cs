@@ -20,9 +20,9 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
     static WebApplicationFactory<Program> _factory;
 
     private ScenarioContext _scenarioContext;
-  
+
     public Hooks(ScenarioContext scenarioContext)
-    {      
+    {
       _scenarioContext = scenarioContext;
     }
 
@@ -42,7 +42,7 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
     [BeforeScenario]
     public void SetUpTestServer()
     {
-            
+
       var factory = new WebApplicationFactory<Program>().WithWebHostBuilder((host) =>
        {
          host.UseEnvironment(Microsoft.Extensions.Hosting.Environments.Development);

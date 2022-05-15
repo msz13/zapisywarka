@@ -3,7 +3,7 @@ using TechTalk.SpecFlow.Assist.Attributes;
 
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
-     public class UserCredentials
+  public class UserCredentials
   {
     string _userName;
 

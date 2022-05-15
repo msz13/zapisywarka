@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -23,25 +23,25 @@ namespace Zapisywarka.API.Modules.Identity.Core
           .AddUserValidator<AppUserValidator>()
           .AddEntityFrameworkStores<ZapisywarkaIdentityDbContext>();
 
-   
+
 
       services.ConfigureApplicationCookie(options =>
       {
         options.Cookie.Name = "Auth";
-        options.Cookie.Domain = "localhost";        
+        options.Cookie.Domain = "localhost";
         options.Cookie.SameSite = SameSiteMode.Strict;
         options.Cookie.HttpOnly = true;
-         options.Events = new CookieAuthenticationEvents
-        {                          
-            OnRedirectToLogin = redirectContext =>
-            {   
-                    
-                redirectContext.HttpContext.Response.StatusCode = 401;
-                var header = redirectContext.HttpContext.Request.Headers.Cookie;
-                Console.WriteLine("header" + header);
-                return Task.CompletedTask;
-            }
-        };             
+        options.Events = new CookieAuthenticationEvents
+        {
+          OnRedirectToLogin = redirectContext =>
+          {
+
+            redirectContext.HttpContext.Response.StatusCode = 401;
+            var header = redirectContext.HttpContext.Request.Headers.Cookie;
+            Console.WriteLine("header" + header);
+            return Task.CompletedTask;
+          }
+        };
 
 
       });
@@ -52,7 +52,7 @@ namespace Zapisywarka.API.Modules.Identity.Core
         options.Password.RequireNonAlphanumeric = false;
         options.Password.RequireUppercase = false;
 
-      });  
+      });
 
 
 

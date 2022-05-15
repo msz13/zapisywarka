@@ -10,41 +10,42 @@ using System.Linq;
 using static Zapisywarka.API.AcceptanceTests.Interactions.Identity.GetUserAccount;
 using System.Net.Http.Json;
 
-namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity 
+namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
-   
-internal class ItentityTestServerAbility : IAbility
-{
-  HttpClient _client;
-  string _baseUrl = "/users";
-  public ItentityTestServerAbility(HttpClient client)
+
+  internal class ItentityTestServerAbility : IAbility
   {
-    _client = client;
-  }
+    HttpClient _client;
+    string _baseUrl = "/users";
+    public ItentityTestServerAbility(HttpClient client)
+    {
+      _client = client;
+    }
 
-  public async Task CreateUser(string accesCode, string userName, string password, string passwordConfirmation)
-  {         
-        var request = new {
-            AccessCode = accesCode, 
-            UserName = userName, 
-            Password = password, 
-            PasswordConfirmation = passwordConfirmation
-            };
+    public async Task CreateUser(string accesCode, string userName, string password, string passwordConfirmation)
+    {
+      var request = new
+      {
+        AccessCode = accesCode,
+        UserName = userName,
+        Password = password,
+        PasswordConfirmation = passwordConfirmation
+      };
 
-        await _client.PostAsJsonAsync(_baseUrl, request);
+      await _client.PostAsJsonAsync(_baseUrl, request);
 
     }
 
     internal async Task<UserAccauntInfo> GetUser(string accauntName)
     {
       var response = await _client.GetFromJsonAsync<UserAccauntInfo>($"/users/{accauntName}");
-                        
-        return response;
+
+      return response;
     }
 
-   
 
-   
-}
+
+
+  }
 }
 

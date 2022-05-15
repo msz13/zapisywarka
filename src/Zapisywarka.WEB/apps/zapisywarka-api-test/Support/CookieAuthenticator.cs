@@ -13,12 +13,13 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
     public CookieContainer CookieContainer => _cookieContainer;
 
     public async ValueTask Authenticate(RestClient client, RestRequest request)
-    {        
+    {
       var cookie = _cookieContainer.GetAllCookies().Where(c => c.Name == "Auth").SingleOrDefault();
-      if(cookie != null) {
-          request.AddHeader("Cookie", cookie.ToString());
+      if (cookie != null)
+      {
+        request.AddHeader("Cookie", cookie.ToString());
       }
-      
+
     }
   }
 }

@@ -9,7 +9,7 @@ using static Zapisywarka.API.AcceptanceTests.Interactions.Identity.GetUserAccoun
 
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
- 
+
   internal class GetUserAccount : IQuestionAsync<UserAccauntInfo>
   {
     string _accauntName;

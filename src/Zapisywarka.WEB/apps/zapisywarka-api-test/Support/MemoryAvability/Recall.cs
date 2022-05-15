@@ -6,7 +6,7 @@ namespace ZapisywarkaApi.AcceptanceTests.Helpers
   internal class Recall : IQuestion<object>
   {
     string _fact;
-    
+
 
     public Recall(string fact)
     {
@@ -32,4 +32,3 @@ namespace ZapisywarkaApi.AcceptanceTests.Helpers
 }
 
 
- 

@@ -1,4 +1,4 @@
-﻿using Zapisywarka.API.Common.Application;
+using Zapisywarka.API.Common.Application;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using NodaTime;
@@ -9,15 +9,15 @@ using Zapisywarka.API.Common.Infrastructure.Infrastructure;
 
 namespace Zapisywarka.API.Common.Infrastructure
 {
-    public static class CommonServicesFactory
+  public static class CommonServicesFactory
+  {
+    public static void AddCommonServices(this IServiceCollection services)
     {
-        public static void AddCommonServices(this IServiceCollection services)
-        {
-            services.AddScoped<UserContextService>();
-            services.AddSingleton<IClock>(sp => SystemClock.Instance);
-            services.AddScoped(
-                typeof(IPipelineBehavior<,>),
-                typeof(LoggingBehaviour<,>));
-        }
+      services.AddScoped<UserContextService>();
+      services.AddSingleton<IClock>(sp => SystemClock.Instance);
+      services.AddScoped(
+          typeof(IPipelineBehavior<,>),
+          typeof(LoggingBehaviour<,>));
     }
+  }
 }

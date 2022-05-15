@@ -51,11 +51,11 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
       httpClientHandler.UseCookies = true;
       httpClientHandler.UseDefaultCredentials = true;
       var client = new HttpClient(httpClientHandler);
-      client.BaseAddress = new Uri("http://localhost:5287");        
-     
+      client.BaseAddress = new Uri("http://localhost:5287");
+
       var ability = CallApiRestSharp.WithBaseAdress("http://localhost:5287");
       _client = ability.Client;
-           
+
 
       john = new Actor(name: "Jan", logger: new BoaSpecFlowLogger(_specFlowOutputHelper));
       john.Can(new MemoryAbility());
@@ -108,18 +108,18 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
     {
       // _specFlowOutputHelper.WriteLine("cookies: "+_cookieContainer.GetAllCookies()[0].Name+" "+_cookieContainer.GetAllCookies()[0].Domain+" "+_cookieContainer.GetAllCookies()[0].Path);
       // var userInfo = await john.AskingForAsync<Result<UserInfo>>(GetUserInfo.Now());
-    /*   var client = john.Using<CallApi>().Client;
-      var cookie = _cookieContainer.GetAllCookies().Where(c => c.Name == "Auth").Single();
-      _specFlowOutputHelper.WriteLine("cookies auth: " + cookie.ToString());
-      client.DefaultRequestHeaders.Add("Cookie", cookie.ToString()); */
+      /*   var client = john.Using<CallApi>().Client;
+        var cookie = _cookieContainer.GetAllCookies().Where(c => c.Name == "Auth").Single();
+        _specFlowOutputHelper.WriteLine("cookies auth: " + cookie.ToString());
+        client.DefaultRequestHeaders.Add("Cookie", cookie.ToString()); */
 
       //var httpResult = await client.GetAsync(IdentityEndpoints.Me);
-      
-      var  userInfo = await _client.GetJsonAsync<UserInfo>(IdentityEndpoints.Me);
 
-     /*  var userInfo = httpResult.IsSuccessStatusCode ?
-          Result.Success<UserInfo>(await httpResult.Content.ReadFromJsonAsync<UserInfo>())
-          : Result.Failure<UserInfo>(httpResult.StatusCode.ToString()); */
+      var userInfo = await _client.GetJsonAsync<UserInfo>(IdentityEndpoints.Me);
+
+      /*  var userInfo = httpResult.IsSuccessStatusCode ?
+           Result.Success<UserInfo>(await httpResult.Content.ReadFromJsonAsync<UserInfo>())
+           : Result.Failure<UserInfo>(httpResult.StatusCode.ToString()); */
 
       var credentals = john.AskingFor(Recall.Fact("credentials")) as UserCredentials;
       userInfo.UserName.Should().Be(credentals.UserName);

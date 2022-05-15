@@ -18,7 +18,7 @@ const routes: Routes = [
   // {
   //   path: 'sign-up',
   //   component: SignUpContainerComponent,
-  // },
+  // }, //
   {
     path: 'main',
     component: MainComponent,

@@ -40,7 +40,7 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
     }
   }
 
-  public class TestClient 
+  public class TestClient
   {
     CookieContainer _cookieContainer;
     HttpClient _httpClient;
@@ -48,15 +48,15 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
     public TestClient()
     {
       _cookieContainer = new CookieContainer();
-       var httpClientHandler = new HttpClientHandler();
-      httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true;      
+      var httpClientHandler = new HttpClientHandler();
+      httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true;
       httpClientHandler.CookieContainer = _cookieContainer;
       httpClientHandler.UseCookies = true;
       httpClientHandler.UseDefaultCredentials = true;
-      
+
       var handlers = new TestHttpMessageHandlersBuilder();
-      
-     /*  _httpClient.BaseAddress = new Uri("http://localhost:5287"); */
+
+      /*  _httpClient.BaseAddress = new Uri("http://localhost:5287"); */
 
     }
   }

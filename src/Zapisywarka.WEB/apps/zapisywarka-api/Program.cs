@@ -14,23 +14,20 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddIdentityModule();
 builder.Services.AddCommonInfrastructure();
 
-
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/", ()=> "Zapisywarka.pl api v5");
-app.MapGet("/test", ()=> "Zapisywarka.pl api test");
+app.MapGet("/", () => "Zapisywarka.pl api v5");
+app.MapGet("/test", () => "Zapisywarka.pl api test");
 
 app.UseIdenityModule();
 

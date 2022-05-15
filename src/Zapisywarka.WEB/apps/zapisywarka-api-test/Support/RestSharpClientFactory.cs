@@ -2,7 +2,7 @@
 
 namespace Zapisywarka.API.AcceptanceTests.Helpers
 {
-    using RestSharp;
+  using RestSharp;
   public static class RestSharpClientFactory
   {
     public static RestClient WithCookieAuthentication(string baseAddress)
@@ -17,7 +17,7 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
         Authenticator = authenticator
       };
 
-      
+
     }
   }
 }

@@ -1,7 +1,7 @@
-﻿namespace Zapisywarka.API.Common.Infrastructure.Infrastructure
+namespace Zapisywarka.API.Common.Infrastructure.Infrastructure
 {
-    public interface IUsercontextService
-    {
-        string GetTenantId();
-    }
+  public interface IUsercontextService
+  {
+    string GetTenantId();
+  }
 }

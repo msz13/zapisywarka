@@ -3,23 +3,23 @@ using TechTalk.SpecFlow.Infrastructure;
 
 namespace Zapisywarka.Api.AcceptanceTests.Helpers
 {
-    public class BoaConstrictorFlowLogger : AbstractLogger
+  public class BoaConstrictorFlowLogger : AbstractLogger
+  {
+    private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
+
+    public BoaConstrictorFlowLogger(ISpecFlowOutputHelper specFlowOutputHelper)
     {
-        private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
-
-        public BoaConstrictorFlowLogger(ISpecFlowOutputHelper specFlowOutputHelper)
-        {
-            _specFlowOutputHelper = specFlowOutputHelper;
-        }
-
-        public override void Close()
-        {
-            
-        }
-
-        protected override void LogRaw(string message, LogSeverity severity = LogSeverity.Info)
-        {
-            _specFlowOutputHelper.WriteLine($"[{severity.ToString()}] {message}");
-        }
+      _specFlowOutputHelper = specFlowOutputHelper;
     }
+
+    public override void Close()
+    {
+
+    }
+
+    protected override void LogRaw(string message, LogSeverity severity = LogSeverity.Info)
+    {
+      _specFlowOutputHelper.WriteLine($"[{severity.ToString()}] {message}");
+    }
+  }
 }

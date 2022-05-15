@@ -34,14 +34,14 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
     public static void Start()
     {
       //var path = Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "..", "/apps/zapisywarka-api-test/docker-compose-postgresql.yml");
-        var path = Path.Combine(Directory.GetCurrentDirectory(), "docker-compose-postgresql.yml");
+      var path = Path.Combine(Directory.GetCurrentDirectory(), "docker-compose-postgresql.yml");
 
       _dbContainer = new Builder().UseContainer()
         .UseCompose()
-        .FromFile(path)        
+        .FromFile(path)
         .Build()
         .Start();
-        
+
 
     }
 

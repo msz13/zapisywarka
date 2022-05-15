@@ -12,33 +12,34 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
     string _password = "Password_01";
     string _passwordConfirmation = "Password_01";
 
-    public CreateUserAccount(string name)    {
+    public CreateUserAccount(string name)
+    {
       _userName = name;
     }
 
-     public static CreateUserAccount WithName(string name)
+    public static CreateUserAccount WithName(string name)
     {
-        return new CreateUserAccount(name);
+      return new CreateUserAccount(name);
     }
 
     public CreateUserAccount WithPassword(string password)
     {
-        _password = password;
-        return this;
+      _password = password;
+      return this;
     }
 
     public CreateUserAccount WithPasswordConfirmation(string passwordconfirmation)
     {
-        _passwordConfirmation = passwordconfirmation;
-        return this;
+      _passwordConfirmation = passwordconfirmation;
+      return this;
     }
 
     public async Task PerformAsAsync(IActor actor)
     {
-       await actor.Using<ItentityTestServerAbility>().CreateUser(_accessCode, _userName, _password, _passwordConfirmation);
+      await actor.Using<ItentityTestServerAbility>().CreateUser(_accessCode, _userName, _password, _passwordConfirmation);
     }
 
-  
+
 
     public override string ToString()
     {

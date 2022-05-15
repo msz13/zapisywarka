@@ -13,7 +13,7 @@ namespace ZapisywarkaApi.AcceptanceTests.Helpers
       _value = value;
     }
 
-    public static Remember Fact(string factName, dynamic value) 
+    public static Remember Fact(string factName, dynamic value)
     {
       return new Remember(factName, value);
     }
@@ -22,9 +22,10 @@ namespace ZapisywarkaApi.AcceptanceTests.Helpers
       actor.Using<MemoryAbility>().Remember(_factName, _value);
     }
 
-    public override string ToString() {
+    public override string ToString()
+    {
       return $"remembers fact {_factName} with value: {_value}";
     }
-    
+
   }
 }

@@ -97,15 +97,16 @@
         "passWithNoTests": true
       }
     },
-    "buildImage": {
+    "build-image": {
       "executor": "@nrwl/workspace:run-commands",
+      
       "options": {
-        "commands": [
-          "nx build zapisywarka-rejestracja --prod",
+        "commands": [         
           "docker build -f ./apps/zapisywarka-rejestracja/Dockerfile . -t zapisywarka-web:latest"
         ],
         "parallel": false
-      }
+      },
+      "dependsOn": ["build --configuration=production"]
     }
   },
   "tags": []

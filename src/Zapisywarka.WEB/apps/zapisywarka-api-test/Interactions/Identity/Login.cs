@@ -18,9 +18,9 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 
     public Login(string userName)
     {
-      _userName= userName;
+      _userName = userName;
     }
-    
+
     public static Login WithName(string userName)
     {
       return new Login(userName);

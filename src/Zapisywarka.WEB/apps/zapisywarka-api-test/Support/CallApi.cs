@@ -8,11 +8,15 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
 {
   internal class CallApi : IAbility
   {
-     HttpClient _client;   
+    HttpClient _client;
 
-     public HttpClient Client { get {
-         return _client;
-     }}
+    public HttpClient Client
+    {
+      get
+      {
+        return _client;
+      }
+    }
 
     public CallApi(HttpClient httpClient)
     {
@@ -27,20 +31,24 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
   }
 }
 
-  internal class CallApiRestSharp : IAbility
+internal class CallApiRestSharp : IAbility
+{
+  RestClient _client;
+
+  public RestClient Client
   {
-     RestClient _client;   
-
-     public RestClient Client { get {
-         return _client;
-     }}
-
-    public CallApiRestSharp(RestClient httpClient)
+    get
     {
-      _client = httpClient;
+      return _client;
     }
+  }
 
-    internal static CallApiRestSharp WithBaseAdress(string baseAddress)
+  public CallApiRestSharp(RestClient httpClient)
+  {
+    _client = httpClient;
+  }
+
+  internal static CallApiRestSharp WithBaseAdress(string baseAddress)
   {
     RestClient client = CreateClient(baseAddress);
 

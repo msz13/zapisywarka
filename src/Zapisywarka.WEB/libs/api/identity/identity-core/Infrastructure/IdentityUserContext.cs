@@ -6,23 +6,23 @@ using Microsoft.AspNetCore.Http;
 
 namespace Zapisywarka.API.Modules.Identity.Core.Infrastructure
 {
-    internal interface IIdentityUserContext
-    {
-        Task SignInAsync(ClaimsPrincipal user);
-    }
+  internal interface IIdentityUserContext
+  {
+    Task SignInAsync(ClaimsPrincipal user);
+  }
 
-    internal class IdentityUserContext : IIdentityUserContext
-    {
+  internal class IdentityUserContext : IIdentityUserContext
+  {
 
-        HttpContext _context;
+    HttpContext _context;
     public IdentityUserContext(HttpContextAccessor contextAccesor)
-        {
-            _context = contextAccesor.HttpContext;
-        }
+    {
+      _context = contextAccesor.HttpContext;
+    }
 
     public async Task SignInAsync(ClaimsPrincipal user)
-        {
-            await _context.SignInAsync(user);
-        }
+    {
+      await _context.SignInAsync(user);
     }
+  }
 }

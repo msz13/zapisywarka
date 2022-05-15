@@ -22,13 +22,13 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 
     public async Task<Result<UserInfo>> RequestAsAsync(IActor actor)
     {
-      
-            
+
+
       var httpResult = await actor.Using<CallApi>().Client.GetAsync(IdentityEndpoints.Me);
 
-      return httpResult.IsSuccessStatusCode? 
+      return httpResult.IsSuccessStatusCode ?
         Result.Success<UserInfo>(await httpResult.Content.ReadFromJsonAsync<UserInfo>())
-        : Result.Failure<UserInfo>(httpResult.StatusCode.ToString());    
+        : Result.Failure<UserInfo>(httpResult.StatusCode.ToString());
 
     }
 

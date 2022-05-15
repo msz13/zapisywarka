@@ -1,6 +1,6 @@
-﻿namespace Zapisywarka.API.Common.Infrastructure
+namespace Zapisywarka.API.Common.Infrastructure
 {
-    public interface IAggregateRoot
-    {
-    }
+  public interface IAggregateRoot
+  {
+  }
 }

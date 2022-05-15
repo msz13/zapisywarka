@@ -13,7 +13,7 @@
   "affected": {
     "defaultBase": "master"
   },
-  "npmScope": "zapisywarka-web",
+  "npmScope": "zapisywarka",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",

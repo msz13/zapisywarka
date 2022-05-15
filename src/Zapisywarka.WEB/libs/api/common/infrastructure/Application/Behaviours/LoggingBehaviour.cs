@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -8,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace Zapisywarka.API.Common.Application
 {
-    public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> 
-        where TRequest : IRequest<TResponse>
+  public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+      where TRequest : IRequest<TResponse>
+  {
+    ILoggerFactory _loggerFactory;
+
+    public LoggingBehaviour(ILoggerFactory loggerFactory)
     {
-        ILoggerFactory _loggerFactory;
-
-        public LoggingBehaviour(ILoggerFactory loggerFactory)
-        {
-            _loggerFactory = loggerFactory;
-        }
-
-        public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
-        {
-            var logger = _loggerFactory.CreateLogger("Command_Handler");
-
-            logger.LogInformation($"Executing command: {typeof(TRequest).FullName}");
-
-            var response = next();
-
-            logger.LogInformation($"Handling command response: {typeof(TResponse).FullName}");
-
-            return response;
-        }
+      _loggerFactory = loggerFactory;
     }
+
+    public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+    {
+      var logger = _loggerFactory.CreateLogger("Command_Handler");
+
+      logger.LogInformation($"Executing command: {typeof(TRequest).FullName}");
+
+      var response = next();
+
+      logger.LogInformation($"Handling command response: {typeof(TResponse).FullName}");
+
+      return response;
+    }
+  }
 }
