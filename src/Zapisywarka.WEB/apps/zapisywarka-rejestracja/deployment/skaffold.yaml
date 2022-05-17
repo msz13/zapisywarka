@@ -1,0 +1,17 @@
+apiVersion: skaffold/v2beta22
+kind: Config
+metadata:
+  name: zapisywarka
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+  - image: zapisywarka-web   
+    kaniko:
+      dockerfile: apps/zapisywarka-rejestracja/Dockerfile
+      
+  cluster: {}  
+deploy:
+  kustomize:
+    paths:
+    - Deployment
