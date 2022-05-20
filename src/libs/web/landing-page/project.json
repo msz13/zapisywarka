@@ -1,0 +1,59 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/web/landing-page/src",
+  "prefix": "zapisywarka-client-aps",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/landing-page/src/**/*.ts",
+          "libs/web/landing-page/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/landing-page"],
+      "options": {
+        "jestConfig": "libs/web/landing-page/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "port": 4400,
+        "config": {
+          "configFolder": "libs/web/landing-page/.storybook"
+        },
+        "projectBuildConfig": "web-landing-page:build-storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "outputPath": "dist/storybook/landing-page",
+        "config": {
+          "configFolder": "libs/web/landing-page/.storybook"
+        },
+        "projectBuildConfig": "web-landing-page:build-storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

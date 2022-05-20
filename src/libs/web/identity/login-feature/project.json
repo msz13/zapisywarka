@@ -1,0 +1,60 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/web/identity/login-feature/src",
+  "prefix": "ifl",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/identity/login-feature/src/**/*.ts",
+          "libs/web/identity/login-feature/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/identity/login-feature"],
+      "options": {
+        "jestConfig": "libs/web/identity/login-feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "port": 4400,
+        "config": {
+          "configFolder": "libs/web/identity/login-feature/.storybook"
+        },
+        "projectBuildConfig": "web-identity-login-feature:build-storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "outputPath": "dist/storybook/web-identity-login-feature",
+        "config": {
+          "configFolder": "libs/web/identity/login-feature/.storybook"
+        },
+        "projectBuildConfig": "web-identity-login-feature:build-storybook",
+        "styles": ["libs/web/shared/material/src/zapisywarka-theme.scss"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

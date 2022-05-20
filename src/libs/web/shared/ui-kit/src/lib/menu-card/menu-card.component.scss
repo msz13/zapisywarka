@@ -1,0 +1,49 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '../../../../material/src/zapisywarka-theme' as theme;
+
+$color-config: mat.get-color-config(theme.$dark-blue-green-theme);
+
+$accent-palette: map.get($color-config, 'accent');
+
+$primary-palette: map.get($color-config, 'primary');
+
+:host {
+  display: block;
+}
+
+$size: 250px;
+
+mat-card {
+  width: $size;
+  height: $size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.accent {
+  width: $size;
+  height: 7px;
+  background-color: mat.get-color-from-palette($accent-palette);
+  margin: 1em;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  // font-size: mat.font-size(theme.$typography-config, 'headline');
+  // font-weight: mat.font-weight(theme.$typography-config, 'title');
+}
+
+.action-icon {
+  color: mat.get-color-from-palette($primary-palette, 200);
+  font-size: 3.5em;
+  transform: rotate(90deg);
+}

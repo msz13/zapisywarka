@@ -1,0 +1,30 @@
+{
+  "sourceRoot": "apps/test/libs/identity/sign-up-feature-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/test/libs/identity/sign-up-feature-e2e/cypress.json",
+        "devServerTarget": "web-identity-sign-up-feature:storybook",
+        "tsConfig": "apps/test/libs/identity/sign-up-feature-e2e/tsconfig.json"
+      },
+      "configurations": {
+        "ci": {
+          "devServerTarget": "web-identity-sign-up-feature:storybook:ci"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/test/libs/identity/sign-up-feature-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["web-identity-sign-up-feature"]
+}

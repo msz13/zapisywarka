@@ -1,0 +1,118 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/zapisywarka-rejestracja/src",
+  "prefix": "zapisywarka",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/zapisywarka-rejestracja",
+        "index": "apps/zapisywarka-rejestracja/src/index.html",
+        "main": "apps/zapisywarka-rejestracja/src/main.ts",
+        "polyfills": "apps/zapisywarka-rejestracja/src/polyfills.ts",
+        "tsConfig": "apps/zapisywarka-rejestracja/tsconfig.app.json",
+        "assets": [
+          "apps/zapisywarka-rejestracja/src/favicon.ico",
+          "apps/zapisywarka-rejestracja/src/assets"
+        ],
+        "styles": [
+          "apps/zapisywarka-rejestracja/src/styles.scss",
+          "libs/web/shared/material/src/zapisywarka-theme.scss"
+        ],
+        "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/web/shared/material/src/_theme-variables.scss"]
+        },
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/zapisywarka-rejestracja/src/environments/environment.ts",
+              "with": "apps/zapisywarka-rejestracja/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "60kb",
+              "maximumError": "100kb"
+            }
+          ]
+        }
+      },
+      "defaultConfiguration": ""
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "zapisywarka-rejestracja:build",
+        "proxyConfig": "/home/msz13/programowanie/zapisywarka/src/Zapisywarka.WEB/apps/zapisywarka-rejestracja/proxy.config.json"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "zapisywarka-rejestracja:build:production"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "zapisywarka-rejestracja:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/zapisywarka-rejestracja/src/**/*.ts",
+          "apps/zapisywarka-rejestracja/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/zapisywarka-rejestracja"],
+      "options": {
+        "jestConfig": "apps/zapisywarka-rejestracja/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "docker": {
+      "executor": "@nx-tools/nx-docker:build",
+      "options": {
+        "no-cache": true,
+        "tags": ["zapisywarka-rejestracja:latest"],
+        "file": "./apps/zapisywarka-rejestracja/Dockerfile"
+      },
+      "dependsOn": ["build"]
+    },
+    "deploy-local": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "sudo sh ./tools/deployment/deploy-local.sh -i zapisywarka-rejestracja -t latest -f apps/zapisywarka-rejestracja/deployment/"
+      },
+      "dependsOn": ["docker"]
+    }
+  },
+  "tags": []
+}

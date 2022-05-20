@@ -1,0 +1,52 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/zapisywarka-api",
+  "targets": {
+    "build": {
+      "executor": "@nx-dotnet/core:build",
+      "outputs": ["dist/apps/zapisywarka-api"],
+      "options": {
+        "configuration": "Debug",
+        "noDependencies": true
+      },
+      "configurations": {
+        "production": {
+          "configuration": "Release"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx-dotnet/core:serve",
+      "options": {
+        "configuration": "Debug"
+      },
+      "configurations": {
+        "production": {
+          "configuration": "Release"
+        }
+      }
+    },
+    "docker": {
+      "executor": "@nx-tools/nx-docker:build",
+      "options": {
+        "push": false,
+        "tags": ["zapisywarka-api:latest"]
+      },
+      "dependsOn": ["build"]
+    },
+    "deploy-local": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "sudo sh ./tools/deployment/deploy-local.sh -i zapisywarka-api -t latest -f apps/zapisywarka-api/deployment/"
+      },
+      "dependsOn": ["docker"]
+    },
+    "lint": {
+      "executor": "@nx-dotnet/core:format"
+    },
+    "test-exec": {
+      "executor": "@zapisywarka/kustomize:build"
+    }
+  },
+  "tags": ["nx-dotnet"]
+}

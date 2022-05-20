@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:  
+  template:   
+    spec:
+      containers:
+      - name: web
+        image: zapisywarka-rejestracja:latest
+        imagePullPolicy: IfNotPresent          
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: config-volume
+            mountPath: /usr/share/nginx/html/assets/
+      volumes:
+        - name: config-volume
+          configMap:
+            name: web-configuration
+

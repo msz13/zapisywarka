@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/web/catalog/category-domain/src",
+  "prefix": "zapisywarka-client-aps",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/catalog/category-domain/src/**/*.ts",
+          "libs/web/catalog/category-domain/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/catalog/category-domain"],
+      "options": {
+        "jestConfig": "libs/web/catalog/category-domain/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

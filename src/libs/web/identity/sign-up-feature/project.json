@@ -1,0 +1,58 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/web/identity/sign-up-feature/src",
+  "prefix": "isf",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/identity/sign-up-feature/src/**/*.ts",
+          "libs/web/identity/sign-up-feature/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/identity/sign-up-feature"],
+      "options": {
+        "jestConfig": "libs/web/identity/sign-up-feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "port": 4400,
+        "config": {
+          "configFolder": "libs/web/identity/sign-up-feature/.storybook"
+        },
+        "projectBuildConfig": "web-identity-sign-up-feature:build-storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "outputPath": "dist/storybook/web-identity-sign-up-feature",
+        "config": {
+          "configFolder": "libs/web/identity/sign-up-feature/.storybook"
+        },
+        "projectBuildConfig": "web-identity-sign-up-feature:build-storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
