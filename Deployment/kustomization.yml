@@ -1,5 +1,0 @@
-resources:
-- ./API 
-#- ./cluster-infrastructure
-- ./database
-- ./WEB
