@@ -13,8 +13,8 @@ spec:
     spec:
       containers:
       - name: api
-        image: k3d-zapisywarka.localhost:9009/zapisywarka-api:latest
-        imagePullPolicy: Always        
+        image: zapisywarka-api:test
+        imagePullPolicy: IfNotPresent      
         ports:
         - containerPort: 5000
         env:          

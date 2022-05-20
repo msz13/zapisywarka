@@ -63,6 +63,7 @@
       "@zapisywarka-web/web/identity/sign-up-feature": [
         "libs/web/identity/sign-up-feature/src/index.ts"
       ],
+      "@zapisywarka/kustomize": ["libs/tools/kustomize/src/index.ts"],
       "@zapisywarka/sign-up-form": [
         "libs/sign-up/sign-up-element/src/index.ts"
       ],

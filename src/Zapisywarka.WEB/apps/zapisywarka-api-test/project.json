@@ -22,13 +22,6 @@
     "lint": {
       "executor": "@nx-dotnet/core:format"
     },
-    "build-image":{
-      "executor": "@nrwl/workspace:run-commands",
-      "dependsOn": ["build"],
-      "options": {
-        "command": "docker build -f ./apps/zapisywarka-api/Dockerfile . -t zapisywarka-api:latest"
-      }
-    },
     "generate-living-doc": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {

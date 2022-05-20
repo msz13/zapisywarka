@@ -97,16 +97,21 @@
         "passWithNoTests": true
       }
     },
-    "build-image": {
-      "executor": "@nrwl/workspace:run-commands",
-      
+    "docker": {
+      "executor": "@nx-tools/nx-docker:build",
       "options": {
-        "commands": [         
-          "docker build -f ./apps/zapisywarka-rejestracja/Dockerfile . -t zapisywarka-web:latest"
-        ],
-        "parallel": false
+        "no-cache": true,
+        "tags": ["zapisywarka-rejestracja:latest"],
+        "file": "./apps/zapisywarka-rejestracja/Dockerfile"
       },
-      "dependsOn": ["build --configuration=production"]
+      "dependsOn": ["build"]
+    },
+    "deploy-local": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "sudo sh ./tools/deployment/deploy-local.sh -i zapisywarka-rejestracja -t latest -f apps/zapisywarka-rejestracja/deployment/"
+      },
+      "dependsOn": ["docker"]
     }
   },
   "tags": []

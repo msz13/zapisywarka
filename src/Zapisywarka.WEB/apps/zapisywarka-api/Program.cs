@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddIdentityModule();
 builder.Services.AddCommonInfrastructure();
+//docker
 
 var app = builder.Build();
 
@@ -26,7 +27,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/", () => "Zapisywarka.pl api v5");
+app.MapGet("/", () => "Zapisywarka.pl api v0.0.1");
 app.MapGet("/test", () => "Zapisywarka.pl api test");
 
 app.UseIdenityModule();

@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "-api-catalog-catalog": "libs//api/catalog/catalog",
+    "-api-catalog-catalog-test": "libs//api/catalog/catalog-test",
     "api-common-infrastructure": "libs/api/common/infrastructure",
     "api-identity-identity-api": "libs/api/identity/identity-api",
     "api-identity-identity-core": "libs/api/identity/identity-core",
