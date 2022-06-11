@@ -10,7 +10,7 @@ import {
   getValidationError,
 } from '../../support/sign-up-form.po';
 
-describe.skip('identity-sign-up-feature', () => {
+describe('identity-sign-up-feature', () => {
   beforeEach(() =>
     cy.visit('/iframe.html?id=signupcontainercomponent--primary')
   );
@@ -24,23 +24,25 @@ describe.skip('identity-sign-up-feature', () => {
     const userName = 'John';
     const password = 'Pasword_01';
 
-    cy.intercept('POST', 'api/identity/users', {
-      statusCode: 500,
+   /*  cy.intercept('POST', 'http://localhost:5000/users', {
+      statusCode: 200,
       delay: 300,
-    }).as('new-user');
+    }).as('new-user'); */
+
+    cy.intercept('**/users').as('new-user');
 
     getLoadingProgress().should('not.exist');
 
-    getAccessCode().type(accessCode);
-    getNextButton().click();
+    //getAccessCode().type(accessCode);
+    //getNextButton().click();
     getUserName().type(userName);
     getPassword().type(password);
     getPasswordConfirmation().type(password);
     getSignUpButton().click();
-    getLoadingProgress().should('exist');
+   // getLoadingProgress().should('exist');
 
     cy.wait('@new-user').its('request.body').should('deep.equal', {
-      accessCode: accessCode,
+     // accessCode: accessCode,
       userName: userName,
       password: password,
     });
@@ -51,13 +53,13 @@ describe.skip('identity-sign-up-feature', () => {
     const userName = 'John';
     const password = 'Pasword_01';
 
-    cy.intercept('POST', 'api/identity/users', { forceNetworkError: true }).as(
+    cy.intercept('POST', '/users', { forceNetworkError: true }).as(
       'new-user'
     );
 
     getServerError().should('not.exist');
-    getAccessCode().type(accessCode);
-    getNextButton().click();
+    //getAccessCode().type(accessCode);
+    //getNextButton().click();
     getUserName().type(userName);
     getPassword().type(password);
     getPasswordConfirmation().type(password);
@@ -65,7 +67,7 @@ describe.skip('identity-sign-up-feature', () => {
 
     getServerError().should(
       'have.text',
-      ' Wystąpił nieoczekiwany błąd serwera. Spróbuj ponownie '
+      'Wystąpił nieoczekiwany błąd serwera. Spróbuj ponownie'
     );
   });
 
@@ -73,10 +75,6 @@ describe.skip('identity-sign-up-feature', () => {
   //TODO zrobić testy user service, jeśli odpowiedź z serwera nie będzie 200, to wyrzuca błąd
 
   describe('user form', () => {
-    beforeEach(() => {
-      getAccessCode().type('token');
-      getNextButton().click();
-    });
 
     it('should show validation error when next button is clicked', () => {
       getSignUpButton().click();

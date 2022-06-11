@@ -4,7 +4,7 @@ import {
   SpectatorHttp,
 } from '@ngneat/spectator';
 import { LoginCredentials, LoginService } from './login.service';
-import { WebIdentityDomainModule } from '../web-identity-domain.module';
+import { IdentityDomainModule } from '../identity-domain.module';
 import {
   IFormGroup,
   RxReactiveFormsModule,

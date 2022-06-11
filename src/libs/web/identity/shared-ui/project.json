@@ -1,0 +1,51 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/web/identity/shared-ui/src",
+  "prefix": "isui",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/identity/shared-ui/**/*.ts",
+          "libs/web/identity/shared-ui/**/*.html"
+        ]
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "port": 4400,
+        "config": {
+          "configFolder": "libs/web/identity/shared-ui/.storybook"
+        },
+        "projectBuildConfig": "web-identity-shared-ui:build-storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "outputPath": "dist/storybook/web-identity-shared-ui",
+        "config": {
+          "configFolder": "libs/web/identity/shared-ui/.storybook"
+        },
+        "projectBuildConfig": "web-identity-shared-ui:build-storybook",
+        "styles": ["libs/web/shared/material/src/zapisywarka-theme.scss"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

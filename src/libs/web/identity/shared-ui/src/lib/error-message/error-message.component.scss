@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '../../../../../shared/material/src/zapisywarka-theme.scss' as theme;
+
+$color-config: mat.get-color-config(theme.$dark-blue-green-theme);
+
+$warn-palette: map.get($color-config, 'warn');
+
+.server-error {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: mat.get-color-from-palette($warn-palette);
+  }

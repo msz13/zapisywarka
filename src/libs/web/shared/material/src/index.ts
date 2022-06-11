@@ -1,1 +1,1 @@
-export * from './lib/web-shared-material.module';
+export * from './lib/shared-material.module';

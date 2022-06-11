@@ -2,7 +2,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { ConfigurationService } from '@zapisywarka-web/web-shared-domain';
-import { WebIdentityLoginFeatureModule } from '..';
+import { IdentityLoginFeatureModule } from './identity-login-feature.module';
 import { LoginContainerComponent } from './login-container.component';
 
 const mockConfigurationSrv = {
@@ -16,7 +16,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        WebIdentityLoginFeatureModule,
+        IdentityLoginFeatureModule,
         BrowserAnimationsModule,
         RouterModule,
       ],

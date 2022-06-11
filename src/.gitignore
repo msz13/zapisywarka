@@ -83,3 +83,5 @@ bld/
 **/bin/Debug
 **/obj/Debug
 **/*.dll
+
+.angular

@@ -7,7 +7,7 @@ import { LoginCredentials } from '..';
 import { SessionStore } from './session/session.store';
 
 export interface User {
-  accessCode: string;
+  //accessCode: string;
   userName: string;
   password: string;
 }
@@ -38,7 +38,8 @@ export class UserService {
   }
 
   createUser(user: User) {
-    return this.http.post(this.baseUrl, user).pipe(
+    console.log('user post '+ this.baseUrl)
+    return this.http.post(this.baseUrl, user, {}).pipe(
       map(() => true),
       catchError(this.handleError)
     );

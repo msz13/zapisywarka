@@ -1,1 +1,16 @@
-<p>sign-up-container works!</p>
+<isui-identity-card>
+    <h2 class="mat-title">Zarejestruj się</h2>   
+    <isui-error-message *ngIf="error" [message]="error" data-test="server-error" ></isui-error-message>
+    <form [formGroup]="userForm" (submit)="onSubmit()">
+        <div data-test="user-name">
+            <input formControlName="userName"/>
+        </div>
+        <div data-test="password">
+            <input formControlName="password"/>
+        </div>
+        <div data-test="password-confirmation">
+            <input formControlName="passwordConfirmation"/>
+        </div>
+        <button type="submit" data-test="sign-up-button">Utwórz konto</button>
+    </form>   
+</isui-identity-card>

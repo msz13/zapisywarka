@@ -1,25 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Spectator, createComponentFactory } from '@ngneat/spectator/jest';
+import { UserService } from '@zapisywarka-client-aps/web-identity-domain';
+import { SignUpContainerComponent } from '@zapisywarka-web/web-identity-sign-up-feature-dep';
 
-import { SignUpContainerComponent } from './sign-up-container.component';
 
-describe('SignUpContainerComponent', () => {
-  let component: SignUpContainerComponent;
-  let fixture: ComponentFixture<SignUpContainerComponent>;
+describe('ButtonComponent', () => {
+  let spectator: Spectator<SignUpContainerComponent>;
+  const createComponent = createComponentFactory({
+      component: SignUpContainerComponent,
+      componentMocks: [UserService],
+   
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ SignUpContainerComponent ]
-    })
-    .compileComponents();
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SignUpContainerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => spectator = createComponent());
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+ it('should post user registration on submit', ()=>{
+
+    const userService = spectator.inject(UserService)
+
+
+ })
 });
