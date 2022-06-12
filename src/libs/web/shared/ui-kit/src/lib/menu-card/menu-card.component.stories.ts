@@ -1,5 +1,5 @@
-import { object, text } from '@storybook/addon-knobs';
-import { WebSharedMaterialModule } from '@zapisywarka-web/web-shared-material';
+import { text } from '@storybook/addon-knobs';
+import { SharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 import { MenuCardComponent } from './menu-card.component';
 
 export default {
@@ -8,7 +8,7 @@ export default {
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [WebSharedMaterialModule],
+    imports: [SharedMaterialModule],
   },
   component: MenuCardComponent,
   props: {

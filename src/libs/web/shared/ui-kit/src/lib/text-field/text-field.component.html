@@ -1,1 +1,12 @@
-<p>text-field works!</p>
+<mat-form-field
+      appearance="outline"    
+    >
+      <mat-label>{{label}}</mat-label>
+      <input 
+        matInput  
+        (change)="_onChange($event.target.value)"
+        (blur)="_onTouched()"
+        [errorStateMatcher]="matcher"
+        />
+    <mat-error>Pole wymagane</mat-error> 
+    </mat-form-field>

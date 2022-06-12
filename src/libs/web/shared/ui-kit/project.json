@@ -46,7 +46,8 @@
         "config": {
           "configFolder": "libs/web/shared/ui-kit/.storybook"
         },
-        "projectBuildConfig": "web-shared-ui-kit:build-storybook"
+        "projectBuildConfig": "web-shared-ui-kit:build-storybook",
+        "styles": ["libs/web/shared/material/src/zapisywarka-theme.scss"]
       },
       "configurations": {
         "ci": {

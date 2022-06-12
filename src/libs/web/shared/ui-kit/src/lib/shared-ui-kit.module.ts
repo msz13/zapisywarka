@@ -25,4 +25,4 @@ const COMPONENTS = [
   declarations: [...COMPONENTS, DateTimePickerComponent, TextFieldComponent],
   exports: [...COMPONENTS, FlexLayoutModule, DateTimePickerComponent, TextFieldComponent],
 })
-export class WebSharedUiKitModule {}
+export class SharedUiKitModule {}

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WebSharedMaterialModule } from '@zapisywarka-web/web-shared-material';
+import { SharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 import { HeaderComponent } from '../header/header.component';
 import { InitialAvatarComponent } from '../initial-avatar/initial-avatar.component';
 import { MainMenuComponent } from '../main-menu/main-menu.component';
@@ -13,7 +13,7 @@ export default {
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [BrowserModule, BrowserAnimationsModule, WebSharedMaterialModule],
+    imports: [BrowserModule, BrowserAnimationsModule, SharedMaterialModule],
     declarations: [
       HeaderComponent,
       MainMenuComponent,
