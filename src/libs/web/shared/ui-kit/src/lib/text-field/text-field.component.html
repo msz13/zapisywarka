@@ -4,7 +4,7 @@
       <mat-label>{{label}}</mat-label>
       <input 
         matInput  
-        (change)="_onChange($event.target.value)"
+        [formControl]="_innerControl"
         (blur)="_onTouched()"
         [errorStateMatcher]="matcher"
         />
