@@ -92,6 +92,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserInfo'
+  /offers/{offerId}/registration:
+    post:
+      description: 'register reserveation'
+      requestBody:
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:                
+                receptionPassword:
+                  type: string
+                comments:
+                  type: string
+                offerItems:
+                  type: array
+                  items: 
+                    $ref: '#/components/schemas/RegistrationItem'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistratoinDetails' 
 components:
   schemas:
     Error: 
@@ -109,6 +133,42 @@ components:
       required:
         - id
         - username
+    RegistrationItem:
+      type: object
+      properties:
+        offerItemId:
+          type: string
+        quantity:
+          type: integer
+    RegistratoinDetails:
+      type: object
+      properties:
+          id: 
+            type: string
+          reservationNumber:
+            type: string
+          totalCost:
+            type: number
+          offerId: 
+            type: string
+          receptionPassword:
+             type: string
+          comments: 
+            type: string
+          offerItems:
+             type: array
+             items: 
+               $ref: '#/components/schemas/RegistrationDetailsItem'
+    RegistrationDetailsItem: 
+      type: object
+      properties:
+        offerItemId:
+          type: string
+        quantity:
+          type: integer
+        cost: 
+          type: number
+           
 
 
         
