@@ -38,7 +38,7 @@ paths:
              schema:
               type: array
               items: 
-                  $ref: '#components/schemas/User'            
+                  $ref: '#/components/schemas/UserInfo'            
   /users/login:
     post:
       summary: Login user
@@ -92,9 +92,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserInfo'
+  /offers/{offerId}:
+    get:
+      description: 'get offer by id'
+      parameters: 
+        - name: offerId
+          in: path
+          schema: 
+            type: string
+          required: true
+      responses:
+       '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferForm'
   /offers/{offerId}/registration:
     post:
       description: 'register reserveation'
+      parameters: 
+        - name: offerId
+          in: path
+          schema: 
+            type: string
+          required: true
       requestBody:
         content: 
           application/json:
@@ -115,7 +137,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RegistratoinDetails' 
+                $ref: '#/components/schemas/RegistrationDetails' 
 components:
   schemas:
     Error: 
@@ -133,6 +155,26 @@ components:
       required:
         - id
         - username
+    OfferForm:
+      type: object
+      properties:
+        offerId: 
+          type: string
+        name: 
+          type: string
+        offerItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferItems'
+    OfferItems:
+      type: object
+      properties:
+        offerItemId:
+          type: string
+        name: 
+          type: string
+        price:
+          type: number
     RegistrationItem:
       type: object
       properties:
@@ -140,7 +182,7 @@ components:
           type: string
         quantity:
           type: integer
-    RegistratoinDetails:
+    RegistrationDetails:
       type: object
       properties:
           id: 
@@ -167,10 +209,7 @@ components:
         quantity:
           type: integer
         cost: 
-          type: number
-           
-
-
-        
+          type: number       
+     
 
     
