@@ -1,0 +1,44 @@
+post:
+      summary: Creates new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                accessCode:
+                  type: string
+                userName:
+                  type: string
+                  minLength: 3
+                  maxLength: 32
+                password:
+                  type: string
+                  minLength: 8
+                  format: password                  
+      responses:
+        '201':
+          description: OK
+get:
+  summary: 'Gets all users'
+  responses:
+    '200':
+      description: 'Returns all users'
+      content:
+        application/json:
+          schema:
+              type: array
+              items: 
+                $ref: '#/components/schemas/UserInfo'
+components:
+  schemas:
+    UserInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        userName:
+          type: string
+      required:
+        - id
+        - username      
