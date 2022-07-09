@@ -11,6 +11,7 @@ Wymagnia:
 - konfiguracja środowisk z kodu
 - jak najniższe koszty eksploatacji
 - możliwość rozwoju i skalowania
+- możliwość monitorowania i logowania
 - najlepiej możliwość uruchomienia w środowisku lokalnym i produkcyjnym
 - prostota
 - środowisko lokalne deweloperskie, środoiwsko prelease do testów integracyjnych, środowisko staginh do testów eksloatacyjnych, środowisko produkcyjne
@@ -21,14 +22,16 @@ Wymagnia:
 
 Warianty:
 
-|nazwa|opis|cena|
-|---|---|---|
+|nazwa|opis|cena| kilka środowisk | definicja z kodu |
+|---|---|---| --- | --- |
 |heroku | container i heroku postgresql |
 | google run | elephant postgresql |
 |jeden vps| instalacja wsyzstkich usług ręcznie |
-|dwa vps | jeden dla bazy danych druga dla aplikacji (nginx, kestrel)|
-|docker swarm na jednej maszynie| |
-|kubernetes na jednej maszynie | |
+| jedne vps | k3s albo microk8s, baza danych na kubernetes |
+| cluster vps | jeden dla bazy danych druga dla aplikacji (nginx, kestrel)|
+| cluster vps | kubernetes k3s |
+| docker swarm na jednej maszynie| |
+
 
 #### Opcje kubernetes
 
