@@ -25,7 +25,7 @@ Warianty:
 |nazwa|opis|cena| kilka środowisk | definicja z kodu |
 |---|---|---| --- | --- |
 |heroku | container i heroku postgresql | $7 | - | tak |
-| google run | elephant postgresql |
+| google run | elephant postgresql | free|
 |jeden vps| instalacja wsyzstkich usług ręcznie |
 | jedne vps | k3s albo microk8s, baza danych na kubernetes |
 | cluster vps | jeden dla bazy danych druga dla aplikacji (nginx, kestrel)|
