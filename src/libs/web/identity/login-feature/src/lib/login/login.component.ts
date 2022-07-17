@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { IFormGroup } from '@rxweb/types';
 import { LoginCredentials } from '@zapisywarka-client-aps/web-identity-domain';
@@ -18,7 +18,7 @@ import { LoginCredentials } from '@zapisywarka-client-aps/web-identity-domain';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class LoginComponent {
-  loginForm!: FormGroup;
+  loginForm!: UntypedFormGroup;
 
   @Input() loading!: boolean | null;
 
@@ -30,7 +30,7 @@ export class LoginComponent {
 
   hidePassword = true;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: UntypedFormBuilder) {
     this.createForm();
   }
 
@@ -47,7 +47,7 @@ export class LoginComponent {
         RxwebValidators.notEmpty({ message: 'Hasło jest wymagane' }),
       ],
       rememberMe: [false],
-    }) as FormGroup;
+    }) as UntypedFormGroup;
   }
 
   onSubmit() {

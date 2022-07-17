@@ -29,20 +29,7 @@
       }
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
-  },
-  "plugins": [
-    "@nx-dotnet/core"
-  ],
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
+  "plugins": ["@nx-dotnet/core"],
   "generators": {
     "@nrwl/angular": {
       "application": {
@@ -71,5 +58,11 @@
       "style": "scss"
     }
   },
-  "defaultProject": "zapisywarka-rejestracja"
+  "defaultProject": "zapisywarka-rejestracja",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    }
+  }
 }

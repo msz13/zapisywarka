@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/shared/ui-kit/src",
   "prefix": "sui",
@@ -22,14 +23,12 @@
       }
     },
     "storybook": {
-      "executor": "@nrwl/storybook:storybook",
+      "executor": "@storybook/angular:start-storybook",
       "options": {
-        "uiFramework": "@storybook/angular",
         "port": 4400,
-        "config": {
-          "configFolder": "libs/web/shared/ui-kit/.storybook"
-        },
-        "projectBuildConfig": "web-shared-ui-kit:build-storybook"
+        "configDir": "libs/web/shared/ui-kit/.storybook",
+        "browserTarget": "web-shared-ui-kit:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {
@@ -38,15 +37,13 @@
       }
     },
     "build-storybook": {
-      "executor": "@nrwl/storybook:build",
+      "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "uiFramework": "@storybook/angular",
-        "outputPath": "dist/storybook/shared-ui",
-        "config": {
-          "configFolder": "libs/web/shared/ui-kit/.storybook"
-        },
-        "projectBuildConfig": "web-shared-ui-kit:build-storybook"
+        "outputDir": "dist/storybook/shared-ui",
+        "configDir": "libs/web/shared/ui-kit/.storybook",
+        "browserTarget": "web-shared-ui-kit:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {

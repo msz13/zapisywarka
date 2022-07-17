@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/web/catalog/catalog-feature/src",
   "projectType": "library",
   "targets": {
@@ -18,14 +19,12 @@
       }
     },
     "storybook": {
-      "executor": "@nrwl/storybook:storybook",
+      "executor": "@storybook/angular:start-storybook",
       "options": {
-        "uiFramework": "@storybook/angular",
         "port": 4400,
-        "config": {
-          "configFolder": "libs/web/catalog/catalog-feature/.storybook"
-        },
-        "projectBuildConfig": "web-catalog-catalog-feature:build-storybook"
+        "configDir": "libs/web/catalog/catalog-feature/.storybook",
+        "browserTarget": "web-catalog-catalog-feature:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {
@@ -34,15 +33,13 @@
       }
     },
     "build-storybook": {
-      "executor": "@nrwl/storybook:build",
+      "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "uiFramework": "@storybook/angular",
-        "outputPath": "dist/storybook/catalog-feature-catalog",
-        "config": {
-          "configFolder": "libs/web/catalog/catalog-feature/.storybook"
-        },
-        "projectBuildConfig": "web-catalog-catalog-feature:build-storybook"
+        "outputDir": "dist/storybook/catalog-feature-catalog",
+        "configDir": "libs/web/catalog/catalog-feature/.storybook",
+        "browserTarget": "web-catalog-catalog-feature:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {
