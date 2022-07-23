@@ -19,7 +19,7 @@ jobs:
   build-web:
     runs-on: ubuntu-latest
     needs: check-affected
-    if: contains(needs.check-affected.outputs.affacted, zapisywarka-rejestracja)
+    if: contains(needs.check-affected.outputs.affacted, 'zapisywarka-rejestracja')
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
