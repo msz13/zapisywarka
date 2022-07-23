@@ -23,12 +23,17 @@ jobs:
           cache: 'npm'               
       - name: Install dependencies        
         run: npm install    
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2    
+      - run: |
+          echo "BASE: ${{ env.NX_BASE }}"
+          echo "HEAD: ${{ env.NX_HEAD }}"
       - name: lint
-        run:  npx nx affected --base=main --head=HEAD --target=lint
+        run:  npx nx affected --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }} --target=lint
       - name: test
-        run:  npx nx affected --base=main --head=HEAD --target=test
+        run:  npx nx affected --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}  --target=test
       - name: build
-        run:  npx nx affected --base=main --head=HEAD --target=build
+        run:  npx nx affected --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}  --target=build
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
