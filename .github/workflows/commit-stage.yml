@@ -1,4 +1,4 @@
-name: Build API
+name: Commit-Stage
 
 on:
   push:
@@ -11,7 +11,15 @@ jobs:
     outputs:
       affacted: ${{ steps.checkForAffected.outputs.affected }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2        
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:         
+          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+          node-version: 14.18.1                
+      - name: Install dependencies
+        working-directory: ./src/Zapisywarka.WEB
+        run: npm install  
       - name: Check for Affected Apps
         uses: dkhunt27/action-nx-affected-list@v3
         id: checkForAffected
