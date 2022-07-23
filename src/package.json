@@ -25,8 +25,7 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help",
-    "prepare": "nx g @nx-dotnet/core:restore",
+    "help": "nx help",    
     "remove-db": "docker rm -f postgres-db",
     "start-local-cluster": "sh ./tools/deployment/local-cluster/start-local-cluster.sh",
     "stop-local-cluster": "sh ./tools/deployment/local-cluster/stop-local-cluster.sh"
