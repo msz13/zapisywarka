@@ -4,6 +4,9 @@ on:
   push:
     # Publish `main` as Docker `latest` image.
     branches: ["main"]
+defaults:
+  run:
+    working-directory: src
 
 jobs:  
 
@@ -18,8 +21,7 @@ jobs:
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.18.1
           chache: 'npm'               
-      - name: Install dependencies
-        working-directory: ./src
+      - name: Install dependencies        
         run: npm install    
       - name: lint
         run:  npx nx affected --target=lint
