@@ -18,7 +18,7 @@ jobs:
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.18.1                
       - name: Install dependencies
-        working-directory: ./src/Zapisywarka.WEB
+        working-directory: ./src
         run: npm install  
       - name: Check for Affected Apps
         uses: dkhunt27/action-nx-affected-list@v3
