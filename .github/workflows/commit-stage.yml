@@ -19,7 +19,7 @@ jobs:
           node-version: 14.18.1
           chache: 'npm'               
       - name: Install dependencies
-        working-directory: ./src/Zapisywarka.WEB
+        working-directory: ./src
         run: npm install    
       - name: lint
         run:  npx nx affected --target=lint
