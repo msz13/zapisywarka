@@ -20,7 +20,7 @@ jobs:
         with:         
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.18.1
-          chache: 'npm'               
+          cache: 'npm'               
       - name: Install dependencies        
         run: npm install    
       - name: lint
@@ -45,18 +45,8 @@ jobs:
           # Password or personal access token used to log against the Docker registry
           password:
             ${{ secrets.GITHUB_TOKEN }}
-            # Log out from the Docker registry at the end of a job
-
-      
-
-      - name: Lint, Test, Deploy
-        uses: mansagroup/nrwl-nx-action@v2
-        with:
-          targets: lint, test, docker
-          affacted: true,
-          args: --configuration=production
-      #todo save test results
-
+            # Log out from the Docker registry at the end of a job   
+  
       - name: Save build artifacts
         uses: actions/upload-artifact@v2
         with:
