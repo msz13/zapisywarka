@@ -112,7 +112,7 @@
           "push": true,
           "platforms": ["linux/arm64"],
           "metadana": {
-            "images": ["name/app", "ghcr.io/username/msz13/zapisywarka-rejestracja"],
+            "images": ["name/app", "ghcr.io/msz13/zapisywarka-rejestracja"],
             "tags": ["type=schedule"]
           }
         }
