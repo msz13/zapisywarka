@@ -29,15 +29,15 @@ jobs:
           echo "BASE: ${{ env.NX_BASE }}"
           echo "HEAD: ${{ env.NX_HEAD }}"
       - name: lint
-        run:  npx nx run-many --target=lint --all --exclude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test
+        run:  npx nx run-many --target=lint --all --exclude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test --parell=3
       - name: test
-        run:  npx nx run-many --all --target=test --exclude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test
+        run:  npx nx run-many --all --target=test --exclude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test --parell=3
       - name: build
         run:  npx nx run zapisywarka-rejestracja:build -c production
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+        uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v2
       - name: Docker Login
         # You may pin to the exact commit or the version.
         # uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
@@ -50,7 +50,9 @@ jobs:
           # Password or personal access token used to log against the Docker registry
           password:
             ${{ secrets.GITHUB_TOKEN }}
-            # Log out from the Docker registry at the end of a job   
+            # Log out from the Docker registry at the end of a job
+      - name: Build image
+        run: nx run zapisywarka-rejestracja:docker -c production
   
       - name: Save build artifacts
         uses: actions/upload-artifact@v2

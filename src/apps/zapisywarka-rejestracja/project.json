@@ -105,7 +105,17 @@
         "tags": ["zapisywarka-rejestracja:latest"],
         "file": "./apps/zapisywarka-rejestracja/Dockerfile"
       },
-      "dependsOn": ["build"]
+      "dependsOn": ["build"],
+      "configurations": {
+        "production": {
+          "push": true,
+          "platforms": ["linux/arm64"],
+          "metadana": {
+            "images": ["name/app", "ghcr.io/username/msz13/zapisywarka-rejestracja"],
+            "tags": ["type=schedule"]
+          }
+        }
+      }
     },
     "deploy-local": {
       "executor": "@nrwl/workspace:run-commands",

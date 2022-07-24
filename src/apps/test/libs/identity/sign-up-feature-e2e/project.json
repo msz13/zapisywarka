@@ -12,7 +12,8 @@
       },
       "configurations": {
         "ci": {
-          "devServerTarget": "web-identity-sign-up-feature:storybook:ci"
+          "devServerTarget": "web-identity-sign-up-feature:storybook:ci",
+          "headless": true
         }
       }
     },
