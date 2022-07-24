@@ -52,7 +52,7 @@ jobs:
             ${{ secrets.GITHUB_TOKEN }}
             # Log out from the Docker registry at the end of a job
       - name: Build image
-        run: nx run zapisywarka-rejestracja:docker -c production
+        run: npx nx run zapisywarka-rejestracja:docker -c production
   
       - name: Save build artifacts
         uses: actions/upload-artifact@v2
