@@ -29,11 +29,11 @@ jobs:
           echo "BASE: ${{ env.NX_BASE }}"
           echo "HEAD: ${{ env.NX_HEAD }}"
       - name: lint
-        run:  npx nx affected --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }} --target=lint
+        run:  npx nx run-many --target=lint --exlude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test
       - name: test
-        run:  npx nx affected --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}  --target=test
+        run:  npx nx npx nx run-many --target=test --exlude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test
       - name: build
-        run:  npx nx affected --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}  --target=build
+        run:  npx nx affected npx nx run-many --target=build --exlude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
