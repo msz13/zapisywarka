@@ -108,6 +108,7 @@
       "dependsOn": ["build"],
       "configurations": {
         "production": {
+          "context": ".",
           "push": true,
           "platforms": ["linux/arm64"],
           "metadana": {
