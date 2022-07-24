@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'ngx-layout-direction-switcher',
   template: `
     <ngx-switcher
@@ -24,7 +25,7 @@ export class LayoutDirectionSwitcherComponent implements OnDestroy {
   directions = NbLayoutDirection;
   currentDirection: NbLayoutDirection;
 
-  @Input() vertical: boolean = false;
+  @Input() vertical = false;
 
   constructor(private directionService: NbLayoutDirectionService) {
     this.currentDirection = this.directionService.getDirection();

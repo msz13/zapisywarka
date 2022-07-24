@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-edit-icon',
   templateUrl: './edit-icon.component.html',
   styleUrls: ['./edit-icon.component.scss'],

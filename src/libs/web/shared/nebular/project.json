@@ -2,7 +2,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/shared/nebular/src",
-  "prefix": "zapisywarka-client-aps",
+  "prefix": "ngx",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
