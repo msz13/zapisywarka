@@ -109,12 +109,9 @@
       "configurations": {
         "production": {
           "context": ".",
-          "push": false,
+          "push": true,
           "platforms": ["linux/arm64"],
-          "metadana": {
-            "images": ["ghcr.io/msz13/zapisywarka-rejestracja"],
-            "tags": ["type=schedule"]
-          }
+          "tags": ["ghcr.io/msz13/zapisywarka-rejestracja:0.1"]
         }
       }
     },
