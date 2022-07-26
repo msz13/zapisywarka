@@ -111,7 +111,11 @@
           "context": ".",
           "push": true,
           "platforms": ["linux/arm64"],
-          "tags": ["ghcr.io/msz13/zapisywarka-rejestracja:0.1"]
+          "tags": ["ghcr.io/msz13/zapisywarka-rejestracja:0.1"],
+          "metadana": {
+            "images": ["ghcr.io/msz13/zapisywarka-rejestracja"],
+            "tags": ["type=semver,pattern={{version}}","type=sha"]
+          }
         }
       }
     },
