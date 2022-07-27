@@ -20,14 +20,18 @@ jobs:
         with:         
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.18.1
-          cache: 'npm'               
+          cache: 'npm'             
+      - name: Evaluate affected
+        uses: leanix/nx-affected-dependencies-action@v0.2.1
+        id: affected
+        with:
+          project: zapisywarka-rejestracja
+          base: ${{ github.sha }}~1
+          head: ${{ github.sha }}  
       - name: Install dependencies        
         run: npm ci    
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v2    
-      - run: |
-          echo "BASE: ${{ env.NX_BASE }}"
-          echo "HEAD: ${{ env.NX_HEAD }}"
+        uses: nrwl/nx-set-shas@v2  
       - name: lint
         run:  npx nx run-many --target=lint --all --exclude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test --parell=3
       - name: test
