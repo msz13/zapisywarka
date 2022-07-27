@@ -14,8 +14,8 @@ resources:
 - ingress.yml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-images:
-- name: zapisywarka-rejestracja
-  newName: k3d-zapisywarka.localhost:9009/zapisywarka-rejestracja
-  newTag: 15e406c63b14
-- name: zapisywarka-rejestracja:latest
+#images:
+#- name: zapisywarka-rejestracja
+#  newName: k3d-zapisywarka.localhost:9009/zapisywarka-rejestracja
+#  newTag: 15e406c63b14
+#- name: zapisywarka-rejestracja:latest
