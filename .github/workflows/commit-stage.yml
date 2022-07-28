@@ -29,8 +29,8 @@ jobs:
         id: affected
         with:
           project: zapisywarka-rejestracja
-          base: ${{ github.sha }}~3
-          head: ${{ github.sha }} 
+          base: HEAD~3
+          head: main
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2  
       - name: lint
