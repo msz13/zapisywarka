@@ -1,14 +1,17 @@
-name: Commit-Stage
+name: Web - Commit Stage
 
 on:
   push:
     # Publish `main` as Docker `latest` image.
     branches: ["main"]
+    paths:
+      - "src/aps/zapisywarka-rejestracja/**"
+      - "src/libs/web/**"  
 defaults:
   run:
     working-directory: src
 
-jobs:  
+jobs: 
 
   build-web:
     runs-on: ubuntu-latest
@@ -20,24 +23,13 @@ jobs:
         with:         
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.18.1
-          cache: 'npm'   
-      - name: Debuh
-        run: npx cowsay "moo"        
+          cache: 'npm'            
       - name: Install dependencies        
-        run: npm ci    
-      - name: Evaluate affected
-        uses: leanix/nx-affected-dependencies-action@v0.2.1
-        id: affected
-        with:
-          project: zapisywarka-rejestracja
-          base: HEAD~3
-          head: main
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v2  
+        run: npm ci         
       - name: lint
         run:  npx nx run-many --target=lint --all --exclude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test --parell=3
       - name: test
-        run:  npx nx run-many --all --target=test --exclude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test --parell=3
+        run:  npx nx affected --target=test base=HEAD~3 head=main --parell=3
       - name: build
         run:  npx nx run zapisywarka-rejestracja:build -c production
       - name: Set up QEMU
