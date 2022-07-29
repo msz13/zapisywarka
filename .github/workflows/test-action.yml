@@ -5,11 +5,7 @@ on:
     # Publish `main` as Docker `latest` image.
     branches: ["main"]
      
-defaults:
-  run:
-    working-directory: src
-
-    
+   
 jobs: 
 
   check-affected:
@@ -24,6 +20,7 @@ jobs:
           node-version: 14.18.1
           cache: 'npm' 
       - name: check-affected
+        working-directory: src
         run: |
           npx nx graph --focus=zapisywarka-rejestracja --file=output.json
           nx print-affected --head=main --base=HEAD~1  | jq --argfile graph ./output.json '.projects | map(select(. as $project | $graph.graph.nodes | has($project))) '
