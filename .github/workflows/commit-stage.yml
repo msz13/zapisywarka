@@ -40,7 +40,7 @@ jobs:
       - name: Install dependencies        
         run: npm ci         
       - name: lint
-        run:  npx nx run-many --target=lint --all --exclude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test --parell=3
+        run:  npx nx affected --target=lint --parell=3
       - name: test
         run:  npx nx affected --target=test --base=HEAD~1 --head=main --parell=3
       - name: build
