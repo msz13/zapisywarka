@@ -8,7 +8,7 @@ on:
     paths:
       - "src/apps/zapisywarka-api/**"
       - "src/libs/api/**"
-      - ".github/workflows**"
+     # - ".github/workflows**"
       
 
 jobs:
