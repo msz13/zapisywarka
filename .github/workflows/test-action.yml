@@ -24,6 +24,11 @@ jobs:
           cache: 'npm' 
       - name: install deps
         run: npm i npx
+      - name: Set Shas 
+        uses: nrwl/nx-set-shas@v2
+        with:
+          working-directory: src 
+          workflow-id: test-action.yml
       - name: check-affected
         run: |
           npx nx graph --focus=zapisywarka-rejestracja --file=output.json
