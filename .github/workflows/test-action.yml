@@ -19,6 +19,9 @@ jobs:
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.18.1
           cache: 'npm' 
+      - name: install deps
+        working-directory: src
+        run: npm ci
       - name: check-affected
         working-directory: src
         run: |
