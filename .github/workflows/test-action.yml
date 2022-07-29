@@ -32,5 +32,7 @@ jobs:
       - name: check-affected
         run: |
           npx nx graph --focus=zapisywarka-rejestracja --file=output.json
+          pwd
+          git log -n 2
           npx nx print-affected --head=origin/main --base=origin/main~1  | jq --argfile graph ./output.json '.projects | map(select(. as $project | $graph.graph.nodes | has($project))) '
           
