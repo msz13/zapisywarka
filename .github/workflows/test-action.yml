@@ -25,6 +25,7 @@ jobs:
       - name: install deps
         run: npm i npx
       - name: Set Shas 
+        run: pwd
         uses: nrwl/nx-set-shas@v2
         with:
           working-directory: src 
