@@ -3,10 +3,7 @@ name: Web - Commit Stage
 on:
   push:
     # Publish `main` as Docker `latest` image.
-    branches: ["fake"]
-    paths:
-      - "src/aps/zapisywarka-rejestracja/**"
-      - "src/libs/web/**"  
+    branches: ["main"] 
 defaults:
   run:
     working-directory: src
@@ -25,14 +22,25 @@ jobs:
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.18.1
           cache: 'npm'  
-      - name: check-affected
-        run: nx print-affected --head=main --base=HEAD~1  | jq --argfile graph ./output.json '.projects | map(select(. as $project | $graph.graph.nodes | has($project))) '          
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+            # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-          
       - name: Install dependencies        
         run: npm ci         
       - name: lint
         run:  npx nx run-many --target=lint --all --exclude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test --parell=3
       - name: test
-        run:  npx nx affected --target=test base=HEAD~3 head=main --parell=3
+        run:  npx nx affected --target=test base=HEAD~1 head=main --parell=3
       - name: build
         run:  npx nx run zapisywarka-rejestracja:build -c production
       - name: Set up QEMU
