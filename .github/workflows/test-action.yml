@@ -34,19 +34,13 @@ jobs:
           workflow-id: commit-stage.yml
       - name: check affacted
         id: check-affected
-        run: |          
-          export affacted=$( echo 'test' )
-          echo $affected 
-          echo "::set-output name=affected-apps::$affected"
+        run: echo "::set-output name=affected-apps::$(npx nx print-affected --type=app --select=projects --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }})"
       - name: check-affected-LIBS
         run: |
-          export affacted=$(npx nx print-affected --type=app --select=projects --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }})
-          echo $affected
-          echo "::set-output name=affected-apps::$affected"
           npx nx graph --focus=zapisywarka-rejestracja --file=output.json
           npx nx print-affected --head=main --base=main~1  | jq --argfile graph ./output.json '.projects | map(select(. as $project | $graph.graph.nodes | has($project))) '    
     outputs:
-      affacted-apps: ${{ steps.check-affected-LIBS.outputs.affected-apps }} 
+      affacted-apps: ${{ steps.check-affected.outputs.affected-apps }} 
       
   test:
     runs-on: ubuntu-latest
