@@ -35,8 +35,8 @@ jobs:
       - name: check affacted
         id: check-affected
         run: |
-          export affacted=npx nx print-affected --type=app --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }}
-          echo $affected
+          export affacted=$(npx nx print-affected --type=app --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }} )
+          echo $affected 
           echo "::set-output name=affected-apps::$affected"
       - name: check-affected-LIBS
         run: |
