@@ -11,6 +11,39 @@ defaults:
     
 jobs: 
 
+  check-affected:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:         
+          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+          node-version: 14.18.1
+          cache: 'npm'   
+      - name: install npx
+        run: npm install -g npx
+      - name: Set Shas         
+        uses: nrwl/nx-set-shas@v2
+        id: setSHAs
+        with:
+          working-directory: src 
+          workflow-id: commit-stage.yml
+      - name: check affacted
+        id: check-affected
+        run: |
+          export affacted=npx nx print-affected type=app --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }}
+          echo $affected
+          echo "::set-output name=affected-apps::$affected"
+    outputs:
+      affacted-apps: ${{ steps.check-affected.outputs. }} 
+
+       
+    
+
   build-web:
     runs-on: ubuntu-latest
     
@@ -44,7 +77,7 @@ jobs:
         id: setSHAs
         with:
           working-directory: src 
-          workflow-id: test-action.yml
+          workflow-id: commit-stage.yml
       - name: lint
         run:  npx nx affected --target=lint --parell=3 --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
       - name: test
