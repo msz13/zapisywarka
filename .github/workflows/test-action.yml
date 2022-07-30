@@ -40,11 +40,13 @@ jobs:
           echo "::set-output name=affected-apps::$affected"
       - name: check-affected-LIBS
         run: |
-          npx nx print-affected --type=app --select=projects --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }}
+          export affacted=$(npx nx print-affected --type=app --select=projects --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }})
+          echo $affected
+          echo "::set-output name=affected-apps::$affected"
           npx nx graph --focus=zapisywarka-rejestracja --file=output.json
           npx nx print-affected --head=main --base=main~1  | jq --argfile graph ./output.json '.projects | map(select(. as $project | $graph.graph.nodes | has($project))) '    
     outputs:
-      affacted-apps: ${{ steps.check-affected.outputs.affected-apps }} 
+      affacted-apps: ${{ steps.check-affected-LIBS.outputs.affected-apps }} 
       
   test:
     runs-on: ubuntu-latest
