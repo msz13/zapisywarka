@@ -41,12 +41,11 @@ jobs:
     outputs:
       affacted-apps: ${{ steps.check-affected.outputs. }} 
 
-       
-    
+           
 
   build-web:
     runs-on: ubuntu-latest
-    
+    needs: check-affected
     steps:
       - uses: actions/checkout@v2
         with:
