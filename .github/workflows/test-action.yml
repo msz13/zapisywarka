@@ -25,7 +25,7 @@ jobs:
           node-version: 14.18.1
           cache: 'npm'   
       - name: install npx
-        run: npm install -g npx
+        run: npm install npx
       - name: Set Shas         
         uses: nrwl/nx-set-shas@v2
         id: setSHAs
@@ -50,5 +50,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: test outputs
         run: echo ${{ needs.check-affected.outputs.affacted-apps }}
