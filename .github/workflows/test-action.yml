@@ -35,8 +35,7 @@ jobs:
       - name: check affacted
         id: check-affected
         run: |
-          npx nx print-affected --type=app --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }}
-          export affacted=$( echo test )
+          export affacted=$( npx nx print-affected --type=app select=projects --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }} )
           echo $affected 
           echo "::set-output name=affected-apps::$affected"
       - name: check-affected-LIBS
@@ -50,6 +49,7 @@ jobs:
       
   test:
     runs-on: ubuntu-latest
+    needs: check-affected
     steps:
       - uses: actions/checkout@v2
       - name: test outputs
