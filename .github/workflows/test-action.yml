@@ -23,9 +23,7 @@ jobs:
         with:         
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.18.1
-          cache: 'npm'   
-      - name: install npx
-        run: npm install npx
+          cache: 'npm'        
       - name: Set Shas         
         uses: nrwl/nx-set-shas@v2
         id: setSHAs
