@@ -46,6 +46,7 @@ jobs:
 
   build-web:
     runs-on: ubuntu-latest
+    needs: [check-affected]
     if: contains(needs.check-affected.outputs.affacted-apps, 'zapisywarka-rejestracja')    
     env: 
       base-sha: ${{ needs.check-affected.outputs.base }}
