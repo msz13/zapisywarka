@@ -23,9 +23,9 @@ jobs:
         with:         
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.18.1
-          cache: 'npm'   
-      - name: install npx
-        run: npm install -g npx
+          cache: 'npm'         
+      - name: install 
+        run: npm ci     
       - name: Set Shas         
         uses: nrwl/nx-set-shas@v2
         id: setSHAs
@@ -34,17 +34,20 @@ jobs:
           workflow-id: commit-stage.yml
       - name: check affacted
         id: check-affected
-        run: |
-          export affacted=npx nx print-affected type=app --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }}
-          echo $affected
-          echo "::set-output name=affected-apps::$affected"
+        run: echo "::set-output name=affected-apps::$(npx nx print-affected --type=app --select=projects --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }})"     
     outputs:
-      affacted-apps: ${{ steps.check-affected.outputs. }} 
+      affacted-apps: ${{ steps.check-affected.outputs.affected-apps }} 
+      base-sha: ${{ steps.setSHAs.outputs.base }}
+      head-sha: ${{ steps.setSHAs.outputs.head }}
 
            
 
   build-web:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
+    if: contains(needs.check-affected.outputs.affacted-apps, 'zapisywarka-rejestracja')    
+    env: 
+      base-sha: ${{ needs.check-affected.outputs.base }}
+      head-sha: ${{ needs.check-affacted.outputs.head }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -69,17 +72,11 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-          
       - name: Install dependencies        
-        run: npm ci         
-      - name: Set Shas         
-        uses: nrwl/nx-set-shas@v2
-        id: setSHAs
-        with:
-          working-directory: src 
-          workflow-id: commit-stage.yml
+        run: npm ci      
       - name: lint
-        run:  npx nx affected --target=lint --parell=3 --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
+        run:  npx nx affected --target=lint --parell=3 --base=$base-sha --head=$head-sha
       - name: test
-        run:  npx nx affected --target=test --base=HEAD~1 --head=main --parell=3
+        run:  npx nx affected --target=test --base=$base-sha --head=$head-sha --parell=3
       - name: build
         run:  npx nx run zapisywarka-rejestracja:build -c production
       - name: Set up QEMU
@@ -91,8 +88,7 @@ jobs:
         # uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
         run:  echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin              
       - name: Build image
-        run: npx nx run zapisywarka-rejestracja:docker -c production --tags=ghcr.io/msz13/zapisywarka-rejestracja:${{ github.sha }}
-       
+        run: npx nx run zapisywarka-rejestracja:docker -c production --tags=ghcr.io/msz13/zapisywarka-rejestracja:${{ github.sha }}       
       - name: Save build artifacts
         uses: actions/upload-artifact@v2
         with:

@@ -25,7 +25,7 @@ jobs:
           node-version: 14.18.1
           cache: 'npm'   
       - name: install npx
-        run: npm install --no-package-lock npx     
+        run: npm install npx     
       - name: Set Shas         
         uses: nrwl/nx-set-shas@v2
         id: setSHAs
