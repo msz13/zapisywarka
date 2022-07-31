@@ -23,7 +23,9 @@ jobs:
         with:         
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.18.1
-          cache: 'npm'         
+          cache: 'npm' 
+      - name: debug Cache
+        run: echo $(npm config get cache)        
       - name: install 
         run: npm ci     
       - name: Set Shas         
@@ -77,7 +79,9 @@ jobs:
       - name: Install dependencies        
         run: npm ci  
       - name: Debug 
-        run:  echo $BASE_SHA and $HEAD_SHA    
+        run: | 
+          echo $HEAD_SHA
+          echo $BASE_SHA    
       - name: lint
         run:  npx nx affected --target=lint --parell=3 --base=$BASE_SHA --head=$HEAD_SHA
       - name: test
