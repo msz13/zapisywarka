@@ -49,8 +49,8 @@ jobs:
     needs: [check-affected]
     if: contains(needs.check-affected.outputs.affacted-apps, 'zapisywarka-rejestracja')    
     env: 
-      base-sha: ${{ needs.check-affected.outputs.base-sha }}
-      head-sha: ${{ needs.check-affacted.outputs.head-sha }}
+      BASE_SHA: ${{ needs.check-affected.outputs.base-sha }}
+      HEAD_SHA: ${{ needs.check-affacted.outputs.head-sha }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -77,11 +77,11 @@ jobs:
       - name: Install dependencies        
         run: npm ci  
       - name: Debug 
-        run:  echo $base-sha and $head-sha    
+        run:  echo $BASE_SHA and $HEAD_SHA    
       - name: lint
-        run:  npx nx affected --target=lint --parell=3 --base=$base-sha --head=$head-sha
+        run:  npx nx affected --target=lint --parell=3 --base=$BASE_SHA --head=$HEAD_SHA
       - name: test
-        run:  npx nx affected --target=test --base=$base-sha --head=$head-sha --parell=3
+        run:  npx nx affected --target=test --base=$BASE_SHA --head=$HEAD_SHA --parell=3
       - name: build
         run:  npx nx run zapisywarka-rejestracja:build -c production
       - name: Set up QEMU
