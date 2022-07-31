@@ -64,7 +64,7 @@ jobs:
           node-version: 14.18.1
           cache: 'npm'  
       - name: Debug cache path
-        run: cd ~ && echo pwd
+        run: cd ~ && pwd
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
