@@ -49,8 +49,8 @@ jobs:
     needs: [check-affected]
     if: contains(needs.check-affected.outputs.affacted-apps, 'zapisywarka-rejestracja')    
     env: 
-      base-sha: ${{ needs.check-affected.outputs.base }}
-      head-sha: ${{ needs.check-affacted.outputs.head }}
+      base-sha: ${{ needs.check-affected.outputs.base-sha }}
+      head-sha: ${{ needs.check-affacted.outputs.head-sha }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -75,7 +75,9 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-          
       - name: Install dependencies        
-        run: npm ci      
+        run: npm ci  
+      - name: Debug 
+        run:  echo $base-sha and $head-sha    
       - name: lint
         run:  npx nx affected --target=lint --parell=3 --base=$base-sha --head=$head-sha
       - name: test
