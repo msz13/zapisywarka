@@ -9,48 +9,10 @@ defaults:
     working-directory: src
 
     
-jobs: 
-
-  check-affected:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.5
-        with:         
-          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
-          node-version: 18.7.0
-          cache: 'npm' 
-      - name: debug Cache
-        run: echo $(npm config get cache)  
-      - name: Set Shas         
-        uses: nrwl/nx-set-shas@v2
-        id: setSHAs
-        with:
-          working-directory: src 
-          workflow-id: commit-stage.yml
-      - name: check affacted
-        id: check-affected
-        run: echo "::set-output name=affected-apps::$(npx nx print-affected --type=app --select=projects --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }})" 
-      - name: Debug
-        run: echo ${{ steps.check-affected.outputs.affected-apps }} 
-    outputs:
-      affacted-apps: ${{ steps.check-affected.outputs.affected-apps }} 
-      base-sha: ${{ steps.setSHAs.outputs.base }}
-      head-sha: ${{ steps.setSHAs.outputs.head }}
-
-           
+jobs:           
 
   build-web:
-    runs-on: ubuntu-latest
-    needs: [check-affected]
-    if: contains(needs.check-affected.outputs.affacted-apps, 'zapisywarka-rejestracja')    
-    env: 
-      BASE_SHA: ${{ needs.check-affected.outputs.base-sha }}
-      HEAD_SHA: ${{ needs.check-affacted.outputs.head-sha }}
+    runs-on: ubuntu-latest  
     steps:
       - uses: actions/checkout@v2
         with:
@@ -75,15 +37,17 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-          
       - name: Install dependencies        
-        run: npm install
-      - name: Debug 
-        run: | 
-          echo 'head $HEAD_SHA'
-          echo 'base $BASE_SHA'    
+        run: npm ci
+      - name: Set Shas         
+        uses: nrwl/nx-set-shas@v2
+        id: setSHAs
+        with:
+          working-directory: src 
+          workflow-id: commit-stage.yml   
       - name: lint
-        run:  npx nx affected --target=lint --parell=3 --base=$BASE_SHA --head=$HEAD_SHA
+        run:  npx nx affected --target=lint --parell=3 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
       - name: test
-        run:  npx nx affected --target=test --base=$BASE_SHA --head=$HEAD_SHA --parell=3
+        run:  npx nx affected --target=test  --parell=3
       - name: build
         run:  npx nx run zapisywarka-rejestracja:build -c production
       - name: Set up QEMU
