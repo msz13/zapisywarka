@@ -61,10 +61,8 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:         
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
-          node-version: 16.16.0
-          cache: 'npm'  
-      - name: Debug cache path
-        run: cd ~ && pwd
+          node-version: 14.18.1
+          cache: 'npm'
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
@@ -79,11 +77,11 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-          
       - name: Install dependencies        
-        run: npm ci  
+        run: npm install
       - name: Debug 
         run: | 
-          echo $HEAD_SHA
-          echo $BASE_SHA    
+          echo 'head $HEAD_SHA'
+          echo 'base $BASE_SHA'    
       - name: lint
         run:  npx nx affected --target=lint --parell=3 --base=$BASE_SHA --head=$HEAD_SHA
       - name: test
@@ -99,11 +97,7 @@ jobs:
         # uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
         run:  echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin              
       - name: Build image
-        run: npx nx run zapisywarka-rejestracja:docker -c production        
-      - name: Save build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: dotnet-build-assemblies
-          path: src/Zapisywarka.API/build/
+        run: npx nx run zapisywarka-rejestracja:docker -c production --tags=ghcr.io/msz13/zapisywarka-rejestracja:$(date +%D+%T)      
+      
 
   
