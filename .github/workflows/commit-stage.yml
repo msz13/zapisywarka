@@ -99,7 +99,7 @@ jobs:
         # uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
         run:  echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin              
       - name: Build image
-        run: npx nx run zapisywarka-rejestracja:docker -c production --tags=ghcr.io/msz13/zapisywarka-rejestracja:${{ github.sha }}       
+        run: npx nx run zapisywarka-rejestracja:docker -c production        
       - name: Save build artifacts
         uses: actions/upload-artifact@v2
         with:
