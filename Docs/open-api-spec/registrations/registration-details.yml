@@ -1,0 +1,30 @@
+RegistrationDetails:
+      type: object
+      properties:
+          id: 
+            type: string
+          reservationNumber:
+            type: string
+          totalCost:
+            type: number
+          offerId: 
+            type: string
+          receptionPassword:
+             type: string
+          comments: 
+            type: string
+          offerItems:
+             type: array
+             items: 
+               $ref: '#/ReservedItem'
+ReservedItem: 
+      type: object
+      properties:
+        reservedItemId:
+          type: integer
+        offerItemId:
+          type: string
+        quantity:
+          type: integer
+        cost: 
+          type: number

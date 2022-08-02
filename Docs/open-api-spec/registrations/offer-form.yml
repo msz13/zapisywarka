@@ -1,0 +1,20 @@
+OfferForm:
+      type: object
+      properties:
+        offerId: 
+          type: string
+        name: 
+          type: string
+        offerItems:
+          type: array
+          items:
+            $ref: '#/OfferItems'
+OfferItems:
+  type: object
+  properties:
+    offerItemId:
+      type: string
+    name: 
+      type: string
+    price:
+      type: number

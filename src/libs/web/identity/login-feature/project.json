@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/identity/login-feature/src",
   "prefix": "ifl",
@@ -22,14 +23,12 @@
       }
     },
     "storybook": {
-      "executor": "@nrwl/storybook:storybook",
+      "executor": "@storybook/angular:start-storybook",
       "options": {
-        "uiFramework": "@storybook/angular",
         "port": 4400,
-        "config": {
-          "configFolder": "libs/web/identity/login-feature/.storybook"
-        },
-        "projectBuildConfig": "web-identity-login-feature:build-storybook"
+        "configDir": "libs/web/identity/login-feature/.storybook",
+        "browserTarget": "web-identity-login-feature:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {
@@ -38,16 +37,14 @@
       }
     },
     "build-storybook": {
-      "executor": "@nrwl/storybook:build",
+      "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "uiFramework": "@storybook/angular",
-        "outputPath": "dist/storybook/web-identity-login-feature",
-        "config": {
-          "configFolder": "libs/web/identity/login-feature/.storybook"
-        },
-        "projectBuildConfig": "web-identity-login-feature:build-storybook",
-        "styles": ["libs/web/shared/material/src/zapisywarka-theme.scss"]
+        "styles": ["libs/web/shared/material/src/zapisywarka-theme.scss"],
+        "outputDir": "dist/storybook/web-identity-login-feature",
+        "configDir": "libs/web/identity/login-feature/.storybook",
+        "browserTarget": "web-identity-login-feature:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {

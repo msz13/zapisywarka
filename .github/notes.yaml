@@ -1,0 +1,13 @@
+jobs:
+  check-affected:
+    runs-on: ubuntu-latest
+    outputs:
+      affected: ${{ steps.nx-changes.outputs.changed-apps }}
+    steps:
+      - uses: actions/checkout@v2            
+      - name: Detect changed directories
+        uses: gagle/nx-check-changes@v1.0.0
+        id: nx-changes
+
+        needs: check-affected
+    if: contains(needs.check-affected.outputs.affacted, 'apps/zapisywarka-rejestracja')

@@ -11,6 +11,7 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-text-search',
   templateUrl: './text-search.component.html',
   styleUrls: ['./text-search.component.scss'],
@@ -23,7 +24,6 @@ export class TextSearchComponent implements OnInit, OnDestroy {
 
   @Output() searchTerm = new EventEmitter<string>();
 
-  constructor() {}
 
   ngOnInit(): void {
     this.search.valueChanges

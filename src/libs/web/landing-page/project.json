@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/landing-page/src",
   "prefix": "zapisywarka-client-aps",
@@ -22,14 +23,12 @@
       }
     },
     "storybook": {
-      "executor": "@nrwl/storybook:storybook",
+      "executor": "@storybook/angular:start-storybook",
       "options": {
-        "uiFramework": "@storybook/angular",
         "port": 4400,
-        "config": {
-          "configFolder": "libs/web/landing-page/.storybook"
-        },
-        "projectBuildConfig": "web-landing-page:build-storybook"
+        "configDir": "libs/web/landing-page/.storybook",
+        "browserTarget": "web-landing-page:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {
@@ -38,15 +37,13 @@
       }
     },
     "build-storybook": {
-      "executor": "@nrwl/storybook:build",
+      "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "uiFramework": "@storybook/angular",
-        "outputPath": "dist/storybook/landing-page",
-        "config": {
-          "configFolder": "libs/web/landing-page/.storybook"
-        },
-        "projectBuildConfig": "web-landing-page:build-storybook"
+        "outputDir": "dist/storybook/landing-page",
+        "configDir": "libs/web/landing-page/.storybook",
+        "browserTarget": "web-landing-page:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {

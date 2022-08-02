@@ -1,0 +1,25 @@
+openapi: '3.0.2'
+info:
+  title: Zapisywarka
+  version: '1.0'
+servers:
+  - url: https://api.zapisywarka.pl
+  - url: https://test.api.zapisywarka.pl
+paths: 
+  /users:
+    $ref: './identity/users.yml'          
+  /users/login:
+    $ref: './identity/login.yml'  
+  /users/me:
+    $ref: './identity/me.yml'
+  /offers/{offerId}:
+    $ref: 'registrations/offer.yml' 
+  /offers/{offerId}/registration:
+    $ref: 'registrations/registrations.yml'          
+
+ 
+          
+   
+     
+
+    

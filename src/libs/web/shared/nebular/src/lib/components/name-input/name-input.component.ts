@@ -8,6 +8,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-name-input',
   templateUrl: './name-input.component.html',
   styleUrls: ['./name-input.component.scss'],

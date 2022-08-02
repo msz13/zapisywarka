@@ -9,6 +9,6 @@
 * **Oferta zapisów** - zbiór pozycji proponowanych klientom, w określonym czasie i ilości
 * **Pozycja** - element oferty - produkty i usługi, na które zbierane są zapisy
 * **Reguły zapisów** - zasady na których zbiera się zapisy
-* **Zapis** - rezerwacja produktu lub usługi
+* **Rezerwacja** - rezerwacja produktów lub usług wskazanych w ofercie
 * **Formularz zapisów** - narzędzie za pomocą, którego wprowadza się zapisy
 

@@ -1,0 +1,51 @@
+name: Test action
+
+
+on:
+  push:
+    # Publish `main` as Docker `latest` image.
+    branches: ["main"] 
+defaults:
+  run:
+    working-directory: src
+    
+jobs: 
+
+  check-affected:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:         
+          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+          node-version: 14.18.1
+          cache: 'npm'   
+      - name: install npx
+        run: npm install npx     
+      - name: Set Shas         
+        uses: nrwl/nx-set-shas@v2
+        id: setSHAs
+        with:
+          working-directory: src 
+          workflow-id: commit-stage.yml
+      - name: check affacted
+        id: check-affected
+        run: echo "::set-output name=affected-apps::$(npx nx print-affected --type=app --select=projects --head=${{ steps.setSHAs.outputs.head }} --base=${{ steps.setSHAs.outputs.base }})"
+      - name: check-affected-LIBS
+        run: |
+          npx nx graph --focus=zapisywarka-rejestracja --file=output.json
+          npx nx print-affected --head=main --base=main~1  | jq --argfile graph ./output.json '.projects | map(select(. as $project | $graph.graph.nodes | has($project))) '    
+    outputs:
+      affacted-apps: ${{ steps.check-affected.outputs.affected-apps }} 
+      
+  test:
+    runs-on: ubuntu-latest
+    needs: check-affected
+    steps:
+      - uses: actions/checkout@v2
+      - name: test outputs
+        run: echo ${{ needs.check-affected.outputs.affacted-apps }}

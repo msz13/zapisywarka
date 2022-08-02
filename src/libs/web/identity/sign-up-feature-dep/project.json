@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/identity/sign-up-feature-dep/src",
   "prefix": "app",
@@ -22,14 +23,12 @@
       }
     },
     "storybook": {
-      "executor": "@nrwl/storybook:storybook",
+      "executor": "@storybook/angular:start-storybook",
       "options": {
-        "uiFramework": "@storybook/angular",
         "port": 4400,
-        "config": {
-          "configFolder": "libs/web/identity/sign-up-feature-dep/.storybook"
-        },
-        "projectBuildConfig": "web-identity-sign-up-feature-dep:build-storybook"
+        "configDir": "libs/web/identity/sign-up-feature-dep/.storybook",
+        "browserTarget": "web-identity-sign-up-feature-dep:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {
@@ -38,15 +37,13 @@
       }
     },
     "build-storybook": {
-      "executor": "@nrwl/storybook:build",
+      "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "uiFramework": "@storybook/angular",
-        "outputPath": "dist/storybook/web-identity-sign-up-feature",
-        "config": {
-          "configFolder": "libs/web/identity/sign-up-feature-dep/.storybook"
-        },
-        "projectBuildConfig": "web-identity-sign-up-feature-dep:build-storybook"
+        "outputDir": "dist/storybook/web-identity-sign-up-feature",
+        "configDir": "libs/web/identity/sign-up-feature-dep/.storybook",
+        "browserTarget": "web-identity-sign-up-feature-dep:build-storybook",
+        "compodoc": false
       },
       "configurations": {
         "ci": {

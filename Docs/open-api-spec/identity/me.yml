@@ -1,0 +1,20 @@
+get:
+  summary: Get user claim of logged in user
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "user-info.yml"
+    "401":
+      description: Anauthycated user
+      content:
+        application/json:
+          schema:
+            $ref: "../shared/error.yml"
+components:
+  schemas:
+    UserInfo:
+      UserInfo:
+      

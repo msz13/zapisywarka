@@ -15,6 +15,7 @@ import { takeUntil } from 'rxjs/operators';
 import { InputErrorsComponent } from './input-errors.component';
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[appControlError]',
 })
 export class AppControlErrorDirective implements OnInit, OnDestroy {

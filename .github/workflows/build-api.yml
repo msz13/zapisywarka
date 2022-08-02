@@ -2,12 +2,13 @@ name: Build API
 
 on:
   push:
-    # Publish `main` as Docker `latest` image.
+    # Publish `main` as Docker `latest` image. 
     branches:
-      ["main"]
+      - "fake"
     paths:
-      - "src/Zapisywarka.API/**"
-      - ".github/workflows**"
+      - "src/apps/zapisywarka-api/**"
+      - "src/libs/api/**"
+     # - ".github/workflows**"
       
 
 jobs:
@@ -100,3 +101,48 @@ jobs:
             
         - name: Result
           run: echo ${{ steps.docker_build.outputs.digest }}
+
+
+defaults:
+  run:
+    working-directory: src
+
+jobs: 
+
+  build-web:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:         
+          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+          node-version: 14.18.1
+          cache: 'npm'
+      - name: Setup .NET Core SDK 5.0.x
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+            dotnet-version: 6.0.x              
+      - name: lint
+        run:  npx nx affected --head=main --base=HEAD~1 --target=lint --parell=2
+      - name: test
+        run:  npx nx run-many --all --target=test --exclude=-api-catalog-catalog,-api-catalog-catalog-test,api-catalog-catalog-api,api-common-infrastructure,api-common-infrastructure-test, api-identity-identity-api, api-identity-identity-core, api-identity-identity-core-test, db-migrations, zapisywarka-api, zapisywarka-api-test --parell=3
+      - name: build
+        run:  npx nx run zapisywarka-rejestracja:build -c production
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Docker Login
+        # You may pin to the exact commit or the version.
+        # uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
+        run:  echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin              
+      - name: Build image
+        run: npx nx run zapisywarka-rejestracja:docker -c production --tags=ghcr.io/msz13/zapisywarka-rejestracja:${{ github.sha }}
+       
+      - name: Save build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dotnet-build-assemblies
+          path: src/Zapisywarka.API/build/

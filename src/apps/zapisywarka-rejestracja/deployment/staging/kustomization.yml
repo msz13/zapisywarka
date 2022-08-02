@@ -1,0 +1,37 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - "../base"
+
+#namePrefix: zapisywarka
+
+commonLabels:
+  env: staging
+  app: rejestracja
+
+
+images:  
+  - name: zapisywarka-rejestracja:latest
+    newName: ghcr.io/msz13/zapisywarka-rejestracja
+    newTag: 0a0e4eb16b9f9012e3f6339fc3dd02f7e5973243
+
+patchesStrategicMerge:
+  - imagePullSecrets-patch.yml
+
+patches:
+  - target:
+      kind: Ingress
+      name: web
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: test.zapisywarka.pl
+
+secretGenerator:
+- name: regcred
+  files:
+    - .dockerconfigjson  
+  type: kubernetes.io/dockerconfigjson
+
+  

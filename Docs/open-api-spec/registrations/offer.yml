@@ -1,0 +1,21 @@
+ get:
+      description: 'get offer by id'
+      parameters: 
+        - name: offerId
+          in: path
+          schema: 
+            type: string
+          required: true
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: 'offer-form.yml#/OfferForm'
+        '404':
+          description: offer id not exists
+          content:
+            application/json:
+              schema:
+               $ref: '../shared/error.yml'

@@ -2,6 +2,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[appCurrency]',
 })
 export class AppCurrencyDirective {

@@ -10,7 +10,7 @@ export class MainComponent implements OnInit {
   accauntName!: string;
 
   constructor(private sessionQuery: SessionQuery) {}
-
+//comment
   ngOnInit(): void {
     this.accauntName = this.sessionQuery.getValue().userName;
   }
