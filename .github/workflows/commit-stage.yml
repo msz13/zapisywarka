@@ -48,6 +48,8 @@ jobs:
         run:  npx nx affected --target=lint --parell=3 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
       - name: test
         run:  npx nx affected --target=test  --parell=3
+      - name: libs e2e tests
+        run:  npx nx affacted --target=e2e --exclude=zapisywarka-rejestracja --parell=2 -c=ci
       - name: build
         run:  npx nx run zapisywarka-rejestracja:build -c production
       - name: Set up QEMU
