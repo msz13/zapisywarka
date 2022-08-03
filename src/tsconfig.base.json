@@ -67,6 +67,9 @@
       "@zapisywarka/sign-up-form": [
         "libs/sign-up/sign-up-element/src/index.ts"
       ],
+      "@zapisywarka/web/identity/shared-ui": [
+        "libs/web/identity/shared-ui/src/index.ts"
+      ],
       "feature-sign-up": ["libs/sign-up/feature-sign-up/src/index.ts"]
     }
   },

@@ -40,10 +40,13 @@
       "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputDir": "dist/storybook/shared-ui",
-        "configDir": "libs/web/shared/ui-kit/.storybook",
-        "browserTarget": "web-shared-ui-kit:build-storybook",
-        "compodoc": false
+        "uiFramework": "@storybook/angular",
+        "outputPath": "dist/storybook/shared-ui",
+        "config": {
+          "configFolder": "libs/web/shared/ui-kit/.storybook"
+        },
+        "projectBuildConfig": "web-shared-ui-kit:build-storybook",
+        "styles": ["libs/web/shared/material/src/zapisywarka-theme.scss"]
       },
       "configurations": {
         "ci": {

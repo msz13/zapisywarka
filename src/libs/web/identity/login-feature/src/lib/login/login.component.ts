@@ -20,7 +20,7 @@ import { LoginCredentials } from '@zapisywarka-client-aps/web-identity-domain';
 export class LoginComponent {
   loginForm!: UntypedFormGroup;
 
-  @Input() loading!: boolean | null;
+  @Input() loading = false;
 
   @Input() error: string | undefined;
 

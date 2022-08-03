@@ -39,6 +39,7 @@
       "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "styles": ["libs/web/shared/material/src/zapisywarka-theme.scss"],
         "outputDir": "dist/storybook/web-identity-sign-up-feature",
         "configDir": "libs/web/identity/sign-up-feature/.storybook",
         "browserTarget": "web-identity-sign-up-feature:build-storybook",

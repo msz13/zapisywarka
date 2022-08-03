@@ -1,22 +1,17 @@
 import { LoginComponent } from './login.component';
-import { WebSharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 import {
   FormControl,
-  FormGroup,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WebSharedDomainModule } from '@zapisywarka-web/web-shared-domain';
 import { Story } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import {
-  IFormGroup,
   RxwebValidators,
   RxFormBuilder,
 } from '@rxweb/reactive-form-validators';
-import { Component, Output, EventEmitter } from '@angular/core';
-import { WebIdentityLoginFeatureModule } from '../web-identity-login-feature.module';
+import { SharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 
 export default {
   title: 'LoginComponent',
@@ -46,7 +41,7 @@ const Template: Story = (args) => {
   return {
     moduleMetadata: {
       imports: [
-        WebSharedMaterialModule,
+        SharedMaterialModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
         WebSharedDomainModule,

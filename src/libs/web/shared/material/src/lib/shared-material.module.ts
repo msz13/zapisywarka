@@ -37,4 +37,4 @@ const MODULES = [
   imports: [...MODULES],
   exports: [...MODULES],
 })
-export class WebSharedMaterialModule {}
+export class SharedMaterialModule {}

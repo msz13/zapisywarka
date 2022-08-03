@@ -1,8 +1,8 @@
 {
   "version": 2,
   "projects": {
-    "-api-catalog-catalog": "libs//api/catalog/catalog",
-    "-api-catalog-catalog-test": "libs//api/catalog/catalog-test",
+    "-api-catalog-catalog": "libs/api/catalog/catalog",
+    "-api-catalog-catalog-test": "libs/api/catalog/catalog-test",
     "api-catalog-catalog-api": "libs/api/catalog/catalog-api",
     "api-common-infrastructure": "libs/api/common/infrastructure",
     "api-common-infrastructure-test": "libs/api/common/infrastructure-test",
@@ -18,6 +18,7 @@
     "web-catalog-utills-testing": "libs/web/catalog/utills-testing",
     "web-identity-domain": "libs/web/identity/domain",
     "web-identity-login-feature": "libs/web/identity/login-feature",
+    "web-identity-shared-ui": "libs/web/identity/shared-ui",
     "web-identity-sign-up-feature": "libs/web/identity/sign-up-feature",
     "web-identity-sign-up-feature-dep": "libs/web/identity/sign-up-feature-dep",
     "web-identity-utills": "libs/web/identity/utills",

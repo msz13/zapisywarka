@@ -1,4 +1,4 @@
-import { FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { SignUpFormValidators } from './sign-up-form-validator';
 
 describe('sign-up form validators', () => {

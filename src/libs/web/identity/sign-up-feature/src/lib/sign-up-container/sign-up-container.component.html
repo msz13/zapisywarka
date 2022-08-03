@@ -1,1 +1,66 @@
-<p>sign-up-container works!</p>
+<isui-identity-card>
+  <h2 class="mat-title">Zarejestruj się</h2>
+  <isui-error-message
+    *ngIf="error"
+    [message]="error"
+    data-test="server-error"
+  ></isui-error-message>
+  <form [formGroup]="userForm" (submit)="onSubmit()">
+    <mat-form-field
+      appearance="outline"
+      class="full-width-field"
+      data-test="user-name"
+    >
+      <mat-label>Nazwa użytkownika</mat-label>
+      <input matInput formControlName="userName" data-test="username" />
+      <mat-error
+        *ngFor="let message of userForm.controls.userName | formErrorMessages"
+        data-test="validation-error"
+        >{{ message }}</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Hasło</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        data-test="password"
+      />
+      <mat-error
+        *ngFor="let message of userForm.controls.password | formErrorMessages"
+        data-test="validation-error"
+        >{{ message }}</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Potwierdzenie hasła</mat-label>
+      <input
+        matInput
+        formControlName="passwordConfirmation"
+        [errorStateMatcher]="passwordConfirmationErrorStateMatcher"
+        data-test="password-confirmation"
+      />
+      <mat-error
+        *ngFor="
+          let message of userForm.controls.passwordConfirmation
+            | formErrorMessages
+        "
+        data-test="validation-error"
+        >{{ message }}</mat-error
+      >
+      <mat-error data-test="validation-error">{{
+        userForm | formErrorMessages: 'first'
+      }}</mat-error>
+    </mat-form-field>
+    <div>{{ userForm.errors?.passwordNotMatchedConfirmation }}</div>
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      data-test="sign-up-button"
+    >
+      Utwórz konto
+    </button>
+  </form>
+</isui-identity-card>

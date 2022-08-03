@@ -1,6 +1,6 @@
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WebSharedMaterialModule } from '@zapisywarka-web/web-shared-material';
+import { SharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 import { DateTimePickerComponent } from './date-time-picker.component';
 
 export default {
@@ -10,7 +10,7 @@ component: DateTimePickerComponent,};
 export const primary = () => ({
   moduleMetadata: {
     imports: [
-      WebSharedMaterialModule,
+      SharedMaterialModule,
       BrowserAnimationsModule,
       MatNativeDateModule,
     ],

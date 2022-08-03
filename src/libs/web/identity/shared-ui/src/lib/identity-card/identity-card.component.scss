@@ -1,0 +1,32 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '../../../../../shared/material/src/zapisywarka-theme.scss' as theme;
+
+$color-config: mat.get-color-config(theme.$dark-blue-green-theme);
+
+$primary-palette: map.get($color-config, 'primary');
+
+$warn-palette: map.get($color-config, 'warn');
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.title {
+  color: mat.get-color-from-palette($primary-palette, 600);
+}
+
+mat-card {
+  width: 350px;
+  min-height: 400px;
+}
+
+mat-card-content {
+  padding: 1.5em;
+  overflow: hidden;
+}
+

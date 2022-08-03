@@ -1,4 +1,4 @@
-import { WebSharedMaterialModule } from '@zapisywarka-web/web-shared-material';
+import { SharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 import { MainMenuComponent } from './main-menu.component';
 
 export default {
@@ -7,7 +7,7 @@ export default {
 
 export const primary = () => ({
   moduleMetadata: {
-    imports: [WebSharedMaterialModule],
+    imports: [SharedMaterialModule],
   },
   component: MainMenuComponent,
   props: {},

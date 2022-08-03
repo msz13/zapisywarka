@@ -10,7 +10,7 @@ import {
   getValidationError,
 } from '../../support/sign-up-form.po';
 
-describe.skip('identity-sign-up-feature', () => {
+describe('identity-sign-up-feature', () => {
   beforeEach(() =>
     cy.visit('/iframe.html?id=signupcontainercomponent--primary')
   );
@@ -24,23 +24,24 @@ describe.skip('identity-sign-up-feature', () => {
     const userName = 'John';
     const password = 'Pasword_01';
 
-    cy.intercept('POST', 'api/identity/users', {
-      statusCode: 500,
+   cy.intercept('POST', '**/users', {
+      statusCode: 200,
       delay: 300,
-    }).as('new-user');
+    }).as('new-user'); 
 
+   
     getLoadingProgress().should('not.exist');
 
-    getAccessCode().type(accessCode);
-    getNextButton().click();
+    //getAccessCode().type(accessCode);
+    //getNextButton().click();
     getUserName().type(userName);
     getPassword().type(password);
     getPasswordConfirmation().type(password);
     getSignUpButton().click();
-    getLoadingProgress().should('exist');
+   // getLoadingProgress().should('exist');
 
     cy.wait('@new-user').its('request.body').should('deep.equal', {
-      accessCode: accessCode,
+     // accessCode: accessCode,
       userName: userName,
       password: password,
     });
@@ -51,13 +52,13 @@ describe.skip('identity-sign-up-feature', () => {
     const userName = 'John';
     const password = 'Pasword_01';
 
-    cy.intercept('POST', 'api/identity/users', { forceNetworkError: true }).as(
+    cy.intercept('POST', '/users', { forceNetworkError: true }).as(
       'new-user'
     );
 
     getServerError().should('not.exist');
-    getAccessCode().type(accessCode);
-    getNextButton().click();
+    //getAccessCode().type(accessCode);
+    //getNextButton().click();
     getUserName().type(userName);
     getPassword().type(password);
     getPasswordConfirmation().type(password);
@@ -65,7 +66,7 @@ describe.skip('identity-sign-up-feature', () => {
 
     getServerError().should(
       'have.text',
-      ' Wystąpił nieoczekiwany błąd serwera. Spróbuj ponownie '
+      'Wystąpił nieoczekiwany błąd serwera. Spróbuj ponownie'
     );
   });
 
@@ -73,12 +74,8 @@ describe.skip('identity-sign-up-feature', () => {
   //TODO zrobić testy user service, jeśli odpowiedź z serwera nie będzie 200, to wyrzuca błąd
 
   describe('user form', () => {
-    beforeEach(() => {
-      getAccessCode().type('token');
-      getNextButton().click();
-    });
 
-    it('should show validation error when next button is clicked', () => {
+    it('should show requried fields validation errors when next button is clicked', () => {
       getSignUpButton().click();
       getLoadingProgress().should('not.exist');
       getValidationError()
@@ -101,37 +98,36 @@ describe.skip('identity-sign-up-feature', () => {
     });
 
     it('should validate password', () => {
-      getPassword().find('input').type('pasword1').clear().blur();
+      getPassword().type('pasword1').clear().blur();
       getValidationError()
         .should('exist')
         .and('have.text', 'Hasło jest wymagane');
 
-      getPassword().find('input').type('pasword').blur();
+      getPassword().type('pasword').blur();
       getValidationError()
         .should('exist')
-        .and('have.text', 'Hasło musi mieć minimum 8 znaków długości');
+        .and('have.text', 'Hasło musi mieć minimum 8 znaków.');
 
       getPassword()
-        .find('input')
         .type(
           'pasword_pasword_pasword_pasword_pasword_pasword_pasword_pasword_1'
         )
         .blur();
       getValidationError()
         .should('exist')
-        .and('have.text', 'Hasło musi mieć maksimum 64 znaki długości');
+        .and('have.text', 'Hasło musi mieć maksimum 64 znaków.');
     });
 
     it('should validate require password confirmation', () => {
-      getPasswordConfirmation().find('input').type('pasword1').clear().blur();
+      getPasswordConfirmation().type('pasword1').clear().blur();
       getValidationError()
         .should('exist')
         .and('have.text', 'Potwierdzenie hasła jest wymagane');
     });
 
-    it('should validate password confirmation', () => {
-      getPassword().find('input').type('pasword1');
-      getPasswordConfirmation().find('input').type('pas').blur();
+    it('should validate password confirmation same as password', () => {
+      getPassword().type('pasword1');
+      getPasswordConfirmation().type('pas').blur();
       getValidationError()
         .should('exist')
         .and('have.text', 'Hasła nie są takie same');

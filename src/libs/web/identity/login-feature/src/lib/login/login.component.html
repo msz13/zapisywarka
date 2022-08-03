@@ -1,66 +1,56 @@
-<mat-card data-test="sign-up">
-  <mat-card-title class="title">
-    Zapisywarka
-    <mat-progress-bar
-      *ngIf="loading"
-      mode="indeterminate"
-      data-test="loading-indicator"
+<isui-identity-card [loadind]="loading">
+  <h2 class="mat-title">Zaloguj się</h2>
+  <div *ngIf="error" class="server-error" data-test="server-error">
+    {{ error }}
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field
+      appearance="outline"
+      class="full-width-field"
+      style="margin-bottom: 1em"
+      data-test="user-name"
     >
-    </mat-progress-bar>
-  </mat-card-title>
-  <mat-card-content>
-    <h2 class="mat-title">Zaloguj się</h2>
-    <div *ngIf="error" class="server-error" data-test="server-error">
-      {{ error }}
-    </div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <mat-form-field
-        appearance="outline"
-        class="full-width-field"
-        style="margin-bottom: 1em"
-        data-test="user-name"
+      <mat-label>Nazwa użytkownika</mat-label>
+      <input matInput formControlName="userName" data-test="username" />
+      <mat-error data-test="validation-error">{{
+        loginForm.controls.userName.errors?.notEmpty?.message
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Hasło</mat-label>
+      <input
+        [type]="hidePassword ? 'password' : 'text'"
+        matInput
+        formControlName="password"
+        data-test="password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hidePassword = !hidePassword"
       >
-        <mat-label>Nazwa użytkownika</mat-label>
-        <input matInput formControlName="userName" data-test="username" />
-        <mat-error data-test="validation-error">{{
-          loginForm.controls.userName.errors?.notEmpty?.message
-        }}</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="full-width-field">
-        <mat-label>Hasło</mat-label>
-        <input
-          [type]="hidePassword ? 'password' : 'text'"
-          matInput
-          formControlName="password"
-          data-test="password"
-        />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="hidePassword = !hidePassword"
-        >
-          <mat-icon>{{
-            hidePassword ? 'visibility_off' : 'visibility'
-          }}</mat-icon>
-        </button>
-        <mat-error data-test="validation-error">{{
-          loginForm.controls.password.errors?.notEmpty?.message
-        }}</mat-error>
-      </mat-form-field>
-      <mat-checkbox formControlName="rememberMe" data-test="remember-me"
-        >Zapamiętaj mnie</mat-checkbox
+        <mat-icon>{{
+          hidePassword ? 'visibility_off' : 'visibility'
+        }}</mat-icon>
+      </button>
+      <mat-error data-test="validation-error">{{
+        loginForm.controls.password.errors?.notEmpty?.message
+      }}</mat-error>
+    </mat-form-field>
+    <mat-checkbox formControlName="rememberMe" data-test="remember-me"
+      >Zapamiętaj mnie</mat-checkbox
+    >
+    <section class="buttons-section">
+      <a mat-button color="primary" [routerLink]="signUpPath">Utwórz konto</a>
+      <button
+        mat-flat-button
+        type="submit"
+        color="primary"
+        data-test="login-button"
       >
-      <section class="buttons-section">
-        <a mat-button color="primary" [routerLink]="signUpPath">Utwórz konto</a>
-        <button
-          mat-flat-button
-          type="submit"
-          color="primary"
-          data-test="login-button"
-        >
-          Zaloguj
-        </button>
-      </section>
-    </form>
-  </mat-card-content>
-</mat-card>
+        Zaloguj
+      </button>
+    </section>
+  </form>
+</isui-identity-card>
+
