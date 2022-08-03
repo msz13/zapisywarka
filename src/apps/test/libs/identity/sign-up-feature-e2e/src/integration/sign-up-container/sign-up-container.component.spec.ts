@@ -24,13 +24,12 @@ describe('identity-sign-up-feature', () => {
     const userName = 'John';
     const password = 'Pasword_01';
 
-   /*  cy.intercept('POST', 'http://localhost:5000/users', {
+   cy.intercept('POST', '**/users', {
       statusCode: 200,
       delay: 300,
-    }).as('new-user'); */
+    }).as('new-user'); 
 
-    cy.intercept('**/users').as('new-user');
-
+   
     getLoadingProgress().should('not.exist');
 
     //getAccessCode().type(accessCode);
@@ -76,7 +75,7 @@ describe('identity-sign-up-feature', () => {
 
   describe('user form', () => {
 
-    it('should show validation error when next button is clicked', () => {
+    it('should show requried fields validation errors when next button is clicked', () => {
       getSignUpButton().click();
       getLoadingProgress().should('not.exist');
       getValidationError()
@@ -99,37 +98,36 @@ describe('identity-sign-up-feature', () => {
     });
 
     it('should validate password', () => {
-      getPassword().find('input').type('pasword1').clear().blur();
+      getPassword().type('pasword1').clear().blur();
       getValidationError()
         .should('exist')
         .and('have.text', 'Hasło jest wymagane');
 
-      getPassword().find('input').type('pasword').blur();
+      getPassword().type('pasword').blur();
       getValidationError()
         .should('exist')
-        .and('have.text', 'Hasło musi mieć minimum 8 znaków długości');
+        .and('have.text', 'Hasło musi mieć minimum 8 znaków.');
 
       getPassword()
-        .find('input')
         .type(
           'pasword_pasword_pasword_pasword_pasword_pasword_pasword_pasword_1'
         )
         .blur();
       getValidationError()
         .should('exist')
-        .and('have.text', 'Hasło musi mieć maksimum 64 znaki długości');
+        .and('have.text', 'Hasło musi mieć maksimum 64 znaków.');
     });
 
     it('should validate require password confirmation', () => {
-      getPasswordConfirmation().find('input').type('pasword1').clear().blur();
+      getPasswordConfirmation().type('pasword1').clear().blur();
       getValidationError()
         .should('exist')
         .and('have.text', 'Potwierdzenie hasła jest wymagane');
     });
 
-    it('should validate password confirmation', () => {
-      getPassword().find('input').type('pasword1');
-      getPasswordConfirmation().find('input').type('pas').blur();
+    it('should validate password confirmation same as password', () => {
+      getPassword().type('pasword1');
+      getPasswordConfirmation().type('pas').blur();
       getValidationError()
         .should('exist')
         .and('have.text', 'Hasła nie są takie same');

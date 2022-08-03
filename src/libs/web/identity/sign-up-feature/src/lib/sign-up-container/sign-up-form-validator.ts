@@ -3,7 +3,6 @@ import {
   ValidatorFn,
   ValidationErrors,
   Validators,
-  FormGroup,
   FormControl,
   FormGroupDirective,
   NgForm,
@@ -108,7 +107,7 @@ export class SignUpFormValidators {
   private static userNameMaxLength(control: AbstractControl) {
     if (Validators.maxLength(32)(control)) {
       return {
-        userNameMinLength: {
+        userNameMaxLength: {
           message: 'Nazwa użytkownika musi mieć maksimum 32 znaki',
         },
       };

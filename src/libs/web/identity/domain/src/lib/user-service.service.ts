@@ -38,7 +38,7 @@ export class UserService {
   }
 
   createUser(user: User) {
-    console.log('user post '+ this.baseUrl)
+    console.log('user post '+ user.userName + ' , ' + user.password)
     return this.http.post(this.baseUrl, user, {}).pipe(
       map(() => true),
       catchError(this.handleError)

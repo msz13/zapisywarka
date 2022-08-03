@@ -46,8 +46,8 @@ describe('sign-up form validators', () => {
     it('should return error when have more than 33 characters', () => {
       control.setValue('ja0123456789012345678901234567890');
       const error = control.errors;
-      expect(error?.userNameMinLength).toBeDefined();
-      expect(error?.userNameMinLength.message).toBe(
+      expect(error?.userNameMaxLength).toBeDefined();
+      expect(error?.userNameMaxLength.message).toBe(
         'Nazwa użytkownika musi mieć maksimum 32 znaki'
       );
     });
