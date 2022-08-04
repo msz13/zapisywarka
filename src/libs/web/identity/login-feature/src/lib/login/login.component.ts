@@ -17,10 +17,11 @@ import { LoginCredentials } from '@zapisywarka-client-aps/web-identity-domain';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+
   loginForm!: UntypedFormGroup;
 
-  @Input() loading = false;
+  @Input() loading: boolean | null = false;
 
   @Input() error: string | undefined;
 
@@ -32,6 +33,11 @@ export class LoginComponent {
 
   constructor(private fb: UntypedFormBuilder) {
     this.createForm();
+  }
+
+  ngOnInit(): void {
+    if(!this.loading)
+      throw new Error('Login form loading input is null')
   }
 
   private createForm() {

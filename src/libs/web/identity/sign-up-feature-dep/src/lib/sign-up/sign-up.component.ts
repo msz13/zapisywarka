@@ -75,8 +75,7 @@ export class SignUpComponent {
     const accessCode = this.accessCodeControl.value;
     const { userName, password } = userData;
 
-    const user: User = {
-      accessCode,
+    const user: User = {      
       userName,
       password,
     };

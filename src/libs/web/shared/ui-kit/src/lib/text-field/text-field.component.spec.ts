@@ -84,7 +84,7 @@ describe('TextFieldComponent', () => {
 
   })
 
-  it('should show error message on submit', ()=> {
+  it.skip('should show error message on submit', ()=> {
     const component = createComponent()
     
     const error1 = host.query('mat-error')

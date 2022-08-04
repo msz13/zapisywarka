@@ -1,14 +1,11 @@
-import { Component, ChangeDetectionStrategy, Input, Renderer2, ViewChild, OnInit, Optional } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, FormGroupDirective, NgForm, Validators, NgControl } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, Input, OnInit, Optional } from '@angular/core';
+import { ControlValueAccessor, FormControl, FormGroupDirective, NgForm, NgControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core'
-import { MatFormFieldControl } from '@angular/material/form-field';
-import { startsWith } from 'cypress/types/lodash';
-import { startWith, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 export class CustomErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
-    console.log("matcher, control invalid:" +control.invalid)
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted)); 
    
     //return true
@@ -23,9 +20,8 @@ export class ParentErrorStateMatcher implements ErrorStateMatcher {
     if(form) {
       console.log("form exist")
     }
-    const isSubmitted = form && form.submitted;
-    console.log("matcher, control invalid:" +control.invalid)
-    return !!(this.parentControl && this.parentControl.invalid && (control.dirty || control.touched || isSubmitted)); 
+    const isSubmitted = form && form.submitted;   
+    return !!(this.parentControl && this.parentControl.invalid && (control?.dirty || control?.touched || isSubmitted)); 
    
     //return true
   }
@@ -44,13 +40,13 @@ export class ParentErrorStateMatcher implements ErrorStateMatcher {
 })
 export class TextFieldComponent implements ControlValueAccessor, OnInit  {
 
-  _onChange: (value: any) => void 
-  _onTouched: ()=>void
-  matcher: ErrorStateMatcher /* = new CustomErrorStateMatcher() */
+  _onChange!: (value: any) => void 
+  _onTouched!: ()=>void
+  matcher: ErrorStateMatcher  = new CustomErrorStateMatcher() 
   _innerControl = new FormControl("")
   
    
-  @Input() label: string
+  @Input() label!: string
 
   constructor(@Optional() private parentControl: NgControl) {
      if(parentControl) {

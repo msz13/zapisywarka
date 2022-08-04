@@ -10,6 +10,7 @@ import { MenuCardComponent } from './menu-card/menu-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import { TextFieldComponent } from './text-field/text-field.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -21,7 +22,7 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  imports: [CommonModule, SharedMaterialModule, FlexLayoutModule],
+  imports: [CommonModule, SharedMaterialModule, FlexLayoutModule, ReactiveFormsModule],
   declarations: [...COMPONENTS, DateTimePickerComponent, TextFieldComponent],
   exports: [...COMPONENTS, FlexLayoutModule, DateTimePickerComponent, TextFieldComponent],
 })

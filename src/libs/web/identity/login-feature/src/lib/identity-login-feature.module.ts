@@ -4,7 +4,7 @@ import { LoginContainerComponent } from './login-container.component';
 import { LoginComponent } from './login/login.component';
 import { SharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 import { ReactiveFormsModule } from '@angular/forms';
-import { WebIdentityDomainModule } from '@zapisywarka-client-aps/web-identity-domain';
+import { IdentityDomainModule } from '@zapisywarka-client-aps/web-identity-domain';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { RouterModule } from '@angular/router';
 import { IdentitySharedUiModule } from '@zapisywarka/web/identity/shared-ui';
@@ -15,7 +15,7 @@ import { IdentitySharedUiModule } from '@zapisywarka/web/identity/shared-ui';
     ReactiveFormsModule,
     RxReactiveFormsModule,
     SharedMaterialModule,
-    WebIdentityDomainModule,
+    IdentityDomainModule,
     RouterModule,
     IdentitySharedUiModule
   ],
