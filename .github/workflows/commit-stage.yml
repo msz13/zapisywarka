@@ -36,9 +36,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - name: try install npx globally
-        run: npm i -g npx          
+            ${{ runner.os }}-             
       - name: Install dependencies        
         run: npm ci
       - name: Set Shas         
