@@ -21,6 +21,6 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 })
 export class IdentityCardComponent  {  
 
-  @Input() loadind = false
+  @Input() loadind: boolean | null = false
  
 }
