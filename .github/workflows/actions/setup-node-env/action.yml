@@ -21,6 +21,7 @@ runs:
         version: ${{ inputs.pnpm_version }}
         run_install: false
     - name: Get pnpm store directory
+      shell: bash
       id: pnpm-cache
       run: |
         echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
@@ -32,6 +33,7 @@ runs:
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
     - name: Install dependencies
+      shell: bash
       run: pnpm install
      
 
