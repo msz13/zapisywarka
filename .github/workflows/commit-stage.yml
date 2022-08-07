@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: '0'
-      - uses: ./.github/workflows/actions/setup-node-env.yml
+      - uses: ./.github/workflows/actions/setup-node-env
         with:
           node_version: 16
           pnpm_version: 7      
