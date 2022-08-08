@@ -39,12 +39,19 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v2        
       - name: Docker Login
         # You may pin to the exact commit or the version.
         # uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
-        run:  echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin              
+        run:  echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/msz13/zapisywarka-rejestracja
+          tags: |
+            type=raw,value=rc-{{date: YYMMDDTHH:mm}}.{{sha}}            
       - name: Build image
-        run: npx nx run zapisywarka-rejestracja:docker -c production --tags=ghcr.io/msz13/zapisywarka-rejestracja:${{ github.sha }}
+        run: npx nx affacted --target=docker --exclude=$Exlude_Projects -c production --tags=ghcr.io/msz13/zapisywarka-rejestracja:${{ github.sha }}
        
   
