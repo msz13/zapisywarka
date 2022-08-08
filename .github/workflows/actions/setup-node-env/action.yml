@@ -13,7 +13,8 @@ runs:
       uses: actions/setup-node@v2.1.5
       with:         
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
-          node-version: ${{ inputs.node_version }}        
+          node-version: ${{ inputs.node_version }}
+          cache: 'pnpm'        
     - uses: pnpm/action-setup@v2.0.1
       name: Install pnpm
       id: pnpm-install
