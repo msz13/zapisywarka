@@ -1,47 +1,21 @@
 name: 'Setup docker environment'
 inputs:
   username:  # id of input
+    description: docker registry username
     required: true    
   password: 
+    description: docker registry password
     required: false
-    
-
+  
 runs:
   using: "composite"
   steps:
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v2.1.5
-      with:         
-          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
-          node-version: ${{ inputs.node_version }}
-          cache: 'pnpm'        
-    - uses: pnpm/action-setup@v2.0.1
-      name: Install pnpm
-      id: pnpm-install
-      with:
-        version: ${{ inputs.pnpm_version }}
-        run_install: false
-    - name: Get pnpm store directory
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2        
+    - name: Docker Login  
+      run:  echo "${{ inputs.password }}" | docker login ghcr.io -u ${{ inputs.username }} --password-stdin 
       shell: bash
-      id: pnpm-cache
-      run: |
-        echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-    - uses: actions/cache@v3
-      name: Setup pnpm cache
-      with:
-        path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
-    - name: Cache Cypress Binary
-      id: cache-cypress-binary
-      uses: actions/cache@v3
-      with:
-        path: .cache/Cypress/6.9.1/Cypress/Cypres
-        key: cypress-binary-${{ hashFiles('package-lock.json') }}
-    - name: Install dependencies
-      shell: bash
-      working-directory: src
-      run: pnpm install
      
 

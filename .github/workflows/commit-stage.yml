@@ -34,12 +34,11 @@ jobs:
         run:  npx nx affected --target=test  --exclude=$Exlude_Projects --parell=3
       #- name: libs e2e tests
       #  run:  export Exlude_Projects=$Exlude_Projects,zapisywarka-rejestracja-e2e,zapisywarka-rejestracja && npx nx affected --target=e2e --exclude=$Exlude_Projects --parell=2 -c=ci      
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2        
-      - name: Docker Login  
-        run:  echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin 
+      - name: setup docker
+        uses: ./.github/workflows/actions/setup-docker-env
+        with:
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
