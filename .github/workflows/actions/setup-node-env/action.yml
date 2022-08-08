@@ -33,6 +33,12 @@ runs:
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
+    - name: Cache Cypress Binary
+      id: cache-cypress-binary
+      uses: actions/cache@v2
+      with:
+        path: .cache/Cypress/6.9.1/Cypress/Cypres
+        key: cypress-binary-${{ hashFiles('package-lock.json') }}
     - name: Install dependencies
       shell: bash
       working-directory: src
