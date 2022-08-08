@@ -48,5 +48,61 @@ jobs:
             type=raw,value=rc-{{date 'YYMMDDTHH:mm'}}.{{sha}}            
       - name: Build image
         run: npx nx affected --target=docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }} 
+
+  build-api:
+    runs-on: ubuntu-latest  
+    env: 
+      Exlude_Projects: zapisywarka-rejestracja,
+    steps:      
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - uses: ./.github/workflows/actions/setup-node-env
+        with:
+          node_version: 16
+          pnpm_version: 7
+      - name: Setup .NET Core SDK 5.0.x
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: 5.0.x
+
+      - uses: actions/cache@v2
+        with:
+          path: src/Zapisywarka.API/~/.nuget/packages
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+               ${{ runner.os }}-nuget      
+      - name: Set Shas         
+        uses: nrwl/nx-set-shas@v2
+        id: setSHAs
+        with:
+          working-directory: src 
+          workflow-id: commit-stage.yml
+      - name: restore
+        run:  npx nx restore
+      - name: lint
+        run:  pnpx nx affected --target=lint --exclude=$Exlude_Projects --parell=3 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+      - name: test
+        run:  pnpx nx affected --target=test  --exclude=$Exlude_Projects --parell=3
+      #- name: libs e2e tests
+      #  run:  export Exlude_Projects=$Exlude_Projects,zapisywarka-rejestracja-e2e,zapisywarka-rejestracja && npx nx affected --target=e2e --exclude=$Exlude_Projects --parell=2 -c=ci      
+      - name: setup docker
+        uses: ./.github/workflows/actions/setup-docker-env
+        with:
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/msz13/zapisywarka-api
+          tags: |
+            type=raw,value=rc-{{date 'YYMMDDTHH:mm'}}.{{sha}}            
+      - name: Build image
+        run: npx nx affected --target=docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }} 
+
+
+      
        
   
