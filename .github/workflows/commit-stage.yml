@@ -50,7 +50,7 @@ jobs:
         with:
           images: ghcr.io/msz13/zapisywarka-rejestracja
           tags: |
-            type=raw,value=rc-{{date: YYMMDDTHH:mm}}.{{sha}}            
+            type=raw,value=rc-{{date 'YYMMDDTHH:mm'}}.{{sha}}            
       - name: Build image
         run: npx nx affacted --target=docker --exclude=$Exlude_Projects -c production --tags=ghcr.io/msz13/zapisywarka-rejestracja:${{ github.sha }}
        
