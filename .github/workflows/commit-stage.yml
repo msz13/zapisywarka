@@ -33,9 +33,7 @@ jobs:
       - name: test
         run:  npx nx affected --target=test  --exclude=$Exlude_Projects --parell=3
       - name: libs e2e tests
-        run:  export Exlude_Projects=$Exlude_Projects,zapisywarka-rejestracja-e2e,zapisywarka-rejestracja && npx nx affected --target=e2e --exclude=$Exlude_Projects --parell=2 -c=ci
-      - name: build
-        run:  npx nx run zapisywarka-rejestracja:build -c production
+        run:  export Exlude_Projects=$Exlude_Projects,zapisywarka-rejestracja-e2e,zapisywarka-rejestracja && npx nx affected --target=e2e --exclude=$Exlude_Projects --parell=2 -c=ci      
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -52,6 +50,6 @@ jobs:
           tags: |
             type=raw,value=rc-{{date 'YYMMDDTHH:mm'}}.{{sha}}            
       - name: Build image
-        run: npx nx affacted --target=docker --exclude=$Exlude_Projects -c production --tags=ghcr.io/msz13/zapisywarka-rejestracja:${{ github.sha }}
+        run: npx nx affected --target=docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }} --labels=${{ steps.meta.outputs.labels }}
        
   
