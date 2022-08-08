@@ -48,6 +48,6 @@ jobs:
           tags: |
             type=raw,value=rc-{{date 'YYMMDDTHH:mm'}}.{{sha}}            
       - name: Build image
-        run: npx nx affected --target=docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }} --labels=${{ steps.meta.outputs.labels }}
+        run: npx nx affected --target=docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }} 
        
   
