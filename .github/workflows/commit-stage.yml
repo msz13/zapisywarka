@@ -52,7 +52,7 @@ jobs:
   build-api:
     runs-on: ubuntu-latest  
     env: 
-      Exlude_Projects: zapisywarka-rejestracja,
+      Exlude_Projects: zapisywarka-rejestracja,web-identity-sign-up-feature-dep,web-catalog-catalog-item-domain,web-catalog-catalog-feature,web-identity-sign-up-feature,web-catalog-category-domain,web-catalog-utills-testing,web-identity-login-feature,web-identity-domain,web-landing-page,web-identity-utills,web-shared-material,web-shared-ui-kit,web-shared-nebular,web-shared-domain
     steps:      
       - uses: actions/checkout@v2
         with:
