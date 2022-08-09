@@ -14,6 +14,9 @@ using Zapisywarka.API.Modules.Identity.Core.Infrastructure;
 using Zapisywarka.API.Common.Infrastructure.Persistance;
 using Microsoft.AspNetCore.Http;
 using Moq;
+using Ductus.FluentDocker.Builders;
+using Ductus.FluentDocker.Services;
+
 namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 {
   [SetUpFixture]
@@ -82,6 +85,17 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
       var httpContext = new Mock<HttpContext>();
 
+    }
+
+    private void StartDatabase() 
+    {
+      var path = Path.Combine(Directory.GetCurrentDirectory(), "docker-compose-postgresql.yml");
+
+      _dbContainer = new Builder().UseContainer()
+        .UseCompose()
+        .FromFile(path)
+        .Build()
+        .Start();
 
     }
 
