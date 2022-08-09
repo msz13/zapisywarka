@@ -81,8 +81,8 @@ jobs:
           workflow-id: commit-stage.yml
       #- name: restore
       #  run:  npx nx g @nx-dotnet/core:restore zapisywarka-api
-      - name: lint
-        run:  pnpx nx affected --target=lint --exclude=$Exlude_Projects --parell=3 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+      #- name: lint
+      #  run:  pnpx nx affected --target=lint --exclude=$Exlude_Projects --parell=3 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
       - name: test
         run:  pnpx nx affected --target=test  --exclude=$Exlude_Projects --parell=3
       #- name: libs e2e tests
