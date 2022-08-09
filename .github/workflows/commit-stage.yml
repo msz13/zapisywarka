@@ -64,8 +64,9 @@ jobs:
       - name: Setup .NET Core SDK 6.0.7
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 6.0.300
-
+          dotnet-version: 6.0.200
+      - name: install dotnet-format  
+        run: dotnet tool install -g dotnet-format      
       - uses: actions/cache@v2
         with:
           path: src/Zapisywarka.API/~/.nuget/packages
@@ -81,12 +82,10 @@ jobs:
           workflow-id: commit-stage.yml
       #- name: restore
       #  run:  npx nx g @nx-dotnet/core:restore zapisywarka-api
-      #- name: lint
-      #  run:  pnpx nx affected --target=lint --exclude=$Exlude_Projects --parell=3 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+      - name: lint
+        run:  pnpx nx affected --target=lint --exclude=$Exlude_Projects --parell=3 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
       - name: test
-        run:  pnpx nx affected --target=test  --exclude=$Exlude_Projects --parell=3
-      #- name: libs e2e tests
-      #  run:  export Exlude_Projects=$Exlude_Projects,zapisywarka-rejestracja-e2e,zapisywarka-rejestracja && npx nx affected --target=e2e --exclude=$Exlude_Projects --parell=2 -c=ci      
+        run:  pnpx nx affected --target=test  --exclude=$Exlude_Projects --parell=3          
       - name: setup docker
         uses: ./.github/workflows/actions/setup-docker-env
         with:
