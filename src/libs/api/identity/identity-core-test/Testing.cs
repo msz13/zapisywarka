@@ -26,6 +26,8 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
     private static IServiceScopeFactory _scopeFactory;
     private static Checkpoint _checkpoint;
 
+    private static ICompositeService _dbContainer;
+
 
     [OneTimeSetUp]
     public void RunBeforeAnyTests()
