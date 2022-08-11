@@ -99,7 +99,7 @@ jobs:
           tags: |
             type=raw,value=rc-{{date 'YYMMDDTHH:mm'}}.{{sha}}            
       - name: Build image
-        run: pnpm exec nx run zapisuwarka-api:docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }} 
+        run: pnpm exec nx run zapisywarka-api:docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }} 
 
 
       
