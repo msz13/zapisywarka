@@ -84,7 +84,7 @@ jobs:
       #  run:  npx nx g @nx-dotnet/core:restore zapisywarka-api
       #- name: lint
       #  run:  pnpx nx affected --target=lint --exclude=$Exlude_Projects --parell=3 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
-     # - name: test
+      - name: test
         run:  export Exlude_Projects=$Exlude_Projects,api-identity-identity-core-test,zapisywarka-api-test && pnpm exec nx affected --target=test  --exclude=$Exlude_Projects          
       - name: setup docker
         uses: ./.github/workflows/actions/setup-docker-env
