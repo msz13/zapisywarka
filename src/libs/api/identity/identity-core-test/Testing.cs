@@ -62,17 +62,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         DbAdapter = DbAdapter.Postgres
       };
     }
-
-    private static void BuildConfiguration()
-    {
-      var builder = new ConfigurationBuilder()
-                      .SetBasePath(Directory.GetCurrentDirectory())
-                      .AddJsonFile("/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Modules/Identity/Zapisywarka.Api.Modules.Identity.IntegrationTests/appsettings.json", true, true)
-                      .AddEnvironmentVariables();
-
-      _configuration = builder.Build();
-    }
-
+   
     private void ConfigureCommonServices(IServiceCollection services)
     {
       services.AddScoped(
