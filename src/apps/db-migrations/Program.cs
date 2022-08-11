@@ -1,7 +1,7 @@
 // See https://aka.ms/new-console-template for more information
 using DbUp;
 
-var connectionString = """HOST=postgres;USERNAME=postgres;PASSWORD=Password_01;DATABASE=zapisywarka""";
+var connectionString = "HOST=postgres;USERNAME=postgres;PASSWORD=Password_01;DATABASE=zapisywarka";
 /*  args.FirstOrDefault()
  ?? "Host=localhost;User=postgres;Password=Password_01;Database=zapisywarka";
 */
