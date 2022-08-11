@@ -33,11 +33,6 @@
         "push": false,
         "tags": ["zapisywarka-api:latest"]
       },
-      "configurations": {
-        "production": {
-          "push": true
-        }        
-      },
       "dependsOn": ["build"]
     },
     "deploy-local": {

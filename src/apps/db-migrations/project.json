@@ -33,7 +33,7 @@
         "push": false,
         "metadata": {
           "images": ["db-migrations"],
-          "tags": ["type=sha"],
+          "tags": [],
           "flavor": ["latest=true"]
         }
       }
