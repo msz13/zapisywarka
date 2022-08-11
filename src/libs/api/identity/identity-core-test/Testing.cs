@@ -14,6 +14,9 @@ using Zapisywarka.API.Modules.Identity.Core.Infrastructure;
 using Zapisywarka.API.Common.Infrastructure.Persistance;
 using Microsoft.AspNetCore.Http;
 using Moq;
+using Ductus.FluentDocker.Builders;
+using Ductus.FluentDocker.Services;
+
 namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 {
   [SetUpFixture]
@@ -22,6 +25,8 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
     private static IConfigurationRoot _configuration;
     private static IServiceScopeFactory _scopeFactory;
     private static Checkpoint _checkpoint;
+
+    private static ICompositeService _dbContainer;
 
 
     [OneTimeSetUp]
@@ -57,17 +62,7 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
         DbAdapter = DbAdapter.Postgres
       };
     }
-
-    private static void BuildConfiguration()
-    {
-      var builder = new ConfigurationBuilder()
-                      .SetBasePath(Directory.GetCurrentDirectory())
-                      .AddJsonFile("/home/msz13/programowanie/zapisywarka/src/Zapisywarka.API/Modules/Identity/Zapisywarka.Api.Modules.Identity.IntegrationTests/appsettings.json", true, true)
-                      .AddEnvironmentVariables();
-
-      _configuration = builder.Build();
-    }
-
+   
     private void ConfigureCommonServices(IServiceCollection services)
     {
       services.AddScoped(
@@ -82,6 +77,17 @@ namespace Zapisywarka.Api.Modules.Identity.IntegrationTests
 
       var httpContext = new Mock<HttpContext>();
 
+    }
+
+    private void StartDatabase() 
+    {
+      var path = Path.Combine(Directory.GetCurrentDirectory(), "docker-compose-postgresql.yml");
+
+      _dbContainer = new Builder().UseContainer()
+        .UseCompose()
+        .FromFile(path)
+        .Build()
+        .Start();
 
     }
 

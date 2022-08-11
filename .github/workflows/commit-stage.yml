@@ -3,7 +3,7 @@ name: Web - Commit Stage
 on:
   push:
     # Publish `main` as Docker `latest` image.
-    branches: ["main"] 
+    branches: ["94-task-ci-update-commit-stage-web"] 
 defaults:
   run:
     working-directory: src
@@ -18,27 +18,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: '0'
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.5
-        with:         
-          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
-          node-version: 14.18.1
-          cache: 'npm'
-      - name: Cache node modules
-        id: cache-npm
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
+      - uses: ./.github/workflows/actions/setup-node-env
         with:
-            # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-             
-      - name: Install dependencies        
-        run: npm ci
+          node_version: 16
+          pnpm_version: 7      
       - name: Set Shas         
         uses: nrwl/nx-set-shas@v2
         id: setSHAs
@@ -49,19 +32,76 @@ jobs:
         run:  npx nx affected --target=lint --exclude=$Exlude_Projects --parell=3 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
       - name: test
         run:  npx nx affected --target=test  --exclude=$Exlude_Projects --parell=3
-      - name: libs e2e tests
-        run:  export Exlude_Projects=$Exlude_Projects,zapisywarka-rejestracja-e2e,zapisywarka-rejestracja && npx nx affected --target=e2e --exclude=$Exlude_Projects --parell=2 -c=ci
-      - name: build
-        run:  npx nx run zapisywarka-rejestracja:build -c production
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Docker Login
-        # You may pin to the exact commit or the version.
-        # uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
-        run:  echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin              
+      # - name: libs e2e tests
+      #  run:  export Exlude_Projects=$Exlude_Projects,zapisywarka-rejestracja-e2e,zapisywarka-rejestracja && pnpm exec nx affected --target=e2e --exclude=$Exlude_Projects --parell=2 -c=ci      
+      - name: setup docker
+        uses: ./.github/workflows/actions/setup-docker-env
+        with:
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/msz13/zapisywarka-rejestracja
+          tags: |
+            type=raw,value=rc-{{date 'YYMMDDTHH:mm'}}.{{sha}}            
       - name: Build image
-        run: npx nx run zapisywarka-rejestracja:docker -c production --tags=ghcr.io/msz13/zapisywarka-rejestracja:${{ github.sha }}
+        run: npx nx affected --target=docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }} 
+
+  build-api:
+    runs-on: ubuntu-latest  
+    env: 
+      Exlude_Projects: zapisywarka-rejestracja,web-identity-sign-up-feature-dep,web-catalog-catalog-item-domain,web-catalog-catalog-feature,web-identity-sign-up-feature,web-catalog-category-domain,web-catalog-utills-testing,web-identity-login-feature,web-identity-domain,web-landing-page,web-identity-utills,web-shared-material,web-shared-ui-kit,web-shared-nebular,web-shared-domain
+    steps:      
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - uses: ./.github/workflows/actions/setup-node-env
+        with:
+          node_version: 16
+          pnpm_version: 7
+      - name: Setup .NET Core SDK 6.0.7
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: 6.0.200
+      - name: install dotnet-format  
+        run: dotnet tool install -g dotnet-format      
+      - uses: actions/cache@v2
+        with:
+          path: src/Zapisywarka.API/~/.nuget/packages
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+               ${{ runner.os }}-nuget      
+      - name: Set Shas         
+        uses: nrwl/nx-set-shas@v2
+        id: setSHAs
+        with:
+          working-directory: src 
+          workflow-id: commit-stage.yml
+      #- name: restore
+      #  run:  npx nx g @nx-dotnet/core:restore zapisywarka-api
+      #- name: lint
+      #  run:  pnpx nx affected --target=lint --exclude=$Exlude_Projects --parell=3 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+      - name: test
+        run:  export Exlude_Projects=$Exlude_Projects,api-identity-identity-core-test,-api-catalog-catalog-test,zapisywarka-api-test && pnpm exec nx affected --target=test  --exclude=$Exlude_Projects          
+      - name: setup docker
+        uses: ./.github/workflows/actions/setup-docker-env
+        with:
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/msz13/zapisywarka-api
+          tags: |
+            type=raw,value=rc-{{date 'YYMMDDTHH:mm'}}.{{sha}}            
+      - name: Build image
+        run: pnpm exec nx run zapisywarka-api:docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }} 
+
+
+      
        
   
