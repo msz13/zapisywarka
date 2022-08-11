@@ -3,7 +3,7 @@ name: Web - Commit Stage
 on:
   push:
     # Publish `main` as Docker `latest` image.
-    branches: ["94-task-ci-update-commit-stage-web"] 
+    branches: ["main"] 
 defaults:
   run:
     working-directory: src
