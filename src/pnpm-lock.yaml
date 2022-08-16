@@ -25,7 +25,7 @@ specifiers:
   '@nebular/eva-icons': ^7.0.0
   '@nebular/theme': ^7.0.0
   '@ngneat/forms-manager': ^2.3.0
-  '@ngneat/spectator': ^7.2.0
+  '@ngneat/spectator': ^11.1.3
   '@nrwl/angular': 14.4.2
   '@nrwl/cli': 14.4.2
   '@nrwl/cypress': 14.4.2
@@ -137,7 +137,7 @@ devDependencies:
   '@angular/cli': 14.0.7
   '@angular/compiler-cli': 14.0.5_zpefgt72khwrbcajczg5cki5ui
   '@angular/language-service': 14.0.5
-  '@ngneat/spectator': 7.2.0_m3htql5k6w4xbmme3eyiftfazi
+  '@ngneat/spectator': 11.1.3_ka6kirktassdh7qwgtg2d5ola4
   '@nrwl/cli': 14.4.2_l3562fq52ox4noeq2satlohoy4
   '@nrwl/cypress': 14.4.2_naqv6ikwu2dsmkws4ojtqe4tp4
   '@nrwl/devkit': 14.4.2_nx@14.4.2
@@ -4566,23 +4566,20 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /@ngneat/spectator/7.2.0_m3htql5k6w4xbmme3eyiftfazi:
-    resolution: {integrity: sha512-FUdQqXCQEBwxAX33ZbU7h25cMKT24kesIX8ggiSHfGyyAJbYSJwZkzWLLpLgJqSQcPbe1dLCxCGA6tpIkGF9rg==}
-    hasBin: true
+  /@ngneat/spectator/11.1.3_ka6kirktassdh7qwgtg2d5ola4:
+    resolution: {integrity: sha512-RO0c3iw7UysPvXlLG76PgjuKJtDalOTpNtWd8hIpNXlpwwzGkuoU9VJlCCv6koNg7SnmftmYi2qaWyrRpu/YBA==}
     peerDependencies:
-      '@angular/common': '>= 10.1.0'
-      '@angular/core': '>= 10.1.0'
-      '@angular/router': '>= 10.1.0'
-      typescript: '>= 2.8.0'
+      '@angular/animations': '>= 14.0.0'
+      '@angular/common': '>= 14.0.0'
+      '@angular/router': '>= 14.0.0'
     dependencies:
+      '@angular/animations': 14.0.5_@angular+core@14.0.5
       '@angular/common': 14.0.5_wv6z7bla4r3o275ahjzevsq7se
-      '@angular/core': 14.0.5_rxjs@6.6.7+zone.js@0.11.5
       '@angular/router': 14.0.5_izl5ejpmwcpgkzg4bror7ppw2u
-      '@testing-library/dom': 7.26.5
+      '@testing-library/dom': 8.17.1
       jquery: 3.6.0
-      replace-in-file: 6.3.5
+      replace-in-file: 6.2.0
       tslib: 2.4.0
-      typescript: 4.7.4
     dev: true
 
   /@ngtools/webpack/14.0.5_ptzhxof3x65ohorlrlcmzjacqi:
@@ -7842,18 +7839,18 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@testing-library/dom/7.26.5:
-    resolution: {integrity: sha512-2v/fv0s4keQjJIcD4bjfJMFtvxz5icartxUWdIZVNJR539WD9oxVrvIAPw+3Ydg4RLgxt0rvQx3L9cAjCci0Kg==}
-    engines: {node: '>=10'}
+  /@testing-library/dom/8.17.1:
+    resolution: {integrity: sha512-KnH2MnJUzmFNPW6RIKfd+zf2Wue8mEKX0M3cpX6aKl5ZXrJM1/c/Pc8c2xDNYQCnJO48Sm5ITbMXgqTr3h4jxQ==}
+    engines: {node: '>=12'}
     dependencies:
       '@babel/code-frame': 7.18.6
       '@babel/runtime': 7.18.9
       '@types/aria-query': 4.2.2
-      aria-query: 4.2.2
+      aria-query: 5.0.0
       chalk: 4.1.2
       dom-accessibility-api: 0.5.14
       lz-string: 1.4.4
-      pretty-format: 26.6.2
+      pretty-format: 27.5.1
     dev: true
 
   /@tootallnate/once/1.1.2:
@@ -9076,14 +9073,6 @@ packages:
 
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
-
-  /aria-query/4.2.2:
-    resolution: {integrity: sha512-o/HelwhuKpTj/frsOsbNLNgnNGVIFsVP/SW2BSF14gVl7kAfMOJ6/8wUAUvG1R1NHKrfG+2sHZTu0yauT1qBrA==}
-    engines: {node: '>=6.0'}
-    dependencies:
-      '@babel/runtime': 7.18.9
-      '@babel/runtime-corejs3': 7.18.9
-    dev: true
 
   /aria-query/5.0.0:
     resolution: {integrity: sha512-V+SM7AbUwJ+EBnB8+DXs0hPZHO0W6pqBcc0dW90OwtVG02PswOu/teuARoLQjdDOH+t9pJgGnW5/Qmouf3gPJg==}
@@ -18946,16 +18935,6 @@ packages:
       lodash: 4.17.21
       renderkid: 3.0.0
 
-  /pretty-format/26.6.2:
-    resolution: {integrity: sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg==}
-    engines: {node: '>= 10'}
-    dependencies:
-      '@jest/types': 26.6.2
-      ansi-regex: 5.0.1
-      ansi-styles: 4.3.0
-      react-is: 17.0.2
-    dev: true
-
   /pretty-format/27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -19458,7 +19437,7 @@ packages:
   /regenerator-transform/0.15.0:
     resolution: {integrity: sha512-LsrGtPmbYg19bcPHwdtmXwbW+TqNvtY4riE3P83foeHRroMbH6/2ddFBfab3t7kbzc7v7p4wbkIecHImqt0QNg==}
     dependencies:
-      '@babel/runtime': 7.18.9
+      '@babel/runtime': 7.17.9
 
   /regex-not/1.0.2:
     resolution: {integrity: sha512-J6SDjUgDxQj5NusnOtdFxDwN/+HWykR8GELwctJ7mdqhcyy1xEc4SRFHUXvxTp661YaVKAjfRLZ9cCqS6tn32A==}
@@ -19602,14 +19581,14 @@ packages:
       is-finite: 1.1.0
     optional: true
 
-  /replace-in-file/6.3.5:
-    resolution: {integrity: sha512-arB9d3ENdKva2fxRnSjwBEXfK1npgyci7ZZuwysgAp7ORjHSyxz6oqIjTEv8R0Ydl4Ll7uOAZXL4vbkhGIizCg==}
+  /replace-in-file/6.2.0:
+    resolution: {integrity: sha512-Im2AF9G/qgkYneOc9QwWwUS/efyyonTUBvzXS2VXuxPawE5yQIjT/e6x4CTijO0Quq48lfAujuo+S89RR2TP2Q==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
       chalk: 4.1.2
       glob: 7.2.3
-      yargs: 17.5.1
+      yargs: 16.2.0
     dev: true
 
   /request-progress/3.0.0:
@@ -19760,7 +19739,7 @@ packages:
     peerDependencies:
       postcss: 8.x
     dependencies:
-      chalk: 4.1.2
+      chalk: 4.1.0
       concat-with-sourcemaps: 1.1.0
       cssnano: 5.1.12_postcss@8.4.16
       import-cwd: 3.0.0

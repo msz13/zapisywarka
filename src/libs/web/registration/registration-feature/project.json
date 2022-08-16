@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/web/registration/registration-feature/src",
+  "prefix": "zapisywarka",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/registration/registration-feature"],
+      "options": {
+        "jestConfig": "libs/web/registration/registration-feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/registration/registration-feature/**/*.ts",
+          "libs/web/registration/registration-feature/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -70,6 +70,9 @@
       "@zapisywarka/web/identity/shared-ui": [
         "libs/web/identity/shared-ui/src/index.ts"
       ],
+      "@zapisywarka/web/registration/registration-feature": [
+        "libs/web/registration/registration-feature/src/index.ts"
+      ],
       "feature-sign-up": ["libs/sign-up/feature-sign-up/src/index.ts"]
     }
   },

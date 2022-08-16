@@ -36,7 +36,7 @@
       "configurations": {
         "production": {
           "push": true
-        }        
+        }
       },
       "dependsOn": ["build"]
     },
