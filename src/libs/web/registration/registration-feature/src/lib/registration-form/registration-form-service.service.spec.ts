@@ -1,8 +1,8 @@
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
-import { OfferItem } from '../registration-form.model';
-import { ReservedItem } from '../reservation.model';
-import { RegistrationFormService } from './registration-form-service.service';
+import { OfferItem } from '../domain/offers/offer.model';
+import { ReservedItem } from '../domain/registrations/reservation.model';
+import { RegistrationFormService } from './registration-form.service';
 
 
 //TODO Rozdzielić interfejs servisu, na inicjacje w konstruktorze, aGroup - getter form group, addOfferItems 

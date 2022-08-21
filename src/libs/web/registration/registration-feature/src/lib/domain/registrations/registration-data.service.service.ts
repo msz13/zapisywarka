@@ -9,7 +9,7 @@ export class RegistrationDataService {
   
   constructor() { }
 
-  create(reservation: ReservationInput): Observable<boolean> {
+  create(offerId: string, reservation: ReservationInput): Observable<boolean> {
     throw new Error("Not implemented")
   }
 }

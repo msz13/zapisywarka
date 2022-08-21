@@ -1,8 +1,8 @@
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
 import { byTestId, createComponentFactory, Spectator } from "@ngneat/spectator/jest";
 import { RegistrationFeatureModule } from "../registration-feature.module";
-import { ReservationInput } from "../reservation.model";
-import { RegistrationFormService } from "./registration-form-service.service";
+import { ReservationInput } from "../domain/registrations/reservation.model";
+import { RegistrationFormService } from "./registration-form.service";
 import { RegistrationFormComponent } from "./registration-form.component";
 
 describe("registration form", ()=>{

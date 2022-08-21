@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, Output } from '@angular/core';
-import { OfferDetails } from '../registration-form.model';
+import { OfferDetails } from '../domain/offers/offer.model';
 import { EventEmitter } from '@angular/core'
-import { ReservationInput } from '../reservation.model';
-import { RegistrationFormService } from './registration-form-service.service';
+import { ReservationInput } from '../domain/registrations/reservation.model';
+import { RegistrationFormService } from './registration-form.service';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 

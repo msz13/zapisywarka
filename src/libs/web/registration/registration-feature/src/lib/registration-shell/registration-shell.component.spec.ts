@@ -1,18 +1,23 @@
 
-import { RegistrationShellComponent } from './registration-shell.component';
-import { createRoutingFactory, SpectatorRouting, SpyObject} from '@ngneat/spectator/jest'
+import { createRoutingFactory, Spectator, SpectatorRouting, SpyObject} from '@ngneat/spectator/jest'
 import { byTestId, byTextContent } from '@ngneat/spectator';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RegistrationFeatureModule } from '../registration-feature.module';
-import { OffersService } from '../offers.service';
 import { of } from 'rxjs';
-import { OfferDetails } from '../registration-form.model';
-import { RegistrationDataService } from '../registration-data.service.service';
-import { ReservationInput } from '../reservation.model'
+import { OfferDetails } from '../domain/offers/offer.model';
+import { RegistrationDataService } from '../domain/registrations/registration-data.service.service';
+import { ReservationInput } from '../domain/registrations/reservation.model'
+import { Location } from '@angular/common'
+import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { fakeAsync } from '@angular/core/testing';
+import { OffersApiService } from '../domain/offers/offers-api.service';
+import { OffersService } from '../domain/offers/offers.service';
+
 
 export class RegistratonFormPage { 
     
-  constructor(private fixture: SpectatorRouting<RegistrationShellComponent>) {}
+  constructor(private fixture: Spectator<TestAppComponent>) {}
 
   offerName() {
     return this.fixture.query(byTestId("form-name"))
@@ -66,46 +71,76 @@ const testOffer: OfferDetails = {
 ]
 }
 
+@Component({
+  template: "<router-outlet></router-outlet>"
+})
+export class TestAppComponent {}
+
+@Component({
+  template: `<p class="test" >Test component works!</p>`
+})
+export class TestComponent {}
+
 describe('RegistrationShellComponent', () => {
-  let spectator: SpectatorRouting<RegistrationShellComponent>;  
+  let spectator: SpectatorRouting<TestAppComponent>;  
   let page: RegistratonFormPage
-  let dataService: SpyObject<OffersService>
+  let offerService: SpyObject<OffersApiService>
+  let router: Router
 
   const createComponent = createRoutingFactory({
-    component: RegistrationShellComponent, 
+    component: TestAppComponent, 
+    declarations: [TestAppComponent],
     imports: [ RegistrationFeatureModule, HttpClientTestingModule],
-    mocks: [OffersService, RegistrationDataService],
-    detectChanges: false
+    providers: [OffersService],
+    mocks: [OffersApiService, RegistrationDataService],    
+    detectChanges: false,
+    stubsEnabled: false,
+    routes: [{path: 'oferty', pathMatch: 'full', loadChildren: ()=> RegistrationFeatureModule }]
     
-  });
+  }); 
 
  
-  beforeEach(() => {
+ 
+  beforeEach(async () => {
       spectator = createComponent()
       page = new RegistratonFormPage(spectator) 
-      dataService = spectator.inject<OffersService>(OffersService)     
+      offerService = spectator.inject<OffersApiService>(OffersApiService)     
+  
   });
 
 
   describe('render registration form', ()=>{
 
-    it("should show offer data when user open offer registration form", ()=>{
+    it('opens page', fakeAsync(()=>{
+      offerService.getById.mockReturnValue(of(testOffer))
+      spectator.router.navigate(['oferty'])
+      spectator.tick()
+      expect(spectator.inject(Location).path()).toBe('/oferty')
+    }))
 
-      testOffer.name = "Wtorek,23.08.22"
-      
+    it.skip("should show offer data when user open offer registration form", fakeAsync(()=>{
+        
+      spectator.fixture.whenStable()
 
-      dataService.getOne.mockReturnValue(of(testOffer))
-      
-      spectator.detectChanges()
+     // offerService.getById.mockReturnValue(of(testOffer))
+
+        spectator.router.navigate(['oferty'])
+        spectator.tick()
+          
+        expect(spectator.inject(Location).path()).toBe('/oferty')
+           
+       //spectator.detectChanges()
            
       expect(page.offerName()).toHaveText(testOffer.name)  
       expect(page.offerItemsNames()).toEqual(testOffer.offerItems.map(item => item.name))         
       
-    })
+    }))
 
-    it('should save reservetation when user accepts it', ()=>{
-      dataService.getOne.mockReturnValue(of(testOffer))
+    it.skip('should save reservetation when user accepts it', fakeAsync(()=>{
+      offerService.getById.mockReturnValue(of(testOffer))
       const registrationService = spectator.inject(RegistrationDataService)
+      const location = spectator.inject(Location)
+      
           
       spectator.detectChanges()
 
@@ -117,7 +152,7 @@ describe('RegistrationShellComponent', () => {
 
       page.confirmReservation()
 
-      const expectedReservation: ReservationInput = {
+      const expectedReservation: ReservationInput = {        
         receptionPassword: "Kowalski",
         comments: "Odbierze żona",
         reservedItems: [
@@ -134,32 +169,11 @@ describe('RegistrationShellComponent', () => {
 
       expect(registrationService.create).toHaveBeenCalledWith("1", expectedReservation)
       //TODO should load aftersubmit
-      //TODO should redirect after submit
+      //TODO redirect to details expect(location.path()).toBe('/oferty/rejestracje/1')
 
-    })
+    }))
 
-  /*   it.skip("should show reservation detail after reservation is succesfully submited", ()=> {
-      dataService.getOne.mockReturnValue(of(testOffer))
-      const registrationService = spectator.inject(RegistrationDataService)
-      registrationService.create.mockReturnValue(of(id: "1"))  //TODO jakie powinien być swracany typ
-          
-      spectator.detectChanges()
-
-      page.enterReceptionPassword("Kowalski")
-      page.enterComments("Odbierze żona")
-
-      page.reserveOfferItem('Bochenek tradycyjny', 3)
-      page.reserveOfferItem('Foremkowy', 1)
-
-      page.confirmReservation()
-
-      const location = spectator.inject(Location)
-      expect(location).toBe('rezerwacje/1')
-      //TO do nowego pliku testowego dla test details
-      expect(page.reservedItems()).toBe([{name: "Bochenek tradycyjny", quantity: 3}, {name: "Foremkowy", quantity: 1}])
-      expect(page.comments).toBe("Odbierze żona")
-      expect(page.receptionPassword).toBe("Kowalski")
-    }) */
+ 
   }) 
 
 

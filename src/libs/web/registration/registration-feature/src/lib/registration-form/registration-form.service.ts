@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { OfferItem } from '../registration-form.model';
-import { ReservationInput } from '../reservation.model';
+import { OfferItem } from '../domain/offers/offer.model';
+import { ReservationInput } from '../domain/registrations/reservation.model';
 
 @Injectable({providedIn: null})
 export class RegistrationFormService {
