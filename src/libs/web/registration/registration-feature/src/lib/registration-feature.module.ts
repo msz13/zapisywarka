@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationRoutingModule } from './registration-routing.module';
-import { LoadOfferResolver } from './domain/offers/load-offer.resolver';
+
 
 export const registrationFeatureRoutes: Route[] = [];
 
@@ -18,7 +18,7 @@ export const registrationFeatureRoutes: Route[] = [];
     HttpClientModule, 
     ReactiveFormsModule, 
     RegistrationRoutingModule
-    //RouterModule.forChild([{path: '', component: RegistrationFormContainer}])
+    
   ],
   declarations: [
     RegistrationShellComponent,

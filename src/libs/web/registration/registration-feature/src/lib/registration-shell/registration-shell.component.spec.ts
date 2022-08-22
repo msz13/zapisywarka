@@ -1,5 +1,5 @@
 
-import { createRoutingFactory, Spectator, SpectatorRouting, SpyObject} from '@ngneat/spectator/jest'
+import { createComponentFactory, createRoutingFactory, Spectator, SpectatorRouting, SpyObject} from '@ngneat/spectator/jest'
 import { byTestId, byTextContent } from '@ngneat/spectator';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RegistrationFeatureModule } from '../registration-feature.module';
@@ -13,6 +13,8 @@ import { Component } from '@angular/core';
 import { fakeAsync } from '@angular/core/testing';
 import { OffersApiService } from '../domain/offers/offers-api.service';
 import { OffersService } from '../domain/offers/offers.service';
+import {SpectacularAppComponent, SpectacularFeatureRouter, SpectacularFeatureTestingModule} from '@ngworker/spectacular'
+import { offerDetatilsListFixture } from '../utills/offer-details-list';
 
 
 export class RegistratonFormPage { 
@@ -52,25 +54,6 @@ export class RegistratonFormPage {
 }
   
 
-const testOffer: OfferDetails = {
-  id: "1",
-  name: "Oferta testowa",
-  offerItems: [
-  {
-    offerItemId: "1",
-    name: 'Bochenek tradycyjny'
-  },
-  {
-    offerItemId: "2",
-    name: 'Bochenek francuski'
-  },
-  {
-    offerItemId: "3",
-    name: "Foremkowy"
-  },
-]
-}
-
 @Component({
   template: "<router-outlet></router-outlet>"
 })
@@ -82,20 +65,20 @@ export class TestAppComponent {}
 export class TestComponent {}
 
 describe('RegistrationShellComponent', () => {
-  let spectator: SpectatorRouting<TestAppComponent>;  
+  let spectator: Spectator<TestAppComponent>;  
   let page: RegistratonFormPage
-  let offerService: SpyObject<OffersApiService>
-  let router: Router
+  let offerApiService: SpyObject<OffersApiService>
+  let router: SpectacularFeatureRouter
 
-  const createComponent = createRoutingFactory({
-    component: TestAppComponent, 
-    declarations: [TestAppComponent],
-    imports: [ RegistrationFeatureModule, HttpClientTestingModule],
+  const createComponent = createComponentFactory({
+    component: SpectacularAppComponent,     
+    imports: [ SpectacularFeatureTestingModule.withFeature({
+      featureModule: RegistrationFeatureModule,
+      featurePath: 'oferty'
+    })],
     providers: [OffersService],
     mocks: [OffersApiService, RegistrationDataService],    
-    detectChanges: false,
-    stubsEnabled: false,
-    routes: [{path: 'oferty', pathMatch: 'full', loadChildren: ()=> RegistrationFeatureModule }]
+    detectChanges: false,    
     
   }); 
 
@@ -104,42 +87,40 @@ describe('RegistrationShellComponent', () => {
   beforeEach(async () => {
       spectator = createComponent()
       page = new RegistratonFormPage(spectator) 
-      offerService = spectator.inject<OffersApiService>(OffersApiService)     
+      offerApiService = spectator.inject<OffersApiService>(OffersApiService) 
+      router = spectator.inject(SpectacularFeatureRouter)    
   
   });
 
 
   describe('render registration form', ()=>{
 
-    it('opens page', fakeAsync(()=>{
-      offerService.getById.mockReturnValue(of(testOffer))
-      spectator.router.navigate(['oferty'])
-      spectator.tick()
-      expect(spectator.inject(Location).path()).toBe('/oferty')
-    }))
+    it('opens page', async()=>{
+      offerApiService.getAll.mockReturnValue(of(offerDetatilsListFixture))
+      await router.navigate(['oferty', '1'])      
+      expect(spectator.inject(Location).path()).toBe('/oferty/1')
+      
+    })
 
-    it.skip("should show offer data when user open offer registration form", fakeAsync(()=>{
+    it("should show offer data when user open offer registration form", async ()=>{
         
-      spectator.fixture.whenStable()
+        offerApiService.getAll.mockReturnValue(of(offerDetatilsListFixture))
+        const testOffer = offerDetatilsListFixture[0]
 
-     // offerService.getById.mockReturnValue(of(testOffer))
+        spectator.detectChanges()
 
-        spectator.router.navigate(['oferty'])
-        spectator.tick()
-          
-        expect(spectator.inject(Location).path()).toBe('/oferty')
-           
-       //spectator.detectChanges()
-           
+        await router.navigate(['oferty'])        
+                 
+                   
       expect(page.offerName()).toHaveText(testOffer.name)  
       expect(page.offerItemsNames()).toEqual(testOffer.offerItems.map(item => item.name))         
       
-    }))
+    })
 
     it.skip('should save reservetation when user accepts it', fakeAsync(()=>{
-      offerService.getById.mockReturnValue(of(testOffer))
+      offerApiService.getAll.mockReturnValue(of(offerDetatilsListFixture))
       const registrationService = spectator.inject(RegistrationDataService)
-      const location = spectator.inject(Location)
+      
       
           
       spectator.detectChanges()

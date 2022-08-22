@@ -53,8 +53,6 @@ describe('RegistrationFormContainer', () => {
       
       spectator.detectChanges() 
       
-      expect(service.loadOfferDetails).toHaveBeenCalled()
-
       const offer = spectator.query(RegistrationFormComponent)?.offer
 
       expect(offer).toEqual(offerDetatils)

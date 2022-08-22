@@ -22,9 +22,7 @@ export class RegistrationFormContainer implements OnInit {
   constructor(private offersService: OffersService, private registrationService: RegistrationDataService) { }
 
   ngOnInit(): void {    
-   this.offersService.loadOfferDetails("1")
-   // this.$offer = this.offersService.selectedOffer$
-        
+   this.$offer = this.offersService.selectedOffer$           
   }   
 
   onReservation(reservation: ReservationInput) {

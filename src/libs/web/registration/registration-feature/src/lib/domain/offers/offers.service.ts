@@ -18,8 +18,8 @@ export class OffersService {
         throw new Error('Method not implemented')
     }
 
-    loadOfferDetails(id: string)  {
-        this.offersApiService.getById(id)
+    loadOfferDetails()  {
+        this.offersApiService.getAll()
     }
 
     
