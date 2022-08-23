@@ -13,6 +13,7 @@ describe.only('Catalog Filter', () => {
     const filterd = CATALOG_ITEMS.filter(filter);
 
     expect(filterd).toEqual(CATALOG_ITEMS);
+    
   });
 
   it('should return items filtered by categoryId', () => {
