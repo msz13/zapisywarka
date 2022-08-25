@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationRoutingModule } from './registration-routing.module';
+import { } from '@datorama/akita'
 
 
 export const registrationFeatureRoutes: Route[] = [];
@@ -17,7 +18,7 @@ export const registrationFeatureRoutes: Route[] = [];
     RouterModule, 
     HttpClientModule, 
     ReactiveFormsModule, 
-    RegistrationRoutingModule
+    RegistrationRoutingModule,  
     
   ],
   declarations: [

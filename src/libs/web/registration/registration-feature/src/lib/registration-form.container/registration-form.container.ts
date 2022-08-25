@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { OfferDetails } from '../domain/offers/offer.model';
 import { OffersService } from '../domain/offers/offers.service';
 import { RegistrationDataService } from '../domain/registrations/registration-data.service.service';
 import { ReservationInput } from '../domain/registrations/reservation.model';
 import { ActivatedRoute } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 
 @Component({
@@ -22,7 +23,25 @@ export class RegistrationFormContainer implements OnInit {
   constructor(private offersService: OffersService, private registrationService: RegistrationDataService) { }
 
   ngOnInit(): void {    
-   this.$offer = this.offersService.selectedOffer$           
+   //this.$offer = this.offersService.selectedOffer$.pipe(filter(offer => offer != undefined && offer != null)) 
+   this.$offer = of( {
+    id: "1",
+    name: "Oferta testowa",
+    offerItems: [
+    {
+      offerItemId: "1",
+      name: 'Bochenek tradycyjny'
+    },
+    {
+      offerItemId: "2",
+      name: 'Bochenek francuski'
+    },
+    {
+      offerItemId: "3",
+      name: "Foremkowy"
+    },
+]
+  })          
   }   
 
   onReservation(reservation: ReservationInput) {

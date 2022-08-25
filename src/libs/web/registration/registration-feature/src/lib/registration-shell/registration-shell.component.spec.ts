@@ -15,6 +15,7 @@ import { OffersApiService } from '../domain/offers/offers-api.service';
 import { OffersService } from '../domain/offers/offers.service';
 import {SpectacularAppComponent, SpectacularFeatureRouter, SpectacularFeatureTestingModule} from '@ngworker/spectacular'
 import { offerDetatilsListFixture } from '../utills/offer-details-list';
+import { OffersStore} from '../state/offers/offers.store'
 
 
 export class RegistratonFormPage { 
@@ -95,10 +96,12 @@ describe('RegistrationShellComponent', () => {
 
   describe('render registration form', ()=>{
 
-    it('opens page', async()=>{
+    it('should load offers when opens offers route', async()=>{
       offerApiService.getAll.mockReturnValue(of(offerDetatilsListFixture))
-      await router.navigate(['oferty', '1'])      
+      await router.navigate(['oferty/1'])      
       expect(spectator.inject(Location).path()).toBe('/oferty/1')
+      const offersService = spectator.inject(OffersService)
+      expect(offersService.getOffers()).toStrictEqual(offerDetatilsListFixture)
       
     })
 
@@ -107,10 +110,12 @@ describe('RegistrationShellComponent', () => {
         offerApiService.getAll.mockReturnValue(of(offerDetatilsListFixture))
         const testOffer = offerDetatilsListFixture[0]
 
-        spectator.detectChanges()
-
-        await router.navigate(['oferty'])        
+        
+        await router.navigate(['oferty', '1'])        
                  
+        spectator.detectChanges()
+        spectator.detectChanges()
+       
                    
       expect(page.offerName()).toHaveText(testOffer.name)  
       expect(page.offerItemsNames()).toEqual(testOffer.offerItems.map(item => item.name))         
