@@ -18,7 +18,7 @@ import { JsonPipe } from '@angular/common';
 export class RegistrationFormComponent implements OnInit {
 
   @Input() offer!: OfferDetails
-  
+  @Input() submitting: boolean | null = false 
  
   @Output() reservation = new EventEmitter<ReservationInput>()
 
@@ -30,7 +30,7 @@ export class RegistrationFormComponent implements OnInit {
     return this.formService.getReservedItemAt(index)
    }
 
-  constructor(public formService: RegistrationFormService, private fb: FormBuilder) {    
+  constructor(public formService: RegistrationFormService) {    
     
   }
  

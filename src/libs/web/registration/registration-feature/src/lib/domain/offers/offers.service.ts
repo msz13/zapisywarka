@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { BehaviorSubject, Observable, of } from 'rxjs' 
 import { map, tap, throwIfEmpty } from "rxjs/operators";
+import { offerDetatilsListFixture } from "../../utills/offer-details-list";
 import { OfferDetails, OffersState } from "./offer.model";
 import { OffersApiService } from "./offers-api.service";
 
@@ -10,46 +11,51 @@ import { OffersApiService } from "./offers-api.service";
 @Injectable()
 export class OffersService {
     
-    selectedOffer$!: Observable<OfferDetails>     
-    offersState: OffersState = { offers: [], selectedOfferId: ''}
+        
+    offersState: OffersState = { offers: new Map([]),}
     dispach = new BehaviorSubject<OffersState>(this.offersState)
     
     constructor(private offersApiService: OffersApiService, private route: ActivatedRoute) {
-        this.selectedOffer$ = this.select().pipe(
-            map(state => {
-                const selectedId = state.selectedOfferId
-                return state.offers.filter(offer => offer.id == selectedId)[0]
-            })
-        )
+       
+
+    }
+   
+
+    selectOfferById(id: string): Observable<OfferDetails|undefined> {
+         return this.select().pipe(
+            map(state => state.offers),
+            map(offers => offers.get(id))
         
-        this.route.paramMap.pipe(tap(params => {
-            const id = params.get('offerId')
-            if(id) {
-                this.offersState.selectedOfferId = id
-            }
-            
-        })).subscribe()
-
+        ) 
+        
     }
 
-    select() {
-        return this.dispach.asObservable()
-    }
 
-    getSelectedOfferId(): string {
-        return this.offersState.selectedOfferId
-    }
-
+    
     loadOfferDetails()  {
         this.offersApiService.getAll().pipe(
             tap(offers => {
-                this.offersState.offers = offers
+               
+             const offersMap = offers.reduce((offerMap, offer)=>{
+                offerMap.set(offer.id, offer)
+                return offerMap
+             },new Map<string, OfferDetails>([]))  
+
+             this.offersState = {
+                ...this.offersState,
+                offers: offersMap
+             }
+             this.dispach.next(this.offersState)
             })
         ).subscribe()
     }
 
     getOffers() {
-        return this.offersState.offers
+        return this.offersState.offers.values()
+    }
+
+    private select() {
+        return this.dispach.asObservable()
     }
     
 }

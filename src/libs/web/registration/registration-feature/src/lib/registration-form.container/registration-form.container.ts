@@ -3,11 +3,19 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { OfferDetails } from '../domain/offers/offer.model';
 import { OffersService } from '../domain/offers/offers.service';
-import { RegistrationDataService } from '../domain/registrations/registration-data.service.service';
+import { RegistrationApiService } from '../domain/registrations/registration-data.service.service';
 import { ReservationInput } from '../domain/registrations/reservation.model';
 import { ActivatedRoute } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { offerDetatilsListFixture } from '../utills/offer-details-list';
+import { JsonPipe } from '@angular/common';
+import { NonNullableFormBuilder } from '@angular/forms';
+import { RegistrationService } from '../domain/registrations/registration.service';
 
+
+function filterNill<T> (value: T | null): value is NonNullable<T> {
+  return value !=undefined && value != null
+} 
 
 @Component({
   selector: 'reg-form-container',
@@ -19,34 +27,33 @@ import { filter } from 'rxjs/operators';
 export class RegistrationFormContainer implements OnInit {
 
   $offer!: Observable<OfferDetails>
-    
-  constructor(private offersService: OffersService, private registrationService: RegistrationDataService) { }
+  submitting$!: Observable<boolean>
+  
+  constructor(private offersService: OffersService, private registrationService: RegistrationService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {    
-   //this.$offer = this.offersService.selectedOffer$.pipe(filter(offer => offer != undefined && offer != null)) 
-   this.$offer = of( {
-    id: "1",
-    name: "Oferta testowa",
-    offerItems: [
-    {
-      offerItemId: "1",
-      name: 'Bochenek tradycyjny'
-    },
-    {
-      offerItemId: "2",
-      name: 'Bochenek francuski'
-    },
-    {
-      offerItemId: "3",
-      name: "Foremkowy"
-    },
-]
-  })          
+   
+   this.$offer =  this.getSelectedOffer()
+   this.submitting$ = this.registrationService.loading$
+   
+        
   }   
 
+  private getSelectedOffer(): Observable<OfferDetails> {
+    return this.route.paramMap.pipe(
+      map(params => params.get('offerId')),
+      filter(filterNill),
+      switchMap(id => this.offersService.selectOfferById(id)),
+      filter(filterNill)
+    );
+  }
+
   onReservation(reservation: ReservationInput) {
-    const offerId = this.offersService.getSelectedOfferId()
-    this.registrationService.create(offerId, reservation)
+    const offerId = this.route.snapshot.paramMap.get('offerId')
+    if(offerId != null) {
+      this.registrationService.submitReservation(offerId, reservation)
+    }
+    
   }
 
 }

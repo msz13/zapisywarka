@@ -9,3 +9,12 @@ export interface ReservedItem {
     offerItemId: string
     quantity: number
 }
+
+type reservationId = string
+export interface ReservationDetails {
+   id: reservationId
+}
+
+export interface RegistrationsState {
+    loading: boolean
+}

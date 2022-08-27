@@ -4,9 +4,7 @@ RegistrationDetails:
           id: 
             type: string
           reservationNumber:
-            type: string
-          totalCost:
-            type: number
+            type: string          
           offerId: 
             type: string
           receptionPassword:

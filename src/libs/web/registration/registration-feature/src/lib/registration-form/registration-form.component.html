@@ -40,5 +40,6 @@
   <div data-testid="reception-password">
     <input formControlName="receptionPassword" />
   </div>
+  <div *ngIf="submitting" data-testid="registration-loader">Loading...</div>
   <button type="submit" data-testid="confirm-button">Zatwierdzć</button>
 </form>

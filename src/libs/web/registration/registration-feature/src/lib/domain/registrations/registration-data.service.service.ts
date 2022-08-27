@@ -5,11 +5,11 @@ import { ReservationInput } from './reservation.model';
 @Injectable({
   providedIn: 'root'
 })
-export class RegistrationDataService {
+export class RegistrationApiService {
   
   constructor() { }
 
-  create(offerId: string, reservation: ReservationInput): Observable<boolean> {
+  submitReservation(offerId: string, reservation: ReservationInput): Observable<boolean> {
     throw new Error("Not implemented")
   }
 }

@@ -8,7 +8,7 @@ import { RegistrationShellComponent } from './registration-shell/registration-sh
     path: '',
     component: RegistrationShellComponent,
     children: [{
-      path: '1',
+      path: ':offerId',
       component: RegistrationFormContainer,     
     }]
   }

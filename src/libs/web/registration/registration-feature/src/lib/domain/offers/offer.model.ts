@@ -1,3 +1,6 @@
+
+export type offerId = string
+
 export interface OfferDetails {
     id: string,
     name: string,
@@ -10,6 +13,6 @@ export interface OfferItem {
 }
 
 export interface OffersState {
-  offers: OfferDetails[] | []
-  selectedOfferId: string
+  offers: Map<string,OfferDetails>
+  
 }

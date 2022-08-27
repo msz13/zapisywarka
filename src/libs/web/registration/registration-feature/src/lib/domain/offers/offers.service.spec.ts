@@ -2,72 +2,64 @@ import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
 import { offerDetatilsListFixture } from '../../utills/offer-details-list';
 import { OffersApiService } from './offers-api.service';
 import { OffersService } from './offers.service';
-import { TestScheduler} from 'rxjs/testing'
+import { TestScheduler } from 'rxjs/testing'
 import { SpyObject } from '@ngneat/spectator/jest';
-import {ActivatedRouteStub} from '@ngneat/spectator'
 import { fakeAsync, tick, flush } from '@angular/core/testing';
-import { cold, Scheduler} from 'jest-marbles'
-import { ActivatedRoute } from '@angular/router';
+import { cold, Scheduler } from 'jest-marbles'
+import { ActivatedRoute, convertToParamMap, ParamMap, Params } from '@angular/router';
+import { BehaviorSubject, of, ReplaySubject } from 'rxjs';
+
+
+export class ActivatedRouteStub {
+  // Use a ReplaySubject to share previous values with subscribers
+  // and pump new values into the `paramMap` observable
+  private subject = new ReplaySubject<ParamMap>();
+
+  constructor(initialParams?: Params) {
+    this.setParamMap(initialParams);
+  }
+
+  /** The mock paramMap observable */
+  readonly paramMap = this.subject.asObservable();
+
+  /** Set the paramMap observable's next value */
+  setParamMap(params: Params = {}) {
+    this.subject.next(convertToParamMap(params));
+  }
+}
 
 describe('OffersService', () => {
   let spectator: SpectatorService<OffersService>;
   let apiService: SpyObject<OffersApiService>
-  let routeStub = new ActivatedRouteStub({
-    params: {offerId: "1"}
-  })
+  let routeStub: ActivatedRouteStub
   const createService = createServiceFactory({
     service: OffersService,
-    providers: [{provide: ActivatedRoute, useValue: routeStub}],
     mocks: [OffersApiService]
   });
 
-  beforeEach(() => { 
-    spectator = createService() 
+  beforeEach(() => {
+    routeStub = new ActivatedRouteStub()
+    spectator = createService({ providers: [{ provide: ActivatedRoute, useValue: routeStub }] })
     apiService = spectator.inject(OffersApiService)
   });
 
-  describe('load all offers', ()=>{
+  describe('load all offers', () => {
 
- 
-    it('should save offers to store', ()=>{
-      //apiService.getAll.mockReturnValue(of(offerDetatilsListFixture))
-      apiService.getAll.mockReturnValue(cold('-a|', {a: offerDetatilsListFixture}))
+
     
-      
+    it('shuold select offer with id when it is added to store', () => {
+      //apiService.getAll.mockReturnValue(cold('-a|', { a: offerDetatilsListFixture }))
+      apiService.getAll.mockReturnValue(of(offerDetatilsListFixture))
+
       spectator.service.loadOfferDetails()
-      Scheduler.get().flush()     
-      
-      
-      expect(spectator.service.getOffers()).toStrictEqual(offerDetatilsListFixture)
-    })
 
-    it('should select offer when route param is set', ()=>{
-               
-      
-      const route = spectator.inject(ActivatedRoute) as unknown as ActivatedRouteStub
-      route.setParam('offerId', "1")
-
-      Scheduler.get().flush()   
-      expect(spectator.service.getSelectedOfferId()).toBe("1")
+      expect(spectator.service.selectOfferById("1")).toBeObservable(cold('a', { a: offerDetatilsListFixture[0] }))
+      expect(spectator.service.selectOfferById("2")).toBeObservable(cold('a', { a: offerDetatilsListFixture[1] }))
 
     })
+
+
+    //TODO offer id is not in store
+    //TODO roter emits emty observable
   })
-
-  it('should emit selected offer', ()=>{
-    apiService.getAll.mockReturnValue(cold('-a|', {a: offerDetatilsListFixture}))
-       
-    spectator.service.loadOfferDetails()          
-    Scheduler.get().flush() 
-
-    const route = spectator.inject(ActivatedRoute) as unknown as ActivatedRouteStub
-    route.setParam('offerId', "1")
-
-    Scheduler.get().flush() 
-      
-    expect(spectator.service.selectedOffer$).toBeObservable(cold('--a', {a: offerDetatilsListFixture[0]}))
-
-  })
-
-  //TODO offer id is not in store
-  //TODO roter emits emty observable
 })
