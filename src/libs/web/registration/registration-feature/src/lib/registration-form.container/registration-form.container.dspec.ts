@@ -7,7 +7,7 @@ import { RegistrationFormComponent } from '../registration-form/registration-for
 import { OfferDetails } from '../domain/offers/offer.model';
 import { ReservationInput } from '../domain/registrations/reservation.model';
 import { OffersService } from '../domain/offers/offers.service'
-import { RegistrationApiService } from '../domain/registrations/registration-data.service.service';
+import { RegistrationApiService } from '../domain/registrations/registration-api.service.service';
 import { ActivatedRoute } from '@angular/router';
 
 

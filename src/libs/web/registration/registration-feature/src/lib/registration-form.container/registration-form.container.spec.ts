@@ -1,4 +1,4 @@
-import { SpectatorRouting, createRoutingFactory } from '@ngneat/spectator/jest';
+import { SpectatorRouting, createRoutingFactory, SpyObject } from '@ngneat/spectator/jest';
 import { of } from 'rxjs';
 import { RegistrationFeatureModule } from '../registration-feature.module';
 import { RegistrationFormContainer } from './registration-form.container';
@@ -10,11 +10,17 @@ import { OffersService } from '../domain/offers/offers.service'
 import { offerDetatilsListFixture } from '../utills/offer-details-list';
 import { RegistrationService } from '../domain/registrations/registration.service';
 import { cold, Scheduler } from 'jest-marbles'
+import { reservationInputFixture } from '../utills/ReservationInputFixture';
+import { Router } from '@angular/router';
+import { reservationDetailsFixture } from '../utills/reservationDetailsFixture';
 
 
 
 describe('RegistrationFormContainer', () => {
     let spectator: SpectatorRouting<RegistrationFormContainer>;
+    let offersService: SpyObject<OffersService>
+    let registrationService: SpyObject<RegistrationService>
+
     const createComponent = createRoutingFactory({
         component: RegistrationFormContainer,
         imports: [RegistrationFeatureModule],
@@ -28,6 +34,8 @@ describe('RegistrationFormContainer', () => {
     beforeEach(() => {
         spectator = createComponent()
         spectator.fixture.whenStable()
+        registrationService = spectator.inject(RegistrationService)
+        offersService = spectator.inject(OffersService)
     })
 
     describe("registration form rendering", () => {
@@ -35,10 +43,8 @@ describe('RegistrationFormContainer', () => {
         it("should render registration form", () => {
 
             const offerDetatils: OfferDetails = offerDetatilsListFixture[0]
-
-            const service = spectator.inject<OffersService>(OffersService)
-
-            service.selectOfferById.mockReturnValue(of(offerDetatils))
+                     
+            offersService.selectOfferById.mockReturnValue(of(offerDetatils))
 
             spectator.detectChanges()
 
@@ -52,37 +58,28 @@ describe('RegistrationFormContainer', () => {
 
     describe("reserve items", () => {
 
-        it("should call reservation service", () => {
+        const offerDetatils = offerDetatilsListFixture[0]
+        const reservationInput: ReservationInput = reservationInputFixture
 
-            const offerDetatils: OfferDetails = offerDetatilsListFixture[0]
-
-
-            const registrationService = spectator.inject(RegistrationService)
-
-            const registrationForm = spectator.query(RegistrationFormComponent)
-            const reservation: ReservationInput = {
-                receptionPassword: "test",
-                comments: "test comment",
-                reservedItems: [
-                    {
-                        offerItemId: "1",
-                        quantity: 1
-                    }
-                ]
-            }
-
-            registrationForm?.reservation.emit(reservation)
-
-            expect(registrationService.submitReservation).toHaveBeenCalledWith(offerDetatils.id, reservation)
+        beforeEach(()=>{
+            offersService.selectOfferById.mockReturnValue(of(offerDetatils))
         })
 
-        it('should show loader when reservation is submitting', () => {
+        it("should call reservation service", () => {
+           
 
-            const offersService = spectator.inject<OffersService>(OffersService)
+            registrationService.submitReservation.mockReturnValue(of({reservationNumber: '001'}))
+            
+            const registrationForm = spectator.query(RegistrationFormComponent)            
+            
+            registrationForm?.reservation.emit(reservationInput)
 
-            offersService.selectOfferById.mockReturnValue(of(offerDetatilsListFixture[0]))
+            expect(registrationService.submitReservation).toHaveBeenCalledWith(offerDetatils.id, reservationInput)
+        })
 
-            const registrationService = spectator.inject(RegistrationService)
+        it('should show loader when registration services emits loading', () => {
+          
+            registrationService.submitReservation.mockReturnValue(of({reservationNumber: '001'}))            
 
             const registrationForm = spectator.query(RegistrationFormComponent)
             registrationService.loading$ = of(true)
@@ -93,16 +90,37 @@ describe('RegistrationFormContainer', () => {
 
         })
 
-        it('should hide loader when reservation is submitted', () => {
-
-            const registrationService = spectator.inject(RegistrationService)
-
-            const registrationForm = spectator.query(RegistrationFormComponent)
+        it('should hide loader when registration services emits not loading', () => {
+          
+            registrationService.submitReservation.mockReturnValue(of({reservationNumber: '001'}))
+            
             registrationService.loading$ = of(false)
-
+            
             spectator.detectChanges()
 
+            const registrationForm = spectator.query(RegistrationFormComponent)
+
             expect(registrationForm?.submitting).toBe(false)
+
+        })
+
+        it('should redirect after succesful submit', ()=>{
+
+            const reservationNumber = '001'
+           
+            registrationService.submitReservation.mockReturnValue(of({reservationNumber: reservationNumber}))
+
+            spectator.detectChanges()                       
+        
+            const router = spectator.inject(Router)                      
+
+            const registrationForm = spectator.query(RegistrationFormComponent)
+            const reservation: ReservationInput = reservationInputFixture
+
+            registrationForm?.reservation.emit(reservation)                      
+
+            expect(router.navigate).toHaveBeenCalledWith(['oferty', offerDetatils.id, 'rezerwacje', reservationNumber])
+
 
         })
     })

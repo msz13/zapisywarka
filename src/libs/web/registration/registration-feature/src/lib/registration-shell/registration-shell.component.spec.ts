@@ -1,21 +1,14 @@
 
-import { createComponentFactory, createRoutingFactory, Spectator, SpectatorRouting, SpyObject} from '@ngneat/spectator/jest'
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { createComponentFactory, Spectator, SpyObject} from '@ngneat/spectator/jest'
 import { RegistrationFeatureModule } from '../registration-feature.module';
 import { of } from 'rxjs';
 import {cold, Scheduler} from 'jest-marbles'
-import { OfferDetails } from '../domain/offers/offer.model';
-import { RegistrationApiService } from '../domain/registrations/registration-data.service.service';
-import { ReservationInput } from '../domain/registrations/reservation.model'
+import { RegistrationApiService } from '../domain/registrations/registration-api.service.service';
 import { Location } from '@angular/common'
-import { Router } from '@angular/router';
-import { Component } from '@angular/core';
-import { fakeAsync } from '@angular/core/testing';
 import { OffersApiService } from '../domain/offers/offers-api.service';
 import { OffersService } from '../domain/offers/offers.service';
 import {SpectacularAppComponent, SpectacularFeatureRouter, SpectacularFeatureTestingModule} from '@ngworker/spectacular'
 import { offerDetatilsListFixture } from '../utills/offer-details-list';
-import { OffersStore} from '../state/offers/offers.store'
 import { RegistratonFormPage } from './RegistratonFormPage';
 import { reservationDetailsFixture} from '../utills/reservationDetailsFixture'
 import { reservationInputFixture } from '../utills/ReservationInputFixture';
@@ -78,8 +71,8 @@ describe('RegistrationShellComponent', () => {
 
     it('should save reservetation when user accepts it', async()=>{
       offerApiService.getAll.mockReturnValue(of(offerDetatilsListFixture))
-      const registrationService = spectator.inject(RegistrationApiService)
-      registrationService.submitReservation.mockReturnValue(cold('--a', {a: reservationDetailsFixture}))
+      const registrationApiService = spectator.inject(RegistrationApiService)
+      registrationApiService.submitReservation.mockReturnValue(cold('--a', {a: reservationDetailsFixture}))
       
       await router.navigate(['oferty', '1'])    
           
@@ -96,10 +89,12 @@ describe('RegistrationShellComponent', () => {
 
       const expectedReservation = reservationInputFixture
       
-      expect(registrationService.submitReservation).toHaveBeenCalledWith("1", expectedReservation)
+      expect(registrationApiService.submitReservation).toHaveBeenCalledWith("1", expectedReservation)
       expect(page.registrationLoader()).not.toBeNull()
-      spectator.fixture.whenStable()
-      //expect(location.path()).toBe('/oferty/rejestracje/1')
+
+      Scheduler.get().flush()
+      await spectator.fixture.whenStable()
+      expect(location.path()).toBe(`/oferty/1/rezerwacje/${reservationDetailsFixture.reservationNumber}`)
       //TODO should load aftersubmit
       //TODO redirect to details 
 

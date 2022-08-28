@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ReservationInput } from './reservation.model';
+import { ReservationDetails, ReservationInput } from './reservation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class RegistrationApiService {
   
   constructor() { }
 
-  submitReservation(offerId: string, reservation: ReservationInput): Observable<boolean> {
+  submitReservation(offerId: string, reservation: ReservationInput): Observable<ReservationDetails> {
     throw new Error("Not implemented")
   }
 }

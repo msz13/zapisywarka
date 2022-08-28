@@ -1,15 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { OfferDetails } from '../domain/offers/offer.model';
 import { OffersService } from '../domain/offers/offers.service';
-import { RegistrationApiService } from '../domain/registrations/registration-data.service.service';
 import { ReservationInput } from '../domain/registrations/reservation.model';
-import { ActivatedRoute } from '@angular/router';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
-import { offerDetatilsListFixture } from '../utills/offer-details-list';
-import { JsonPipe } from '@angular/common';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { RegistrationService } from '../domain/registrations/registration.service';
 
 
@@ -29,7 +24,11 @@ export class RegistrationFormContainer implements OnInit {
   $offer!: Observable<OfferDetails>
   submitting$!: Observable<boolean>
   
-  constructor(private offersService: OffersService, private registrationService: RegistrationService, private route: ActivatedRoute) { }
+  constructor(private offersService: OffersService, 
+    private registrationService: RegistrationService, 
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {    
    
@@ -52,6 +51,7 @@ export class RegistrationFormContainer implements OnInit {
     const offerId = this.route.snapshot.paramMap.get('offerId')
     if(offerId != null) {
       this.registrationService.submitReservation(offerId, reservation)
+        .subscribe(result => this.router.navigate(['oferty', offerId, 'rezerwacje', result.reservationNumber]))
     }
     
   }

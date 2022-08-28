@@ -1,11 +1,12 @@
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
-import { RegistrationApiService } from './registration-data.service.service';
+import { RegistrationApiService } from './registration-api.service.service';
 import { RegistrationService } from './registration.service';
 import { reservationInputFixture } from '../../utills/ReservationInputFixture'
 import { SpyObject } from '@ngneat/spectator/jest';
 import { of } from 'rxjs'
 import exp = require('constants');
 import { cold, Scheduler } from 'jest-marbles';
+import { reservationDetailsFixture } from '../../utills/reservationDetailsFixture';
 
 describe('RegistrationService', () => {
   let spectator: SpectatorService<RegistrationService>;
@@ -27,12 +28,17 @@ describe('RegistrationService', () => {
   describe('submit reservation', ()=>{
 
     it('should save data through api', ()=>{
-      
-      apiService.submitReservation.mockReturnValue(of(true))
 
-      spectator.service.submitReservation("1", reservationInputFixture)
+      const spy = jest.fn()
+            
+      apiService.submitReservation.mockReturnValue(of(reservationDetailsFixture))
+
+      spectator.service.submitReservation("1", reservationInputFixture).subscribe(spy)
 
       expect(apiService.submitReservation).toHaveBeenCalledWith("1", reservationInputFixture)
+
+      expect(spy).toHaveBeenCalledWith({reservationNumber: reservationDetailsFixture.reservationNumber})
+
       
     })
 
@@ -44,18 +50,16 @@ describe('RegistrationService', () => {
       spectator.service.loading$.subscribe(spy)
 
             
-      spectator.service.submitReservation("1", reservationInputFixture)
+      spectator.service.submitReservation("1", reservationInputFixture).subscribe()
+      
+      //complete subscribtion
       Scheduler.get().flush()
 
       
       expect(spy).toHaveBeenNthCalledWith(1, false)
       expect(spy).toHaveBeenNthCalledWith(2, true)
-      expect(spy).toHaveBeenNthCalledWith(3, false)
-      
-
-      
-
-      
+      expect(spy).toHaveBeenNthCalledWith(3, false)   
+          
 
     })
 

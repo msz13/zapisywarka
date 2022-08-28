@@ -11,8 +11,9 @@ export interface ReservedItem {
 }
 
 type reservationId = string
+
 export interface ReservationDetails {
-   id: reservationId
+   reservationNumber: reservationId
 }
 
 export interface RegistrationsState {

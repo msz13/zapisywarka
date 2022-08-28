@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, pipe } from 'rxjs';
 import { dispatch } from 'rxjs/internal/observable/pairs';
 import { map, tap } from 'rxjs/operators';
-import { RegistrationApiService } from './registration-data.service.service';
-import { RegistrationsState, ReservationInput } from './reservation.model';
+import { RegistrationApiService } from './registration-api.service.service';
+import { RegistrationsState, ReservationDetails, ReservationInput } from './reservation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,11 +26,18 @@ export class RegistrationService {
 
 
 
-  submitReservation(offerId: string, reservation: ReservationInput) {
-    this.setLoading(true);
+  submitReservation(offerId: string, reservation: ReservationInput): Observable<Pick<ReservationDetails, | 'reservationNumber'>> {
+     this.setLoading(true);
 
-    this.apiService.submitReservation(offerId, reservation)
-      .pipe(tap(() => this.setLoading(false))).subscribe()
+    return this.apiService.submitReservation(offerId, reservation)
+      .pipe(
+        map(reservation => {
+          return { reservationNumber: reservation.reservationNumber}
+        }),
+        tap(() => this.setLoading(false))
+        )
+       
+     
   }
 
   private setLoading(loadingState: boolean) {

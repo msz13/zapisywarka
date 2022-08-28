@@ -1,5 +1,5 @@
 import { createHttpFactory, HttpMethod, SpectatorHttp } from '@ngneat/spectator';
-import { RegistrationApiService} from './registration-data.service.service';
+import { RegistrationApiService} from './registration-api.service.service';
 
 describe('RegistrationData.ServiceService', () => {
   let spectator: SpectatorHttp<RegistrationApiService>;
