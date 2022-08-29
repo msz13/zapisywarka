@@ -1,0 +1,7 @@
+### 1. feat(web/registration) add new reservation form component (#112) #116 
+  - trwał ponad 3 tygodnie
+  - początek ył w miare dobty
+  - później były problemy z napisaniem testów z routingiem feture testow- zastosowałem bilbiotekę Spectacular
+  - przestały działac testy jest z biulbioteka akita - miałem do wybory samemu probowac aktualizowac bilbioteke, albo nie jej nie uzywac - przestałem jej uzywac
+  - bardzo trudno było napisac testy z obserweblami, zwlaszcza gdy było kilka stanow
+  
