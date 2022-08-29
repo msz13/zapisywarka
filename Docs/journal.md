@@ -5,4 +5,5 @@
   - później były problemy z napisaniem testów z routingiem feture testow- zastosowałem bilbiotekę Spectacular
   - przestały działac testy jest z biulbioteka akita - miałem do wybory samemu probowac aktualizowac bilbioteke, albo nie jej nie uzywac - przestałem jej uzywac
   - bardzo trudno było napisac testy z obserweblami, zwlaszcza gdy było kilka stanow
+  - Mozna było to zadanie rozbic na wyswietlenie formularza i dokonanie rezerwacji
   
