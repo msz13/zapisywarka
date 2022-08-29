@@ -21,14 +21,7 @@ export class RegistrationFormService {
     return this.form
   }
 
-  /* createForm() {
-    this.form = this.fb.group({
-      receptionPassword: this.fb.control<string>(""),
-      comments: this.fb.control<string>(""),
-      reservedItems: this.fb.array([])    
-    })
-  } */
-
+ 
   aGroup() {
     this.form = this.fb.group({
       receptionPassword: this.fb.control<string>(""),
@@ -38,7 +31,7 @@ export class RegistrationFormService {
     return this.form
   }
 
-  setReservetItemsControl(offerItems: OfferItem[]) {
+  setReservedItemsControl(offerItems: OfferItem[]) {
     this.form.setControl("reservedItems", this.formArrayFromOfferItems(offerItems))
   }  
 

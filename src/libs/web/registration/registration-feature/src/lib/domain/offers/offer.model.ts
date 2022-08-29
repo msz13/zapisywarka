@@ -2,7 +2,7 @@
 export type offerId = string
 
 export interface OfferDetails {
-    id: string,
+    id: offerId,
     name: string,
     offerItems: OfferItem[]
   }

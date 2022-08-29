@@ -7,12 +7,11 @@ import { RegistrationFormComponent } from '../registration-form/registration-for
 import { OfferDetails } from '../domain/offers/offer.model';
 import { ReservationInput } from '../domain/registrations/reservation.model';
 import { OffersService } from '../domain/offers/offers.service'
-import { offerDetatilsListFixture } from '../utills/offer-details-list';
+import { offerDetatilsListFixture } from '../utills/fixtures/offer-details-list';
 import { RegistrationService } from '../domain/registrations/registration.service';
-import { cold, Scheduler } from 'jest-marbles'
-import { reservationInputFixture } from '../utills/ReservationInputFixture';
+import { reservationInputFixture } from '../utills/fixtures/ReservationInputFixture';
 import { Router } from '@angular/router';
-import { reservationDetailsFixture } from '../utills/reservationDetailsFixture';
+import { reservationDetailsFixture } from '../utills/fixtures/reservationDetailsFixture';
 
 
 
@@ -106,18 +105,17 @@ describe('RegistrationFormContainer', () => {
 
         it('should redirect after succesful submit', ()=>{
 
+            const registrationForm = spectator.query(RegistrationFormComponent)
+            const router = spectator.inject(Router)  
+
             const reservationNumber = '001'
-           
+            
             registrationService.submitReservation.mockReturnValue(of({reservationNumber: reservationNumber}))
 
-            spectator.detectChanges()                       
-        
-            const router = spectator.inject(Router)                      
+            spectator.detectChanges()                   
+                                               
 
-            const registrationForm = spectator.query(RegistrationFormComponent)
-            const reservation: ReservationInput = reservationInputFixture
-
-            registrationForm?.reservation.emit(reservation)                      
+            registrationForm?.reservation.emit(reservationInput)                      
 
             expect(router.navigate).toHaveBeenCalledWith(['oferty', offerDetatils.id, 'rezerwacje', reservationNumber])
 

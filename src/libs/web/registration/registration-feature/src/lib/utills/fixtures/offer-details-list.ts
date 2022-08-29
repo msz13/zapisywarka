@@ -1,4 +1,4 @@
-import { OfferDetails } from "../domain/offers/offer.model"
+import { OfferDetails } from "../../domain/offers/offer.model"
 
 export const offerDetatilsListFixture: OfferDetails[] = [   
  {

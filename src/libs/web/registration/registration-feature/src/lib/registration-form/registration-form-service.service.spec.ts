@@ -5,8 +5,6 @@ import { ReservedItem } from '../domain/registrations/reservation.model';
 import { RegistrationFormService } from './registration-form.service';
 
 
-//TODO Rozdzielić interfejs servisu, na inicjacje w konstruktorze, aGroup - getter form group, addOfferItems 
-//TODO dodać typy do form group
 
 const offerItems: OfferItem[] = [
   {
@@ -42,7 +40,7 @@ describe('RegistrationFormServiceService', () => {
 
   it('should create form array from offer items', ()=>{
 
-    sut.setReservetItemsControl(offerItems) 
+    sut.setReservedItemsControl(offerItems) 
 
     const offerItemsArray = sut.aFormGroup.get("reservedItems") as FormArray
    
@@ -53,7 +51,7 @@ describe('RegistrationFormServiceService', () => {
 
   it("should transform form value to reservation input", ()=>{
      
-    sut.setReservetItemsControl(offerItems)
+    sut.setReservedItemsControl(offerItems)
 
     const form = sut.aFormGroup
 
@@ -86,7 +84,7 @@ describe('RegistrationFormServiceService', () => {
 
   it('should get reserved item control on specyfic index', ()=>{
             
-      sut.setReservetItemsControl(offerItems)
+      sut.setReservedItemsControl(offerItems)
       const secondItem = sut.getReservedItemAt(1).getRawValue() as ReservedItem 
 
       expect(secondItem.offerItemId).toBe("2")

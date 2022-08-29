@@ -1,4 +1,4 @@
-import { ReservationDetails } from "../domain/registrations/reservation.model";
+import { ReservationDetails } from "../../domain/registrations/reservation.model";
 
 
 export const reservationDetailsFixture: ReservationDetails = { 

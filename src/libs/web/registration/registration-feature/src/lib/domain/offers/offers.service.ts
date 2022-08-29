@@ -1,9 +1,7 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { BehaviorSubject, Observable, of } from 'rxjs' 
-import { map, tap, throwIfEmpty } from "rxjs/operators";
-import { offerDetatilsListFixture } from "../../utills/offer-details-list";
+import { BehaviorSubject, Observable } from 'rxjs' 
+import { map, tap } from "rxjs/operators";
 import { OfferDetails, OffersState } from "./offer.model";
 import { OffersApiService } from "./offers-api.service";
 
@@ -15,8 +13,7 @@ export class OffersService {
     offersState: OffersState = { offers: new Map([]),}
     dispach = new BehaviorSubject<OffersState>(this.offersState)
     
-    constructor(private offersApiService: OffersApiService, private route: ActivatedRoute) {
-       
+    constructor(private offersApiService: OffersApiService) {       
 
     }
    
@@ -50,10 +47,7 @@ export class OffersService {
         ).subscribe()
     }
 
-    getOffers() {
-        return this.offersState.offers.values()
-    }
-
+    
     private select() {
         return this.dispach.asObservable()
     }

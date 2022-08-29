@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegistrationFormContainer } from './registration-form.container/registration-form.container';
-import { RegistrationShellComponent } from './registration-shell/registration-shell.component';
+import { RegistrationShellComponent } from './registration-shell.component';
 import { ReservationDetailsContainer } from './reservation-details/reservation-details.container';
 
  export const routes: Routes = [

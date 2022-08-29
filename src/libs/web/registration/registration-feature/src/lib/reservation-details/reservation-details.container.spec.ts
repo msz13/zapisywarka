@@ -1,10 +1,10 @@
 import { Spectator, createComponentFactory } from '@ngneat/spectator/jest';
 
-import { ReservationDetailsComponent } from './reservation-details.component';
+import { ReservationDetailsContainer } from './reservation-details.container';
 
 describe('ReservationDetailsComponent', () => {
-  let spectator: Spectator<ReservationDetailsComponent>;
-  const createComponent = createComponentFactory(ReservationDetailsComponent);
+  let spectator: Spectator<ReservationDetailsContainer>;
+  const createComponent = createComponentFactory(ReservationDetailsContainer);
 
   it('should create', () => {
     spectator = createComponent();

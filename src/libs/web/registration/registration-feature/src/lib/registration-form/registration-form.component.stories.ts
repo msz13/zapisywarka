@@ -1,6 +1,6 @@
 import { FormBuilder } from '@angular/forms';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
-import { offerDetatilsListFixture } from '../utills/offer-details-list';
+import { offerDetatilsListFixture } from '../utills/fixtures/offer-details-list';
 import { RegistrationFormComponent } from './registration-form.component';
 import { RegistrationFormService } from './registration-form.service';
 

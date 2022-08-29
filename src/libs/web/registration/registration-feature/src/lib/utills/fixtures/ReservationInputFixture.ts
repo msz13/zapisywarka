@@ -1,4 +1,4 @@
-import { ReservationInput } from "../domain/registrations/reservation.model";
+import { ReservationInput } from "../../domain/registrations/reservation.model";
 
 export const reservationInputFixture: ReservationInput = {        
     receptionPassword: "Kowalski",

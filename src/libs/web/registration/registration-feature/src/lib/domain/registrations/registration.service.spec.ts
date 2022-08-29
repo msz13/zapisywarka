@@ -1,12 +1,12 @@
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
 import { RegistrationApiService } from './registration-api.service.service';
 import { RegistrationService } from './registration.service';
-import { reservationInputFixture } from '../../utills/ReservationInputFixture'
+import { reservationInputFixture } from '../../utills/fixtures/ReservationInputFixture'
 import { SpyObject } from '@ngneat/spectator/jest';
 import { of } from 'rxjs'
 import exp = require('constants');
 import { cold, Scheduler } from 'jest-marbles';
-import { reservationDetailsFixture } from '../../utills/reservationDetailsFixture';
+import { reservationDetailsFixture } from '../../utills/fixtures/reservationDetailsFixture';
 
 describe('RegistrationService', () => {
   let spectator: SpectatorService<RegistrationService>;

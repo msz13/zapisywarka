@@ -36,7 +36,7 @@ export class RegistrationFormComponent implements OnInit {
  
   ngOnInit() {    
     if(this.offer) {
-      this.formService.setReservetItemsControl(this.offer.offerItems)  
+      this.formService.setReservedItemsControl(this.offer.offerItems)  
     }
          
   }

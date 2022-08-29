@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { OffersService } from '../domain/offers/offers.service';
+import { OffersService } from './domain/offers/offers.service';
 
 @Component({
   selector: 'reg-shell',
   template: `<router-outlet></router-outlet>`,
-  styleUrls: ['./registration-shell.component.css'],
+  styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegistrationShellComponent implements OnInit {
