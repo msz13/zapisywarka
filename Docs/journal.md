@@ -6,4 +6,4 @@
   - przestały działac testy jest z biulbioteka akita - miałem do wybory samemu probowac aktualizowac bilbioteke, albo nie jej nie uzywac - przestałem jej uzywac
   - bardzo trudno było napisac testy z obserweblami, zwlaszcza gdy było kilka stanow
   - Mozna było to zadanie rozbic na wyswietlenie formularza i dokonanie rezerwacji
-  
+  - test integracyjny, nie prowadzil bezposrednio do kolejnej implementacji testu jednostkowego, czesto error niew skazywal gdzie jest problem. byc moze przez observable, muszę się na uczyć złożony test aceptacyjny rozbijać na prostrze kroki
