@@ -64,11 +64,17 @@
         "libs/web/identity/sign-up-feature/src/index.ts"
       ],
       "@zapisywarka/kustomize": ["libs/tools/kustomize/src/index.ts"],
+      "@zapisywarka/libs/web/spectacular-spike": [
+        "libs/libs/web/spectacular-spike/src/index.ts"
+      ],
       "@zapisywarka/sign-up-form": [
         "libs/sign-up/sign-up-element/src/index.ts"
       ],
       "@zapisywarka/web/identity/shared-ui": [
         "libs/web/identity/shared-ui/src/index.ts"
+      ],
+      "@zapisywarka/web/registration/registration-feature": [
+        "libs/web/registration/registration-feature/src/index.ts"
       ],
       "feature-sign-up": ["libs/sign-up/feature-sign-up/src/index.ts"]
     }

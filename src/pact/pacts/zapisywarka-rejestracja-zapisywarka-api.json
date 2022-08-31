@@ -1,0 +1,70 @@
+{
+  "consumer": {
+    "name": "zapisywarka-rejestracja"
+  },
+  "interactions": [
+    {
+      "description": "A request for all offers",
+      "providerState": "Offers are created",
+      "request": {
+        "method": "GET",
+        "path": "/offers"
+      },
+      "response": {
+        "body": [
+          {
+            "id": "1",
+            "name": "Oferta testowa",
+            "offerItems": [
+              {
+                "name": "Bochenek tradycyjny",
+                "offerItemId": "1"
+              },
+              {
+                "name": "Bochenek francuski",
+                "offerItemId": "2"
+              },
+              {
+                "name": "Foremkowy",
+                "offerItemId": "3"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Oferta testowa2",
+            "offerItems": [
+              {
+                "name": "Bochenek tradycyjny",
+                "offerItemId": "1"
+              },
+              {
+                "name": "Bochenek francuski",
+                "offerItemId": "2"
+              }
+            ]
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "10.1.2"
+    },
+    "pactRust": {
+      "ffi": "0.3.9",
+      "models": "0.4.5"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "zapisywarka-api"
+  }
+}
