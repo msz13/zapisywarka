@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ConfigurationService } from '@zapisywarka-web/web-shared-domain';
 import { Observable } from 'rxjs';
 import { ReservationDetails, ReservationInput } from './reservation.model';
 
@@ -7,9 +9,11 @@ import { ReservationDetails, ReservationInput } from './reservation.model';
 })
 export class RegistrationApiService {
   
-  constructor() { }
+  constructor(private http: HttpClient, private configuration: ConfigurationService) { }
 
-  submitReservation(offerId: string, reservation: ReservationInput): Observable<ReservationDetails> {
-    throw new Error("Not implemented")
+    submitReservation(offerId: string, reservation: ReservationInput): Observable<ReservationDetails> {
+      const baseUrl = this.configuration.getConfig().apiUrl
+      const url = baseUrl + `/offers/${offerId}/registrations`
+      return this.http.post<ReservationDetails>(url, reservation)
   }
 }
