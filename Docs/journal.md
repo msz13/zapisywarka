@@ -7,7 +7,7 @@
   - bardzo trudno było napisac testy z obserweblami, zwlaszcza gdy było kilka stanow
   - Mozna było to zadanie rozbic na wyswietlenie formularza i dokonanie rezerwacji
   - test integracyjny, nie prowadzil bezposrednio do kolejnej implementacji testu jednostkowego, czesto error niew skazywal gdzie jest problem. byc moze przez observable, muszę się na uczyć złożony test aceptacyjny rozbijać na prostrze kroki
-  - ##### wnnioski z narzędzi do testów komponentów:
+  - ##### wnioski z narzędzi do testów komponentów:
     angular testing 
     - szybkie testy
     - z spectactor w miarę szybko się pisze
