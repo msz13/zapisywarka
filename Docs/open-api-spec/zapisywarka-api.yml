@@ -14,7 +14,7 @@ paths:
     $ref: './identity/me.yml'
   /offers/{offerId}:
     $ref: 'registrations/offer.yml' 
-  /offers/{offerId}/registrations:
+  /offers/{offerId}/registration:
     $ref: 'registrations/registrations.yml'          
 
  
