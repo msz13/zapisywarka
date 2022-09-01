@@ -1,0 +1,22 @@
+<p data-testid="form-name">{{ offer?.name }}</p>
+<form [formGroup]="registrationForm" (ngSubmit)="onConfirm()">
+  <ul *ngIf="this.offer" formArrayName="reservedItems">
+    <ng-container *ngFor="let item of offer?.offerItems; let i = index">
+      <li
+        [formGroup]="this.formService.getReservedItemAt(i)"
+        data-testid="offer-item"
+      >
+        <span>{{ item.name }}</span>
+        <input formControlName="quantity" />
+      </li>
+    </ng-container>
+  </ul> 
+  <div data-testid="comments">
+    <input  formControlName="comments" />
+  </div>
+  <div data-testid="reception-password">
+    <input formControlName="receptionPassword" />
+  </div>
+  <div *ngIf="submitting" data-testid="registration-loader">Loading...</div>
+  <button type="submit" data-testid="confirm-button">Zatwierdzć</button>
+</form>

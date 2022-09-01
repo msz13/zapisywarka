@@ -110,7 +110,7 @@
         "production": {
           "context": ".",
           "push": true,
-          "platforms": ["linux/arm64"]          
+          "platforms": ["linux/arm64"]
         }
       }
     },
