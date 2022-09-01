@@ -19,3 +19,15 @@
             application/json:
               schema:
                $ref: '../shared/error.yml'
+ get:
+      description: 'get offers'
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'offer-form.yml#/OfferForm'
+ 
