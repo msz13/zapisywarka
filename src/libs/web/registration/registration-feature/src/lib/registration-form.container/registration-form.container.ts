@@ -13,6 +13,7 @@ function filterNill<T>(value: T | null): value is NonNullable<T> {
 }
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'reg-form-container',
   template: `<section>
     <reg-registration-form 

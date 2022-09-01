@@ -1,7 +1,7 @@
 {
   "projectType": "library",
   "sourceRoot": "libs/web/registration/registration-feature/src",
-  "prefix": "zapisywarka",
+  "prefix": "reg",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",

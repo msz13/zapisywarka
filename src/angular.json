@@ -10,7 +10,6 @@
     "api-identity-identity-core": "libs/api/identity/identity-core",
     "api-identity-identity-core-test": "libs/api/identity/identity-core-test",
     "db-migrations": "apps/db-migrations",
-    "spectacular-spike": "libs/web/spectacular-spike",
     "test-libs-identity-login-feature-e2e": "apps/test/libs/identity/login-feature-e2e",
     "test-libs-identity-sign-up-feature-e2e": "apps/test/libs/identity/sign-up-feature-e2e",
     "web-catalog-catalog-feature": "libs/web/catalog/catalog-feature",

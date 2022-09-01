@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { OffersService } from './domain/offers/offers.service';
 
-@Component({
+@Component({  
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'reg-shell',
   template: `<router-outlet></router-outlet>`,
   styles: [``],
@@ -9,10 +10,10 @@ import { OffersService } from './domain/offers/offers.service';
 })
 export class RegistrationShellComponent implements OnInit {
   constructor(private offerService: OffersService) {
-    this.offerService.loadOfferDetails()
+    
   }
 
   ngOnInit(): void {
-    
+    this.offerService.loadOfferDetails()
   }
 }

@@ -9,6 +9,7 @@ import { JsonPipe } from '@angular/common';
 
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'reg-registration-form',
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.css'],
