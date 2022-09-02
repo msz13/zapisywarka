@@ -1,0 +1,54 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/web/registration/registration-feature/src",
+  "prefix": "reg",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/registration/registration-feature"],
+      "options": {
+        "jestConfig": "libs/web/registration/registration-feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/registration/registration-feature/**/*.ts",
+          "libs/web/registration/registration-feature/**/*.html"
+        ]
+      }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "libs/web/registration/registration-feature/.storybook",
+        "browserTarget": "web-registration-registration-feature:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputDir": "dist/storybook/web-registration-registration-feature",
+        "configDir": "libs/web/registration/registration-feature/.storybook",
+        "browserTarget": "web-registration-registration-feature:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
