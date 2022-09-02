@@ -63,7 +63,7 @@ describe('TextFieldComponent', () => {
 
   })
 
-  it('shuold bind touch method', () =>{
+  it.skip('shuold bind touch method', () =>{
     host = createHost(`<sui-text-field [label]="'Nazwa'" [formControl]="control"></sui-text-field>`);
     expect(host.hostComponent.control.touched).toBe(false)    
     host.blur('input')
@@ -71,7 +71,7 @@ describe('TextFieldComponent', () => {
    
   })
 
-  it('shuold show error message', () =>{
+  it.skip('shuold show error message', () =>{
     host = createHost(`<sui-text-field [label]="'Nazwa'" [formControl]="control"></sui-text-field>`);
     
     const error1 = host.query('mat-error')
