@@ -30,9 +30,9 @@ namespace Zapisywarka.API.Common.Infrastructure.Persistance
 
         //var connectionString = $"HOST={postgresConfig["HOST"]};DATABASE={postgresConfig["Db"]};USERNAME={postgresConfig["User"]};PASSWORD={postgresConfig["Password"]};SSLMode=Require;Trust Server Certificate=true";
         var connectionString = $"HOST={postgresConfig["HOST"]};DATABASE={postgresConfig["Db"]};USERNAME={postgresConfig["User"]};PASSWORD={postgresConfig["Password"]};";
-        throw new Exception(connectionString);
+        
         //TODO dodac osobna konfigurację na produkcji i w testach ssl connection           
-        options.UseNpgsql(connectionString/* , o => o.UseNodaTime() */);
+        options.UseNpgsql(connectionString /*, o => o.UseNodaTime() */);
         options.EnableSensitiveDataLogging();
 
       });
