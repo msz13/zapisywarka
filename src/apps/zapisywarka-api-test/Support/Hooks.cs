@@ -1,15 +1,9 @@
-
-using System;
-using System.Net.Http;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using TechTalk.SpecFlow;
+using Boa.Constrictor.Screenplay;
 using TechTalk.SpecFlow.Infrastructure;
-using Zapisywarka.API.Modules.Identity.Core.Infrastructure;
+using Boa.Constrictor.RestSharp;
+using RestSharp;
 
 namespace Zapisywarka.API.AcceptanceTests.Helpers
 {
@@ -20,10 +14,12 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
     static WebApplicationFactory<Program> _factory;
 
     private ScenarioContext _scenarioContext;
+    private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
 
-    public Hooks(ScenarioContext scenarioContext)
+    public Hooks(ScenarioContext scenarioContext, ISpecFlowOutputHelper specFlowOutputHelper)
     {
       _scenarioContext = scenarioContext;
+      _specFlowOutputHelper = specFlowOutputHelper;
     }
 
 
@@ -39,23 +35,12 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
       //  TestDatabase.StopDb();
     }
 
-    [BeforeScenario]
-    public void SetUpTestServer()
+    [BeforeScenario(Order = 0)]
+    void SetUpActor() 
     {
-
-      var factory = new WebApplicationFactory<Program>().WithWebHostBuilder((host) =>
-       {
-         host.UseEnvironment(Microsoft.Extensions.Hosting.Environments.Development);
-       });
-
-      _scenarioContext.ScenarioContainer.RegisterInstanceAs<WebApplicationFactory<Program>>(factory);
-
-    }
-
-    [BeforeScenario]
-    public void SetUpHttpclient()
-    {
-      //    _scenarioContext.ScenarioContainer.RegisterInstanceAs<HttpClient>(_factory.CreateClient());
+      var actor = new Actor("Jan", logger: new BoaSpecFlowLogger(_specFlowOutputHelper));
+      actor.Can(CanCallRestApi.Using(new RestClientOptions("http://localhost:5000")));
+      _scenarioContext.ScenarioContainer.RegisterInstanceAs(actor);
     }
 
   }

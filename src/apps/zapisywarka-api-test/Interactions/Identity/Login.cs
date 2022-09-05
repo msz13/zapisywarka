@@ -2,10 +2,9 @@ using System;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using Boa.Constrictor.RestSharp;
 using Boa.Constrictor.Screenplay;
 using Zapisywarka.API.AcceptanceTests.Helpers;
-using Zapisywarka.API.AcceptanceTests.StepDefinitions;
-using ZapisywarkaApi.AcceptanceTests.Helpers;
 
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
@@ -37,12 +36,18 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
       var request = new { UserName = _userName, Password = _password };
       var response = await actor.Using<CallApi>().Client.PostAsJsonAsync(IdentityEndpoints.LogIn, request);
       response.Headers.TryGetValues("Set-cookie", out var cookies);
-      actor.AttemptsTo(Remember.Fact("cookie", cookies.ToArray()[0]));
+   
     }
 
     public override string ToString()
     {
       return $"log in with userName: {_userName} and password: {_password}";
+    }
+
+    internal static ITaskAsync With(UserCredentials userCredentials)
+    {
+      return TestTask.WhereAsync($"log in with userName: {userCredentials.UserName} and password: {userCredentials.Password}",
+        Post.To("users/login").With<UserCredentials>(userCredentials));
     }
   }
 }

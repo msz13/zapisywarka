@@ -6,8 +6,7 @@ Feature: Autentykacja poprzez login i hasło
 
     Scenario: Użytkownik poprawnie loguje się do systemu
         Given Organizator zapisów zarejestrował konto jako użytkownik "Bochenek" z hasłem "Password_01"
-        And Podaje poprawne dane logowania
-        When Próbuje się zalogować
+        When Próbuje się zalogować podając poprawne dane
         Then Powinien otrzymać dostęp do swojego konta w aplikacji
 
    Scenario: Niezalogowany subsrybent chce uzyskać dostęp do konta

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Zapisywarka.API.AcceptanceTests.Helpers;
 using Zapisywarka.API.AcceptanceTests.StepDefinitions;
 using CSharpFunctionalExtensions;
+using Boa.Constrictor.RestSharp;
 
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
@@ -23,8 +24,8 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
     public async Task<Result<UserInfo>> RequestAsAsync(IActor actor)
     {
 
-
-      var httpResult = await actor.Using<CallApi>().Client.GetAsync(IdentityEndpoints.Me);
+      return TestTask.WhereAsync("get user info", Get.Resource("offers/me"));
+       
 
       return httpResult.IsSuccessStatusCode ?
         Result.Success<UserInfo>(await httpResult.Content.ReadFromJsonAsync<UserInfo>())

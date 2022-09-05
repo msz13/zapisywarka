@@ -4,11 +4,11 @@ Feature: Rejestracja użytkowników
 
 
     Scenario: Użytkownik rejestruje się w systemie
-        And Organizator zapisów wypełnił dane rejestracji konta
+
+        When Koordynator zapisów próbuje się zarejestrować z poprawnymi danymi:
             | Nazwa        | Haslo      | PotwierdzenieHasla |
             | Jan_sz.cz-13 | Pasword_01 | Pasword_01         |
-        When Próbuję się zarejestrować
-        Then Baza użytkowników zawiera organizatora zapisów o imieniu "Jan_sz.cz-13"
+        Then Rejestracja kończy się sukcesem
 
 
 

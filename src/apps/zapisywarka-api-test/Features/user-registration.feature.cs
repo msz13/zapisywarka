@@ -117,14 +117,11 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
                             "Jan_sz.cz-13",
                             "Pasword_01",
                             "Pasword_01"});
-#line 7
-        testRunner.And("Organizator zapisów wypełnił dane rejestracji konta", ((string)(null)), table1, "And ");
-#line hidden
-#line 10
-        testRunner.When("Próbuję się zarejestrować", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 8
+        testRunner.When("Koordynator zapisów próbuje się zarejestrować z poprawnymi danymi:", ((string)(null)), table1, "When ");
 #line hidden
 #line 11
-        testRunner.Then("Baza użytkowników zawiera organizatora zapisów o imieniu \"Jan_sz.cz-13\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.Then("Rejestracja kończy się sukcesem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

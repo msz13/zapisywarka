@@ -29,7 +29,9 @@
       }
     }
   },
-  "plugins": ["@nx-dotnet/core"],
+  "plugins": [
+    "@nx-dotnet/core"
+  ],
   "generators": {
     "@nrwl/angular": {
       "application": {
@@ -62,7 +64,9 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     }
   }
 }

@@ -16,16 +16,25 @@
         }
       }
     },
+
+    "start-db": {
+      "executor": "@nrwl/workspace:run-script",
+      "options": {
+        "script": "start-db"
+      }
+
+    },
     "serve": {
       "executor": "@nx-dotnet/core:serve",
       "options": {
         "configuration": "Debug"
       },
-      "configurations": {        
+      "configurations": {
         "production": {
           "configuration": "Release"
         }
-      }
+      },
+      "dependsOn": ["start-db"]
     },
     "docker": {
       "executor": "@nx-tools/nx-docker:build",

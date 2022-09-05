@@ -9,7 +9,7 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
 
     public class Command : IRequest<IdentityResult>
     {
-      public string AccessCode { get; set; }
+      public string? AccessCode { get; set; }
 
 
       public string UserName { get; set; }
@@ -24,7 +24,7 @@ namespace Zapisywarka.API.Modules.Identity.Core.Features
       {
         RuleFor(command => command.UserName).NotNull().NotEmpty();
         RuleFor(command => command.Password).NotNull().NotEmpty();
-        RuleFor(command => command.AccessCode).NotNull().NotEmpty();
+       
       }
     }
 
