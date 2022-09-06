@@ -44,12 +44,12 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
     [Then(@"Powinien otrzymać dostęp do swojego konta w aplikacji")]
     public async Task ThenPowinienOtrzymacDostepDoSwojegoKontaWAplikacji()
     {
-       var result = await john.AskingForAsync(
-          GetUserInfo.Now()
-        );
-        result.IsSuccess.Should().BeTrue();
-        result.Value.Id.Should().NotBeNullOrEmpty();
-        result.Value.UserName.Should().Be(new UserCredentials().UserName);
+        await john.AttemptsToAsync(GetUserInfo.OfLoggedUser());
+
+        var result = john.AskingFor(GetUserInfo.Result());
+        result.StatusCode.Should().Be(HttpStatusCode.OK);
+        result.IsSuccessful.Should().BeTrue();
+        result.Content.As<UserInfo>().UserName.Should().Be(new UserCredentials().UserName);
     }
 
     [Then(@"Widzi komunikat błędu")]

@@ -25,8 +25,8 @@ namespace Boa.Constrictor.RestSharp {
     }
 
 
-    public static CanCallRestApi Using(RestClientOptions options) {
-      return new CanCallRestApi(new RestClient(options));
+    public static CanCallRestApi Using(RestClient client) {
+      return new CanCallRestApi(client);
     }
 
     public static CanCallRestApi As(IActor actor) => actor.Using<CanCallRestApi>();

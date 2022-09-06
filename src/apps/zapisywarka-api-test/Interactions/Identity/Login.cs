@@ -48,6 +48,7 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
     {
       return TestTask.WhereAsync($"log in with userName: {userCredentials.UserName} and password: {userCredentials.Password}",
         Post.To("users/login").With<UserCredentials>(userCredentials));
+        EnsureLastResponse.Success();
     }
   }
 }

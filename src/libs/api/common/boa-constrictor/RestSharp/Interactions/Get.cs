@@ -1,19 +1,26 @@
 using System;
 using System.Threading.Tasks;
 using Boa.Constrictor.Screenplay;
+using RestSharp;
 
 namespace Boa.Constrictor.RestSharp
 {
-  public class Get : ITaskAsync
+  public class Get : BaseHttpRequest
   {
-    public static ITaskAsync Resource(string v)
+    public Get(string resource) : base(new RestRequest(resource, Method.Get))
     {
-      throw new NotImplementedException();
     }
 
-    public Task PerformAsAsync(IActor actor)
+    public static ITaskAsync Resource(string resource)
     {
-      throw new NotImplementedException();
+      return new Get(resource);
     }
+
+     public override string ToString()
+    {
+      return $"Perform get request with body: ";
+    }
+
+    
   }
 }
