@@ -24,9 +24,6 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
       return TestTask.WhereAsync("get user info", Get.Resource(IdentityEndpoints.Me));
     }
 
-    internal static IQuestion<RestResponse> Result()
-    {
-      return Question.Where("get las rest response", LastResponse.Received());
-    }
+    
   }
 }

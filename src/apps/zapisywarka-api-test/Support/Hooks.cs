@@ -3,7 +3,7 @@ using TechTalk.SpecFlow;
 using Boa.Constrictor.Screenplay;
 using TechTalk.SpecFlow.Infrastructure;
 using Boa.Constrictor.RestSharp;
-using RestSharp;
+using Boa.Constrictor.Memory;
 
 namespace Zapisywarka.API.AcceptanceTests.Helpers
 {
@@ -42,6 +42,7 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
       var actor = new Actor("Jan", logger: logger);
       var client = RestSharpClientFactory.WithCookieAuthentication("http://localhost:5000", logger);
       actor.Can(CanCallRestApi.Using(client));
+      actor.Can(new MemoryAbility());
       _scenarioContext.ScenarioContainer.RegisterInstanceAs(actor);
     }
 

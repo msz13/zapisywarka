@@ -1,14 +1,15 @@
 using Boa.Constrictor.Screenplay;
 using Boa.Constrictor.RestSharp;
 using RestSharp;
+using CSharpFunctionalExtensions;
 
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
   public class UserRegistrationVeryfication 
   {
-    public static IQuestion<RestResponse> Result()
+    public static IQuestion<Result> Result()
     {
-      return Question.Where<RestResponse>("User registration result", LastResponse.Received());
+      return Question.Where<Result>("User registration result", LastResponse.Result());
     }
    
   }

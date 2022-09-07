@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Boa.Constrictor.Screenplay;
+using Boa.Constrictor.Memory;
 using Microsoft.AspNetCore.Mvc.Testing;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Infrastructure;
@@ -7,6 +8,7 @@ using System.Net;
 using RestSharp;
 using Zapisywarka.API.AcceptanceTests.Interactions.Identity;
 using FluentAssertions;
+using Boa.Constrictor.RestSharp;
 
 namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
 {
@@ -24,14 +26,18 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
     [Given(@"Organizator zapisów zarejestrował konto jako użytkownik ""(.*)"" z hasłem ""(.*)""")]
     public async Task GivenOrganizatorZapisowZarejestrowalKontoJakoUzytkownikZHaslem(string userName, string pasword)
     {
-      await john.AttemptsToAsync(CreateUserAccount.With(new UserCredentials{UserName = userName, Password = pasword}));
+
+      var userCredentials = new UserCredentials { UserName = userName, Password = pasword };
+      await john.AttemptsToAsync(CreateUserAccount.With(userCredentials));
+      john.AttemptsTo(Remember.Fact("credentials", userCredentials));
     }
 
     
     [When(@"Próbuje się zalogować podając poprawne dane")]
     public async Task WhenProbujeSieZalogowac()
     {
-      await john.AttemptsToAsync(Login.WithCorrectCredentials());
+      var credentials = john.AskingFor<UserCredentials>(Recall<UserCredentials>.Fact("credentials"));
+      await john.AttemptsToAsync(Login.WithCredentials(credentials));
     }
 
     [When(@"Niezalogowany użytkownik chce otrzymać dostęp do swojego konta")]
@@ -46,10 +52,11 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
     {
         await john.AttemptsToAsync(GetUserInfo.OfLoggedUser());
 
-        var result = john.AskingFor(GetUserInfo.Result());
-        result.StatusCode.Should().Be(HttpStatusCode.OK);
-        result.IsSuccessful.Should().BeTrue();
-        result.Content.As<UserInfo>().UserName.Should().Be(new UserCredentials().UserName);
+        var result = john.AskingFor(LastResponse.Result());
+        result.IsSuccess.Should().BeTrue();
+        result.As<UserInfo>().UserName.Should().Be(Recall<UserCredentials>.Fact("credentials").RequestAs(john).UserName);
+       /* result.IsSuccessful.Should().BeTrue();
+        result.Content.As<UserInfo>().UserName.Should().Be(new UserCredentials().UserName); */
     }
 
     [Then(@"Widzi komunikat błędu")]

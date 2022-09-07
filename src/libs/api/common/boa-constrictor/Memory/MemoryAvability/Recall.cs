@@ -3,7 +3,7 @@ using Boa.Constrictor.Screenplay;
 
 namespace Boa.Constrictor.Memory
 {
-  internal class Recall : IQuestion<object>
+  public class Recall<T> : IQuestion<T>
   {
     string _fact;
 
@@ -12,12 +12,12 @@ namespace Boa.Constrictor.Memory
     {
       _fact = fact;
     }
-
-    internal static Recall Fact(string fact)
+   
+     public static IQuestion<T> Fact(string fact)
     {
-      return new Recall(fact);
+      return new Recall<T>(fact);
     }
-    public object RequestAs(IActor actor)
+    public T RequestAs(IActor actor)
     {
       return actor.Using<MemoryAbility>().Recall(_fact);
     }
@@ -26,8 +26,7 @@ namespace Boa.Constrictor.Memory
     {
       return $"Actor recalls {_fact}";
     }
-
-
+    
   }
 }
 

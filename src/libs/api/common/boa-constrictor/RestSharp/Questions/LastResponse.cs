@@ -1,20 +1,23 @@
 using System;
 using Boa.Constrictor.Screenplay;
 using RestSharp;
+using CSharpFunctionalExtensions;
 
 namespace Boa.Constrictor.RestSharp
 {
-  public class LastResponse : IQuestion<RestResponse>
-  {
-   
-    public static LastResponse Received()
+  public class LastResponse : IQuestion<Result>
+  {   
+    public static LastResponse Result()
     {
       return new LastResponse();
     }
 
-    public RestResponse RequestAs(IActor actor)
+    public Result RequestAs(IActor actor)
     {
-      return CanCallRestApi.As(actor).LastResponse();
+      var response = CanCallRestApi.As(actor).LastResponse();
+
+      return response.IsSuccessful ? CSharpFunctionalExtensions.Result.Success(response.Content) 
+        : CSharpFunctionalExtensions.Result.Failure(response.Content);
     }
   }
 }

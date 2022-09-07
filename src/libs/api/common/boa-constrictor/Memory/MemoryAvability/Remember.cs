@@ -2,7 +2,7 @@ using Boa.Constrictor.Screenplay;
 
 namespace Boa.Constrictor.Memory
 {
-  class Remember : ITask
+  public class Remember : ITask
   {
     string _factName;
     dynamic _value;

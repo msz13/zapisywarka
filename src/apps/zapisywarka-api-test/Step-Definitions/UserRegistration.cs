@@ -33,6 +33,7 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
       await _actor.AttemptsToAsync(
         CreateUserAccount.With(data.CreateInstance<UserCredentials>())
       );
+     
       
     }
 
@@ -41,7 +42,7 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
     {      
        _actor.AskingFor(
         UserRegistrationVeryfication.Result()
-      ).IsSuccessful.Should().BeTrue();
+      ).IsSuccess.Should().BeTrue();
 
     }
 

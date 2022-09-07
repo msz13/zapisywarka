@@ -15,12 +15,7 @@ namespace Boa.Constrictor.RestSharp
     {
       return new Get(resource);
     }
-
-     public override string ToString()
-    {
-      return $"Perform get request with body: ";
-    }
-
+    
     
   }
 }
