@@ -39,16 +39,21 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
    
     }
 
+    internal static ITaskAsync WithCorrectCredentials()
+    {
+      var credentials = new UserCredentials();
+      return TestTask.WhereAsync($"log in with userName: {credentials.UserName} and password: {credentials.Password}",
+        Post.To("users/login").With<UserCredentials>(credentials),
+        EnsureLastResponse.Success()
+        );
+        
+    }
+
     public override string ToString()
     {
       return $"log in with userName: {_userName} and password: {_password}";
     }
 
-    internal static ITaskAsync With(UserCredentials userCredentials)
-    {
-      return TestTask.WhereAsync($"log in with userName: {userCredentials.UserName} and password: {userCredentials.Password}",
-        Post.To("users/login").With<UserCredentials>(userCredentials));
-        EnsureLastResponse.Success();
-    }
+   
   }
 }

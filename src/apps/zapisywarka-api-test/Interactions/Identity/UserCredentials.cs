@@ -5,7 +5,7 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
   public class UserCredentials
   {
-    string _userName;
+    string _userName = "John" + SystemClock.Instance.GetCurrentInstant().ToUnixTimeTicks();
 
     [TableAliases("Nazwa")]
     public string UserName
@@ -21,10 +21,10 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
     }
 
     [TableAliases("Haslo")]
-    public string Password { get; set; }
+    public string Password { get; set; } = "Password_01";
 
     [TableAliases("PotwierdzenieHasla")]
-    public string PasswordConfirmation { get; set; }
+    public string PasswordConfirmation { get; set; } = "Password_01";
 
   }
 }

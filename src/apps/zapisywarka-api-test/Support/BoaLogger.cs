@@ -4,7 +4,7 @@ using TechTalk.SpecFlow.Infrastructure;
 
 namespace Zapisywarka.API.AcceptanceTests.Helpers
 {
-  public class BoaSpecFlowLogger : AbstractLogger
+  public class BoaSpecFlowLogger : AbstractLogger, HttpTracer.Logger.ILogger
   {
     private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
 
@@ -16,6 +16,11 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
     public override void Close()
     {
 
+    }
+
+    public void Log(string message)
+    {
+      base.Log(message);
     }
 
     protected override void LogRaw(string message, LogSeverity severity = LogSeverity.Info)

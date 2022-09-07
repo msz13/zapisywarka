@@ -38,8 +38,9 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
     [BeforeScenario(Order = 0)]
     void SetUpActor() 
     {
-      var actor = new Actor("Jan", logger: new BoaSpecFlowLogger(_specFlowOutputHelper));
-      var client = RestSharpClientFactory.WithCookieAuthentication("http://localhost:5000");
+      var logger = new BoaSpecFlowLogger(_specFlowOutputHelper);
+      var actor = new Actor("Jan", logger: logger);
+      var client = RestSharpClientFactory.WithCookieAuthentication("http://localhost:5000", logger);
       actor.Can(CanCallRestApi.Using(client));
       _scenarioContext.ScenarioContainer.RegisterInstanceAs(actor);
     }

@@ -31,7 +31,7 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
     [When(@"Próbuje się zalogować podając poprawne dane")]
     public async Task WhenProbujeSieZalogowac()
     {
-      await john.AttemptsToAsync(Login.With(new UserCredentials()));
+      await john.AttemptsToAsync(Login.WithCorrectCredentials());
     }
 
     [When(@"Niezalogowany użytkownik chce otrzymać dostęp do swojego konta")]
