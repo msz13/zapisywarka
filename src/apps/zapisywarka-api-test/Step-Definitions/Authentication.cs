@@ -16,36 +16,35 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
   public class AuthenticationStepDefinitons 
   {
     Actor john;
-    Cast _cast;
-    UserCredentials _userCredentials;
    
-    public AuthenticationStepDefinitons(Cast cast) 
+    public AuthenticationStepDefinitons(Actor actor) 
     {
-      _cast = cast;
-      john = _cast.ActorNamed("John");
+      john = actor;
     }
    
 
     [Given(@"Organizator zapisów zarejestrował konto jako użytkownik ""(.*)"" z hasłem ""(.*)""")]
     public async Task GivenOrganizatorZapisowZarejestrowalKontoJakoUzytkownikZHaslem(string userName, string pasword)
     {
-      _userCredentials = new UserCredentials { UserName = userName, Password = pasword };
-      await john.AttemptsToAsync(CreateUserAccount.With(_userCredentials));
-   
+
+      var userCredentials = new UserCredentials { UserName = userName, Password = pasword };
+      await john.AttemptsToAsync(CreateUserAccount.With(userCredentials));
+      john.AttemptsTo(Remember.Fact("credentials", userCredentials));
     }
 
     
     [When(@"Próbuje się zalogować podając poprawne dane")]
     public async Task WhenProbujeSieZalogowac()
     {
-      await john.AttemptsToAsync(Login.WithCredentials(_userCredentials));
+      var credentials = john.AskingFor<UserCredentials>(Recall<UserCredentials>.Fact("credentials"));
+      await john.AttemptsToAsync(Login.WithCredentials(credentials));
     }
 
     [When(@"Niezalogowany użytkownik chce otrzymać dostęp do swojego konta")]
     public async Task WhenNiezalogowanyUzytkownikChceOtrzymacDostepDoSwojegoKonta()
     {
-      var anonymousUser = _cast.ActorNamed("anonymous");
-      await anonymousUser.AttemptsToAsync(Login.WithCredentials(new UserCredentials()));    
+
+    
     }
 
     [Then(@"Powinien otrzymać dostęp do swojego konta w aplikacji")]
@@ -53,20 +52,17 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
     {
         await john.AttemptsToAsync(GetUserInfo.OfLoggedUser());
 
-        var result = john.AskingFor(LastResponse<UserInfo>.Result());
+        var result = john.AskingFor(LastResponse.Result());
         result.IsSuccess.Should().BeTrue();
-        result.Value.userName.Should().Be(_userCredentials.UserName);
-        
-
+        result.As<UserInfo>().UserName.Should().Be(Recall<UserCredentials>.Fact("credentials").RequestAs(john).UserName);
+       /* result.IsSuccessful.Should().BeTrue();
+        result.Content.As<UserInfo>().UserName.Should().Be(new UserCredentials().UserName); */
     }
 
     [Then(@"Widzi komunikat błędu")]
-    public async Task ThenWidziKomunikatBledu()
+    public void ThenWidziKomunikatBledu()
     {
-      await john.AttemptsToAsync(GetUserInfo.OfLoggedUser());
-      var result = john.AskingFor(LastResponse<UserInfo>.Result());
-      result.IsFailure.Should().BeTrue();
-
+      
     }
 
   }

@@ -7,9 +7,9 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
   public class UserRegistrationVeryfication 
   {
-    public static IQuestion<Result<string>> Result()
+    public static IQuestion<Result> Result()
     {
-      return Question.Where<Result<string>>("User registration result", LastResponse<string>.Result());
+      return Question.Where<Result>("User registration result", LastResponse.Result());
     }
    
   }

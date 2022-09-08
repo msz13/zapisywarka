@@ -8,8 +8,6 @@
     "dbup-postgresql": "4.5.0",
     "Npgsql": "6.0.3",
     "RestSharp": "107.3.0",
-    "FluentAssertions": "6.7.0",
-    "HttpTracer": "2.1.1",
-    "CSharpFunctionalExtensions": "2.33.3"
+    "FluentAssertions": "6.7.0"
   }
 }
