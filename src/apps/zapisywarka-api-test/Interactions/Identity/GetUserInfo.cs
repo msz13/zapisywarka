@@ -13,8 +13,8 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
   public class UserInfo
   {
-    public string Id { get; set; }
-    public string UserName { get; set; }
+    public string id { get; set; }
+    public string userName { get; set; }
   }
 
   public class GetUserInfo

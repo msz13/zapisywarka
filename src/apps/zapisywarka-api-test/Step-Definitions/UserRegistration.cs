@@ -15,9 +15,9 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
     private Actor _actor;    
 
 
-    public UserRegistrationSteps(IUnitTestRuntimeProvider _unitTestRuntimeProvider, Actor actor)    
+    public UserRegistrationSteps(IUnitTestRuntimeProvider _unitTestRuntimeProvider, Cast cast)    
     {
-      _actor = actor;
+      _actor = cast.ActorNamed("John");
     }
 
     [BeforeScenario]

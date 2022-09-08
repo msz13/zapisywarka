@@ -13,7 +13,7 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
     public static ITaskAsync WithCredentials(UserCredentials credentials)
     {
       return TestTask.WhereAsync($"log in with userName: {credentials.UserName} and password: {credentials.Password}",
-        Post.To("users/login").With<UserCredentials>(credentials).EnsureSuccess()        
+        Post.To("users/login").With<UserCredentials>(credentials)        
         );        
     }     
    
