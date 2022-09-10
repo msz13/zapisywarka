@@ -13,7 +13,7 @@ jobs:
   build-web:
     runs-on: ubuntu-latest  
     env: 
-      Exlude_Projects: api-identity-identity-core-test,api-common-infrastructure-test,api-identity-identity-core,api-identity-identity-api,zapisywarka-api,zapisywarka-api-test,api-common-infrastructure,-api-catalog-catalog-test,api-catalog-catalog-api,-api-catalog-catalog,db-migrations
+      Exlude_Projects: api-identity-identity-core-test,api-common-infrastructure-test,api-identity-identity-core,api-identity-identity-api,zapisywarka-api,zapisywarka-api-test,api-common-infrastructure,-api-catalog-catalog-test,api-catalog-catalog-api,-api-catalog-catalog,db-migrations,api-common-boa-constrictor-test,api-common-boa-constrictor
     steps:
       - uses: actions/checkout@v2
         with:
