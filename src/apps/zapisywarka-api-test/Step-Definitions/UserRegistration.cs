@@ -4,7 +4,6 @@ using TechTalk.SpecFlow.UnitTestProvider;
 using Boa.Constrictor.Screenplay;
 using System.Threading.Tasks;
 using Zapisywarka.API.AcceptanceTests.Interactions.Identity;
-using TechTalk.SpecFlow.Infrastructure;
 using FluentAssertions;
 
 namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
@@ -20,12 +19,7 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
       _actor = cast.actorNamed("John");
     }
 
-    [BeforeScenario]
-    public void SetUpTest()
-    {
-      
-    }
-
+   
     
     [When(@"Koordynator zapisów próbuje się zarejestrować z poprawnymi danymi:")]
     public async Task WhenProbujeSieZarejestrowac(Table data)
@@ -45,8 +39,6 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
       ).IsSuccess.Should().BeTrue();
 
     }
-
-
 
   }
 }
