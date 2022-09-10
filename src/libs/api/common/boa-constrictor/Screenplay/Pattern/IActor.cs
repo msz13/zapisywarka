@@ -33,15 +33,16 @@ namespace Boa.Constrictor.Screenplay
         /// <param name="question">The Question to ask.</param>
         /// <returns></returns>
         TAnswer AsksFor<TAnswer>(IQuestion<TAnswer> question);
-        
-        /// <summary>
-        /// Asks a Question and returns the answer value asynchronously.
-        /// The Actor must have the Abilities needed by the Question.
-        /// </summary>
-        /// <typeparam name="TAnswer">The answer type.</typeparam>
-        /// <param name="question">The Question to ask.</param>
-        /// <returns></returns>
-        Task<TAnswer> AsksForAsync<TAnswer>(IQuestionAsync<TAnswer> question);
+    
+
+    /// <summary>
+    /// Asks a Question and returns the answer value asynchronously.
+    /// The Actor must have the Abilities needed by the Question.
+    /// </summary>
+    /// <typeparam name="TAnswer">The answer type.</typeparam>
+    /// <param name="question">The Question to ask.</param>
+    /// <returns></returns>
+    Task<TAnswer> AsksForAsync<TAnswer>(IQuestionAsync<TAnswer> question);
 
         /// <summary>
         /// Alias for "AsksFor".

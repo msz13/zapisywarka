@@ -28,6 +28,11 @@ public class TestTask
     {
        await actor.AttemptsToAsync(_task);     
     }
+
+    public override string ToString()
+    {
+      return _description;
+    }
   }
 
 }

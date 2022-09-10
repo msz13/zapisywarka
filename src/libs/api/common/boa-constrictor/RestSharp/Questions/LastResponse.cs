@@ -5,19 +5,24 @@ using CSharpFunctionalExtensions;
 
 namespace Boa.Constrictor.RestSharp
 {
-  public class LastResponse : IQuestion<Result>
+  public class LastResponse<TData> : IQuestion<Result<TData>>
   {   
-    public static LastResponse Result()
+    public static LastResponse<TData> Result()
     {
-      return new LastResponse();
+      return new LastResponse<TData>();
     }
 
-    public Result RequestAs(IActor actor)
+    public Result<TData> RequestAs(IActor actor)
     {
-      var response = CanCallRestApi.As(actor).LastResponse();
+      var api = CanCallRestApi.As(actor);
+      var response = api.LastResponse();
+      var data = api.Client.Deserialize<TData>(response).Data;
 
-      return response.IsSuccessful ? CSharpFunctionalExtensions.Result.Success(response.Content) 
-        : CSharpFunctionalExtensions.Result.Failure(response.Content);
+      return response.IsSuccessful ? CSharpFunctionalExtensions.Result.Success<TData>(data) 
+        : CSharpFunctionalExtensions.Result.Failure<TData>(response.Content);
     }
+
+  
   }
+
 }

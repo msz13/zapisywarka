@@ -12,12 +12,12 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
   [Binding]
   public class UserRegistrationSteps 
   {
-    private Actor _actor;    
+    private IActor _actor;    
 
 
-    public UserRegistrationSteps(IUnitTestRuntimeProvider _unitTestRuntimeProvider, Actor actor)    
+    public UserRegistrationSteps(IUnitTestRuntimeProvider _unitTestRuntimeProvider, Cast cast)    
     {
-      _actor = actor;
+      _actor = cast.actorNamed("John");
     }
 
     [BeforeScenario]

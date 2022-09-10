@@ -35,11 +35,8 @@ namespace Zapisywarka.API.Modules.Identity.Core
         {
           OnRedirectToLogin = redirectContext =>
           {
-
-            redirectContext.HttpContext.Response.StatusCode = 401;
-            var header = redirectContext.HttpContext.Request.Headers.Cookie;
-            Console.WriteLine("header" + header);
-            return Task.CompletedTask;
+            redirectContext.HttpContext.Response.StatusCode = 401;                      
+            return redirectContext.HttpContext.Response.WriteAsync("User is not authenticated");
           }
         };
 
