@@ -26,6 +26,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
+    "start-db": "docker compose -f apps/zapisywarka-api-test/docker-compose-postgresql.yml up -d",
     "remove-db": "docker rm -f postgres-db",
     "start-local-cluster": "sh ./tools/deployment/local-cluster/start-local-cluster.sh",
     "stop-local-cluster": "sh ./tools/deployment/local-cluster/stop-local-cluster.sh"

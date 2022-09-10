@@ -32,11 +32,6 @@ app.MapGet("/test", () => "Zapisywarka.pl api test");
 
 app.UseIdenityModule();
 
-//sds
-app.UseHttpsRedirection();
-
-
-
 app.MapControllers();
 
 app.Run();

@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Http;
 using Zapisywarka.API.AcceptanceTests.Helpers;
 using Zapisywarka.API.AcceptanceTests.StepDefinitions;
 using CSharpFunctionalExtensions;
+using Boa.Constrictor.RestSharp;
+using RestSharp;
+using System;
 
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
 {
@@ -13,29 +16,14 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Identity
     public string Id { get; set; }
     public string UserName { get; set; }
   }
-  public class GetUserInfo : IQuestionAsync<Result<UserInfo>>
-  {
-    public GetUserInfo() { }
 
-    internal static IQuestionAsync<Result<UserInfo>> Now() => new GetUserInfo();
-
-
-    public async Task<Result<UserInfo>> RequestAsAsync(IActor actor)
+  public class GetUserInfo
+  {    
+    public static ITaskAsync OfLoggedUser()
     {
-
-
-      var httpResult = await actor.Using<CallApi>().Client.GetAsync(IdentityEndpoints.Me);
-
-      return httpResult.IsSuccessStatusCode ?
-        Result.Success<UserInfo>(await httpResult.Content.ReadFromJsonAsync<UserInfo>())
-        : Result.Failure<UserInfo>(httpResult.StatusCode.ToString());
-
+      return TestTask.WhereAsync("get user info", Get.Resource(IdentityEndpoints.Me));
     }
 
-    public override string ToString()
-    {
-      return "get user info";
-    }
-
+    
   }
 }

@@ -114,12 +114,9 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
                         "word_01\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
-        testRunner.And("Podaje poprawne dane logowania", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.When("Próbuje się zalogować podając poprawne dane", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
-        testRunner.When("Próbuje się zalogować", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 11
         testRunner.Then("Powinien otrzymać dostęp do swojego konta w aplikacji", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -134,7 +131,7 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Niezalogowany subsrybent chce uzyskać dostęp do konta", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 13
+#line 12
    this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -154,10 +151,10 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 13
        testRunner.When("Niezalogowany użytkownik chce otrzymać dostęp do swojego konta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 15
+#line 14
        testRunner.Then("Widzi komunikat błędu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
