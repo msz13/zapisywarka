@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
+namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Identity
 {
     using TechTalk.SpecFlow;
     using System;
@@ -40,7 +40,7 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Autentykacja poprzez login i hasło", "    Posiadacze kont organizatorów zapisów,\n    aby korzystać z aplikacji,\n    mus" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Identity", "Autentykacja poprzez login i hasło", "    Posiadacze kont organizatorów zapisów,\n    aby korzystać z aplikacji,\n    mus" +
                     "zę się zautentykować poprzez podanie nazwy konta i hasła.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }

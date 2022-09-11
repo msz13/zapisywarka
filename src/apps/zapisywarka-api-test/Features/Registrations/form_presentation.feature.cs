@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
+namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class RejestracjaUzytkownikowFeature : object, Xunit.IClassFixture<RejestracjaUzytkownikowFeature.FixtureData>, System.IDisposable
+    public partial class PrezentacjaFormularzaZbieraniaZapisowDlaKoordynatoraFeature : object, Xunit.IClassFixture<PrezentacjaFormularzaZbieraniaZapisowDlaKoordynatoraFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "user-registration.feature"
+#line 1 "form_presentation.feature"
 #line hidden
         
-        public RejestracjaUzytkownikowFeature(RejestracjaUzytkownikowFeature.FixtureData fixtureData, ZapisywarkaClientAps_ZapisywarkaApi_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public PrezentacjaFormularzaZbieraniaZapisowDlaKoordynatoraFeature(PrezentacjaFormularzaZbieraniaZapisowDlaKoordynatoraFeature.FixtureData fixtureData, ZapisywarkaClientAps_ZapisywarkaApi_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,9 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Rejestracja użytkowników", "    Aby organizatorzy zapisów mogli korzystać z systemu muszą stworzyć konto użyt" +
-                    "kownika.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Registrations", "Prezentacja formularza zbierania zapisów dla koordynatora", "        Aby móc zbierać zapisy, na pozycje określone w swojej ofercie, \n        k" +
+                    "oordynator zapisów, może korzystać z formularza, \n        zawierającego pozycje " +
+                    "określone w ofercie.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,20 +77,33 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 8
+    #line hidden
+#line 9
+        testRunner.Given("Koordynator zapisów \"Andrzej\" jest zalogowany", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         void System.IDisposable.Dispose()
         {
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Użytkownik rejestruje się w systemie")]
-        [Xunit.TraitAttribute("FeatureTitle", "Rejestracja użytkowników")]
-        [Xunit.TraitAttribute("Description", "Użytkownik rejestruje się w systemie")]
-        public virtual void UzytkownikRejestrujeSieWSystemie()
+        [Xunit.SkippableFactAttribute(DisplayName="Organizator zapisów tworzy ofertę")]
+        [Xunit.TraitAttribute("FeatureTitle", "Prezentacja formularza zbierania zapisów dla koordynatora")]
+        [Xunit.TraitAttribute("Description", "Organizator zapisów tworzy ofertę")]
+        [Xunit.TraitAttribute("Category", "web")]
+        [Xunit.TraitAttribute("Category", "gh-76")]
+        public virtual void OrganizatorZapisowTworzyOferte()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "web",
+                    "gh-76"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Użytkownik rejestruje się w systemie", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Organizator zapisów tworzy ofertę", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 12
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -109,19 +123,29 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Nazwa",
-                            "Haslo",
-                            "PotwierdzenieHasla"});
-                table1.AddRow(new string[] {
-                            "Jan_sz.cz-13",
-                            "Pasword_01",
-                            "Pasword_01"});
 #line 8
-        testRunner.When("Koordynator zapisów próbuje się zarejestrować z poprawnymi danymi:", ((string)(null)), table1, "When ");
+    this.FeatureBackground();
 #line hidden
-#line 11
-        testRunner.Then("Rejestracja kończy się sukcesem", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Nazwa"});
+                table2.AddRow(new string[] {
+                            "Chleb wiejski"});
+                table2.AddRow(new string[] {
+                            "Chleb foremkowy z żurawiną"});
+                table2.AddRow(new string[] {
+                            "Chleb foremkowy z oliwkami"});
+#line 14
+        testRunner.Given("Organizator zapisów stworzył ofertę o nazwie \"Poniedziałek\" zawierającą następują" +
+                        "ce pozycje:", ((string)(null)), table2, "Given ");
+#line hidden
+#line 19
+        testRunner.And("Jest \"2020/08/20 15:00\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 20
+        testRunner.When("Przegląda formularz rejestracji/formularz przyjmowania zapisów", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 21
+        testRunner.Then("Formularz zapisów, zawiera powyższe dane", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -134,12 +158,12 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features
             
             public FixtureData()
             {
-                RejestracjaUzytkownikowFeature.FeatureSetup();
+                PrezentacjaFormularzaZbieraniaZapisowDlaKoordynatoraFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                RejestracjaUzytkownikowFeature.FeatureTearDown();
+                PrezentacjaFormularzaZbieraniaZapisowDlaKoordynatoraFeature.FeatureTearDown();
             }
         }
     }
