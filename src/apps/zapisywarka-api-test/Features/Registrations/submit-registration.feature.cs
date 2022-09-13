@@ -111,11 +111,13 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
         [Xunit.TraitAttribute("Description", "Koordynator zapisów przyjmuje rezerwację - full workflow")]
         [Xunit.TraitAttribute("Category", "web")]
         [Xunit.TraitAttribute("Category", "gh-76")]
+        [Xunit.TraitAttribute("Category", "skip")]
         public virtual void KoordynatorZapisowPrzyjmujeRezerwacje_FullWorkflow()
         {
             string[] tagsOfScenario = new string[] {
                     "web",
-                    "gh-76"};
+                    "gh-76",
+                    "skip"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Koordynator zapisów przyjmuje rezerwację - full workflow", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 21

@@ -1,5 +1,8 @@
+using Boa.Constrictor.Screenplay;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 using TechTalk.SpecFlow.UnitTestProvider;
+using Zapisywarka.Api.Test.Interactions.Registrations;
 
 namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
 {
@@ -8,16 +11,26 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
   {
 
     private readonly IUnitTestRuntimeProvider unitTestRuntimeProvider;
+    private IActor john;
+    private OfferData _offer;
 
-    public ReservationsCollection(IUnitTestRuntimeProvider _unitTestRuntimeProvider)
+    public ReservationsCollection(IUnitTestRuntimeProvider _unitTestRuntimeProvider, Cast cast)
     {
       unitTestRuntimeProvider = _unitTestRuntimeProvider;
+      john = cast.actorNamed("John");
+
     }
 
     [Given(@"Dostępny jest formularz zapisów, na ofertę ""(.*)"" zawierającą następujące pozycje:")]
-    public void GivenDostepnyJestFormularzZapisowNaOferteZawierajacaNastepujacePozycje(string poniedziałek0, Table table)
+    public async Task GivenDostepnyJestFormularzZapisowNaOferteZawierajacaNastepujacePozycje(string offerName, Table offerItemsTable)
     {
-      unitTestRuntimeProvider.TestIgnore("not implemented");
+      var offerItems = offerItemsTable.CreateSet<OfferData.OfferItem>();
+      _offer = new OfferData 
+      {
+        Name = offerName,
+        OfferItems = offerItems
+      };
+      
     }
 
     [Given(@"Koordynator przyjmuje rezerwację dla klienta następujących pozycji:")]

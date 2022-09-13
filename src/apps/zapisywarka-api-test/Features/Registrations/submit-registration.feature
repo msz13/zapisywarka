@@ -1,7 +1,7 @@
 Feature: Przyjmowanie zapisu przez koordynatora zapisów
 
 
-    Aby: ułatwić zbieranie zapisów poprzez różne kanały i źródła, osoba przyjmująca zapisy,
+    Aby ułatwić zbieranie zapisów poprzez różne kanały i źródła, osoba przyjmująca zapisy,
     może przyjąć rezerwację, w imieniu klienta, który składa go osobiście, telefonicznie lub przez media społecznościowe.
 
     
