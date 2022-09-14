@@ -1,5 +1,6 @@
 
 
+using System;
 using System.Threading.Tasks;
 
 namespace Boa.Constrictor.Screenplay 
@@ -11,7 +12,12 @@ public class TestTask
     public static ITaskAsync WhereAsync(string description, ITaskAsync task) {
         return new DynamicTask(description, task);
     }
-}
+
+    public static ITaskAsync WhereAsync(string description)
+    {
+      throw new NotImplementedException(description);
+    }
+  }
 
  class DynamicTask : ITaskAsync
 {

@@ -40,9 +40,9 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Registrations", "Przyjmowanie zapisu przez koordynatora zapisów", "    Aby: ułatwić zbieranie zapisów poprzez różne kanały i źródła, osoba przyjmują" +
-                    "ca zapisy,\n    może przyjąć rezerwację, w imieniu klienta, który składa go osobi" +
-                    "ście, telefonicznie lub przez media społecznościowe.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Registrations", "Przyjmowanie zapisu przez koordynatora zapisów", "    Aby ułatwić zbieranie zapisów poprzez różne kanały i źródła, osoba przyjmując" +
+                    "a zapisy,\n    może przyjąć rezerwację, w imieniu klienta, który składa go osobiś" +
+                    "cie, telefonicznie lub przez media społecznościowe.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -228,7 +228,8 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
                             "Chleb foremkowy z żurawiną",
                             "3"});
 #line 38
-            testRunner.Given("Koordynator przyjmuje rezerwację dla klienta następujących pozycji:", ((string)(null)), table7, "Given ");
+            testRunner.Given("Jan, przyjmujący zapisy, w ramach oferty \"Poniedziałek\" rezerwuje dla klienta nas" +
+                        "tępujące pozycje:", ((string)(null)), table7, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "Hasło odbioru",

@@ -35,7 +35,7 @@ Feature: Przyjmowanie zapisu przez koordynatora zapisów
 
         @api @gh-76
         Scenario: Koordynator zapisów poprawnie przyjmuje zapis
-            Given Koordynator przyjmuje rezerwację dla klienta następujących pozycji:
+            Given Jan, przyjmujący zapisy, w ramach oferty "Poniedziałek" rezerwuje dla klienta następujące pozycje:
                 | Nazwa                      | Ilość |
                 | Chleb wiejski              | 1     |
                 | Chleb foremkowy z żurawiną | 3     |
