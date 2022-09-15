@@ -81,106 +81,11 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
         {
 #line 8
     #line hidden
-#line 9
-        testRunner.Given("Koordynator zapisów \"Andrzej\" jest zalogowany", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Nazwa"});
-            table3.AddRow(new string[] {
-                        "Chleb wiejski"});
-            table3.AddRow(new string[] {
-                        "Chleb foremkowy z żurawiną"});
-            table3.AddRow(new string[] {
-                        "Chleb foremkowy z oliwkami"});
-#line 10
-        testRunner.And("Dostępny jest formularz zapisów, na ofertę \"Poniedziałek\" zawierającą następujące" +
-                    " pozycje:", ((string)(null)), table3, "And ");
-#line hidden
-#line 15
-        testRunner.And("Jest \"2020/08/20 15:00\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
         }
         
         void System.IDisposable.Dispose()
         {
             this.TestTearDown();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Koordynator zapisów przyjmuje rezerwację - full workflow")]
-        [Xunit.TraitAttribute("FeatureTitle", "Przyjmowanie zapisu przez koordynatora zapisów")]
-        [Xunit.TraitAttribute("Description", "Koordynator zapisów przyjmuje rezerwację - full workflow")]
-        [Xunit.TraitAttribute("Category", "web")]
-        [Xunit.TraitAttribute("Category", "gh-76")]
-        [Xunit.TraitAttribute("Category", "skip")]
-        public virtual void KoordynatorZapisowPrzyjmujeRezerwacje_FullWorkflow()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "web",
-                    "gh-76",
-                    "skip"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Koordynator zapisów przyjmuje rezerwację - full workflow", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 21
-        this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 8
-    this.FeatureBackground();
-#line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Nazwa",
-                            "Ilość"});
-                table4.AddRow(new string[] {
-                            "Chleb wiejski",
-                            "1"});
-                table4.AddRow(new string[] {
-                            "Chleb foremkowy z żurawiną",
-                            "3"});
-#line 22
-            testRunner.Given("Koordynator oznacza rezerwację dla klienta następujących pozycji:", ((string)(null)), table4, "Given ");
-#line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Hasło odbioru",
-                            "Uwagi"});
-                table5.AddRow(new string[] {
-                            "Szczeciński",
-                            "Odbierze żona Joanna"});
-#line 26
-            testRunner.And("wprowadza dane rezerwacji:", ((string)(null)), table5, "And ");
-#line hidden
-#line 29
-            testRunner.When("Zatwierdza rezerwację", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 30
-            testRunner.Then("Rezerwacja jest zapisana i zawiera powyższe informacje", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Data złożenia",
-                            "Numer rezerwacji"});
-                table6.AddRow(new string[] {
-                            "2020/08/20 15:00",
-                            "ABC-2022"});
-#line 31
-            testRunner.And("Dodatkowe dane:", ((string)(null)), table6, "And ");
-#line hidden
-            }
-            this.ScenarioCleanup();
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="Koordynator zapisów poprawnie przyjmuje zapis")]
@@ -195,8 +100,8 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
                     "gh-76"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Koordynator zapisów poprawnie przyjmuje zapis", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 37
-        this.ScenarioInitialize(scenarioInfo);
+#line 22
+       this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -218,42 +123,30 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
 #line 8
     this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Nazwa"});
+                table2.AddRow(new string[] {
+                            "Chleb wiejski"});
+                table2.AddRow(new string[] {
+                            "Chleb foremkowy z żurawiną"});
+                table2.AddRow(new string[] {
+                            "Chleb foremkowy z oliwkami"});
+#line 23
+            testRunner.Given("Dostępny jest formularz zapisów, na ofertę \"Poniedziałek\" zawierającą następujące" +
+                        " pozycje:", ((string)(null)), table2, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "Nazwa",
                             "Ilość"});
-                table7.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "Chleb wiejski",
                             "1"});
-                table7.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "Chleb foremkowy z żurawiną",
                             "3"});
-#line 38
+#line 28
             testRunner.Given("Jan, przyjmujący zapisy, w ramach oferty \"Poniedziałek\" rezerwuje dla klienta nas" +
-                        "tępujące pozycje:", ((string)(null)), table7, "Given ");
-#line hidden
-                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Hasło odbioru",
-                            "Uwagi"});
-                table8.AddRow(new string[] {
-                            "Szczeciński",
-                            "Odbierze żona Joanna"});
-#line 42
-            testRunner.And("wprowadza dane rezerwacji:", ((string)(null)), table8, "And ");
-#line hidden
-#line 45
-            testRunner.When("Zatwierdza rezerwację", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 46
-            testRunner.Then("Rezerwacja jest zapisana i zawiera powyższe informacje", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Data złożenia",
-                            "Numer rezerwacji"});
-                table9.AddRow(new string[] {
-                            "2020/08/20 15:00",
-                            "ABC-2022"});
-#line 47
-            testRunner.And("Dodatkowe dane:", ((string)(null)), table9, "And ");
+                        "tępujące pozycje:", ((string)(null)), table3, "Given ");
 #line hidden
             }
             this.ScenarioCleanup();

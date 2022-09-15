@@ -1,4 +1,4 @@
-using System;
+/* using System;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.UnitTestProvider;
 
@@ -45,4 +45,4 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
       unitTestRuntimeProvider.TestIgnore("not implemented");
     }
   }
-}
+} */
