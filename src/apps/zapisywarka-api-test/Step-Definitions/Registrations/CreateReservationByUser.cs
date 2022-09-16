@@ -1,10 +1,16 @@
 using System;
 using System.Collections.Generic;
+using Boa.Constrictor.Screenplay;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using TechTalk.SpecFlow.Infrastructure;
 using Zapisywarka.Api.Test.Interactions.Registrations;
 using Zapisywarka.API.AcceptanceTests.Interactions.Registrations;
+using Zapisywarka.API.AcceptanceTests.Interactions.Identity;
+using System.Threading.Tasks;
+using Boa.Constrictor.RestSharp;
+using CSharpFunctionalExtensions;
+using FluentAssertions;
 
 namespace MyNamespace
 {
@@ -13,25 +19,31 @@ namespace MyNamespace
   {
 
     private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
+    private IActor andrew;
+    private Result<CreateOffer.Response> _offer;
 
     public StepDefinitions()
     {
 
     }
 
-    public StepDefinitions(ISpecFlowOutputHelper specFlowOutputHelper)
+    public StepDefinitions(ISpecFlowOutputHelper specFlowOutputHelper, Cast cast)
     {
       _specFlowOutputHelper = specFlowOutputHelper;
+      andrew = cast.actorNamed("Andrew");
+
     }
 
-   /*  [Given(@"Koordynator zapisów ""(.*)"" jest zalogowany")]
-    public void GivenKoordynatorZapisowJestZalogowany(string andrzej0)
+     [Given(@"Koordynator zapisów ""(.*)"" jest zalogowany")]
+    public async Task GivenKoordynatorZapisowJestZalogowanyAsync(string andrzej0)
     {
-
-    } */
+        var credentials = new UserCredentials();
+        await andrew.AttemptsToAsync(CreateUserAccount.With(credentials));
+        await andrew.AttemptsToAsync(Login.WithCredentials(credentials));
+    } 
 
     [Given(@"Dostępny jest formularz zapisów, na ofertę ""(.*)"" zawierającą następujące pozycje:")]
-    public void GivenDostepnyJestFormularzZapisowNaOferteZawierajacaNastepujacePozycje(string offerName, Table table)
+    public async void GivenDostepnyJestFormularzZapisowNaOferteZawierajacaNastepujacePozycje(string offerName, Table table)
     {     
 
       var offerRequest = new OfferData
@@ -40,6 +52,9 @@ namespace MyNamespace
         OfferItems = table.CreateSet<OfferData.OfferItem>()
       };
 
+        await andrew.AttemptsToAsync(CreateOffer.With(offerRequest));
+        _offer = LastResponse<Result<CreateOffer.Response>>.Result().RequestAs(andrew).Value;
+       
       
     }
 
@@ -76,7 +91,7 @@ namespace MyNamespace
 
         _specFlowOutputHelper.WriteLine(request.ToString());
 
-       throw new NotImplementedException();
+     //  throw new NotImplementedException();
 
     }
 

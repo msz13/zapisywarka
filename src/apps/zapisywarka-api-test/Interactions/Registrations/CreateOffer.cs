@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using Boa.Constrictor.RestSharp;
 using Boa.Constrictor.Screenplay;
 using Zapisywarka.Api.Test.Interactions.Registrations;
 
@@ -10,7 +11,7 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
   {
     internal static ITaskAsync With(OfferData offerData)
     {
-      throw new NotImplementedException();
+      return TestTask.WhereAsync("create offer", Post.To("offers").With<OfferData>(offerData));
     }
 
     public class Response
