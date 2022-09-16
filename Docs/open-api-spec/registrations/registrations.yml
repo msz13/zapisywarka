@@ -1,5 +1,5 @@
 post:
-      description: 'register reserveation'
+      description: 'register reservation'
       parameters: 
         - name: offerId
           in: path
@@ -11,7 +11,7 @@ post:
           application/json:
             schema:
               type: object
-              properties:                
+              properties:                              
                 receptionPassword:
                   type: string
                 comments:
