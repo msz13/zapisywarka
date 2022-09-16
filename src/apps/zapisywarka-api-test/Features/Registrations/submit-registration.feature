@@ -29,14 +29,14 @@ Feature: Przyjmowanie zapisu przez koordynatora zapisów
                 | Nazwa                      | Ilość |
                 | Chleb wiejski              | 1     |
                 | Chleb foremkowy z żurawiną | 3     |
-       #     And wprowadza dane rezerwacji:
-       #         | Hasło odbioru | Uwagi                |
-       #         | Szczeciński   | Odbierze żona Joanna |
-       #     When Zatwierdza rezerwację
-       #     Then Rezerwacja jest zapisana i zawiera powyższe informacje
-       #     And Dodatkowe dane:
-       #         | Data złożenia    | Numer rezerwacji |
-       #         | 2020/08/20 15:00 | ABC-2022         |
+            And wprowadza dane rezerwacji:
+               | Hasło odbioru | Uwagi                |
+               | Szczeciński   | Odbierze żona Joanna |
+            When Zatwierdza rezerwację
+            Then Rezerwacja jest zapisana i zawiera powyższe informacje
+            And Dodatkowe dane:
+                | Data złożenia    | Numer rezerwacji |
+                | 2020/08/20 15:00 | ABC-2022         |
 
 
 

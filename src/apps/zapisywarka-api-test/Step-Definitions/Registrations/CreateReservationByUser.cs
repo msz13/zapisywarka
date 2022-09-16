@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Boa.Constrictor.RestSharp;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
+using System.Linq;
 
 namespace MyNamespace
 {
@@ -20,7 +21,11 @@ namespace MyNamespace
 
     private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
     private IActor andrew;
-    private Result<CreateOffer.Response> _offer;
+    private CreateOffer.Response _offer;
+
+    private Table reservedItemsSpecyfication;
+    private ReservationRequestBuilder _request;
+    private Result<ReservationDetails> _reservation;
 
     public StepDefinitions()
     {
@@ -53,7 +58,7 @@ namespace MyNamespace
       };
 
         await andrew.AttemptsToAsync(CreateOffer.With(offerRequest));
-        _offer = LastResponse<Result<CreateOffer.Response>>.Result().RequestAs(andrew).Value;
+        _offer = LastResponse<CreateOffer.Response>.Result().RequestAs(andrew).Value;
        
       
     }
@@ -67,58 +72,49 @@ namespace MyNamespace
     [Given(@"Jan, przyjmujący zapisy, w ramach oferty ""(.*)"" rezerwuje dla klienta następujące pozycje:")]
     public void GivenJanPrzyjmujacyZapisyWRamachOfertyRezerwujeDlaKlientaNastepujacePozycje(string poniedziałek0, Table table)
     {
-        var offerResponse = new CreateOffer.Response {
-            Name = "Test1",
-            Id = "13",
-            OfferItems = new List<CreateOffer.Response.OfferItem>{
-                new CreateOffer.Response.OfferItem {
-                    OfferItemId = "1",
-                    Name = "Chleb wiejski"
-                },
-                new CreateOffer.Response.OfferItem {
-                    OfferItemId = "2",
-                    Name = "Chleb foremkowy z żurawiną"
-                }
-            }
-        };
-
-        var request = new ReservationRequestBuilder()
-            .ForOffer(offerResponse)
-            .WithPassword("Kowalski")
-            .WithComments("Przyjdzie żona")
-            .WithItems(table.CreateSet<ReservationRequestBuilder.Item>())
-            .Build();
-
-        _specFlowOutputHelper.WriteLine(request.ToString());
-
-     //  throw new NotImplementedException();
-
+        reservedItemsSpecyfication = table;
+     
+        _request = new ReservationRequestBuilder()
+            .ForOffer(_offer)           
+            .WithItems(reservedItemsSpecyfication.CreateSet<ReservationRequestBuilder.Item>());
+           
+       
     }
 
-/*
+
     [Given(@"wprowadza dane rezerwacji:")]
     public void GivenWprowadzaDaneRezerwacji(Table table)
     {
-
+        _request.WithPassword(table.Rows[0]["Hasło dobioru"]);
+        _request.WithComments(table.Rows[0]["Uwagi"]);
+        
     }
 
     [When(@"Zatwierdza rezerwację")]
-    public void WhenZatwierdzaRezerwacje()
+    public async void WhenZatwierdzaRezerwacje()
     {
-
+        await andrew.AttemptsToAsync(ReserveItems.With(_offer.Id, _request.Build()));
+        
     }
 
     [Then(@"Rezerwacja jest zapisana i zawiera powyższe informacje")]
     public void ThenRezerwacjaJestZapisanaIZawieraPowyzszeInformacje()
-    {
-
+    {      
+        _reservation = LastResponse<ReservationDetails>.Result().RequestAs(andrew);
+        _reservation.IsSuccess.Should().BeTrue();
+        
+        reservedItemsSpecyfication.CompareToSet<ReservationDetails.ReservedItem>(_reservation.Value.ReservedItems);
+        _reservation.Value.ReceptionPassword.Should().Be(_request.Build().ReceptionPassword);
+         _reservation.Value.Comments.Should().Be(_request.Build().Comments);
+       
     }
 
     [Then(@"Dodatkowe dane:")]
     public void ThenDodatkoweDane(Table table)
     {
-
-    } */
+        _reservation.Value.ReservationNumber.Should().Be(table.Rows[0]["Numer rezerwacji"]);
+        _reservation.Value.CreatedAt.Should().Be(table.Rows[0]["Data złożenia"]);
+    } 
 
   }
 

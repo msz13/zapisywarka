@@ -21,13 +21,36 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
       return JsonSerializer.Serialize<ReservationRequest>(this);
     }
 
-    public class ReservationItem 
+    public class ReservationItem
     {
       public string OfferItemId { get; set; }
 
       public int Quantity { get; set; }
 
     }
+
+  }
+
+  public class ReservationDetails
+  {
+    public string ReservationNumber { get; set; }
+
+    public string OfferId { get; set; }
+
+    public string ReceptionPassword { get; set; }
+
+    public string Comments { get; set; }
+
+    public IEnumerable<ReservedItem> ReservedItems { get; set; }
+
+    public class ReservedItem
+    {
+      public string OfferItemId { get; set; }
+
+      public int Quantity { get; set; }
+
+    }
+
   }
 
   public class ReservationRequestBuilder
@@ -65,22 +88,24 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
 
     public ReservationRequest Build()
     {
-      var items = _items.Select(item => {
+      var items = _items.Select(item =>
+      {
         var offerItemId = _offer.OfferItems.Where(offerItem => offerItem.Name == item.Name).SingleOrDefault();
         if (offerItemId == null) throw new ArgumentNullException("offer items are null");
-        return new ReservationRequest.ReservationItem 
+        return new ReservationRequest.ReservationItem
         {
           OfferItemId = offerItemId.OfferItemId,
           Quantity = item.Quantity
         };
       });
-      
-       return new ReservationRequest {
-          OfferId = _offer.Id,
-          ReservationItems = items,
-          ReceptionPassword = _password,
-          Comments = _comments
-        };
+
+      return new ReservationRequest
+      {
+        OfferId = _offer.Id,
+        ReservationItems = items,
+        ReceptionPassword = _password,
+        Comments = _comments
+      };
 
     }
 
@@ -89,23 +114,23 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
     {
       [TableAliases("Nazwa")]
       public string Name { get; set; }
-      
+
       [TableAliases("Ilość")]
       public int Quantity { get; set; }
     }
 
-    
 
-   /*  public IEnumerable<ReservationRequest.ReservationItem> ReservationRequestItemsForOffer(CreateOffer.Response offer)
-    {
-      return Items.Select(item => {
-        var offerItemId = offer.OfferItems.Where(offerItem => offerItem.Name == item.Name).SingleOrDefault().OfferItemId;
-        return new ReservationRequest.ReservationItem 
-        {
-          OfferItemId = offerItemId,
-          Quantity = item.Quantity
-        };
-      });
-    } */
+
+    /*  public IEnumerable<ReservationRequest.ReservationItem> ReservationRequestItemsForOffer(CreateOffer.Response offer)
+     {
+       return Items.Select(item => {
+         var offerItemId = offer.OfferItems.Where(offerItem => offerItem.Name == item.Name).SingleOrDefault().OfferItemId;
+         return new ReservationRequest.ReservationItem 
+         {
+           OfferItemId = offerItemId,
+           Quantity = item.Quantity
+         };
+       });
+     } */
   }
 }
