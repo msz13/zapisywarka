@@ -1,13 +1,8 @@
 using System.Threading.Tasks;
-using Boa.Constrictor.Screenplay;
-using Boa.Constrictor.Memory;
-using Microsoft.AspNetCore.Mvc.Testing;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Infrastructure;
-using System.Net;
-using RestSharp;
-using Zapisywarka.API.AcceptanceTests.Interactions.Identity;
 using FluentAssertions;
+using Boa.Constrictor.Screenplay;
+using Zapisywarka.API.AcceptanceTests.Interactions.Identity;
 using Boa.Constrictor.RestSharp;
 
 namespace Zapisywarka.API.AcceptanceTests.StepDefinitions

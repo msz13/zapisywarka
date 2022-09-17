@@ -11,7 +11,9 @@ RegistrationDetails:
              type: string
           comments: 
             type: string
-          offerItems:
+          createdAt:
+            type: string          
+          reservedItems:
              type: array
              items: 
                $ref: '#/ReservedItem'
