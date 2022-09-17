@@ -33,6 +33,7 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
 
   public class ReservationDetails
   {
+    [TableAliases("Numer rezerwacji")]
     public string ReservationNumber { get; set; }
 
     public string OfferId { get; set; }
@@ -42,6 +43,8 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
     public string Comments { get; set; }
 
     public IEnumerable<ReservedItem> ReservedItems { get; set; }
+
+    [TableAliases("Data złożenia")]
     public string CreatedAt { get; internal set; }
 
     public class ReservedItem

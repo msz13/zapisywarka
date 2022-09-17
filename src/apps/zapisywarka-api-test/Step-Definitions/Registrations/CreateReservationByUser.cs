@@ -98,17 +98,22 @@ namespace MyNamespace
         _reservation = LastResponse<ReservationDetails>.Result().RequestAs(andrew);
         _reservation.IsSuccess.Should().BeTrue();
         
-        reservedItemsSpecyfication.CompareToSet<ReservationDetails.ReservedItem>(_reservation.Value.ReservedItems);
+     /*    reservedItemsSpecyfication.CompareToSet<ReservationDetails.ReservedItem>(_reservation.Value.ReservedItems);
         _reservation.Value.ReceptionPassword.Should().Be(_request.Build().ReceptionPassword);
-         _reservation.Value.Comments.Should().Be(_request.Build().Comments);
+         _reservation.Value.Comments.Should().Be(_request.Build().Comments); */
+
+         var reservation = _reservation.Value;
+         var request = _request.Build();
+         reservation.Should().BeEquivalentTo(request);
        
     }
 
     [Then(@"Dodatkowe dane:")]
     public void ThenDodatkoweDane(Table table)
     {
-        _reservation.Value.ReservationNumber.Should().Be(table.Rows[0]["Numer rezerwacji"]);
-        _reservation.Value.CreatedAt.Should().Be(table.Rows[0]["Data złożenia"]);
+       /*  _reservation.Value.ReservationNumber.Should().Be(table.Rows[0]["Numer rezerwacji"]);
+        _reservation.Value.CreatedAt.Should().Be(table.Rows[0]["Data złożenia"]); */
+        table.CompareToInstance(_reservation.Value);
     } 
 
   }
