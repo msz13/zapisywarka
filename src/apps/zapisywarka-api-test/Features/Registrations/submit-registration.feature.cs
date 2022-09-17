@@ -148,6 +148,30 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
             testRunner.Given("Jan, przyjmujący zapisy, w ramach oferty \"Poniedziałek\" rezerwuje dla klienta nas" +
                         "tępujące pozycje:", ((string)(null)), table3, "Given ");
 #line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Hasło odbioru",
+                            "Uwagi"});
+                table4.AddRow(new string[] {
+                            "Szczeciński",
+                            "Odbierze żona Joanna"});
+#line 32
+            testRunner.And("wprowadza dane rezerwacji:", ((string)(null)), table4, "And ");
+#line hidden
+#line 35
+            testRunner.When("Zatwierdza rezerwację", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 36
+            testRunner.Then("Rezerwacja jest zapisana i zawiera powyższe informacje", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Data złożenia",
+                            "Numer rezerwacji"});
+                table5.AddRow(new string[] {
+                            "2020/08/20 15:00",
+                            "ABC-2022"});
+#line 37
+            testRunner.And("Dodatkowe dane:", ((string)(null)), table5, "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

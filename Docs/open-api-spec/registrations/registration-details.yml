@@ -11,6 +11,8 @@ RegistrationDetails:
              type: string
           comments: 
             type: string
+          createdAt:
+            type: string          
           reservedItems:
              type: array
              items: 

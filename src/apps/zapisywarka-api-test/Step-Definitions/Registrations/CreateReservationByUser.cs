@@ -26,11 +26,7 @@ namespace MyNamespace
     private Table reservedItemsSpecyfication;
     private ReservationRequestBuilder _request;
     private Result<ReservationDetails> _reservation;
-
-    public StepDefinitions()
-    {
-
-    }
+    
 
     public StepDefinitions(ISpecFlowOutputHelper specFlowOutputHelper, Cast cast)
     {
@@ -58,8 +54,7 @@ namespace MyNamespace
       };
 
         await andrew.AttemptsToAsync(CreateOffer.With(offerRequest));
-        _offer = LastResponse<CreateOffer.Response>.Result().RequestAs(andrew).Value;
-       
+        _offer = LastResponse<CreateOffer.Response>.Result().RequestAs(andrew).Value;       
       
     }
 
@@ -85,7 +80,7 @@ namespace MyNamespace
     [Given(@"wprowadza dane rezerwacji:")]
     public void GivenWprowadzaDaneRezerwacji(Table table)
     {
-        _request.WithPassword(table.Rows[0]["Hasło dobioru"]);
+        _request.WithPassword(table.Rows[0]["Hasło odbioru"]);
         _request.WithComments(table.Rows[0]["Uwagi"]);
         
     }

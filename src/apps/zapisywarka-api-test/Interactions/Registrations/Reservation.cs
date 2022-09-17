@@ -42,11 +42,14 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
     public string Comments { get; set; }
 
     public IEnumerable<ReservedItem> ReservedItems { get; set; }
+    public string CreatedAt { get; internal set; }
 
     public class ReservedItem
     {
+      [TableAliases("Nazwa")]
       public string OfferItemId { get; set; }
 
+       [TableAliases("Ilość")]
       public int Quantity { get; set; }
 
     }
@@ -118,19 +121,6 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
       [TableAliases("Ilość")]
       public int Quantity { get; set; }
     }
-
-
-
-    /*  public IEnumerable<ReservationRequest.ReservationItem> ReservationRequestItemsForOffer(CreateOffer.Response offer)
-     {
-       return Items.Select(item => {
-         var offerItemId = offer.OfferItems.Where(offerItem => offerItem.Name == item.Name).SingleOrDefault().OfferItemId;
-         return new ReservationRequest.ReservationItem 
-         {
-           OfferItemId = offerItemId,
-           Quantity = item.Quantity
-         };
-       });
-     } */
+   
   }
 }
