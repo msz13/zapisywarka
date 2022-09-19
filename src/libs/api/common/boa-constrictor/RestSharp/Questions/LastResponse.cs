@@ -21,7 +21,6 @@ namespace Boa.Constrictor.RestSharp
       return response.IsSuccessful ? CSharpFunctionalExtensions.Result.Success<TData>(data) 
         : CSharpFunctionalExtensions.Result.Failure<TData>(response.Content);
     }
-
   
   }
 

@@ -1,5 +1,6 @@
 using Zapisywarka.API.Common.Infrastructure;
 using Zapisywarka.API.Modules.Identity;
+using Zapisywarka.Api.Reservations.Reservations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddIdentityModule();
+builder.Services.AddReservationsModule();
 builder.Services.AddCommonInfrastructure();
 //docker
 

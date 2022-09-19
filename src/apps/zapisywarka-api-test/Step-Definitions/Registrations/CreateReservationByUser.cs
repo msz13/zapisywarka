@@ -44,7 +44,7 @@ namespace MyNamespace
     } 
 
     [Given(@"Dostępny jest formularz zapisów, na ofertę ""(.*)"" zawierającą następujące pozycje:")]
-    public async void GivenDostepnyJestFormularzZapisowNaOferteZawierajacaNastepujacePozycje(string offerName, Table table)
+    public async Task GivenDostepnyJestFormularzZapisowNaOferteZawierajacaNastepujacePozycje(string offerName, Table table)
     {     
 
       var offerRequest = new OfferData
@@ -54,7 +54,8 @@ namespace MyNamespace
       };
 
         await andrew.AttemptsToAsync(CreateOffer.With(offerRequest));
-        _offer = LastResponse<CreateOffer.Response>.Result().RequestAs(andrew).Value;       
+        _offer = LastResponse<CreateOffer.Response>.Result().RequestAs(andrew).Value;
+        _offer.Should().BeEquivalentTo(offerRequest);    
       
     }
 
@@ -86,7 +87,7 @@ namespace MyNamespace
     }
 
     [When(@"Zatwierdza rezerwację")]
-    public async void WhenZatwierdzaRezerwacje()
+    public async Task WhenZatwierdzaRezerwacje()
     {
         await andrew.AttemptsToAsync(ReserveItems.With(_offer.Id, _request.Build()));
         

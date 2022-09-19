@@ -8,6 +8,7 @@
     "dbup-postgresql": "4.5.0",
     "Npgsql": "6.0.3",
     "RestSharp": "107.3.0",
-    "FluentAssertions": "6.7.0"
+    "FluentAssertions": "6.7.0",
+    "Microsoft.Extensions.DependencyInjection": "6.0.0"
   }
 }
