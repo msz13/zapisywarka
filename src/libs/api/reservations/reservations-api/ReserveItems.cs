@@ -4,10 +4,9 @@ namespace Zapisywarka.Api.Reservations.Reservations.Features
   public class ReserveItems
   {
     public class Command
-    {
+    {      
 
-      public string OfferId { get; internal set; }
-
+      public string? OfferId { get; set; }
       public string ReceptionPassword { get; set; }
 
       public string Comments { get; set; }

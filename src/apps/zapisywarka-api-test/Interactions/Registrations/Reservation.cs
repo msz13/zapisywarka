@@ -45,7 +45,7 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
     public IEnumerable<ReservedItem> ReservedItems { get; set; }
 
     [TableAliases("Data złożenia")]
-    public string CreatedAt { get; internal set; }
+    public string CreatedAt { get; set; }
 
     public class ReservedItem
     {
@@ -96,11 +96,11 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
     {
       var items = _items.Select(item =>
       {
-        var offerItemId = _offer.OfferItems.Where(offerItem => offerItem.Name == item.Name).SingleOrDefault();
-        if (offerItemId == null) throw new ArgumentNullException("offer items are null");
+        var offerItem = _offer.OfferItems.Where(offerItem => offerItem.Name == item.Name).SingleOrDefault();        
+        if (offerItem == null) throw new ArgumentNullException("offer items are null");
         return new ReservationRequest.ReservationItem
         {
-          OfferItemId = offerItemId.OfferItemId,
+          OfferItemId = offerItem.Id,
           Quantity = item.Quantity
         };
       });

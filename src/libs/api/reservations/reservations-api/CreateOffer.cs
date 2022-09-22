@@ -27,5 +27,10 @@ namespace Zapisywarka.Api.Reservations.Reservations.Features
         
     }
 
+    internal class CreateOfferHandler
+    {
+      
+    }
+
   }
 }

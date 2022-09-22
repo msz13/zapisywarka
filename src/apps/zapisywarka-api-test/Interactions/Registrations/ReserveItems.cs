@@ -8,7 +8,7 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
     {
         public static ITaskAsync With(string offerId, ReservationRequest request)
         {
-            return TestTask.WhereAsync("reserve items", 
+            return TestTask.WhereAsync($"reserve items with request{request}", 
             Post.To($"offers/{offerId}/reservations").With<ReservationRequest>(request));
         }
     }

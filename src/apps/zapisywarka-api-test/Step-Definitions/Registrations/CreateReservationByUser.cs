@@ -25,7 +25,7 @@ namespace MyNamespace
 
     private Table reservedItemsSpecyfication;
     private ReservationRequestBuilder _request;
-    private Result<ReservationDetails> _reservation;
+    private ReservationDetails _reservation;
     
 
     public StepDefinitions(ISpecFlowOutputHelper specFlowOutputHelper, Cast cast)
@@ -96,25 +96,27 @@ namespace MyNamespace
     [Then(@"Rezerwacja jest zapisana i zawiera powyższe informacje")]
     public void ThenRezerwacjaJestZapisanaIZawieraPowyzszeInformacje()
     {      
-        _reservation = LastResponse<ReservationDetails>.Result().RequestAs(andrew);
-        _reservation.IsSuccess.Should().BeTrue();
+        var reservation = LastResponse<ReservationDetails>.Result().RequestAs(andrew);
+        reservation.IsSuccess.Should().BeTrue();
         
      /*    reservedItemsSpecyfication.CompareToSet<ReservationDetails.ReservedItem>(_reservation.Value.ReservedItems);
         _reservation.Value.ReceptionPassword.Should().Be(_request.Build().ReceptionPassword);
          _reservation.Value.Comments.Should().Be(_request.Build().Comments); */
 
-         var reservation = _reservation.Value;
+         _reservation = reservation.Value;
          var request = _request.Build();
-         reservation.Should().BeEquivalentTo(request);
+         _reservation.Should().BeEquivalentTo(request, options => options
+                                                                  .WithMapping<ReservationDetails>(request => request.ReservationItems,
+                                                                                                  reservation => reservation.ReservedItems));
        
     }
 
     [Then(@"Dodatkowe dane:")]
     public void ThenDodatkoweDane(Table table)
-    {
-       /*  _reservation.Value.ReservationNumber.Should().Be(table.Rows[0]["Numer rezerwacji"]);
-        _reservation.Value.CreatedAt.Should().Be(table.Rows[0]["Data złożenia"]); */
-        table.CompareToInstance(_reservation.Value);
+    {       
+       var expected = table.CreateInstance<ReservationDetails>();
+       _reservation.ReservationNumber.Should().Be(expected.ReservationNumber);
+       _reservation.CreatedAt.Should().Be(expected.CreatedAt); 
     } 
 
   }

@@ -20,12 +20,11 @@ namespace Zapisywarka.Api.Reservations.Reservations.Controllers
       var reservation = new ReserveItems.ReservationDetails
       {
         OfferId = offerId,
-        ReservationNumber = "001",
+        ReservationNumber = "ABC-2022",
         ReceptionPassword = request.ReceptionPassword,
         Comments = request.Comments,        
-        ReservedItems = request.ReservationItems.Select(item => new ReserveItems.ReservationDetails.ReservedItem(item.OfferItemId, item.Quantity)),
-        
-        CreatedAt = DateTime.Now.ToString()
+        ReservedItems = request.ReservationItems.Select(item => new ReserveItems.ReservationDetails.ReservedItem(item.OfferItemId, item.Quantity)),        
+        CreatedAt = "2020/08/20 15:00"
 
       };
       return Created("offers/1/reservations/1", reservation);
