@@ -43,13 +43,12 @@ namespace MyNamespace
         await andrew.AttemptsToAsync(Login.WithCredentials(credentials));
     } 
 
-    [Given(@"Dostępny jest formularz zapisów, na ofertę ""(.*)"" zawierającą następujące pozycje:")]
-    public async Task GivenDostepnyJestFormularzZapisowNaOferteZawierajacaNastepujacePozycje(string offerName, Table table)
+    [Given(@"Dostępny jest formularz zapisów, zawierającą następujące pozycje:")]
+    public async Task GivenDostepnyJestFormularzZapisowNaOferteZawierajacaNastepujacePozycje(Table table)
     {     
 
       var offerRequest = new OfferData
-      {
-        Name = offerName,
+      {      
         OfferItems = table.CreateSet<OfferData.OfferItem>()
       };
 
@@ -65,15 +64,14 @@ namespace MyNamespace
 
     } */
 
-    [Given(@"Jan, przyjmujący zapisy, w ramach oferty ""(.*)"" rezerwuje dla klienta następujące pozycje:")]
-    public void GivenJanPrzyjmujacyZapisyWRamachOfertyRezerwujeDlaKlientaNastepujacePozycje(string poniedziałek0, Table table)
+    [Given(@"Jan, przyjmujący zapisy, za pomocą dostępnego formularza rezerwuje dla klienta następujące pozycje:")]
+    public void GivenJanPrzyjmujacyZapisyWRamachOfertyRezerwujeDlaKlientaNastepujacePozycje(Table table)
     {
         reservedItemsSpecyfication = table;
      
         _request = new ReservationRequestBuilder()
             .ForOffer(_offer)           
-            .WithItems(reservedItemsSpecyfication.CreateSet<ReservationRequestBuilder.Item>());
-           
+            .WithItems(reservedItemsSpecyfication.CreateSet<ReservationRequestBuilder.Item>());           
        
     }
 
@@ -93,22 +91,23 @@ namespace MyNamespace
         
     }
 
-    [Then(@"Rezerwacja jest zapisana i zawiera powyższe informacje")]
+    [Then(@"Rezerwacja jest zapisana i zawiera powyższe pozycje")]
     public void ThenRezerwacjaJestZapisanaIZawieraPowyzszeInformacje()
     {      
         var reservation = LastResponse<ReservationDetails>.Result().RequestAs(andrew);
-        reservation.IsSuccess.Should().BeTrue();
+        reservation.IsSuccess.Should().BeTrue();      
+        _reservation = reservation.Value;
+        var expectedReservaionItems = reservedItemsSpecyfication.CreateSet<ReservationDetails.ReservedItem>();
+        _reservation.ReservedItems.Should().BeEquivalentTo(expectedReservaionItems); 
         
-     /*    reservedItemsSpecyfication.CompareToSet<ReservationDetails.ReservedItem>(_reservation.Value.ReservedItems);
-        _reservation.Value.ReceptionPassword.Should().Be(_request.Build().ReceptionPassword);
-         _reservation.Value.Comments.Should().Be(_request.Build().Comments); */
+        //reservedItemsSpecyfication.CompareToSet(_reservation.ReservedItems);
 
-         _reservation = reservation.Value;
-         var request = _request.Build();
+
+     /*     var request = _request.Build();
          _reservation.Should().BeEquivalentTo(request, options => options
                                                                   .WithMapping<ReservationDetails>(request => request.ReservationItems,
                                                                                                   reservation => reservation.ReservedItems));
-       
+      */  
     }
 
     [Then(@"Dodatkowe dane:")]
@@ -116,7 +115,9 @@ namespace MyNamespace
     {       
        var expected = table.CreateInstance<ReservationDetails>();
        _reservation.ReservationNumber.Should().Be(expected.ReservationNumber);
-       _reservation.CreatedAt.Should().Be(expected.CreatedAt); 
+       var createdDate = DateTime.Parse(_reservation.CreatedAt);
+       createdDate.Should().BeCloseTo(DateTime.Parse(expected.CreatedAt), TimeSpan.FromSeconds(2));
+       
     } 
 
   }

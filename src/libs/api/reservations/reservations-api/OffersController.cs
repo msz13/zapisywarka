@@ -9,10 +9,11 @@ namespace Zapisywarka.Api.Reservations.Reservations.Controllers
   [ApiController]
   public class UsersController : ControllerBase
   {
+    private readonly CreateOffer.CreateOfferHandler createOffer;
 
-    public UsersController()
+    public UsersController(CreateOffer.CreateOfferHandler createOffer)
     {
-   
+      this.createOffer = createOffer;
     }
 
     [HttpPost]
@@ -20,13 +21,9 @@ namespace Zapisywarka.Api.Reservations.Reservations.Controllers
     {     
 
       var reservedItems = request.OfferItems.Select(item => new CreateOffer.Response.OfferItem("1", item.Name));
-      var offer = new CreateOffer.Response 
-      {
-        Id = "1",
-        Name = request.Name,
-        OfferItems = reservedItems       
-      };
       
+      var offer = await createOffer.HandleAsync(request);      
+     
       return Created("offers/1", offer);
     }
 

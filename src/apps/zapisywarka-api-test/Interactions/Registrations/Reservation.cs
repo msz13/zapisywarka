@@ -7,8 +7,7 @@ using TechTalk.SpecFlow.Assist.Attributes;
 namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
 {
   public class ReservationRequest
-  {
-    public string OfferId { get; internal set; }
+  {    
 
     public string ReceptionPassword { get; set; }
 
@@ -50,7 +49,7 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
     public class ReservedItem
     {
       [TableAliases("Nazwa")]
-      public string OfferItemId { get; set; }
+      public string Name { get; set; }
 
        [TableAliases("Ilość")]
       public int Quantity { get; set; }
@@ -106,8 +105,7 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
       });
 
       return new ReservationRequest
-      {
-        OfferId = _offer.Id,
+      {       
         ReservationItems = items,
         ReceptionPassword = _password,
         Comments = _comments
