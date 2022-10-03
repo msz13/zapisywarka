@@ -16,7 +16,7 @@ namespace Zapisywarka.API.Modules.Identity.Core.Infrastructure
 
   internal class ZapisywarkaIdentityDbContext : IdentityDbContext
   {
-    public ZapisywarkaIdentityDbContext(DbContextOptions options) : base(options)
+    public ZapisywarkaIdentityDbContext(DbContextOptions<ZapisywarkaIdentityDbContext> options) : base(options)
     {
     }
 

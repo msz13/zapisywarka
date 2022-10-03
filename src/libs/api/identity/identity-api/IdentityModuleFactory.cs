@@ -15,15 +15,8 @@ namespace Zapisywarka.API.Modules.Identity
   {
     public static void AddIdentityModule(this IServiceCollection services)
     {
-
-      services.AddControllers().AddApplicationPart(Assembly.GetExecutingAssembly()).AddJsonOptions(options =>
-      {
-        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-
-      });
+ 
       services.AddIdentityCoreModule();
-
 
     }
 

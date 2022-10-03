@@ -19,6 +19,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\libs\api\identity\identity-api\ZapisywarkaClientAps.Api.Identity.IdentityApi.csproj" />
+    <ProjectReference Include="..\..\libs\api\reservations\reservations-api\Zapisywarka.Api.Reservations.ReservationsApi.csproj" />    
   </ItemGroup>
 
   <ItemGroup>

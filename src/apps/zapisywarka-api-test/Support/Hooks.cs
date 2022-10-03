@@ -4,6 +4,7 @@ using Boa.Constrictor.Screenplay;
 using TechTalk.SpecFlow.Infrastructure;
 using Boa.Constrictor.RestSharp;
 using Boa.Constrictor.Memory;
+using TechTalk.SpecFlow.Assist;
 
 namespace Zapisywarka.API.AcceptanceTests.Helpers
 {
@@ -44,5 +45,6 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
       _scenarioContext.ScenarioContainer.RegisterInstanceAs(cast);
     }
 
+    
   }
 }

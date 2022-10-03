@@ -101,7 +101,7 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Koordynator zapisów poprawnie przyjmuje zapis", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 22
-       this.ScenarioInitialize(scenarioInfo);
+        this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -132,8 +132,7 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
                 table2.AddRow(new string[] {
                             "Chleb foremkowy z oliwkami"});
 #line 23
-            testRunner.Given("Dostępny jest formularz zapisów, na ofertę \"Poniedziałek\" zawierającą następujące" +
-                        " pozycje:", ((string)(null)), table2, "Given ");
+            testRunner.Given("Dostępny jest formularz zapisów, zawierającą następujące pozycje:", ((string)(null)), table2, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "Nazwa",
@@ -145,8 +144,8 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
                             "Chleb foremkowy z żurawiną",
                             "3"});
 #line 28
-            testRunner.Given("Jan, przyjmujący zapisy, w ramach oferty \"Poniedziałek\" rezerwuje dla klienta nas" +
-                        "tępujące pozycje:", ((string)(null)), table3, "Given ");
+            testRunner.Given("Jan, przyjmujący zapisy, za pomocą dostępnego formularza rezerwuje dla klienta na" +
+                        "stępujące pozycje:", ((string)(null)), table3, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "Hasło odbioru",
@@ -161,13 +160,13 @@ namespace ZapisywarkaClientAps.ZapisywarkaApi.Test.Features.Registrations
             testRunner.When("Zatwierdza rezerwację", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 36
-            testRunner.Then("Rezerwacja jest zapisana i zawiera powyższe informacje", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            testRunner.Then("Rezerwacja jest zapisana i zawiera powyższe pozycje", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "Data złożenia",
                             "Numer rezerwacji"});
                 table5.AddRow(new string[] {
-                            "2020/08/20 15:00",
+                            "Aktualna Data:Godzina:Minuta",
                             "ABC-2022"});
 #line 37
             testRunner.And("Dodatkowe dane:", ((string)(null)), table5, "And ");

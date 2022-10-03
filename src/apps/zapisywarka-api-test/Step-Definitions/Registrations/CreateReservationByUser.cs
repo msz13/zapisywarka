@@ -25,7 +25,7 @@ namespace MyNamespace
 
     private Table reservedItemsSpecyfication;
     private ReservationRequestBuilder _request;
-    private Result<ReservationDetails> _reservation;
+    private ReservationDetails _reservation;
     
 
     public StepDefinitions(ISpecFlowOutputHelper specFlowOutputHelper, Cast cast)
@@ -43,18 +43,18 @@ namespace MyNamespace
         await andrew.AttemptsToAsync(Login.WithCredentials(credentials));
     } 
 
-    [Given(@"Dostępny jest formularz zapisów, na ofertę ""(.*)"" zawierającą następujące pozycje:")]
-    public async void GivenDostepnyJestFormularzZapisowNaOferteZawierajacaNastepujacePozycje(string offerName, Table table)
+    [Given(@"Dostępny jest formularz zapisów, zawierającą następujące pozycje:")]
+    public async Task GivenDostepnyJestFormularzZapisowNaOferteZawierajacaNastepujacePozycje(Table table)
     {     
 
       var offerRequest = new OfferData
-      {
-        Name = offerName,
+      {      
         OfferItems = table.CreateSet<OfferData.OfferItem>()
       };
 
         await andrew.AttemptsToAsync(CreateOffer.With(offerRequest));
-        _offer = LastResponse<CreateOffer.Response>.Result().RequestAs(andrew).Value;       
+        _offer = LastResponse<CreateOffer.Response>.Result().RequestAs(andrew).Value;
+        _offer.Should().BeEquivalentTo(offerRequest);    
       
     }
 
@@ -64,15 +64,14 @@ namespace MyNamespace
 
     } */
 
-    [Given(@"Jan, przyjmujący zapisy, w ramach oferty ""(.*)"" rezerwuje dla klienta następujące pozycje:")]
-    public void GivenJanPrzyjmujacyZapisyWRamachOfertyRezerwujeDlaKlientaNastepujacePozycje(string poniedziałek0, Table table)
+    [Given(@"Jan, przyjmujący zapisy, za pomocą dostępnego formularza rezerwuje dla klienta następujące pozycje:")]
+    public void GivenJanPrzyjmujacyZapisyWRamachOfertyRezerwujeDlaKlientaNastepujacePozycje(Table table)
     {
         reservedItemsSpecyfication = table;
      
         _request = new ReservationRequestBuilder()
             .ForOffer(_offer)           
-            .WithItems(reservedItemsSpecyfication.CreateSet<ReservationRequestBuilder.Item>());
-           
+            .WithItems(reservedItemsSpecyfication.CreateSet<ReservationRequestBuilder.Item>());           
        
     }
 
@@ -86,34 +85,39 @@ namespace MyNamespace
     }
 
     [When(@"Zatwierdza rezerwację")]
-    public async void WhenZatwierdzaRezerwacje()
+    public async Task WhenZatwierdzaRezerwacje()
     {
         await andrew.AttemptsToAsync(ReserveItems.With(_offer.Id, _request.Build()));
         
     }
 
-    [Then(@"Rezerwacja jest zapisana i zawiera powyższe informacje")]
+    [Then(@"Rezerwacja jest zapisana i zawiera powyższe pozycje")]
     public void ThenRezerwacjaJestZapisanaIZawieraPowyzszeInformacje()
     {      
-        _reservation = LastResponse<ReservationDetails>.Result().RequestAs(andrew);
-        _reservation.IsSuccess.Should().BeTrue();
+        var reservation = LastResponse<ReservationDetails>.Result().RequestAs(andrew);
+        reservation.IsSuccess.Should().BeTrue();      
+        _reservation = reservation.Value;
+        var expectedReservaionItems = reservedItemsSpecyfication.CreateSet<ReservationDetails.ReservedItem>();
+        _reservation.ReservedItems.Should().BeEquivalentTo(expectedReservaionItems); 
         
-     /*    reservedItemsSpecyfication.CompareToSet<ReservationDetails.ReservedItem>(_reservation.Value.ReservedItems);
-        _reservation.Value.ReceptionPassword.Should().Be(_request.Build().ReceptionPassword);
-         _reservation.Value.Comments.Should().Be(_request.Build().Comments); */
+        //reservedItemsSpecyfication.CompareToSet(_reservation.ReservedItems);
 
-         var reservation = _reservation.Value;
-         var request = _request.Build();
-         reservation.Should().BeEquivalentTo(request);
-       
+
+     /*     var request = _request.Build();
+         _reservation.Should().BeEquivalentTo(request, options => options
+                                                                  .WithMapping<ReservationDetails>(request => request.ReservationItems,
+                                                                                                  reservation => reservation.ReservedItems));
+      */  
     }
 
     [Then(@"Dodatkowe dane:")]
     public void ThenDodatkoweDane(Table table)
-    {
-       /*  _reservation.Value.ReservationNumber.Should().Be(table.Rows[0]["Numer rezerwacji"]);
-        _reservation.Value.CreatedAt.Should().Be(table.Rows[0]["Data złożenia"]); */
-        table.CompareToInstance(_reservation.Value);
+    {       
+       var expected = table.CreateInstance<ReservationDetails>();
+       _reservation.ReservationNumber.Should().Be(expected.ReservationNumber);
+       var createdDate = DateTime.Parse(_reservation.CreatedAt);
+       createdDate.Should().BeCloseTo(DateTime.Parse(expected.CreatedAt), TimeSpan.FromSeconds(2));
+       
     } 
 
   }

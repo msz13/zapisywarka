@@ -4,12 +4,15 @@
     "-api-catalog-catalog": "libs/api/catalog/catalog",
     "-api-catalog-catalog-test": "libs/api/catalog/catalog-test",
     "api-catalog-catalog-api": "libs/api/catalog/catalog-api",
+    "api-common-boa-constrictor": "libs/api/common/boa-constrictor",
     "api-common-boa-constrictor-test": "libs/api/common/boa-constrictor-test",
     "api-common-infrastructure": "libs/api/common/infrastructure",
     "api-common-infrastructure-test": "libs/api/common/infrastructure-test",
     "api-identity-identity-api": "libs/api/identity/identity-api",
     "api-identity-identity-core": "libs/api/identity/identity-core",
     "api-identity-identity-core-test": "libs/api/identity/identity-core-test",
+    "api-reservations-reservations-api": "libs/api/reservations/reservations-api",
+    "api-reservations-reservations-api-test": "libs/api/reservations/reservations-api-test",
     "db-migrations": "apps/db-migrations",
     "test-libs-identity-login-feature-e2e": "apps/test/libs/identity/login-feature-e2e",
     "test-libs-identity-sign-up-feature-e2e": "apps/test/libs/identity/sign-up-feature-e2e",
@@ -32,7 +35,6 @@
     "zapisywarka-api": "apps/zapisywarka-api",
     "zapisywarka-api-test": "apps/zapisywarka-api-test",
     "zapisywarka-rejestracja": "apps/zapisywarka-rejestracja",
-    "zapisywarka-rejestracja-e2e": "apps/zapisywarka-rejestracja-e2e",
-    "api-common-boa-constrictor": "libs/api/common/boa-constrictor"
+    "zapisywarka-rejestracja-e2e": "apps/zapisywarka-rejestracja-e2e"
   }
 }

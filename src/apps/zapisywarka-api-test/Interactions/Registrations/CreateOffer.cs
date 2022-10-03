@@ -23,7 +23,7 @@ namespace Zapisywarka.API.AcceptanceTests.Interactions.Registrations
 
         public class OfferItem
         {
-            public string OfferItemId { get; set; }
+            public string Id { get; set; }
 
             public string Name { get; set; }
 
