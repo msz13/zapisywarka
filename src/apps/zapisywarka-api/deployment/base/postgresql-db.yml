@@ -14,6 +14,6 @@ spec:
     - superuser
     - createdb
   databases:
-    zapisywarka_db: zapisywarka-api  # dbname: owner  
+    zapisywarka-db: zapisywarka-api  # dbname: owner  
   postgresql:
     version: "13"

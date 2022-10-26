@@ -1,5 +1,4 @@
 { 
-    "identityServer": "api.zapisywarka.local",
-    "clientId": "spa" 
+    "apiUrl": "http://api.zapisywarka.local"
 }
     
