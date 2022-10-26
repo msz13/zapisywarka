@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoadingComponent } from './loading/loading.component';
 import { WebSharedDomainModule } from '@zapisywarka-web/web-shared-domain';
 import { IdentityDomainModule } from '@zapisywarka-client-aps/web-identity-domain'
+import { IdentitySignUpFeatureModule } from '@zapisywarka-web/web/identity/sign-up-feature';
 //import { WebIdentitySignUpFeatureDepModule } from '@zapisywarka-web/web-identity-sign-up-feature-dep';
 
 @NgModule({
@@ -26,7 +27,7 @@ import { IdentityDomainModule } from '@zapisywarka-client-aps/web-identity-domai
     SharedUiKitModule,
     SharedMaterialModule,
     IdentityDomainModule,
-    //WebIdentitySignUpFeatureDepModule,
+    IdentitySignUpFeatureModule,
     WebSharedDomainModule.forRoot(),
   ],
   providers: [],

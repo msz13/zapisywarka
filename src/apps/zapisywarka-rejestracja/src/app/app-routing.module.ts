@@ -5,6 +5,7 @@ import { MainComponent } from './main-component/main.component';
 import { WebLandingPageComponent } from '@zapisywarka-client-aps/web-landing-page';
 import { LoginContainerComponent } from '@zapisywarka-client-aps/web-identity-login-feature';
 import { AuthGuard } from '@zapisywarka-client-aps/web-identity-domain';
+import { SignUpContainerComponent } from '@zapisywarka-web/web/identity/sign-up-feature';
 
 const routes: Routes = [
   {
@@ -15,10 +16,10 @@ const routes: Routes = [
     path: 'logowanie',
     component: LoginContainerComponent,
   },
-  // {
-  //   path: 'sign-up',
-  //   component: SignUpContainerComponent,
-  // }, //
+   {
+     path: 'sign-up',
+     component: SignUpContainerComponent,
+   }, 
   {
     path: 'main',
     component: MainComponent,

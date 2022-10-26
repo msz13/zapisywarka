@@ -15,6 +15,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddIdentityModule();
 builder.Services.AddReservationsModule();
 builder.Services.AddCommonInfrastructure();
+builder.Services.AddCors(options => {
+  options.AddDefaultPolicy(policy => {
+    policy.WithOrigins("http://zapisywarka.local");
+    policy.AllowAnyHeader();
+    
+  });
+});
+
 //docker
 
 var app = builder.Build();
@@ -25,6 +33,8 @@ if (app.Environment.IsDevelopment())
   app.UseSwagger();
   app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();

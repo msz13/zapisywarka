@@ -16,4 +16,4 @@ kind: Kustomization
 images:
 - name: zapisywarka-api
   newName: k3d-zapisywarka.localhost:9009/zapisywarka-api
-  newTag: fa9794c47fbd
+  newTag: 8ec5d60b4495
