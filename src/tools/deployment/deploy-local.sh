@@ -37,7 +37,7 @@ echo tagged image: $repo/$imageName
 docker push $repo/$imageName
 
 # update deployment specyfication files
-cwd=$(pwd)/$path
+cwd=$(pwd)/$path/base
 echo working directory: $cwd
 cd $cwd 
 
