@@ -37,8 +37,7 @@ export class UserService {
     this.baseUrl = config.getConfig().apiUrl + '/users';
   }
 
-  createUser(user: User) {
-    console.log('user post '+ user.userName + ' , ' + user.password)
+  createUser(user: User) {    
     return this.http.post(this.baseUrl, user, {}).pipe(
       map(() => true),
       catchError(this.handleError)
