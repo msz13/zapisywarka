@@ -1,48 +1,58 @@
-/* using System;
+using System.Threading.Tasks;
+using Boa.Constrictor.RestSharp;
+using Boa.Constrictor.Screenplay;
+using FluentAssertions;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.UnitTestProvider;
+using TechTalk.SpecFlow.Assist;
+using Zapisywarka.Api.Test.Interactions.Registrations;
+using Zapisywarka.API.AcceptanceTests.Interactions.Registrations;
+using ZapisywarkaApi.Test.Interactions.Registrations;
 
 namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
 {
   [Binding]
-  public class FormPresentation
+  public class StepDefinitions
   {
+    private IActor john;
+    private string offerId;
 
-    private readonly IUnitTestRuntimeProvider unitTestRuntimeProvider;
+    private OfferData offerData;
 
-    public FormPresentation(IUnitTestRuntimeProvider _unitTestRuntimeProvider)
+    public StepDefinitions(Cast cast)
     {
-      unitTestRuntimeProvider = _unitTestRuntimeProvider;
+      john = cast.actorNamed("John");
     }
-
-    [Given(@"Koordynator zapisów ""(.*)"" jest zalogowany")]
-    public void GivenKoordynatorZapisowJestZalogowany(string andrzej0)
-    {
-      unitTestRuntimeProvider.TestIgnore("not implemented");
-    }
-
     [Given(@"Organizator zapisów stworzył ofertę o nazwie ""(.*)"" zawierającą następujące pozycje:")]
-    public void GivenOrganizatorZapisowStworzylOferteONazwieZawierajacaNastepujacePozycje(string poniedziałek0, Table table)
+    public async Task GivenOrganizatorZapisowStworzylOferteONazwieZawierajacaNastepujacePozycjeAsync(string offerName, Table table)
     {
-      unitTestRuntimeProvider.TestIgnore("not implemented");
-    }
+      offerData = new OfferData
+      {
+        Name = offerName,
+        OfferItems = table.CreateSet<OfferData.OfferItem>()
+      };
+      await john.AttemptsToAsync(CreateOffer.With(offerData));
+      offerId = LastResponse<CreateOffer.Response>.Result().RequestAs(john).Value.Id;
 
-    [Given(@"Jest ""(.*)""")]
-    public void GivenJest(string p0)
-    {
-      unitTestRuntimeProvider.TestIgnore("not implemented");
     }
 
     [When(@"Przegląda formularz rejestracji/formularz przyjmowania zapisów")]
     public void WhenPrzegladaFormularzRejestracjiFormularzPrzyjmowaniaZapisow()
     {
-      unitTestRuntimeProvider.TestIgnore("not implemented");
+      john.AttemptsTo(
+       LocateRegistrationForm.ViaURLForOfferId(offerId)
+      );
+
+     
+
     }
 
     [Then(@"Formularz zapisów, zawiera powyższe dane")]
     public void ThenFormularzZapisowZawieraPowyzszeDane()
     {
-      unitTestRuntimeProvider.TestIgnore("not implemented");
+       var offerDataFromForm = john.AskingFor<OfferData>(OfferDetails.FromReservationsForm());
+
+      offerDataFromForm.Should().BeEquivalentTo(offerData); 
+
     }
   }
-} */
+}

@@ -8,6 +8,8 @@ namespace Boa.Constrictor.Screenplay
     {
       return new DynamicQuestion<T>(description, question);
     }
+
+    
   }
 
   public class DynamicQuestion<T> : IQuestion<T>

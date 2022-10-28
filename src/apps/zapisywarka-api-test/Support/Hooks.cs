@@ -4,7 +4,13 @@ using Boa.Constrictor.Screenplay;
 using TechTalk.SpecFlow.Infrastructure;
 using Boa.Constrictor.RestSharp;
 using Boa.Constrictor.Memory;
+using Boa.Constrictor.WebDriver;
 using TechTalk.SpecFlow.Assist;
+using OpenQA.Selenium.Chrome;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
+using OpenQA.Selenium.Remote;
+using System;
 
 namespace Zapisywarka.API.AcceptanceTests.Helpers
 {
@@ -30,6 +36,12 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
       // TestDatabase.Start();
     }
 
+    [BeforeTestRun]
+    public static void InstallBrowserDrivers()
+    {
+     // new DriverManager().SetUpDriver(new ChromeConfig(), "105.0.5195.125");
+    }
+
     [AfterTestRun]
     public static void DbDown()
     {
@@ -39,9 +51,11 @@ namespace Zapisywarka.API.AcceptanceTests.Helpers
     [BeforeScenario(Order = 0)]
     void SetUpActor() 
     {
+      var driver = new ChromeDriver();
+      driver.Url = "http://localhost:4200";
       var logger = new BoaSpecFlowLogger(_specFlowOutputHelper);
       var client = RestSharpClientFactory.WithCookieAuthentication("http://localhost:5000", logger);
-       var cast = new Cast(logger, new IAbility[] {CanCallRestApi.Using(client), new MemoryAbility()});
+       var cast = new Cast(logger, new IAbility[] {CanCallRestApi.Using(client), new MemoryAbility(), BrowseTheWeb.With(driver)});
       _scenarioContext.ScenarioContainer.RegisterInstanceAs(cast);
     }
 

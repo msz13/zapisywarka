@@ -6,7 +6,7 @@ namespace Zapisywarka.Api.Test.Interactions.Registrations
 {
   public record OfferData
   {
-   // public string Name { get; set; } = "Testowa oferta 1";
+     public string Name { get; set; } = "Testowa oferta 1";
 
     public IEnumerable<OfferItem> OfferItems { get; set; }
 
