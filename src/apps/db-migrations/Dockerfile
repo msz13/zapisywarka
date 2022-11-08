@@ -6,4 +6,4 @@ COPY apps/db-migrations/Program.cs .
 RUN dotnet publish -o /publish 
 WORKDIR /publish 
 #ENTRYPOINT ["dotnet", "DbMigrator.dll"]
-CMD ["sh", "-c", "dotnet ZapisywarkaClientAps.DbMigrations.dll \"${DB_CONNECTION}\""]
+CMD ["sh", "-c", "dotnet ZapisywarkaClientAps.DbMigrations.dll"]

@@ -1,27 +1,26 @@
 apiVersion: v1
 data:
-  config.json: "{ \n    \"identityServer\": \"api.zapisywarka.local\",\n    \"clientId\":
-    \"spa\" \n}\n    \n"
+  config.json: "{ \n    \"apiUrl\": \"http://api.zapisywarka.local\"\n}\n    \n"
 kind: ConfigMap
 metadata:
   labels:
     app: rejestracja
     env: staging
-  name: dev-zapisywarka-web-configuration-d6c54965mf
+  name: dev-zapisywarka-web-configuration-2bdgfm8266
 ---
 apiVersion: v1
 data:
   .dockerconfigjson: |
     ewogICAgImF1dGhzIjoKICAgIHsKICAgICAgICAiZ2hjci5pbyI6CiAgICAgICAgICAgIH
-    sKICAgICAgICAgICAgICAgICJhdXRoIjoiYlhONk1UTTZaMmh3WDBOdFJ6QndSRkJSY1Vk
-    UE1YWjNRVEZ1UVZWbVVYbDJXV1pOYWtsVE1URlNaM2x3VFFvPSIKICAgICAgICAgICAgfQ
+    sKICAgICAgICAgICAgICAgICJhdXRoIjoiYlhONk1UTTZaMmh3WDJodU1FaDNOMmhXYkZk
+    T01XTldkMHRoTlhKblJYazNOR0pKYUVOMU5URlhTRWhPVXdvPSIKICAgICAgICAgICAgfQ
     ogICAgfQp9Cg==
 kind: Secret
 metadata:
   labels:
     app: rejestracja
     env: staging
-  name: regcred-tc7t5kck58
+  name: regcred-8hhmfckh46
 type: kubernetes.io/dockerconfigjson
 ---
 apiVersion: v1
@@ -58,7 +57,7 @@ spec:
         env: staging
     spec:
       containers:
-      - image: ghcr.io/msz13/zapisywarka-rejestracja:0a0e4eb16b9f9012e3f6339fc3dd02f7e5973243
+      - image: ghcr.io/msz13/zapisywarka-rejestracja:563d9d869cbc3ca2b91823fa462b91430f7d22d6
         imagePullPolicy: IfNotPresent
         name: web
         ports:
@@ -67,10 +66,10 @@ spec:
         - mountPath: /usr/share/nginx/html/assets/
           name: config-volume
       imagePullSecrets:
-      - name: regcred-tc7t5kck58
+      - name: regcred-8hhmfckh46
       volumes:
       - configMap:
-          name: dev-zapisywarka-web-configuration-d6c54965mf
+          name: dev-zapisywarka-web-configuration-2bdgfm8266
         name: config-volume
 ---
 apiVersion: networking.k8s.io/v1
@@ -82,7 +81,7 @@ metadata:
   name: dev-zapisywarka-web
 spec:
   rules:
-  - host: 193.123.39.204.nip.io
+  - host: test.zapisywarka.pl
     http:
       paths:
       - backend:

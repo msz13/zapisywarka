@@ -1,0 +1,51 @@
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
+metadata:
+  name: zapisywarka
+  namespace: default
+spec:
+  backups:
+    pgbackrest:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.40-1
+      repos:
+      - name: repo1
+        volume:
+          volumeClaimSpec:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 1Gi
+  image: ghcr.io/msz13/crunchy-postgres:ubi8-14.5-1
+  imagePullSecrets:
+    - name: regcred
+  users:
+    - name: db-owner
+      databases:
+        - zapisywarka
+      password:
+        type: AlphaNumeric
+      options: "SUPERUSER CREATEDB CREATEROLE"
+    - name: dbuser
+      databases:
+        - zapisywarka
+      password:
+        type: AlphaNumeric               
+  instances:
+  - dataVolumeClaimSpec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+    name: instance1
+  postgresVersion: 14
+  userInterface:
+    pgAdmin:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgadmin4:ubi8-4.30-2
+      dataVolumeClaimSpec:
+        accessModes:
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: 1Gi

@@ -7,7 +7,9 @@ ports:
     - loadbalancer
 image: rancher/k3s:v1.21.2-k3s1
 volumes:
-  - volume:  /home/msz13/programowanie/zapisywarka/src/tools/deployment/local-cluster/postgres-operator.yml:/var/lib/rancher/k3s/server/manifests/postgres-operator.yml
+#  - volume:  /home/msz13/programowanie/zapisywarka/src/tools/deployment/local-cluster/manifests/:/var/lib/rancher/k3s/server/manifests/
+  - volume:  /home/msz13/programowanie/zapisywarka/src/tools/deployment/local-cluster/manifests/crunchy-namespace.yml:/var/lib/rancher/k3s/server/manifests/crunchy-namespace.yml
+  - volume:  /home/msz13/programowanie/zapisywarka/src/tools/deployment/local-cluster/manifests/crunchy-operator.yml:/var/lib/rancher/k3s/server/manifests/crunchy-operator.yml
 registries: 
   ##create: # creates a default registry to be used with the cluster; same as `--registry-create registry.localhost`
   #  name: zapisywarka.localhost

@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name:  db-migrations
+spec:
+  template:
+    metadata:
+      name:  db-migrations
+    spec:
+      containers: 
+        - name: db-migrations
+          image:  k3d-zapisywarka.localhost:9009/db-migrations
+          command: ["sh", "-c", "dotnet ZapisywarkaClientAps.DbMigrations.dll"]          
+          env:           
+            - name: DB_NAME
+              valueFrom: { secretKeyRef: { name: zapisywarka-pguser-db-owner, key: dbname } }
+            - name: DB_HOST
+              valueFrom: { secretKeyRef: { name: zapisywarka-pguser-db-owner, key: host } }
+            - name: DB_PORT
+              valueFrom: { secretKeyRef: { name: zapisywarka-pguser-db-owner, key: port } }           
+            - name: DB_USER
+              valueFrom: { secretKeyRef: { name: zapisywarka-pguser-db-owner, key: user } }
+            - name: DB_PASSWORD
+              valueFrom: { secretKeyRef: { name: zapisywarka-pguser-db-owner, key: password } }
+          volumeMounts:
+            - mountPath: /publish/scripts
+              name: scripts
+      volumes:
+        - name: scripts
+          configMap:
+            name: db-migrations-scripts
+        
+      restartPolicy: Never
+  backoffLimit: 5
+  # ttlSecondsAfterFinished: 60

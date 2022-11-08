@@ -17,4 +17,4 @@ kind: Kustomization
 images:
 - name: zapisywarka-rejestracja
   newName: k3d-zapisywarka.localhost:9009/zapisywarka-rejestracja
-  newTag: 0512d3f2b94f
+  newTag: c10eabca34f1

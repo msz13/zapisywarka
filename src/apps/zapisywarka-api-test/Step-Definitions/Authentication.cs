@@ -56,7 +56,7 @@ namespace Zapisywarka.API.AcceptanceTests.StepDefinitions
         await john.AttemptsToAsync(GetUserInfo.OfLoggedUser());
 
         var result = john.AskingFor(LastResponse<UserInfo>.Result());
-        result.IsSuccess.Should().BeTrue();
+        result.IsSuccess.Should().BeTrue();       
         result.Value.UserName.Should().Be(_userCredentials.UserName);
  
     }

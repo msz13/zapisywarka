@@ -19,17 +19,15 @@ spec:
         - containerPort: 5000
         env:          
           - name: POSTGRESQL__DB
-            value: zapisywarka-db
+            valueFrom: { secretKeyRef: { name: zapisywarka-pguser-dbuser, key: dbname } }
           - name: POSTGRESQL__HOST
-            value: zapisywarka-postgres
+            valueFrom: { secretKeyRef: { name: zapisywarka-pguser-dbuser, key: host } }
           - name: POSTGRESQL__USER
-            valueFrom:
-              secretKeyRef:
-                name: zapisywarka-api.zapisywarka-postgres.credentials
-                key: username                
+            valueFrom: { secretKeyRef: { name: zapisywarka-pguser-dbuser, key: user } }                
           - name: POSTGRESQL__PASSWORD
-            valueFrom:  
-              secretKeyRef:
-                name: zapisywarka-api.zapisywarka-postgres.credentials
-                key: password
+            valueFrom: { secretKeyRef: { name: zapisywarka-pguser-dbuser, key: password } } 
+          - name: POSTGRESQL__URI
+            valueFrom: { secretKeyRef: { name: zapisywarka-pguser-dbuser, key: uri } } 
+          - name: DOMAIN
+            value: zapisywarka.local
 

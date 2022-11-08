@@ -1,0 +1,9 @@
+configMapGenerator:
+  - name: db-migrations-scripts
+    files:
+      - scripts/00-assign-roles.sql
+      - scripts/01-start-identity.sql           
+      - scripts/02-add-offer.sql
+
+resources:
+  - job.yml

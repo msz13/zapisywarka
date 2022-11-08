@@ -9,6 +9,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Configuration;
 
 namespace Zapisywarka.API.Modules.Identity.Core
 {
@@ -24,11 +25,11 @@ namespace Zapisywarka.API.Modules.Identity.Core
           .AddEntityFrameworkStores<ZapisywarkaIdentityDbContext>();
 
 
-
+      var domain = services.BuildServiceProvider().GetRequiredService<IConfiguration>()["Domain"];
       services.ConfigureApplicationCookie(options =>
       {
         options.Cookie.Name = "Auth";
-        options.Cookie.Domain = "localhost";
+        options.Cookie.Domain = domain; //"api.zapisywarka.local";
         options.Cookie.SameSite = SameSiteMode.Strict;
         options.Cookie.HttpOnly = true;
         options.Events = new CookieAuthenticationEvents
