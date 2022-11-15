@@ -1,0 +1,19 @@
+bases:
+  - ../base
+
+images:
+  - name: zapisywarka-api:test
+    newName: ghcr.io/msz13/zapisywarka-api
+    newTag: rc-221027t20-06.6467082
+
+patchesStrategicMerge:
+  - imagePullSecrets-patch.yml
+
+patches:
+  - target:
+      kind: Ingress
+      name: web
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: api.test.zapisywarka.pl

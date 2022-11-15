@@ -1,0 +1,17 @@
+
+resources:
+  - stackgres-cluster.yml
+  - SGScripts.yml
+  - dbowner-secret.yml
+  - dbuser-secret.yml
+
+
+secretGenerator:
+  - name: init-db
+    files:
+      - create-db.sql
+generatorOptions:
+  disableNameSuffixHash: true
+
+ 
+  

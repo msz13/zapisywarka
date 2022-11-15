@@ -1,0 +1,5 @@
+adminui:
+  service:
+    type: ClusterIP
+    
+    

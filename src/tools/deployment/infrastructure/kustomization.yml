@@ -1,0 +1,7 @@
+resources:
+  - ./crunchy-namespace.yml
+  - ./crunchy-operator.yml
+  - ./regcred-secret.yml
+  
+
+

@@ -9,19 +9,19 @@ spec:
     spec:
       containers: 
         - name: db-migrations
-          image:  k3d-zapisywarka.localhost:9009/db-migrations
+          image:  db-migrations:0.1
           command: ["sh", "-c", "dotnet ZapisywarkaClientAps.DbMigrations.dll"]          
           env:           
             - name: DB_NAME
-              valueFrom: { secretKeyRef: { name: zapisywarka-pguser-db-owner, key: dbname } }
+              valueFrom: { secretKeyRef: { name: zapisywarka-db-dbowner, key: dbname } }
             - name: DB_HOST
-              valueFrom: { secretKeyRef: { name: zapisywarka-pguser-db-owner, key: host } }
+              valueFrom: { secretKeyRef: { name: zapisywarka-db-dbowner, key: host } }
             - name: DB_PORT
-              valueFrom: { secretKeyRef: { name: zapisywarka-pguser-db-owner, key: port } }           
+              valueFrom: { secretKeyRef: { name: zapisywarka-db-dbowner, key: port } }           
             - name: DB_USER
-              valueFrom: { secretKeyRef: { name: zapisywarka-pguser-db-owner, key: user } }
+              valueFrom: { secretKeyRef: { name: zapisywarka-db-dbowner, key: user } }
             - name: DB_PASSWORD
-              valueFrom: { secretKeyRef: { name: zapisywarka-pguser-db-owner, key: password } }
+              valueFrom: { secretKeyRef: { name: zapisywarka-db-dbowner, key: password } }
           volumeMounts:
             - mountPath: /publish/scripts
               name: scripts

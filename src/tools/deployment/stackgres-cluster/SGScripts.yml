@@ -1,0 +1,11 @@
+apiVersion: stackgres.io/v1
+kind: SGScript
+metadata:
+  name: zapisywarka-scripts
+spec:
+  scripts:
+  - name: create-database
+    scriptFrom: 
+      secretKeyRef:
+        name: init-db
+        key: create-db.sql

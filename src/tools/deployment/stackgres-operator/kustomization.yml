@@ -1,0 +1,22 @@
+
+kind: Kustomization
+
+
+resources:
+  - stackgres-namespace.yml  
+
+helmCharts:
+  - #name: stackgres-charts/stackgres-operator 
+    name: stackgres-operator
+    #repo: https://stackgres.io/downloads/stackgres-k8s/stackgres/latest/helm/stackgres-operator.tgz
+    repo: https://stackgres.io/downloads/stackgres-k8s/stackgres/latest/helm/
+    releaseName: stackgres-test
+    namespace: stackgres
+    valuesInline:
+      adminui:
+        service:
+        type: ClusterIp
+          
+
+
+

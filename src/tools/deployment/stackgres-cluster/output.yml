@@ -1,0 +1,62 @@
+apiVersion: v1
+data:
+  create-db.sql: |
+    Y3JlYXRlIHVzZXIgZGJvd25lciBwYXNzd29yZCAnWkRKbU1tRTJNemMzWmpKallUSTRaVG
+    swTURjNE9XVTQnOwpjcmVhdGUgdXNlciBkYnVzZXIgcGFzc3dvcmQgJ1lUTmxNek5tTWpW
+    bU1UTTBNV1ZtT0RWbE5qaG1ZbVUzJzsKY3JlYXRlIGRhdGFiYXNlIHphcGlzeXdhcmthIG
+    93bmVyIGRib3duZXI7Cg==
+kind: Secret
+metadata:
+  name: init-db
+type: Opaque
+---
+apiVersion: v1
+data:
+  dbname: emFwaXN5d2Fya2EK
+  host: emFwaXN5d2Fya2EtZGIK
+  password: WkRKbU1tRTJNemMzWmpKallUSTRaVGswTURjNE9XVTQK
+  port: NTQzMgo=
+  user: ZGJvd25lcgo=
+kind: Secret
+metadata:
+  name: zaspiywarka-dbowner
+type: Opaque
+---
+apiVersion: v1
+data:
+  dbname: emFwaXN5d2Fya2EK
+  host: emFwaXN5d2Fya2EtZGIK
+  password: WVRObE16Tm1NalZtTVRNME1XVm1PRFZsTmpobVltVTMK
+  port: NTQzMgo=
+  user: ZGJ1c2VyCg==
+kind: Secret
+metadata:
+  name: zaspiywarka-user
+type: Opaque
+---
+apiVersion: stackgres.io/v1
+kind: SGCluster
+metadata:
+  name: zapisywarka-db
+spec:
+  instances: 1
+  managedSql:
+    scripts:
+    - sgScript: create-database
+  pods:
+    persistentVolume:
+      size: 1Gi
+  postgres:
+    version: latest
+---
+apiVersion: stackgres.io/v1
+kind: SGScript
+metadata:
+  name: zapisywarka-script
+spec:
+  scripts:
+  - name: create-database
+    scriptFrom:
+      secretKeyRef:
+        key: create-db.sql
+        name: init-db.yml
