@@ -13,7 +13,3 @@ resources:
 - api-ingress.yml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-#images:
-#- name: zapisywarka-api
-#  newName: k3d-zapisywarka.localhost:9009/zapisywarka-api
-#  newTag: 8440b5de70e0

@@ -1,8 +1,10 @@
+resources:
+- ../app/development/
+- ../postgresql/development
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
-bases:
-  - ../base
-
-resources:
-  - ./postgresql/postgres-cluster.yml
+images:
+- name: zapisywarka-api
+  newTag: cdfe08751ce8
+- name: zapisywarka-api:zapisywarka-api
+  newTag: cdfe08751ce8

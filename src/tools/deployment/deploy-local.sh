@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # get flag options
-while getopts 'i:t:f:' OPTION; do
+while getopts 'i:d:f:' OPTION; do
   case "$OPTION" in
     i)
       image=$OPTARG      
       ;;
-    t)
-      tag=$OPTARG      
-      ;; 
+    d) 
+      dockerfile=$OPTARG
+      ;;   
     f)
       path=$OPTARG      
       ;;   
@@ -17,32 +17,27 @@ done
 shift "$(($OPTIND -1))"
 
 [ -z $image ] && echo flag -i image is required && exit 1
-[ -z $tag ] && echo flag -t tag is required && exit 1
+[ -z $dockerfile ] && echo flag -d path to dockerfile is required && exit 1
 [ -z $path ] && echo flag -f path to deployments files is required && exit 1
 
-repo=localhost:9009
-repoAlias=k3d-zapisywarka.localhost:9009
+nerdctl --namespace k8s.io build -t $image:latest -f $dockerfile .
 
-#image=zapisywarka-api
-#tag=latest
-# tag image
-sha=$(docker images --quiet $image:$tag)
-[ -z $sha ] && echo image $image:$tag not found && exit 1
+sha=$(nerdctl images --namespace k8s.io --quiet $image:latest)
+[ -z $sha ] && echo image $image:latest not found && exit 1
 
 imageName=$image:$sha
 
-docker tag $image:$tag $repo/$imageName
-echo tagged image: $repo/$imageName
+nerdctl tag $image:latest $imageName
+echo tagged image: $imageName
 
-docker push $repo/$imageName
 
 # update deployment specyfication files
-cwd=$(pwd)/$path/base
+cwd=$(pwd)/$path
 echo working directory: $cwd
 cd $cwd 
 
-kustomize edit set image $image=$repoAlias/$imageName
+kustomize edit set image $image:$sha
 
 # deploy app
 kustomize build | kubectl apply -f -
-echo deployed image $repo/$imageName with repo alias $repoAlias
+echo deployed image $imageName 
