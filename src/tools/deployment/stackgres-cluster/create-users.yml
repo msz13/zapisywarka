@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: create-users
+type: Opaque
+data:
+  create-users.sql: Y3JlYXRlIHVzZXIgZGJvd25lciBwYXNzd29yZCAnWkRKbU1tRTJNemMzWmpKallUSTRaVGswTURjNE9XVTQnOwpjcmVhdGUgdXNlciBkYnVzZXIgcGFzc3dvcmQgJ1lUTmxNek5tTWpWbU1UTTBNV1ZtT0RWbE5qaG1ZbVUzJyA7

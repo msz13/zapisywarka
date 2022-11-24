@@ -1,0 +1,28 @@
+---
+apiVersion: stackgres.io/v1
+kind: SGScript
+metadata:
+  name: script-users
+spec:
+  managedVersions: true
+  continueOnError: false
+  scripts:
+#  - name: create-stackgres-user
+#    scriptFrom:
+#      secretKeyRef: # read the user from a Secret to maintain credentials in a safe place
+#        name: create-users
+#        key: create-users.sql  
+  - name: create-stackgres-database
+    script: |
+      CREATE DATABASE zapisywarka;
+  - name: create-dbowner-user    
+    scriptFrom:
+      secretKeyRef:
+        name: zapisywarka-db-dbowner
+        key: create-user.sql
+  - name: grant-roles-to-users
+    database: zapisywarka
+    script: |
+      GRANT pg_database_owner TO dbowner;
+  #    GRANT pg_read_all_data TO dbuser;
+  #    GRANT pg_write_all_data TO dbuser;
