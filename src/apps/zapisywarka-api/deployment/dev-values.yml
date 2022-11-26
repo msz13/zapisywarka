@@ -1,0 +1,26 @@
+image:
+  repository: zapisywarka-api
+  tag: cdfe08751ce8
+
+command: ["dotnet", "./net6.0/ZapisywarkaClientAps.ZapisywarkaApi.dll"]
+
+ingress:
+  enabled: true
+  hostname: api.zapisywarka.local
+
+extraEnvVars: 
+  - name: POSTGRESQL__DB
+    valueFrom: { secretKeyRef: { name: zapisywarka-db-dbuser, key: dbname } }
+  - name: POSTGRESQL__HOST
+    valueFrom: { secretKeyRef: { name: zapisywarka-db-dbuser, key: host } }
+  - name: POSTGRESQL__USER
+    valueFrom: { secretKeyRef: { name: zapisywarka-db-dbuser, key: user } }                
+  - name: POSTGRESQL__PASSWORD
+    valueFrom: { secretKeyRef: { name: zapisywarka-db-dbuser, key: password } } 
+  - name: DOMAIN
+    value: zapisywarka.local
+
+appFromExternalRepo:
+  enabled: false
+serviceAccount: 
+  create: false

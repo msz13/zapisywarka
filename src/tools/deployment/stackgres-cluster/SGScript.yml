@@ -22,7 +22,6 @@ spec:
         key: create-user.sql
   - name: grant-roles-to-users
     database: zapisywarka
-    script: |
-      GRANT pg_database_owner TO dbowner;
+    script: |      
   #    GRANT pg_read_all_data TO dbuser;
   #    GRANT pg_write_all_data TO dbuser;

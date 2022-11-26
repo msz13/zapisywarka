@@ -1,0 +1,79 @@
+{{- define "database.name" -}}
+{{ .Values.database.name }}
+{{- end -}}
+
+
+{{ $globPassword := "test"}}
+
+{{- define "create.users.sql" }}
+{{- range $user := . -}}
+{{- /*
+ {{ $secret := lookup "v1" "Secret" Release.Namespace "some-secret" -}}
+ */ -}}
+{{- $password := randAlphaNum 20 -}}
+{{ printf "create user %s password %s;\n" $user.name $password }}
+{{- end }}
+{{- end -}}
+---
+apiVersion: stackgres.io/v1beta1
+kind: SGScript
+metadata:
+  name: script
+spec:
+  managedVersions: true
+  continueOnError: false
+  scripts:
+  - name: create-stackgres-user
+    scriptFrom:
+      secretKeyRef: # read the user from a Secret to maintain credentials in a safe place
+        name: create-users sqls-script
+        key: create-users.sql
+  - name: create-stackgres-database
+    script: |
+      CREATE DATABASE {{- template "database.name" }};
+  - name: grant-roles-to-users
+    database: {{- template "database.name" . }}
+    script: |
+      GRANT pg_database_owner TO dbowner;
+      GRANT pg_read_all_data TO dbuser;
+      GRANT pg_write_all_data TO dbuser;
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: create-users-sqls-script
+type: Opaque
+data:
+  create-users.sql: {{ include "create.users.sql" .Values.database.users | b64enc }}
+  create-users.sql: 
+  {{ include "create.users.sql" .Values.database.users }}
+  globPassword: {{ $globPassword }}
+ 
+  
+#create user dbowner password 'ZDJmMmE2Mzc3ZjJjYTI4ZTk0MDc4OWU4';
+#create user dbuser password 'YTNlMzNmMjVmMTM0MWVmODVlNjhmYmU3' ;
+---
+apiVersion: v1
+data:  
+  dbname: emFwaXN5d2Fya2EK
+  host: emFwaXN5d2Fya2EtZGIK
+  port: NTQzMgo=
+  user: ZGJvd25lcgo=
+  password: WkRKbU1tRTJNemMzWmpKallUSTRaVGswTURjNE9XVTQK
+kind: Secret
+metadata:  
+  name: zapisywarka-db-dbowner  
+type: Opaque
+---
+apiVersion: v1
+data:  
+  dbname: emFwaXN5d2Fya2EK
+  host: emFwaXN5d2Fya2EtZGIK
+  port: NTQzMgo=
+  user: ZGJ1c2VyCg==
+  password: WVRObE16Tm1NalZtTVRNME1XVm1PRFZsTmpobVltVTMK
+kind: Secret
+metadata:  
+  name: zapisywarka-db-user  
+type: Opaque
+

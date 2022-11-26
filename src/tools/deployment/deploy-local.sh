@@ -27,7 +27,7 @@ sha=$(nerdctl images --namespace k8s.io --quiet $image:latest)
 
 imageName=$image:$sha
 
-nerdctl tag $image:latest $imageName
+nerdctl --namespace k8s.io tag $image:latest $imageName
 echo tagged image: $imageName
 
 
