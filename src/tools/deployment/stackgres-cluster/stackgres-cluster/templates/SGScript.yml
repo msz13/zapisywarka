@@ -28,35 +28,35 @@ spec:
   continueOnError: false
   scripts:
   {{- if .Values.database.owner }}
-  - name: create-user-{{ .Values.database.owner }} 
+  - name: create-user-{{ .Values.database.owner }}
     scriptFrom:
       secretKeyRef: # read the user from a Secret to maintain credentials in a safe place
-        #name: {{ include "user.secret.name" (dict "databaseName" (include "database.name" $) "userName" .Values.database.owner ) }}
-        name: test-user
-        key: create-user.sql
-   {{- end -}}
+        name: {{ include "user.secret.name" (dict "databaseName" (include "database.name" $) "userName" .Values.database.owner ) }}
+        key: create-user.sql        
+   {{- end }}
    {{- range $user := .Values.database.users }}
-   - name: create-user-{{ $user.name }} 
-     scriptFrom:
+  - name: create-user-{{ $user.name }}
+    scriptFrom:
       secretKeyRef: # read the user from a Secret to maintain credentials in a safe place
         name: {{ include "user.secret.name" (dict "databaseName" (include "database.name" $) "userName" $user.name ) }}
         key: create-user.sql
-   {{- end -}}
+    {{- end }}
   - name: create-stackgres-database
     script: |
       CREATE DATABASE {{ template "database.name" . }};
   - name: grant-roles-to-users
-    database: {{- template "database.name" . }}
+    database: {{ template "database.name" . }}
     script: |
-    {{ range $user := .Values.database.users -}}
-    {{ range $role := $user.roles }}
-    {{- printf "GRANT %s TO %s;\n" $role $user.name | indent 2 -}}
-    {{- end -}}
-    {{- end -}}
----
-{{ $allUsers := append .Values.database.users (dict "name" .Values.database.owner) }}
-{{- range $user := $allUsers }}
+{{- range $user := .Values.database.users -}}
+{{- range $role := $user.roles -}}
+{{ printf "GRANT %s TO %s;" $role $user.name | nindent 6}}
+{{- end }}
+{{ end }}
+    
+{{- $allUsers := append .Values.database.users (dict "name" .Values.database.owner) -}}
+{{- range $user := $allUsers -}}
 {{- $password := include "user.password" $user.name -}}
+---
 apiVersion: v1
 data: 
   dbname: {{ include "database.name" $ | b64enc }}
@@ -65,11 +65,12 @@ data:
   user: {{ $user.name | b64enc }}
   password: {{ $password  }}
   create-user.sql: |
-    {{- include "create.user.sql" (dict "userName" $user.name "password" $password) | indent 4 -}}
+    {{ include "create.user.sql" (dict "userName" $user.name "password" $password) | b64enc }}
 kind: Secret
 metadata:  
   name: {{ include "user.secret.name" (dict "databaseName" (include "database.name" $) "userName" $user.name )}}  
 type: Opaque
-{{ "---" }}
-{{- end -}}
+{{ end }}
+
+
 
