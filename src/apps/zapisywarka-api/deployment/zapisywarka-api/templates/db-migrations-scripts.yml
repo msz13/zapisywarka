@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-migrations-scripts
+data:
+{{ (.Files.Glob "scripts/*.sql").AsConfig | indent 2 }}
+
+
+

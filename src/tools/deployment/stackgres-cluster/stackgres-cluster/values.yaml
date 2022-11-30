@@ -1,5 +1,7 @@
 clusterName: test-db
 
+storageSize: 1Gi
+
 database:
   enable: true
   name: zapisywarka14

@@ -12,5 +12,6 @@ spec:
   managedSql:
     scripts:
       - sgScript: zapisywarka-scripts
+  
 
 

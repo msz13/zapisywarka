@@ -1,0 +1,15 @@
+---
+apiVersion: stackgres.io/v1
+kind: SGCluster
+metadata:
+  name: {{ template "postgres.cluster.name" . }}
+spec:
+  instances: {{ .Values.instances  | default 1 }}
+  postgres:
+    version: {{ .Values.pgVersion | default "latest" | quote }} 
+  pods:
+    persistentVolume:
+      size: {{ required "Storage size is required" .Values.storageSize }}
+  managedSql:
+    scripts:
+      - sgScript: init-database-script

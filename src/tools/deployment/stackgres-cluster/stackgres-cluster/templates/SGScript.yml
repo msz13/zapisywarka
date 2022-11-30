@@ -1,11 +1,3 @@
-{{- define "database.name" -}}
-{{ .Values.database.name }}
-{{- end -}}
-
-{{- define "cluster.name" -}}
-{{ .Values.clusterName }}
-{{- end -}}
-
 {{- define "user.secret.name" -}}
 {{ printf "%s-%s" .databaseName .userName }}
 {{- end -}}
@@ -16,13 +8,13 @@
 {{- end -}}
 
 {{- define "create.user.sql" }}
-{{ printf "create user %s password %s;\n" .userName .password }}
+{{ printf "create user %s password '%s';\n" .userName .password }}
 {{- end -}}
 ---
-apiVersion: stackgres.io/v1beta1
+apiVersion: stackgres.io/v1
 kind: SGScript
 metadata:
-  name: script
+  name: init-database-script
 spec:
   managedVersions: true
   continueOnError: false
@@ -31,21 +23,21 @@ spec:
   - name: create-user-{{ .Values.database.owner }}
     scriptFrom:
       secretKeyRef: # read the user from a Secret to maintain credentials in a safe place
-        name: {{ include "user.secret.name" (dict "databaseName" (include "database.name" $) "userName" .Values.database.owner ) }}
+        name: {{ include "user.secret.name" (dict "databaseName" (include "postgres.database.name" $) "userName" .Values.database.owner ) }}
         key: create-user.sql        
    {{- end }}
    {{- range $user := .Values.database.users }}
   - name: create-user-{{ $user.name }}
     scriptFrom:
       secretKeyRef: # read the user from a Secret to maintain credentials in a safe place
-        name: {{ include "user.secret.name" (dict "databaseName" (include "database.name" $) "userName" $user.name ) }}
+        name: {{ include "user.secret.name" (dict "databaseName" (include "postgres.database.name" $) "userName" $user.name ) }}
         key: create-user.sql
     {{- end }}
   - name: create-stackgres-database
     script: |
-      CREATE DATABASE {{ template "database.name" . }};
+      CREATE DATABASE {{ template "postgres.database.name" . }} WITH OWNER {{ .Values.database.owner }};
   - name: grant-roles-to-users
-    database: {{ template "database.name" . }}
+    database: {{ template "postgres.database.name" . }}
     script: |
 {{- range $user := .Values.database.users -}}
 {{- range $role := $user.roles -}}
@@ -59,16 +51,16 @@ spec:
 ---
 apiVersion: v1
 data: 
-  dbname: {{ include "database.name" $ | b64enc }}
-  host: {{ include "cluster.name" $ | b64enc }}
-  port: {{ 5432 | quote | b64enc }}
+  dbname: {{ include "postgres.database.name" $ | b64enc }}
+  host: {{ include "postgres.cluster.name" $ | b64enc }}
+  port: {{ 5432 | toString | b64enc }}
   user: {{ $user.name | b64enc }}
-  password: {{ $password  }}
+  password: {{ $password | b64enc }}
   create-user.sql: |
     {{ include "create.user.sql" (dict "userName" $user.name "password" $password) | b64enc }}
 kind: Secret
 metadata:  
-  name: {{ include "user.secret.name" (dict "databaseName" (include "database.name" $) "userName" $user.name )}}  
+  name: {{ include "user.secret.name" (dict "databaseName" (include "postgres.database.name" $) "userName" $user.name )}}  
 type: Opaque
 {{ end }}
 

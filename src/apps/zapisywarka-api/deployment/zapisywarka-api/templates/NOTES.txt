@@ -1,0 +1,8 @@
+1. Get the application URL by running these commands:
+{{- if (index .Values "aspnet-core" "ingress.enabled") }}
+{{- range $host := (index .Values "aspnet-core" "ingress.host") }}
+  {{- range .paths }}
+  http{{ if (index $.Values "aspnet-core" "ingress.tls") }}s{{ end }}://{{ $host.host }}{{ .path }}
+  {{- end }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,6 @@
+dependencies:
+- name: aspnet-core
+  repository: https://charts.bitnami.com/bitnami
+  version: 4.0.0
+digest: sha256:c638cd0cfe1a345a16d7ecedd680cff389ed99bd07f112c22b3d121c9cd0da2b
+generated: "2022-11-29T22:44:23.431438045+01:00"

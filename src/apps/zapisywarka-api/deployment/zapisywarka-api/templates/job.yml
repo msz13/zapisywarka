@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name:  db-migrations
+spec:
+  template:
+    metadata:
+      name:  db-migrations
+    spec:
+      containers: 
+        - name: db-migrations
+          image:  db-migrations:0.1
+          command: ["sh", "-c", "dotnet ZapisywarkaClientAps.DbMigrations.dll"]          
+          env:           
+            - name: DB_NAME
+              valueFrom: { secretKeyRef: { name: zapisywarka14-dbowner, key: dbname } }
+            - name: DB_HOST
+              valueFrom: { secretKeyRef: { name: zapisywarka14-dbowner, key: host } }
+            - name: DB_PORT
+              valueFrom: { secretKeyRef: { name: zapisywarka14-dbowner, key: port } }           
+            - name: DB_USER
+              valueFrom: { secretKeyRef: { name: zapisywarka14-dbowner, key: user } }
+            - name: DB_PASSWORD
+              valueFrom: { secretKeyRef: { name: zapisywarka14-dbowner, key: password } }
+          volumeMounts:
+            - mountPath: /publish/scripts
+              name: scripts
+      volumes:
+        - name: scripts
+          configMap:
+            name: db-migrations-scripts
+        
+      restartPolicy: Never
+  backoffLimit: 5
+  # ttlSecondsAfterFinished: 60
