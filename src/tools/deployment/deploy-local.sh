@@ -32,12 +32,12 @@ echo tagged image: $imageName
 
 
 # update deployment specyfication files
-cwd=$(pwd)/$path
-echo working directory: $cwd
-cd $cwd 
+#cwd=$(pwd)/$path
+#echo working directory: $cwd
+#cd $cwd 
 
-kustomize edit set image $image:$sha
+#kustomize edit set image $image:$sha
 
 # deploy app
-kustomize build | kubectl apply -f -
-echo deployed image $imageName 
+#kustomize build | kubectl apply -f -
+#echo deployed image $imageName 

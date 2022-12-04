@@ -16,5 +16,5 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: zapisywarka-rejestracja
-  newName: k3d-zapisywarka.localhost:9009/zapisywarka-rejestracja
-  newTag: c10eabca34f1
+  newName: zapisywarka-rejestracja
+  newTag: 4acdd0fb2747

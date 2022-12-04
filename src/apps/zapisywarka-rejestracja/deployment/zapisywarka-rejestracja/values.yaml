@@ -56,7 +56,7 @@ ingress:
   #      - chart-example.local
 
 webConfig:
-  apiUrl: api.zapisywarka.local
+  apiUrl: http://api.zapisywarka.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
