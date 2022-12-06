@@ -42,7 +42,8 @@
       },
       "configurations": {
         "production": {
-          "push": true
+          "push": true,
+          "platforms": ["linux/arm64"]
         }
       },
       "dependsOn": ["build"]
