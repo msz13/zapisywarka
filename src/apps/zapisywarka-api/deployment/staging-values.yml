@@ -1,0 +1,11 @@
+aspnet-core:
+  image:
+    registry: ghcr.io/msz13
+    repository: zapisywarka-api
+    tag: rc-221206t21-23.00ecd80    
+    pullSecrets: 
+      - regcred
+  ingress:
+    enable: true
+    hostname: api.test.zapisywarka.pl
+

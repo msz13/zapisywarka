@@ -1,0 +1,22 @@
+repositories:
+  - name: stackgres-charts
+    url: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
+  - name: jetstack
+    url: https://charts.jetstack.io
+
+
+releases:
+  - name: stackgres
+    chart: stackgres-charts/stackgres-operator
+  - name: postgresql-cluster    
+    chart: stackgres-cluster/stackgres-cluster
+    values:
+      - staging-stackgres-cluster.yaml
+  - name: infrastructure
+    chart: ./common-infrastructure
+  - name: zapisywarka-api
+    chart: ../../apps/zapisywarka-api/deployment/zapisywarka-api
+  - name: zapisywarka-rejestracja
+    chart: ../../apps/zapisywarka-rejestracja/deployment/zapisywarka-rejestracja
+
+

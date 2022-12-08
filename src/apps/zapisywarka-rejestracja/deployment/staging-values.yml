@@ -1,0 +1,16 @@
+image:
+  repository: ghcr.io/msz13/zapisywarka-rejestracja  
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: 563d9d869cbc3ca2b91823fa462b91430f7d22d6
+
+imagePullSecrets: 
+  - name: regcred
+
+ingress:
+  enabled: true  
+  hosts:
+    - host: test.zapisywarka.pl
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+     

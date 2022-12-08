@@ -12,7 +12,7 @@ aspnet-core:
 
   ingress:
     enabled: true
-    hostname: api.zapisywarka.local
+    hostname: zapisywarka.local
 
   extraEnvVars: 
     - name: POSTGRESQL__DB
