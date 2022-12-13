@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "zapisywarka-rejestracja.fullname" . }}
+  name: {{ include "zapisywarka.fullname" . }}
   labels:
-    {{- include "zapisywarka-rejestracja.labels" . | nindent 4 }}
+    {{- include "zapisywarka.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "zapisywarka-rejestracja.selectorLabels" . | nindent 6 }}
+      {{- include "zapisywarka.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "zapisywarka-rejestracja.selectorLabels" . | nindent 8 }}
+        {{- include "zapisywarka.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "zapisywarka-rejestracja.serviceAccountName" . }}
+      serviceAccountName: {{ include "zapisywarka.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -37,11 +37,6 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          volumeMounts:
-          - name: angular-config-volume
-            mountPath: /usr/share/nginx/html/assets/
-          - name: nginx-config-volume
-            mountPath: /etc/nginx/conf.d
           livenessProbe:
             httpGet:
               path: /
@@ -52,13 +47,6 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      volumes:
-        - name: angular-config-volume
-          configMap:
-            name: angular-configuration
-        - name: nginx-config-volume
-          configMap:
-            name: nginx-configuration
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

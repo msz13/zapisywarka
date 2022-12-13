@@ -1,0 +1,5 @@
+issuerName: letsencrypt-staging
+server: https://acme-staging-v02.api.letsencrypt.org/directory
+email: zapisywarka13@gmail.com
+issuerSecret: letsencrypt-staging
+ingressClass: treafik
