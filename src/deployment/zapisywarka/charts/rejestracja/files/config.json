@@ -1,0 +1,4 @@
+{ 
+    "apiUrl": "{{ .Values.angularConfig.apiUrl }}"
+}
+    
