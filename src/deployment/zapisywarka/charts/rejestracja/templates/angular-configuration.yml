@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: angular-configuration
-data:   
-  config.json: |  
-{{ tpl (.Files.Get "files/config.json") . | indent 4}}
