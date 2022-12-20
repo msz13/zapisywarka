@@ -3,6 +3,8 @@
 # Declare variables to be passed into your templates.
 global:
   imageRegistry: ghcr.io
+  imagePullSecrets:
+    - name:  ghcr-sec
 
 
 api:  
