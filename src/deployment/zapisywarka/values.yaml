@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 global:
   imageRegistry: ghcr.io
-  imagePullSecrets:
-    - name:  ghcr-sec
+  imagePullSecrets: []
+    
 
 
 api:  
@@ -24,3 +24,42 @@ api:
       valueFrom: { secretKeyRef: { name: zapisywarka-dbuser, key: password } } 
     - name: DOMAIN
       value: zapisywarka.local
+
+  
+rejestracja:
+  image:  
+    repository: zapisywarka rejestracja
+    tag: docker pull ghcr.io/msz13/zapisywarka-rejestracja:563d9d869cbc3ca2b91823fa462b91430f7d22d6
+  ingress: 
+    hostname: zapisywarka.local
+  volumeMounts:
+    - name:  config
+      mountPath:  /usr/share/nginx/html/assets/
+  volumes:
+    - name: config
+      configMap: serviceConfiguration
+  configMap:
+    config.json: |-
+      { 
+        "apiUrl": "api.zapisywarka.local"
+      }
+
+rejestracja2:
+  image:  
+    repository: zapisywarka rejestracja
+    tag: docker pull ghcr.io/msz13/zapisywarka-rejestracja:563d9d869cbc3ca2b91823fa462b91430f7d22d6
+  ingress: 
+    hostname: zapisywarka.local  
+  configFile:
+    name: config.json
+    path: /usr/share/nginx/html/assets/    
+    content: |-
+      { 
+        "apiUrl": "api.zapisywarka.local",
+        "authKey": "x1y2z3"
+        "authUrl": "auth.zapisywarka.pl"
+      }
+    
+
+
+

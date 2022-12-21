@@ -3,8 +3,6 @@
 # Declare variables to be passed into your templates.
 
 #todo remove global from subchart
-global:
-  imagePullSecrets: []
 
 replicaCount: 1
 
@@ -17,7 +15,8 @@ image:
 
 env: []
 
-imagePullSecrets: []
+imagePullSecrets: 
+  - name: test
 nameOverride: ""
 fullnameOverride: ""
 

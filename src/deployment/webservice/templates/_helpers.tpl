@@ -73,23 +73,15 @@ Create the name of the service account to use
 {{- end -}}
 
 {{- define "webservice.pullSecrets" -}}
-{{- $pullSecrets := .Values.global.imagePullSecrets | default .Values.imagePullSecrets -}}
-{{- if $pullSecrets -}}
-imagePullSecrets: 
-{{ $pullSecrets | toYaml | indent 2 }}  
-{{ end }}
-{{- end -}}
-
-
-{{- define "webservice-bed.pullSecrets" -}}
-{{ $pullSecrets := list }}
-{{- if .Values.global.imagePullSecrets -}}
-{{- $pullSecrets := .Values.global.imagePullSecrets -}}
-{{- else -}}
 {{- $pullSecrets := .Values.imagePullSecrets -}}
+{{- if and .Values.global .Values.global.imagePullSecrets -}}
+{{- $pullSecrets := .Values.global.imagePullSecrets -}}
 {{- end -}}
 {{- if $pullSecrets -}}
 imagePullSecrets: 
 {{ $pullSecrets | toYaml | indent 2 }}  
 {{ end }}
 {{- end -}}
+
+
+

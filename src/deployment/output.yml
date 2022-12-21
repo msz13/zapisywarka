@@ -1,5 +1,5 @@
 NAME: zapisywarka
-LAST DEPLOYED: Tue Dec 20 23:49:22 2022
+LAST DEPLOYED: Wed Dec 21 21:29:53 2022
 NAMESPACE: default
 STATUS: pending-install
 REVISION: 1
@@ -53,7 +53,7 @@ spec:
         app.kubernetes.io/instance: zapisywarka
     spec:
       imagePullSecrets: 
-        - name: ghcr-sec  
+        - name: sec  
       serviceAccountName: default
       securityContext:
         {}

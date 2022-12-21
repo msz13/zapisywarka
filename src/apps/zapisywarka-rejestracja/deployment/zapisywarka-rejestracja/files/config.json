@@ -1,4 +1,4 @@
 { 
-    "apiUrl": "{{ .Values.angularConfig.apiUrl }}"
+   "apiUrl": "{{ .Values.angularConfig.apiUrl }}"
 }
     

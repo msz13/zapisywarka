@@ -27,3 +27,4 @@ dependencies:
   - name: common
     repository: https://charts.bitnami.com/bitnami
     version: 2.2.2
+  

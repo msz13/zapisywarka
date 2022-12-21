@@ -28,6 +28,10 @@ dependencies:
     version: 0.1.0
     repository: "file://../webservice"
     alias: api
+  - name: webservice
+    version: 0.1.0
+    repository: "file://../webservice"
+    alias: rejestracja
  
 
   

@@ -1,5 +1,5 @@
 NAME: api
-LAST DEPLOYED: Tue Dec 20 23:46:49 2022
+LAST DEPLOYED: Wed Dec 21 21:26:09 2022
 NAMESPACE: default
 STATUS: pending-install
 REVISION: 1
@@ -52,6 +52,8 @@ spec:
         app.kubernetes.io/name: webservice
         app.kubernetes.io/instance: api
     spec:
+      imagePullSecrets: 
+        - name: test  
       serviceAccountName: default
       securityContext:
         {}
