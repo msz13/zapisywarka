@@ -2,5 +2,8 @@ dependencies:
 - name: webservice
   repository: file://../webservice
   version: 0.1.0
-digest: sha256:1efa1e04ca912b856c1289c7b3674b551edd57af2e12b5e35dd5c44b8044bfc7
-generated: "2022-12-18T21:50:15.180835284+01:00"
+- name: webservice
+  repository: file://../webservice
+  version: 0.1.0
+digest: sha256:0f8ee88cc745c60e92869e20f974d417f1ace34c4ff623b2afb120d32a0efa34
+generated: "2022-12-21T22:51:41.660503725+01:00"

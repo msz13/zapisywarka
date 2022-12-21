@@ -61,6 +61,16 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+configFile:
+    name: config.json
+    path: /usr/share/nginx/html/assets/    
+    content: |-
+      { 
+        "apiUrl": "api.zapisywarka.local",
+        "authKey": "x1y2z3"
+        "authUrl": "auth.zapisywarka.pl"
+      }
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little

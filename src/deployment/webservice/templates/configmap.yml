@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: serviceConfiguration
+data:
+{{ .Values.configFile.name | indent 2 }}: |-
+{{ .Values.configFile.content | indent 4 }}
