@@ -1,7 +1,11 @@
+{{- if .Values.configFile -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: serviceConfiguration
+  labels:
+    {{- include "webservice.labels" . | nindent 4 }}
 data:
 {{ .Values.configFile.name | indent 2 }}: |-
 {{ .Values.configFile.content | indent 4 }}
+{{- end -}}

@@ -1,24 +1,11 @@
 NAME: api
-LAST DEPLOYED: Wed Dec 21 22:58:38 2022
+LAST DEPLOYED: Thu Dec 22 21:49:18 2022
 NAMESPACE: default
 STATUS: pending-install
 REVISION: 1
 TEST SUITE: None
 HOOKS:
 MANIFEST:
----
-# Source: webservice/templates/configmap.yml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: serviceConfiguration
-data:
-  config.json: |-
-    { 
-      "apiUrl": "api.zapisywarka.local",
-      "authKey": "x1y2z3"
-      "authUrl": "auth.zapisywarka.pl"
-    }
 ---
 # Source: webservice/templates/service.yaml
 apiVersion: v1
@@ -81,10 +68,7 @@ spec:
           ports:
             - name: http
               containerPort: 80
-              protocol: TCP
-          volumeMounts:
-          - name: config
-            mountPath: /usr/share/nginx/html/assets/       
+              protocol: TCP     
           livenessProbe:
             httpGet:
               path: /
@@ -95,10 +79,6 @@ spec:
               port: http
           resources:
             {}
-      volumes:
-        - name: config
-          configMap:
-            name: serviceConfiguration
 ---
 # Source: webservice/templates/ingress.yaml
 apiVersion: networking.k8s.io/v1

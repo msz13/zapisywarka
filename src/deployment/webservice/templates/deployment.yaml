@@ -36,9 +36,11 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+        {{- with .Values.configFile }}
           volumeMounts:
-          - name: config
-            mountPath: {{ .Values.configFile.path }}       
+            - name: config
+              mountPath: {{ .path }}  
+         {{- end }}     
           livenessProbe:
             httpGet:
               path: /
@@ -49,10 +51,12 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      {{- if .Values.configFile }}
       volumes:
         - name: config
           configMap:
-            name: serviceConfiguration                 
+            name: serviceConfiguration
+      {{- end }}                 
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

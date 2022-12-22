@@ -50,9 +50,9 @@
     "deploy-local": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "sudo sh ./tools/deployment/deploy-local.sh -i zapisywarka-api -t latest -f apps/zapisywarka-api/deployment/"
+        "command": "sh ./tools/deployment/deploy-local.sh -i zapisywarka-api -t latest -f apps/zapisywarka-api/deployment/"
       },
-      "dependsOn": ["docker"]
+      "dependsOn": []
     },
     "lint": {
       "executor": "@nx-dotnet/core:format"
