@@ -32,6 +32,15 @@ dependencies:
     version: 0.1.0
     repository: "file://../webservice"
     alias: rejestracja
+  - name: stackgres-cluster
+    version: 0.1.0
+    repository: "file://../stackgres-cluster"
+    alias: postgres-cluster
+  - name: task
+    version: 0.1.0
+    repository: "file://../task"
+    alias: db-migrations
+
  
 
   

@@ -53,7 +53,7 @@
       "options": {
         "command": "sh ./tools/deployment/deploy-local.sh -i zapisywarka-api -t latest -f apps/zapisywarka-api/deployment/"
       },
-      "dependsOn": []
+      "dependsOn": ["build"]
     },
     "lint": {
       "executor": "@nx-dotnet/core:format"

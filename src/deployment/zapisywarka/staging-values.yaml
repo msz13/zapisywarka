@@ -2,11 +2,15 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
-  imageRegistry: ""
-  imagePullSecrets: []
-    
+  imageRegistry: ghcr.io/msz13
+  imagePullSecrets: ghcr-cred
 
 
+containerRegistry:
+  registry: ghcr.io
+  userName: msz13
+  token: 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
+  
 api:  
   image:
     repository: zapisywarka-api

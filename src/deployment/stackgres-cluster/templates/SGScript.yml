@@ -52,7 +52,7 @@ spec:
 apiVersion: v1
 data: 
   dbname: {{ include "postgres.database.name" $ | b64enc }}
-  host: {{ include "postgres.cluster.name" $ | b64enc }}
+  host: {{ include "stackgres-cluster.fullname" $ | b64enc }}
   port: {{ 5432 | toString | b64enc }}
   user: {{ $user.name | b64enc }}
   password: {{ $password | b64enc }}

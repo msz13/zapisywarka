@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "webservice.name" -}}
+{{- define "task.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,28 +10,29 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "webservice.fullname" -}}
+{{- define "task.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
 {{- $name := default .Chart.Name .Values.nameOverride }}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
+{{- $revision := .Release.Revision | toString }}
+{{- printf "%s-%s-%s" .Release.Name $name $revision | trunc 63 | trimSuffix "-" }}
 {{- end }}
 {{- end }}
 
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "webservice.chart" -}}
+{{- define "task.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "webservice.labels" -}}
-helm.sh/chart: {{ include "webservice.chart" . }}
-{{ include "webservice.selectorLabels" . }}
+{{- define "task.labels" -}}
+helm.sh/chart: {{ include "task.chart" . }}
+{{ include "task.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -41,20 +42,11 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "webservice.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "webservice.name" . }}
+{{- define "task.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "task.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{/*
-Hostname
-*/}}
-{{- define "webservice.hostname" -}}
-{{ $hostname := .Values.ingress.hostname }}
-{{ printf "%s" $hostname }}
-{{- end }}
-
-}}
 
 {{/*
 Create the name of the service account to use
@@ -68,11 +60,22 @@ Create the name of the service account to use
 {{- end }}
 
 
-{{- define "webservice.image" -}}
-{{ include "common.images.image" ( dict "imageRoot" .Values.image "global" .Values.global ) }}
+{{- define "task.image" -}}
+{{- $registryName := .Values.image.registry -}}
+{{- $repositoryName := .Values.image.repository -}}
+{{- $separator := ":" -}}
+{{- $termination := .Values.image.tag | toString -}}
+{{- if .Values.global }}
+    {{- if .Values.global.imageRegistry }}
+     {{- $registryName = .Values.global.imageRegistry -}}
+    {{- end -}}
+{{- end -}}
+{{- printf "%s/%s%s%s" $registryName $repositoryName $separator $termination -}}
 {{- end -}}
 
-{{- define "webservice.pullSecrets" -}}
+
+
+{{- define "task.pullSecrets" -}}
 {{- $pullSecrets := .Values.imagePullSecrets -}}
 {{- if and .Values.global .Values.global.imagePullSecrets -}}
 {{- $pullSecrets := .Values.global.imagePullSecrets -}}
@@ -82,3 +85,6 @@ imagePullSecrets:
 {{ $pullSecrets | toYaml | indent 2 }}  
 {{ end }}
 {{- end -}}
+
+
+

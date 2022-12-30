@@ -5,5 +5,11 @@ dependencies:
 - name: webservice
   repository: file://../webservice
   version: 0.1.0
-digest: sha256:0f8ee88cc745c60e92869e20f974d417f1ace34c4ff623b2afb120d32a0efa34
-generated: "2022-12-21T22:51:41.660503725+01:00"
+- name: stackgres-cluster
+  repository: file://../stackgres-cluster
+  version: 0.1.0
+- name: task
+  repository: file://../task
+  version: 0.1.0
+digest: sha256:c0d56d1b8adc141135e44c523a035c06557b821e34a8744da6f412fdab8269f0
+generated: "2022-12-28T20:20:28.674412678+01:00"

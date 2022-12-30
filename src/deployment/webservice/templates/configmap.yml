@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: serviceConfiguration
+  name: {{ include "webservice.fullname" . }}-config
   labels:
     {{- include "webservice.labels" . | nindent 4 }}
 data:

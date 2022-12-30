@@ -55,7 +55,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: serviceConfiguration
+            name: {{ include "webservice.fullname" . }}-config
       {{- end }}                 
       {{- with .Values.nodeSelector }}
       nodeSelector:
