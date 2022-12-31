@@ -19,6 +19,7 @@ const COMPONENTS = [
   SideNavAccountInfoComponent,
   MainLayoutComponent,
   MenuCardComponent,
+  TextFieldComponent
 ];
 
 @NgModule({
