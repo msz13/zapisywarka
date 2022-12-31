@@ -8,52 +8,42 @@ import { SharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 
 import { TextFieldComponent } from './text-field.component';
 
-const typeInInput = (host: SpectatorHost<TextFieldComponent, CustomHostComponent>, value: any) => {
-  const input =host.query('input')
-    input.setAttribute('value', value)
-    input.dispatchEvent(new Event('change'))
-}
 
-@Component({ template: '' })
-export class CustomHostComponent {
-  control = new FormControl("", [Validators.required, Validators.maxLength(2)])
-}
-
-@Component({ template: `<form>
+@Component({ template: `
+  <form>
     <sui-text-field [label]="'Nazwa'" [formControl]="control"></sui-text-field>
     <button class="submit-button" type=submit>Submit</button>
-</form>` })
+  </form>
+  ` })
 export class TestFormComponent {
   control = new FormControl("", [Validators.required])
 }
 
 describe('TextFieldComponent', () => {
-  let host: SpectatorHost<TextFieldComponent, CustomHostComponent>;
+  let host: SpectatorHost<TextFieldComponent, TestFormComponent>;
   const createHost = createHostFactory({
     component: TextFieldComponent,
-    host: CustomHostComponent,
-    imports: [SharedMaterialModule, ReactiveFormsModule]
+    host: TestFormComponent,
+    imports: [SharedMaterialModule, ReactiveFormsModule],
+    detectChanges: true
   });
 
-  const createComponent = createComponentFactory({
-    component: TestFormComponent,
-    declarations: [TextFieldComponent],
-    imports: [SharedMaterialModule, ReactiveFormsModule]
-  })
-
-  it('should display label', () => {
-    host = createHost(`<sui-text-field [label]="'Nazwa'"></sui-text-field>`);
-    expect(host.query('mat-label')).toHaveText('Nazwa');
-  });
-
-  it('shuold write text to form control', () =>{
+ 
+  beforeEach(()=>{
     host = createHost(`
     <form>
       <sui-text-field [label]="'Nazwa'" [formControl]="control"></sui-text-field>
       <button type=submit>Submit</button>
     </form>
     `);
-        
+  })
+
+  it('should display label', () => {
+    expect(host.query('mat-label')).toHaveText('Nazwa');
+  });
+
+  it('shuold write text to form control', () =>{
+            
     const input = host.query('input')
     host.typeInElement("Test", input)
    
@@ -63,38 +53,32 @@ describe('TextFieldComponent', () => {
 
   })
 
-  it.skip('shuold bind touch method', () =>{
-    host = createHost(`<sui-text-field [label]="'Nazwa'" [formControl]="control"></sui-text-field>`);
+  it('should bind touch method', fakeAsync(() =>{
+    
     expect(host.hostComponent.control.touched).toBe(false)    
-    host.blur('input')
+    //const input = host.query('input')
+    //host.blur(input)
+    const input = host.query('input')
+    expect(input).toExist()
+    input.dispatchEvent(new Event('blur'))
+    host.tick(300)
+    host.detectChanges()
     expect(host.hostComponent.control.touched).toBe(true)
    
-  })
+  }))
 
-  it.skip('shuold show error message', () =>{
-    host = createHost(`<sui-text-field [label]="'Nazwa'" [formControl]="control"></sui-text-field>`);
+  it('should write value', () =>{
     
-    const error1 = host.query('mat-error')
-    expect(error1).toBeNull()
-    host.blur('input')
+    host.hostComponent.control.setValue("test input")
+
     host.detectChanges()
-    const error = host.query('mat-error')
-    expect(error).not.toBeNull()
-    expect(error).toHaveText("Pole ")
 
-  })
+    const childInput = host.query('input') as HTMLInputElement
 
-  it.skip('should show error message on submit', ()=> {
-    const component = createComponent()
-    
-    const error1 = host.query('mat-error')
-    expect(error1).toBeNull()
+    expect(childInput.value).toBe("test input")
    
-    component.click(byText('Submit'))
-    const error = host.query('mat-error')
-    expect(error).not.toBeNull()
-    expect(error).toHaveText("Pole wymagane")
-        
-  })
+})
+
+ 
 
 });
