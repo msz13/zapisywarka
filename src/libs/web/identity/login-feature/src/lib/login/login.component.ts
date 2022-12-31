@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { IFormGroup } from '@rxweb/types';
 import { LoginCredentials } from '@zapisywarka-client-aps/web-identity-domain';
@@ -19,7 +19,7 @@ import { LoginCredentials } from '@zapisywarka-client-aps/web-identity-domain';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: UntypedFormGroup;
+  loginForm!: FormGroup;
 
   @Input() loading: boolean | null = false;
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   hidePassword = true;
 
-  constructor(private fb: UntypedFormBuilder) {
+  constructor(private fb: FormBuilder) {
     this.createForm();
   }
 

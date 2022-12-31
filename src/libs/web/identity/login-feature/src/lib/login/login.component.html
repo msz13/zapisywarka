@@ -4,18 +4,15 @@
     {{ error }}
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <mat-form-field
-      appearance="outline"
-      class="full-width-field"
-      style="margin-bottom: 1em"
-      data-test="user-name"
-    >
-      <mat-label>Nazwa użytkownika</mat-label>
-      <input matInput formControlName="userName" data-test="username" />
-      <mat-error data-test="validation-error">{{
-        loginForm.controls.userName.errors?.notEmpty?.message
-      }}</mat-error>
-    </mat-form-field>
+     <sui-text-field
+      [label]="'Nazwa użytkownika'"
+      [required]="true"
+      formControlName="userName"
+      data-test="username"      
+      [showError]="loginForm.controls.userName.invalid && (loginForm.controls.userName.dirty || loginForm.dirty)"
+      [errorMessage]="loginForm.controls.userName.errors?.notEmpty?.message"
+    >      
+    </sui-text-field>
     <mat-form-field appearance="outline" class="full-width-field">
       <mat-label>Hasło</mat-label>
       <input
