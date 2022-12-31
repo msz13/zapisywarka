@@ -1,12 +1,13 @@
-<mat-form-field
-      appearance="outline"    
-    >
-      <mat-label>{{label}}</mat-label>
-      <input 
-        matInput  
-        [formControl]="_innerControl"
-        (blur)="_onTouched()"
-        [errorStateMatcher]="matcher"
-        />
-    <mat-error>Pole wymagane</mat-error> 
-    </mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [placeholder]="placeholder"
+    [required]="required"
+    [formControl]="_innerControl"
+    (blur)="_onTouched()"
+    [errorStateMatcher]="matcher"
+  />
+  <mat-error>{{errorMessage}}</mat-error>
+  <mat-hint>{{hint}}</mat-hint>
+</mat-form-field>
