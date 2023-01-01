@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-input-rename */
 import { Component, ChangeDetectionStrategy, Input, OnInit, Optional } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgForm, NgControl, AbstractControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core'
@@ -41,7 +42,6 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
   @Input() label!: string
   @Input() placeholder = ""
   @Input() hint = ""
-  // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input("required") required: boolean
   @Input() get showError() {
     return this.matcher._isErrorState
@@ -50,6 +50,7 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
     this.matcher.setErrorState(value)
   }
   @Input() errorMessage = ''
+  @Input("fullWidth") fullWidth = false
 
   matcher  = new CustomErrorStateMatcher() 
   
