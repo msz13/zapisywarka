@@ -1,31 +1,24 @@
 import { Component, ChangeDetectionStrategy, Input, OnInit, Optional } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgForm, NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroupDirective, NgForm, NgControl, AbstractControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core'
 import { tap } from 'rxjs/operators';
 
 export class CustomErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted)); 
-   
-    //return true
+
+   _isErrorState = false
+  
+  
+  isErrorState(control: AbstractControl<any, any>, form: FormGroupDirective | NgForm): boolean {
+    return this._isErrorState
   }
-}
 
-export class ParentErrorStateMatcher implements ErrorStateMatcher {
-
-  constructor(private parentControl: NgControl) {}
-
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    if(form) {
-      console.log("form exist")
-    }
-    const isSubmitted = form && form.submitted;   
-    return !!(this.parentControl && this.parentControl.invalid && (control?.dirty || control?.touched || isSubmitted)); 
-   
-    //return true
+  setErrorState(showError: boolean) {
+    this._isErrorState = showError
   }
-}
+
+  }
+
+
 
 @Component({
   selector: 'sui-text-field',
@@ -41,12 +34,24 @@ export class ParentErrorStateMatcher implements ErrorStateMatcher {
 export class TextFieldComponent implements ControlValueAccessor, OnInit  {
 
   _onChange!: (value: any) => void 
-  _onTouched!: ()=>void
-  matcher: ErrorStateMatcher  = new CustomErrorStateMatcher() 
+  _onTouched!: ()=>void  
   _innerControl = new FormControl("")
   
    
   @Input() label!: string
+  @Input() placeholder = ""
+  @Input() hint = ""
+  @Input() required = false
+  @Input() get showError() {
+    return this.matcher._isErrorState
+  }
+  set showError(value: boolean) {
+    this.matcher.setErrorState(value)
+  }
+  @Input() errorMessage = ''
+
+  matcher  = new CustomErrorStateMatcher() 
+  
 
   constructor(@Optional() private parentControl: NgControl) {
      if(parentControl) {
@@ -58,20 +63,17 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
 
   ngOnInit(): void {
         
-    this.matcher = new ParentErrorStateMatcher(this.parentControl)
-
+   
     this._innerControl
       .valueChanges
-      .pipe(tap(() => {
-       
-         console.log("touched: "+ this._innerControl.touched + this._innerControl.dirty+this._innerControl.invalid)
-        console.log("errors "+ JSON.stringify(this._innerControl.errors))
+      .pipe(tap(() => {              
         this._onChange(this._innerControl.value)}))
       .subscribe()      
   }
 
+  
   writeValue(obj: any): void {
-    console.log('TODO write value')
+   this._innerControl.setValue(obj)
   }
   registerOnChange(fn: any): void {
     this._onChange = fn    
