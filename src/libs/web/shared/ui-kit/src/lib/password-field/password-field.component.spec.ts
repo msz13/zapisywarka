@@ -1,11 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
+import { SharedMaterialModule } from '@zapisywarka-web/web-shared-material';
 
 import { PasswordFieldComponent } from './password-field.component';
 
 describe('PasswordFieldComponent', () => {
   let spectator: Spectator<PasswordFieldComponent>;
-  const createComponent = createComponentFactory(PasswordFieldComponent);
+  const createComponent = createComponentFactory({
+    component: PasswordFieldComponent,
+    imports: [SharedMaterialModule, ReactiveFormsModule]
+  });
 
   beforeEach(() => spectator = createComponent());
 

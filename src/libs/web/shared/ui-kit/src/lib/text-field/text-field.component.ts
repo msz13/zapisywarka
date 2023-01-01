@@ -43,7 +43,16 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
   @Input() label!: string
   @Input() placeholder = ""
   @Input() hint = ""
-  @Input("required") required: boolean
+  
+  @Input("required") 
+    get required() {
+      return this._required
+    }
+    set required(value: boolean | string) {
+      this._required = coerceBooleanProperty(value)
+    }
+  private _required: boolean;
+
   @Input() get showError() {
     return this.matcher._isErrorState
   }
@@ -57,7 +66,7 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
   get fullWidth() {
     return this._fullWidth
   }
-  set fullWidth(value: boolean) {
+  set fullWidth(value: boolean | string) {
     this._fullWidth = coerceBooleanProperty(value);
   }
 
