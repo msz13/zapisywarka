@@ -75,7 +75,7 @@ Create the name of the service account to use
 {{- define "webservice.pullSecrets" -}}
 {{- $pullSecrets := .Values.imagePullSecrets -}}
 {{- if and .Values.global .Values.global.imagePullSecrets -}}
-{{- $pullSecrets := .Values.global.imagePullSecrets -}}
+{{- $pullSecrets = .Values.global.imagePullSecrets -}}
 {{- end -}}
 {{- if $pullSecrets -}}
 imagePullSecrets: 

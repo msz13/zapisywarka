@@ -15,8 +15,8 @@ image:
 
 env: []
 
-imagePullSecrets: 
-  - name: test
+imagePullSecrets: []
+  
 nameOverride: ""
 fullnameOverride: ""
 

@@ -3,22 +3,23 @@
 # Declare variables to be passed into your templates.
 global:
   imageRegistry: ghcr.io/msz13
-  imagePullSecrets: ghcr-cred
+  imagePullSecrets: 
+    - name: regcred
 
 
 containerRegistry:
   registry: ghcr.io
   userName: msz13
-  token: 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
+  token: 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
   
 api:  
   image:
     repository: zapisywarka-api
-    tag: cdfe08751ce8
+    tag: rc-230101t16-27.550c375
   service:
     port: 5000
   ingress:
-    hostname: api.zapisywarka.local  
+    hostname: api.zapisywarka.pl  
   env:
     - name: POSTGRESQL__DB
       valueFrom: { secretKeyRef: { name: zapisywarka-dbuser, key: dbname } }
@@ -35,15 +36,15 @@ api:
 rejestracja:
   image:  
     repository: zapisywarka-rejestracja
-    tag: e29eecf4f547
+    tag: rc-230101t19-58.1368219
   ingress: 
-    hostname: zapisywarka.local  
+    hostname: zapisywarka.pl  
   configFile:
     name: config.json
     path: /usr/share/nginx/html/assets/    
     content: |
       { 
-        "apiUrl": "http://api.zapisywarka.local"       
+        "apiUrl": "http://api.zapisywarka.pl"       
       }
 
 postgres-cluster:

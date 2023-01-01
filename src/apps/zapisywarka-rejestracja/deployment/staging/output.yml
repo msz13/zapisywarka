@@ -12,15 +12,15 @@ apiVersion: v1
 data:
   .dockerconfigjson: |
     ewogICAgImF1dGhzIjoKICAgIHsKICAgICAgICAiZ2hjci5pbyI6CiAgICAgICAgICAgIH
-    sKICAgICAgICAgICAgICAgICJhdXRoIjoiYlhONk1UTTZaMmh3WDJodU1FaDNOMmhXYkZk
-    T01XTldkMHRoTlhKblJYazNOR0pKYUVOMU5URlhTRWhPVXdvPSIKICAgICAgICAgICAgfQ
+    sKICAgICAgICAgICAgICAgICJhdXRoIjoiYlhONk1UTTZaMmh3WDJFeGFVOTFVSEphVjI5
+    T2JYQkZUVU5SVUdkYU5tRlhRMVoyVFhJMWFESmFOa3BNYkFvPSIKICAgICAgICAgICAgfQ
     ogICAgfQp9Cg==
 kind: Secret
 metadata:
   labels:
     app: rejestracja
     env: staging
-  name: regcred-8hhmfckh46
+  name: regcred-tthtfh769g
 type: kubernetes.io/dockerconfigjson
 ---
 apiVersion: v1
@@ -57,7 +57,7 @@ spec:
         env: staging
     spec:
       containers:
-      - image: ghcr.io/msz13/zapisywarka-rejestracja:563d9d869cbc3ca2b91823fa462b91430f7d22d6
+      - image: zapisywarka-rejestracja:4acdd0fb2747
         imagePullPolicy: IfNotPresent
         name: web
         ports:
@@ -66,7 +66,7 @@ spec:
         - mountPath: /usr/share/nginx/html/assets/
           name: config-volume
       imagePullSecrets:
-      - name: regcred-8hhmfckh46
+      - name: regcred-tthtfh769g
       volumes:
       - configMap:
           name: dev-zapisywarka-web-configuration-2bdgfm8266
