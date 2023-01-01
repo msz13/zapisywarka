@@ -80,7 +80,6 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
     
   }
 
-
   ngOnInit(): void {
         
    
@@ -90,7 +89,6 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
         this._onChange(this._innerControl.value)}))
       .subscribe()      
   }
-
   
   writeValue(obj: any): void {
    this._innerControl.setValue(obj)
