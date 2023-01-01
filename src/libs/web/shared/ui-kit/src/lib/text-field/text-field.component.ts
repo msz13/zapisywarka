@@ -1,4 +1,5 @@
 /* eslint-disable @angular-eslint/no-input-rename */
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, ChangeDetectionStrategy, Input, OnInit, Optional } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgForm, NgControl, AbstractControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core'
@@ -50,7 +51,15 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
     this.matcher.setErrorState(value)
   }
   @Input() errorMessage = ''
-  @Input("fullWidth") fullWidth = false
+
+  _fullWidth = false
+  @Input("fullWidth") 
+  get fullWidth() {
+    return this._fullWidth
+  }
+  set fullWidth(value: boolean) {
+    this._fullWidth = coerceBooleanProperty(value);
+  }
 
   matcher  = new CustomErrorStateMatcher() 
   
