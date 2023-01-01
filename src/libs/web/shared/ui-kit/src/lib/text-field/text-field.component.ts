@@ -1,3 +1,5 @@
+/* eslint-disable @angular-eslint/no-input-rename */
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, ChangeDetectionStrategy, Input, OnInit, Optional } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgForm, NgControl, AbstractControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core'
@@ -41,7 +43,16 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
   @Input() label!: string
   @Input() placeholder = ""
   @Input() hint = ""
-  @Input() required = false
+  
+  @Input("required") 
+    get required() {
+      return this._required
+    }
+    set required(value: boolean | string) {
+      this._required = coerceBooleanProperty(value)
+    }
+  private _required = false
+
   @Input() get showError() {
     return this.matcher._isErrorState
   }
@@ -49,6 +60,15 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
     this.matcher.setErrorState(value)
   }
   @Input() errorMessage = ''
+
+  _fullWidth = false
+  @Input("fullWidth") 
+  get fullWidth() {
+    return this._fullWidth
+  }
+  set fullWidth(value: boolean | string) {
+    this._fullWidth = coerceBooleanProperty(value);
+  }
 
   matcher  = new CustomErrorStateMatcher() 
   
@@ -60,7 +80,6 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
     
   }
 
-
   ngOnInit(): void {
         
    
@@ -70,7 +89,6 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
         this._onChange(this._innerControl.value)}))
       .subscribe()      
   }
-
   
   writeValue(obj: any): void {
    this._innerControl.setValue(obj)

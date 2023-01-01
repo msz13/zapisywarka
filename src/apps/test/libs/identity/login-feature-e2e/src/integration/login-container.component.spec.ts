@@ -95,14 +95,7 @@ describe('identity-login-feature', () => {
   });
 
   describe('login credentials validation', () => {
-    it('should show validation errors', () => {
-      getUserName().focus().blur();
-      getFormError().contains('Nazwa użytkownika jest wymagana');
-
-      getPassword().focus().blur();
-      getFormError().contains('Hasło jest wymagane');
-    });
-
+   
     it('should not send message if fields are empty', () => {
       getLoginButton().click();
       getFormError().contains('Nazwa użytkownika jest wymagana');

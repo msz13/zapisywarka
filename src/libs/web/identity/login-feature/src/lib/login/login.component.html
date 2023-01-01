@@ -3,40 +3,27 @@
   <div *ngIf="error" class="server-error" data-test="server-error">
     {{ error }}
   </div>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <mat-form-field
-      appearance="outline"
-      class="full-width-field"
-      style="margin-bottom: 1em"
-      data-test="user-name"
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #loginFormTempl="ngForm">
+     <sui-text-field
+      [label]="'Nazwa użytkownika'"
+      required
+      fullWidth
+      formControlName="userName"
+      data-test="username"      
+      [showError]="loginForm.controls.userName.invalid && (loginForm.controls.userName.dirty || loginFormTempl.submitted)"
+      [errorMessage]="loginForm.controls.userName.errors?.notEmpty?.message"
+    >      
+    </sui-text-field>
+     <sui-password-field
+      [label]="'Hasło'"
+      required
+      fullWidth
+      [showError]="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginFormTempl.submitted)"
+      [errorMessage]="loginForm.controls.password.errors?.notEmpty?.message"
+      formControlName="password"
+      data-test="password"
     >
-      <mat-label>Nazwa użytkownika</mat-label>
-      <input matInput formControlName="userName" data-test="username" />
-      <mat-error data-test="validation-error">{{
-        loginForm.controls.userName.errors?.notEmpty?.message
-      }}</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="full-width-field">
-      <mat-label>Hasło</mat-label>
-      <input
-        [type]="hidePassword ? 'password' : 'text'"
-        matInput
-        formControlName="password"
-        data-test="password"
-      />
-      <button
-        mat-icon-button
-        matSuffix
-        (click)="hidePassword = !hidePassword"
-      >
-        <mat-icon>{{
-          hidePassword ? 'visibility_off' : 'visibility'
-        }}</mat-icon>
-      </button>
-      <mat-error data-test="validation-error">{{
-        loginForm.controls.password.errors?.notEmpty?.message
-      }}</mat-error>
-    </mat-form-field>
+    </sui-password-field>
     <mat-checkbox formControlName="rememberMe" data-test="remember-me"
       >Zapamiętaj mnie</mat-checkbox
     >

@@ -8,6 +8,7 @@ import { IdentityDomainModule } from '@zapisywarka-client-aps/web-identity-domai
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { RouterModule } from '@angular/router';
 import { IdentitySharedUiModule } from '@zapisywarka/web/identity/shared-ui';
+import { SharedUiKitModule } from '@zapisywarka-web/web-shared-ui-kit';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { IdentitySharedUiModule } from '@zapisywarka/web/identity/shared-ui';
     SharedMaterialModule,
     IdentityDomainModule,
     RouterModule,
-    IdentitySharedUiModule
+    IdentitySharedUiModule,
+    SharedUiKitModule
   ],
   declarations: [LoginContainerComponent, LoginComponent],
   exports: [LoginContainerComponent, LoginComponent],

@@ -1,5 +1,5 @@
-<mat-form-field appearance="outline">
-  <mat-label>{{ label }}</mat-label>
+<mat-form-field [class.full-width-field]="fullWidth" appearance="outline">
+  <mat-label>{{ label }}</mat-label>  
   <input
     matInput
     [placeholder]="placeholder"
@@ -8,6 +8,6 @@
     (blur)="_onTouched()"
     [errorStateMatcher]="matcher"
   />
-  <mat-error>{{errorMessage}}</mat-error>
+  <mat-error data-test="validation-error" >{{errorMessage}}</mat-error>
   <mat-hint>{{hint}}</mat-hint>
 </mat-form-field>
