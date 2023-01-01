@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import { TextFieldComponent } from './text-field/text-field.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PasswordFieldComponent } from './password-field/password-field.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -19,12 +20,28 @@ const COMPONENTS = [
   SideNavAccountInfoComponent,
   MainLayoutComponent,
   MenuCardComponent,
-  TextFieldComponent
+  TextFieldComponent,
 ];
 
 @NgModule({
-  imports: [CommonModule, SharedMaterialModule, FlexLayoutModule, ReactiveFormsModule],
-  declarations: [...COMPONENTS, DateTimePickerComponent, TextFieldComponent],
-  exports: [...COMPONENTS, FlexLayoutModule, DateTimePickerComponent, TextFieldComponent],
+  imports: [
+    CommonModule,
+    SharedMaterialModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+  ],
+  declarations: [
+    ...COMPONENTS,
+    DateTimePickerComponent,
+    TextFieldComponent,
+    PasswordFieldComponent,
+  ],
+  exports: [
+    ...COMPONENTS,
+    FlexLayoutModule,
+    DateTimePickerComponent,
+    TextFieldComponent,
+    PasswordFieldComponent,
+  ],
 })
 export class SharedUiKitModule {}
