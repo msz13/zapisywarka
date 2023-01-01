@@ -47,7 +47,7 @@ jobs:
           tags: |
             type=raw,value=rc-{{date 'YYMMDDTHH:mm'}}.{{sha}}            
       - name: Build image
-        run: npx nx affected --target=docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }} 
+        run: pnpm exec nx run zapisywarka-rejestracja:docker --exclude=$Exlude_Projects -c production --tags=${{ steps.meta.outputs.tags }}  
 
   build-api:
     runs-on: ubuntu-latest  
