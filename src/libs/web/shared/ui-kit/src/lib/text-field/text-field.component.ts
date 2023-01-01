@@ -41,7 +41,8 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
   @Input() label!: string
   @Input() placeholder = ""
   @Input() hint = ""
-  @Input() required = false
+  // eslint-disable-next-line @angular-eslint/no-input-rename
+  @Input("required") required: boolean
   @Input() get showError() {
     return this.matcher._isErrorState
   }
