@@ -51,7 +51,7 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit  {
     set required(value: boolean | string) {
       this._required = coerceBooleanProperty(value)
     }
-  private _required: boolean;
+  private _required = false
 
   @Input() get showError() {
     return this.matcher._isErrorState

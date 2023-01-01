@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
 
   signUpPath = ['/sign-up'];
 
-  hidePassword = true;
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -57,6 +56,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('submited called')
     this.loginForm.markAsDirty();
     if (this.loginForm.valid && this.loginForm.value) {
       this.login.emit(this.loginForm.value);

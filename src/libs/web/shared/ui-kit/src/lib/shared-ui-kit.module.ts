@@ -20,7 +20,9 @@ const COMPONENTS = [
   SideNavAccountInfoComponent,
   MainLayoutComponent,
   MenuCardComponent,
+  DateTimePickerComponent,
   TextFieldComponent,
+  PasswordFieldComponent
 ];
 
 @NgModule({
@@ -32,16 +34,12 @@ const COMPONENTS = [
   ],
   declarations: [
     ...COMPONENTS,
-    DateTimePickerComponent,
-    TextFieldComponent,
-    PasswordFieldComponent,
+
   ],
   exports: [
     ...COMPONENTS,
     FlexLayoutModule,
-    DateTimePickerComponent,
-    TextFieldComponent,
-    PasswordFieldComponent,
+  
   ],
 })
 export class SharedUiKitModule {}
