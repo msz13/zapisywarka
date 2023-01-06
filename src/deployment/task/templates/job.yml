@@ -12,6 +12,7 @@ metadata:
 spec:
   template:
     spec:
+      {{- include "webservice.pullSecrets" . | nindent 6 -}}
       containers:
       - name: {{ .Chart.Name }}
         image: {{ include "task.image" . }}

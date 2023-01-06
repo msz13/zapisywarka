@@ -11,5 +11,5 @@ dependencies:
 - name: task
   repository: file://../task
   version: 0.1.0
-digest: sha256:c0d56d1b8adc141135e44c523a035c06557b821e34a8744da6f412fdab8269f0
-generated: "2022-12-28T20:20:28.674412678+01:00"
+digest: sha256:4945e077677f30c753a712762121c874f8ed3a41b08cfb71e911cf122051d4ef
+generated: "2023-01-06T00:30:31.256580305+01:00"

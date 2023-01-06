@@ -51,7 +51,7 @@
     "deploy-local": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "sh ./tools/deployment/deploy-local.sh -i zapisywarka-api -t latest -f apps/zapisywarka-api/deployment/"
+        "command": "sh ./apps/zapisywarka-api/deploy-local-helm-api.sh -i zapisywarka-api -d apps/zapisywarka-api/Dockerfile -f apps/zapisywarka-api/deployment/"
       },
       "dependsOn": ["build"]
     },

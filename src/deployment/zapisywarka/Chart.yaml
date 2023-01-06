@@ -37,6 +37,7 @@ dependencies:
     repository: "file://../stackgres-cluster"
     alias: postgres-cluster
   - name: task
+    condition: db-migrations.enable
     version: 0.1.0
     repository: "file://../task"
     alias: db-migrations

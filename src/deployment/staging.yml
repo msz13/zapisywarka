@@ -1,1 +1,389 @@
-Release zapisywarka-staging has been cancelled.
+Release "zapisywarka-staging" has been upgraded. Happy Helming!
+NAME: zapisywarka-staging
+LAST DEPLOYED: Fri Jan  6 00:34:08 2023
+NAMESPACE: default
+STATUS: pending-upgrade
+REVISION: 7
+TEST SUITE: None
+HOOKS:
+---
+# Source: zapisywarka/charts/db-migrations/templates/job.yml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: zapisywarka-staging-db-migrations-7  
+  labels:
+    helm.sh/chart: db-migrations-0.1.0
+    app.kubernetes.io/name: db-migrations
+    app.kubernetes.io/instance: zapisywarka-staging
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": post-install, pre-upgrade 
+spec:
+  template:
+    spec:
+      imagePullSecrets: 
+        - name: regcred  
+      containers:
+      - name: db-migrations
+        image: ghcr.io/msz13/zapisywarka-db-migrations:0.1.0
+        command: []
+        args: []
+        env:
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  key: dbname
+                  name: zapisywarka-dbowner
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: zapisywarka-dbowner
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: port
+                  name: zapisywarka-dbowner
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  key: user
+                  name: zapisywarka-dbowner
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: zapisywarka-dbowner
+      restartPolicy: Never
+  backoffLimit: 10
+  ttlSecondsAfterFinished: 60
+MANIFEST:
+---
+# Source: zapisywarka/charts/postgres-cluster/templates/SGScript.yml
+apiVersion: v1
+data: 
+  dbname: emFwaXN5d2Fya2E=
+  host: emFwaXN5d2Fya2Etc3RhZ2luZy1wb3N0Z3Jlcy1jbHVzdGVy
+  port: NTQzMg==
+  user: ZGJ1c2Vy
+  password: eWhabkdWbFB0eXB5dnFnaHpkQk4=
+  create-user.sql: |
+    CmNyZWF0ZSB1c2VyIGRidXNlciBwYXNzd29yZCAneWhabkdWbFB0eXB5dnFnaHpkQk4nOwo=
+kind: Secret
+metadata:  
+  name: zapisywarka-dbuser  
+type: Opaque
+---
+# Source: zapisywarka/charts/postgres-cluster/templates/SGScript.yml
+apiVersion: v1
+data: 
+  dbname: emFwaXN5d2Fya2E=
+  host: emFwaXN5d2Fya2Etc3RhZ2luZy1wb3N0Z3Jlcy1jbHVzdGVy
+  port: NTQzMg==
+  user: ZGJvd25lcg==
+  password: ZWZka0ZGRFllUTJnV09PWkw4eFk=
+  create-user.sql: |
+    CmNyZWF0ZSB1c2VyIGRib3duZXIgcGFzc3dvcmQgJ2VmZGtGRkRZZVEyZ1dPT1pMOHhZJzsK
+kind: Secret
+metadata:  
+  name: zapisywarka-dbowner  
+type: Opaque
+---
+# Source: zapisywarka/templates/regcred-secret.yml
+apiVersion: v1
+data:
+  .dockerconfigjson: "eyJhdXRocyI6IHsiZ2hjci5pbyI6IHsiYXV0aCI6ICJiWE42TVRNNloyaHdYMkV4YVU5MVVISmFWMjlPYlhCRlRVTlJVR2RhTm1GWFExWjJUWEkxYURKYU5rcE1iQT09In19fQ=="
+kind: Secret
+metadata:
+  name: regcred
+type: kubernetes.io/dockerconfigjson
+---
+# Source: zapisywarka/charts/rejestracja/templates/configmap.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zapisywarka-staging-rejestracja-config
+  labels:
+    helm.sh/chart: rejestracja-0.1.0
+    app.kubernetes.io/name: rejestracja
+    app.kubernetes.io/instance: zapisywarka-staging
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+data:
+  config.json: |-
+    { 
+      "apiUrl": "http://api.zapisywarka.pl"       
+    }
+---
+# Source: zapisywarka/charts/api/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: zapisywarka-staging-api
+  labels:
+    helm.sh/chart: api-0.1.0
+    app.kubernetes.io/name: api
+    app.kubernetes.io/instance: zapisywarka-staging
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: api
+    app.kubernetes.io/instance: zapisywarka-staging
+---
+# Source: zapisywarka/charts/rejestracja/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: zapisywarka-staging-rejestracja
+  labels:
+    helm.sh/chart: rejestracja-0.1.0
+    app.kubernetes.io/name: rejestracja
+    app.kubernetes.io/instance: zapisywarka-staging
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: rejestracja
+    app.kubernetes.io/instance: zapisywarka-staging
+---
+# Source: zapisywarka/charts/api/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zapisywarka-staging-api
+  labels:
+    helm.sh/chart: api-0.1.0
+    app.kubernetes.io/name: api
+    app.kubernetes.io/instance: zapisywarka-staging
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: api
+      app.kubernetes.io/instance: zapisywarka-staging
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: api
+        app.kubernetes.io/instance: zapisywarka-staging
+    spec:
+      imagePullSecrets: 
+        - name: regcred  
+      serviceAccountName: default
+      securityContext:
+        {}
+      containers:
+        - name: api
+          securityContext:
+            {}
+          image: "ghcr.io/msz13/zapisywarka-api:rc-230101t16-27.550c375"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRESQL__DB
+              valueFrom:
+                secretKeyRef:
+                  key: dbname
+                  name: zapisywarka-dbuser
+            - name: POSTGRESQL__HOST
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: zapisywarka-dbuser
+            - name: POSTGRESQL__USER
+              valueFrom:
+                secretKeyRef:
+                  key: user
+                  name: zapisywarka-dbuser
+            - name: POSTGRESQL__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: zapisywarka-dbuser
+            - name: DOMAIN
+              value: zapisywarka.local
+          ports:
+            - name: http
+              containerPort: 5000
+              protocol: TCP     
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {}
+---
+# Source: zapisywarka/charts/rejestracja/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zapisywarka-staging-rejestracja
+  labels:
+    helm.sh/chart: rejestracja-0.1.0
+    app.kubernetes.io/name: rejestracja
+    app.kubernetes.io/instance: zapisywarka-staging
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: rejestracja
+      app.kubernetes.io/instance: zapisywarka-staging
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: rejestracja
+        app.kubernetes.io/instance: zapisywarka-staging
+    spec:
+      imagePullSecrets: 
+        - name: regcred  
+      serviceAccountName: default
+      securityContext:
+        {}
+      containers:
+        - name: rejestracja
+          securityContext:
+            {}
+          image: "ghcr.io/msz13/zapisywarka-rejestracja:rc-230101t19-58.1368219"
+          imagePullPolicy: IfNotPresent
+          env:
+            []
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: config
+              mountPath: /usr/share/nginx/html/assets/     
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {}
+      volumes:
+        - name: config
+          configMap:
+            name: zapisywarka-staging-rejestracja-config
+---
+# Source: zapisywarka/charts/api/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zapisywarka-staging-api
+  labels:
+    helm.sh/chart: api-0.1.0
+    app.kubernetes.io/name: api
+    app.kubernetes.io/instance: zapisywarka-staging
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  rules:
+    - host: api.zapisywarka.pl
+      http:
+        paths:         
+          - path: /
+            pathType: ImplementationSpecific           
+            backend:
+              service:
+                name: zapisywarka-staging-api
+                port:
+                  number: 5000
+---
+# Source: zapisywarka/charts/rejestracja/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zapisywarka-staging-rejestracja
+  labels:
+    helm.sh/chart: rejestracja-0.1.0
+    app.kubernetes.io/name: rejestracja
+    app.kubernetes.io/instance: zapisywarka-staging
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  tls:
+    - hosts:
+        - "zapisywarka.pl"
+      secretName: root-secret
+  rules:
+    - host: zapisywarka.pl
+      http:
+        paths:         
+          - path: /
+            pathType: ImplementationSpecific           
+            backend:
+              service:
+                name: zapisywarka-staging-rejestracja
+                port:
+                  number: 80
+---
+# Source: zapisywarka/charts/postgres-cluster/templates/SGCluster.yml
+apiVersion: stackgres.io/v1
+kind: SGCluster
+metadata:
+  name: zapisywarka-staging-postgres-cluster
+spec:
+  instances: 1
+  postgres:
+    version: "latest" 
+  pods:
+    persistentVolume:
+      size: 1Gi
+  managedSql:
+    scripts:
+      - sgScript: init-database-script
+---
+# Source: zapisywarka/charts/postgres-cluster/templates/SGScript.yml
+apiVersion: stackgres.io/v1
+kind: SGScript
+metadata:
+  name: init-database-script
+spec:
+  managedVersions: true
+  continueOnError: false
+  scripts:
+  - name: create-user-dbowner
+    scriptFrom:
+      secretKeyRef: # read the user from a Secret to maintain credentials in a safe place
+        name: zapisywarka-dbowner
+        key: create-user.sql
+  - name: create-user-dbuser
+    scriptFrom:
+      secretKeyRef: # read the user from a Secret to maintain credentials in a safe place
+        name: zapisywarka-dbuser
+        key: create-user.sql
+  - name: create-stackgres-database
+    script: |
+      CREATE DATABASE zapisywarka WITH OWNER dbowner;
+  - name: grant-roles-to-users
+    database: zapisywarka
+    script: |
+      GRANT pg_read_all_data TO dbuser;
+      GRANT pg_write_all_data TO dbuser;
+

@@ -14,7 +14,7 @@ api:
   service:
     port: 5000
   ingress:
-    hostname: api.zapisywarka.local  
+    hostname: api.zapisywarka.local      
   env:
     - name: POSTGRESQL__DB
       valueFrom: { secretKeyRef: { name: zapisywarka-dbuser, key: dbname } }
@@ -33,7 +33,7 @@ rejestracja:
     repository: zapisywarka-rejestracja
     tag: e29eecf4f547
   ingress: 
-    hostname: zapisywarka.local  
+    hostname: zapisywarka.local      
   configFile:
     name: config.json
     path: /usr/share/nginx/html/assets/    

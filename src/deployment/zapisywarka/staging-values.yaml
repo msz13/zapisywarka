@@ -10,7 +10,7 @@ global:
 containerRegistry:
   registry: ghcr.io
   userName: msz13
-  token: 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
+  token: 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
   
 api:  
   image:
@@ -19,7 +19,7 @@ api:
   service:
     port: 5000
   ingress:
-    hostname: api.zapisywarka.pl  
+    hostname: api.zapisywarka.pl      
   env:
     - name: POSTGRESQL__DB
       valueFrom: { secretKeyRef: { name: zapisywarka-dbuser, key: dbname } }
@@ -39,6 +39,10 @@ rejestracja:
     tag: rc-230101t19-58.1368219
   ingress: 
     hostname: zapisywarka.pl  
+    tls: 
+      - secretName: root-secret
+        hosts:
+          - zapisywarka.pl
   configFile:
     name: config.json
     path: /usr/share/nginx/html/assets/    
@@ -57,9 +61,9 @@ postgres-cluster:
       - name: dbuser
         roles: [ pg_read_all_data, pg_write_all_data ]
 
-db-migrations:
+db-migrations:  
   image: 
-    repository: db-migrations
+    repository: zapisywarka-db-migrations:0.1.0
     tag: 0.1.0
 #  command: ["/usr/bin/dotnet", "/publish/ZapisywarkaClientAps.DbMigrations.dll"]    
   env:
@@ -73,7 +77,6 @@ db-migrations:
       valueFrom: { secretKeyRef: { name: zapisywarka-dbowner, key: user } }
     - name: DB_PASSWORD
       valueFrom: { secretKeyRef: { name: zapisywarka-dbowner, key: password } }
-  helmHook: post-install, pre-upgrade
   backoffLimit: 10
   ttlSecondsAfterFinished: 60
 
