@@ -35,8 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(!this.loading)
-      throw new Error('Login form loading input is null')
+   
   }
 
   private createForm() {
