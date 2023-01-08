@@ -30,10 +30,18 @@ imageName=$image:$sha
 nerdctl --namespace k8s.io tag $image:latest $imageName
 echo tagged image: $imageName
 
-helm upgrade zapisywarka-dev --install --values=./deployment/dev-values.yml --set api.image.tag=$imageName ./deployment/zapisywarka 
+#helm upgrade zapisywarka-dev --install --values=./deployment/dev-values.yml --set api.image.tag=$imageName ./deployment/zapisywarka 
 
 
-export $projectName=api
+projectName='ZAPISYWARKA_API'
+
+#${projectName}_TAG=$sha
+
+ZAPISYWARKA_API_TAG=$sha
+
+echo $ZAPISYWARKA_API_TAG
+
+helmfile apply -f ./deployment/helmfile-dev.yaml
 # update deployment specyfication files
 #cwd=$(pwd)/$path
 #echo working directory: $cwd

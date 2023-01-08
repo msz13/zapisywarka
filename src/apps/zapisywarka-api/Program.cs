@@ -48,4 +48,6 @@ app.MapControllers();
 
 app.Run();
 
+Console.WriteLine("TODO: remove");
+
 public partial class Program { }

@@ -1,0 +1,26 @@
+repositories:
+  - name: stackgres-charts
+    url: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
+
+releases:
+  - name: stackgres
+    chart: stackgres-charts/stackgres-operator
+    version: 1.4.0
+    namespace: stackgres
+
+  - name: zapisywarka-dev
+    chart: ./zapisywarka
+    version: 0.1.0
+    namespace: dev
+    needs: 
+    - stackgres/stackgres
+    values:
+    - api:
+        image:
+          tag: { env "ZAPISYWARKA_API_TAG" | default 'latest' }
+ 
+    
+
+    
+
+

@@ -1,0 +1,86 @@
+# Default values for zapisywarka.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+global:
+  imageRegistry: ghcr.io/msz13
+  imagePullSecrets: 
+    - name: regcred
+
+
+containerRegistry:
+  registry: ghcr.io
+  userName: msz13
+  token: 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
+  
+api:  
+  image:
+    repository: zapisywarka-api
+    tag: rc-230101t16-27.550c375  
+  ingress:
+    hostname: api.zapisywarka.pl      
+  env:
+    - name: POSTGRESQL__DB
+      valueFrom: { secretKeyRef: { name: zapisywarka-dbuser, key: dbname } }
+    - name: POSTGRESQL__HOST
+      valueFrom: { secretKeyRef: { name: zapisywarka-dbuser, key: host } }
+    - name: POSTGRESQL__USER
+      valueFrom: { secretKeyRef: { name: zapisywarka-dbuser, key: user } }                
+    - name: POSTGRESQL__PASSWORD
+      valueFrom: { secretKeyRef: { name: zapisywarka-dbuser, key: password } } 
+    - name: DOMAIN
+      value: zapisywarka.pl
+
+  
+rejestracja:
+  image:  
+    repository: zapisywarka-rejestracja
+    tag: rc-230101t19-58.1368219
+  ingress: 
+    hostname: zapisywarka.pl  
+    tls: 
+      - secretName: root-secret
+        hosts:
+          - zapisywarka.pl
+  configFile:
+    name: config.json
+    path: /usr/share/nginx/html/assets/    
+    content: |
+      { 
+        "apiUrl": "http://api.zapisywarka.pl"       
+      }
+
+postgres-cluster:
+  storageSize: 1Gi
+  database:
+    enable: true
+    name: zapisywarka
+    owner: dbowner
+    users:   
+      - name: dbuser
+        roles: [ pg_read_all_data, pg_write_all_data ]
+
+db-migrations:  
+  image: 
+    repository: zapisywarka-db-migrations:0.1.0
+    tag: 0.1.0
+#  command: ["/usr/bin/dotnet", "/publish/ZapisywarkaClientAps.DbMigrations.dll"]    
+  env:
+    - name: DB_NAME
+      valueFrom: { secretKeyRef: { name: zapisywarka-dbowner, key: dbname } }
+    - name: DB_HOST
+      valueFrom: { secretKeyRef: { name: zapisywarka-dbowner, key: host } }
+    - name: DB_PORT
+      valueFrom: { secretKeyRef: { name: zapisywarka-dbowner, key: port } }           
+    - name: DB_USER
+      valueFrom: { secretKeyRef: { name: zapisywarka-dbowner, key: user } }
+    - name: DB_PASSWORD
+      valueFrom: { secretKeyRef: { name: zapisywarka-dbowner, key: password } }
+  backoffLimit: 10
+  ttlSecondsAfterFinished: 60
+
+
+
+    
+
+
+
