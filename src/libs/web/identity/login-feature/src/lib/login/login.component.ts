@@ -17,7 +17,7 @@ import { LoginCredentials } from '@zapisywarka-client-aps/web-identity-domain';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loginForm!: FormGroup;
 
