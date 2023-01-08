@@ -34,9 +34,6 @@ export class LoginComponent implements OnInit {
     this.createForm();
   }
 
-  ngOnInit(): void {
-   
-  }
 
   private createForm() {
     this.loginForm = <IFormGroup<LoginCredentials>>this.fb.group({
