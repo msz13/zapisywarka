@@ -36,7 +36,7 @@ api:
 rejestracja:
   image:  
     repository: zapisywarka-rejestracja
-    tag: rc-230101t19-58.1368219
+    tag: rc-230108T23-11.7d874df
   ingress: 
     hostname: zapisywarka.pl  
     tls: 
@@ -61,9 +61,9 @@ postgres-cluster:
       - name: dbuser
         roles: [ pg_read_all_data, pg_write_all_data ]
 
-db-migrations:  
+db-migrations:    
   image: 
-    repository: zapisywarka-db-migrations:0.1.0
+    repository: zapisywarka-db-migrations
     tag: 0.1.0
 #  command: ["/usr/bin/dotnet", "/publish/ZapisywarkaClientAps.DbMigrations.dll"]    
   env:

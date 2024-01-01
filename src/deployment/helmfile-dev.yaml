@@ -17,7 +17,7 @@ releases:
     values:
     - api:
         image:
-          tag: { env "ZAPISYWARKA_API_TAG" | default 'latest' }
+          tag: { env "ZAPISYWARKA_API_TAG" | quote | default 'latest' }
  
     
 
