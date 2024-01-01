@@ -13,6 +13,7 @@ jobs:
   build-web:
     runs-on: ubuntu-latest  
     env: 
+      # Exlude beckend apps and libraries
       Exlude_Projects: api-identity-identity-core-test,api-common-infrastructure-test,api-identity-identity-core,api-identity-identity-api,zapisywarka-api,zapisywarka-api-test,api-common-infrastructure,-api-catalog-catalog-test,api-catalog-catalog-api,-api-catalog-catalog,db-migrations,api-common-boa-constrictor-test,api-common-boa-constrictor,api-reservations-reservations-api,api-reservations-reservations-api-test
     steps:
       - uses: actions/checkout@v2
@@ -52,6 +53,7 @@ jobs:
   build-api:
     runs-on: ubuntu-latest  
     env: 
+      # Exlude frontend apps and libraries
       Exlude_Projects: zapisywarka-rejestracja,web-identity-sign-up-feature-dep,web-catalog-catalog-item-domain,web-catalog-catalog-feature,web-identity-sign-up-feature,web-catalog-category-domain,web-catalog-utills-testing,web-identity-login-feature,web-identity-domain,web-landing-page,web-identity-utills,web-shared-material,web-shared-ui-kit,web-shared-nebular,web-shared-domain
     steps:      
       - uses: actions/checkout@v2
