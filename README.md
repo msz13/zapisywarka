@@ -18,8 +18,8 @@
 ### CRUD spike - items catalog:
 CRUD feature (without tests)
 Catalog
-[Web](https://github.com/msz13/zapisywarka/tree/main/src/libs/web/catalog)
-[Api](https://github.com/msz13/zapisywarka/tree/main/src/libs/api/catalog)
+* [Web](https://github.com/msz13/zapisywarka/tree/main/src/libs/web/catalog)
+* [Api](https://github.com/msz13/zapisywarka/tree/main/src/libs/api/catalog)
 ### Domain model spike
 * [Specyfication](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationFunctionalTests/Features)
 * [Functional tests](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationFunctionalTests)
