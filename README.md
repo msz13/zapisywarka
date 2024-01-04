@@ -9,7 +9,13 @@
 
 ### Features specyfication
 ### Project graph
+apps and libraries:
+angular.json
+
 ### Infrastructure prequsitions
+* local kubernetes cluster
+* node >= v14.18.1
+* dotnet => 6.0.2
 ### CLI Commands
 ### Deployment
 ### Domain model spike
