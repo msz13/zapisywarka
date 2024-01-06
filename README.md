@@ -13,10 +13,6 @@
 - fronend:
   * [tactical DDD](https://www.angulararchitects.io/en/blog/tactical-domain-driven-design-with-monorepos/)
 
-### Features specyfication
-### Project graph
-apps and libraries:
-angular.json
 ### Local dovelepment infrastructure
 * docker
 * node >= v14.18.1
