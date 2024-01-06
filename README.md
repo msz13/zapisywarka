@@ -13,10 +13,6 @@
 - fronend:
   * [tactical DDD](https://www.angulararchitects.io/en/blog/tactical-domain-driven-design-with-monorepos/)
 
-### Features specyfication
-### Project graph
-apps and libraries:
-angular.json
 ### Local dovelepment infrastructure
 * docker
 * node >= v14.18.1
@@ -61,7 +57,8 @@ Catalog
  * [Hetzner vpc with microk8s kubernetes](https://github.com/msz13/zapisywarka-env/tree/main/hetzner-cloud)
  * [Orale Cloud instance with k3os kubernetes](https://github.com/msz13/zapisywarka-env/tree/main/oci-cluster)
 * Applications kubernetes definitions
- * [backend]https://github.com/msz13/zapisywarka/tree/main/src/apps/zapisywarka-api/deployment
- * [frontend]https://github.com/msz13/zapisywarka/tree/main/src/apps/zapisywarka-rejestracja/deployment
+  * [backend](https://github.com/msz13/zapisywarka/tree/main/src/apps/zapisywarka-api/deployment)
+  * [frontend](https://github.com/msz13/zapisywarka/tree/main/src/apps/zapisywarka-rejestracja/deployment)
+  * [helm definitions](https://github.com/msz13/zapisywarka/tree/88-deploy-create-staging-environment/src/deployment/zapisywarka)
 
 
