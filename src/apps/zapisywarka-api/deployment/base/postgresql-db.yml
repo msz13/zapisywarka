@@ -1,7 +1,7 @@
 apiVersion: "acid.zalan.do/v1"
 kind: postgresql
 metadata:
-  name: postgres
+  name: zapisywarka-postgres
   namespace: default
 spec:
   teamId: zapisywarka
