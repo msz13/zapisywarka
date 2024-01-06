@@ -6,22 +6,29 @@
 3. [Backlog](https://github.com/users/msz13/projects/3/views/1)
 4. [Workflow](https://github.com/users/msz13/projects/4)
 
-### Architecture 
-- try to implement verticalslice architecture
-- try different strategies of testing
+### Architecture
+- beckend:
+  * modular monolith
+  * vertical slice architecture
+- fronend:
+  * [tactical DDD](https://www.angulararchitects.io/en/blog/tactical-domain-driven-design-with-monorepos/)
 
 ### Features specyfication
 ### Project graph
 apps and libraries:
 angular.json
-
-### Infrastructure prequsitions
+### Local dovelepment infrastructure
 * docker
 * node >= v14.18.1
 * dotnet => 6.0.2
 ### CLI Commands
-### Deployment
+
 ### Implemented features
+#### Domain model spike
+* [Specyfication](https://github.com/msz13/zapisywarka-deprecated/blob/main/WEB-API/RegistrationFunctionalTests/Features/Zapisy.feature))
+* [Functional tests](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationFunctionalTests)
+* [Unit test](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationUnitTests)
+* [Implementation](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationBD)
 #### Frontend:
 * sign-up:
   *  [integration tests(cypress && storybook)](src/apps/test/libs/identity/sign-up-feature-e2e)
@@ -42,14 +49,19 @@ angular.json
 * reservations domain:
   * [unit tests](src/libs/api/reservations/reservations-api-test)
   * [implementation](src/libs/api/reservations/reservations-api)
-### CRUD spike - items catalog:
+    
+#### CRUD spike - items catalog:
 CRUD feature (without tests)
 Catalog
 * [Web](https://github.com/msz13/zapisywarka/tree/main/src/libs/web/catalog)
 * [Api](https://github.com/msz13/zapisywarka/tree/main/src/libs/api/catalog)
-### Domain model spike
-* [Specyfication](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationFunctionalTests/Features)
-* [Functional tests](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationFunctionalTests)
-* [Unit test](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationUnitTests)
-* [Implementation](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationBD)
+
+### Deployment 
+* Cloud infrastructure
+ * [Hetzner vpc with microk8s kubernetes](https://github.com/msz13/zapisywarka-env/tree/main/hetzner-cloud)
+ * [Orale Cloud instance with k3os kubernetes](https://github.com/msz13/zapisywarka-env/tree/main/oci-cluster)
+* Applications kubernetes definitions
+ * [backend]https://github.com/msz13/zapisywarka/tree/main/src/apps/zapisywarka-api/deployment
+ * [frontend]https://github.com/msz13/zapisywarka/tree/main/src/apps/zapisywarka-rejestracja/deployment
+
 
