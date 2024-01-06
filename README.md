@@ -56,8 +56,12 @@ Catalog
 * [Web](https://github.com/msz13/zapisywarka/tree/main/src/libs/web/catalog)
 * [Api](https://github.com/msz13/zapisywarka/tree/main/src/libs/api/catalog)
 
-### Deployment infrastructure
-* [Hetzner vpc with microk8s kubernetes]
-* [Orale Cloud instance with k3os kubernetes]
+### Deployment 
+* Cloud infrastructure
+ * [Hetzner vpc with microk8s kubernetes](https://github.com/msz13/zapisywarka-env/tree/main/hetzner-cloud)
+ * [Orale Cloud instance with k3os kubernetes](https://github.com/msz13/zapisywarka-env/tree/main/oci-cluster)
+* Applications kubernetes definitions
+ * [backend]https://github.com/msz13/zapisywarka/tree/main/src/apps/zapisywarka-api/deployment
+ * [frontend]https://github.com/msz13/zapisywarka/tree/main/src/apps/zapisywarka-rejestracja/deployment
 
 
