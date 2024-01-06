@@ -8,10 +8,10 @@
 
 ### Architecture
 - beckend:
- - modular monolith
- - vertical slice architecture
+  * modular monolith
+  * vertical slice architecture
 - fronend:
- - [tactical DDD](https://www.angulararchitects.io/en/blog/tactical-domain-driven-design-with-monorepos/)
+  * [tactical DDD](https://www.angulararchitects.io/en/blog/tactical-domain-driven-design-with-monorepos/)
 
 ### Features specyfication
 ### Project graph
