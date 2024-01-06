@@ -37,7 +37,8 @@
   * [implementation and unit tests](src/libs/web/registration/registration-feature)
 
 #### Backend
-* [acceptance tests](src/apps/zapisywarka-api-test)
+* [acceptance tests](src/apps/zapisywarka-api-test) (BDD with specflow, screanplay pattern for step implementation)
+* [open api specification](https://github.com/msz13/zapisywarka/tree/main/Docs/open-api-spec)
 * indentity domain:
   * [integration tests](src/libs/api/identity/identity-core-test)
   * [implementation- core-module(vertical slice architecture)][src/libs/api/identity/identity-core]
