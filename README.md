@@ -21,7 +21,7 @@
 
 ### Implemented features
 #### Domain model spike
-* [Specyfication](https://github.com/msz13/zapisywarka-deprecated/blob/main/WEB-API/RegistrationFunctionalTests/Features/Zapisy.feature))
+* [Specyfication](https://github.com/msz13/zapisywarka-deprecated/blob/main/WEB-API/RegistrationFunctionalTests/Features/Zapisy.feature)
 * [Functional tests](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationFunctionalTests)
 * [Unit test](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationUnitTests)
 * [Implementation](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationBD)
