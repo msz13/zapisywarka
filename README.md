@@ -63,6 +63,6 @@ Catalog
 * Applications kubernetes definitions
  * [backend](https://github.com/msz13/zapisywarka/tree/main/src/apps/zapisywarka-api/deployment)
  * [frontend](https://github.com/msz13/zapisywarka/tree/main/src/apps/zapisywarka-rejestracja/deployment)
- * [helm](https://github.com/msz13/zapisywarka/tree/88-deploy-create-staging-environment/src/deployment)
+ * [helm]([https://github.com/msz13/zapisywarka/tree/88-deploy-create-staging-environment/src/deployment/zapisywarka)
 
 
