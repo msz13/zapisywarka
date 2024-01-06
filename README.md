@@ -41,7 +41,7 @@
 * [open api specification](https://github.com/msz13/zapisywarka/tree/main/Docs/open-api-spec)
 * indentity domain:
   * [integration tests](src/libs/api/identity/identity-core-test)
-  * [implementation- core-module(vertical slice architecture)][src/libs/api/identity/identity-core]
+  * [implementation- core-module][src/libs/api/identity/identity-core]
   * [implementation - rest controllers](src/libs/api/identity/identity-api)
 * reservations domain:
   * [unit tests](src/libs/api/reservations/reservations-api-test)
