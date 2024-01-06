@@ -22,6 +22,11 @@ angular.json
 ### CLI Commands
 ### Deployment
 ### Implemented features
+#### Domain model spike
+* [Specyfication](https://github.com/msz13/zapisywarka-deprecated/blob/main/WEB-API/RegistrationFunctionalTests/Features/Zapisy.feature))
+* [Functional tests](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationFunctionalTests)
+* [Unit test](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationUnitTests)
+* [Implementation](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationBD)
 #### Frontend:
 * sign-up:
   *  [integration tests(cypress && storybook)](src/apps/test/libs/identity/sign-up-feature-e2e)
@@ -42,14 +47,10 @@ angular.json
 * reservations domain:
   * [unit tests](src/libs/api/reservations/reservations-api-test)
   * [implementation](src/libs/api/reservations/reservations-api)
-### CRUD spike - items catalog:
+#### CRUD spike - items catalog:
 CRUD feature (without tests)
 Catalog
 * [Web](https://github.com/msz13/zapisywarka/tree/main/src/libs/web/catalog)
 * [Api](https://github.com/msz13/zapisywarka/tree/main/src/libs/api/catalog)
-### Domain model spike
-* [Specyfication](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationFunctionalTests/Features)
-* [Functional tests](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationFunctionalTests)
-* [Unit test](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationUnitTests)
-* [Implementation](https://github.com/msz13/zapisywarka-deprecated/tree/main/WEB-API/RegistrationBD)
+
 
